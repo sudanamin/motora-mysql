@@ -1,14 +1,14 @@
 
 var express = require("express");
-var mysql = require("mysql");
 var bodyparser = require("body-parser");
 var cors = require("cors");
+var mysql = require("mysql");
 
 var app = express();
 
 const route = require("./route/routes");
 
-//mysql.createConnection
+
 
 const PORT = 3000;
 
@@ -29,6 +29,7 @@ app.get('/aaa',(req,res)=>{
     res.send("aaaa ");
 
 })
+
 app.listen(PORT, ()=>{
 
     console.log("app listening on port:"+PORT);
