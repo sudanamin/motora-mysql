@@ -24,12 +24,6 @@ app.get('/',(req,res)=>{
 
 })
 
-app.get('/aaa',(req,res)=>{
-
-    res.send("aaaa ");
-
-})
-
 app.listen(PORT, ()=>{
 
     console.log("app listening on port:"+PORT);
