@@ -51,13 +51,13 @@ router.put('/car/:id', (req,res,next)=>{
     model = req.body.model;
     color = req.body.color;
 
-    connection.query("UPDATE `cars_table` SET model=?, color=? WHERE car_id=? ", [model,color,car_id], function(err) {   //to do AND author_id=?
+    connection.query("UPDATE `cars_table` SET model=?, color=? WHERE car_id=? ", [model,color,car_id], function(err,result) {   //to do AND author_id=?
         if (err) {
             res.status(500);
             return next(err);
         }
         else{
-        res.send("updated");
+            res.json(result);
         console.log("updated")
         }
 

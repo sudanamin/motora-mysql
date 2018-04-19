@@ -12,12 +12,13 @@ export class CarItemComponent implements OnInit {
 
   carList: car[] = [];
   selectedCar: car;
+  toggleForm: boolean = false;
 
   getCars(){
     this.dataService.getCars()
     .subscribe( cars => {
       this.carList = cars;
-      console.log('data from backend server '+this.carList[0].color);
+     
     })
   }
 
@@ -35,12 +36,26 @@ export class CarItemComponent implements OnInit {
     })
   }
 
-  EditCar(frm){
-    console.log(frm.value);
+  EditCar(EditFrm){
+    console.log('car id is :'+this.selectedCar.car_id);
+    let editCar: car = {
+      car_id: this.selectedCar.car_id,
+      model: EditFrm.value.carmodel,
+      color: EditFrm.value.carcolor
+    }
+
+    this.dataService.updateCar(editCar)
+    .subscribe( result => {
+      console.log('original Item to be updated:'+result.affectedRows);
+      this.getCars();
+    });
+
+    this.toggleForm = !this.toggleForm;
   }
 
   showEditForm(car){
     this.selectedCar = car;
+    this.toggleForm = !this.toggleForm;
 
   }
 

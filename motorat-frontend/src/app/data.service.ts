@@ -26,4 +26,13 @@ export class DataService {
     .map(res => res.json());
   }
 
+  updateCar(car){
+    let headers = new Headers();
+
+    headers.append('content-type','application/json');
+    return this.http.put("http://localhost:3000/api/car/"+car.car_id, car, {headers:headers})
+    .map( res => res.json());
+
+  }
+
 }
