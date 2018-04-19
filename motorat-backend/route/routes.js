@@ -51,7 +51,7 @@ router.put('/car/:id', (req,res,next)=>{
     model = req.body.model;
     color = req.body.color;
 
-    connection.query("INSERT INTO `cars_table` (model, color) VALUES (?, ?)", [model,color], function(err) {
+    connection.query("UPDATE `cars_table` SET model=?, color=? WHERE car_id=? ", [model,color,car_id], function(err) {   //to do AND author_id=?
         if (err) {
             res.status(500);
             return next(err);
@@ -70,7 +70,7 @@ router.delete('/car/:id', (req,res,next)=>{
 
     car_id = req.params.id;
     
-    connection.query("INSERT INTO `cars_table` (model, color) VALUES (?, ?)", [model,color], function(err) {
+    connection.query("DELETE FROM `cars_table` WHERE car_id=?", [car_id], function(err) {
         if (err) {
             res.status(500);
             return next(err);

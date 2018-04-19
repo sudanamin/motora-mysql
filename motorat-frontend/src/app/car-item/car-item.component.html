@@ -1,0 +1,42 @@
+<h2> Cars list </h2>
+<form #frm = "ngForm" (ngSubmit)="addCar(frm)">
+  <h2> ADD Car</h2>
+  <div class="from-group">
+    <label for="">
+      Model:
+    </label>
+
+    <input 
+    type="text"
+    class="form-control"
+    name="carModel"
+    value=""
+    ngModel>
+  </div>
+
+  <div class="from-group">
+      <label for="">
+        Color:
+      </label>
+  
+      <input 
+      type="text"
+      class="form-control"
+      name="carColor"
+      value=""
+      ngModel>
+    </div>
+<br>
+<button type="submit" name='button' class='btn btn-success'>Add ADS</button>
+
+</form>
+<br>
+
+<div class="row">
+  <div *ngFor="let car of carList" >
+
+    <div class="col-md-2">
+     {{car.color}} 
+    </div>
+  </div>
+</div>
