@@ -37,7 +37,7 @@ router.post('/car', (req,res,next)=>{
             return next(err);
         }
         else{
-        res.send("added");
+        res.json({msg:"added"});
         console.log("added")
         }
 
@@ -70,13 +70,13 @@ router.delete('/car/:id', (req,res,next)=>{
 
     car_id = req.params.id;
     
-    connection.query("DELETE FROM `cars_table` WHERE car_id=?", [car_id], function(err) {
+    connection.query("DELETE FROM `cars_table` WHERE car_id=?", [car_id], function(err,result) {
         if (err) {
             res.status(500);
             return next(err);
         }
         else{
-        res.send("delete complete");
+        res.json(result);
         console.log("delete complete")
         }
 

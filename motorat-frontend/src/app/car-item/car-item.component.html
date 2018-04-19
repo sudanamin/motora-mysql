@@ -1,4 +1,4 @@
-<h2> Cars list </h2>
+
 <form #frm = "ngForm" (ngSubmit)="addCar(frm)">
   <h2> ADD Car</h2>
   <div class="from-group">
@@ -30,13 +30,58 @@
 <button type="submit" name='button' class='btn btn-success'>Add ADS</button>
 
 </form>
+
+<form #EditFrm = "ngForm" (ngSubmit)="EditCar(EditFrm)">
+  <h2> Edit Car</h2>
+  <div class="from-group">
+    <label for="">
+      Model:
+    </label>
+
+    <input 
+    type="text"
+    class="form-control"
+    name="carmodel"
+    value=""
+    ngModel>
+  </div>
+
+  <div class="from-group">
+      <label for="">
+        Color:
+      </label>
+  
+      <input 
+      type="text"
+      class="form-control"
+      name="carcolor"
+      value=""
+      ngModel>
+    </div>
 <br>
+<button type="submit" name='button' class='btn btn-success'>Save</button>
 
-<div class="row">
+</form>
+<br>
+<h2> Cars list </h2><h2> Cars list </h2>
+
   <div *ngFor="let car of carList" >
-
-    <div class="col-md-2">
+    <div class="row">
+    <div class="col-md-1">
      {{car.color}} 
     </div>
+
+    <div class='col-md-1'>
+      {{car.model}} 
+    </div>
+
+    <div class='col-md-3'>
+      <button type='button' name="button" class='btn btn-primary' (click)="showEditForm(car)">Edit</button>
+    </div>
+
+    <div class='col-md-2'>
+      <button type='button' name="button" class='btn btn-danger' (click)="deleteCar(car)">Delete</button>
+    </div>
   </div>
+  <br>
 </div>

@@ -16,9 +16,14 @@ export class DataService {
   addCar(newCar){
     let headers = new Headers();
     headers.append('content-type','application/json');
-    return this.http.post('http://localhost:3000/api/item', newCar , {headers: headers})
+    return this.http.post('http://localhost:3000/api/car', newCar , {headers: headers})
            .map(res => res.json());
 
+  }
+
+  deleteCar(id){
+    return this.http.delete("http://localhost:3000/api/car/"+id)
+    .map(res => res.json());
   }
 
 }
