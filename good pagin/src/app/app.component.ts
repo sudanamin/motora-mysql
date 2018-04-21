@@ -54,7 +54,7 @@ export class AppComponent implements OnInit {
     ngAfterViewInit() {
         //  document.querySelector('body').classList.add('blue');
         //  document.body.style.backgroundImage = "url(../../assets/post-it-note.jpg)";
-           document.body.style.backgroundImage = "url(../assets/post-it-note.jpg)";
+        //   document.body.style.backgroundImage = "url(../assets/post-it-note.jpg)";
          //  document.body.style.backgroundImage = "url(./assets/post-it-note.jpg)";
         //   document.body.style.backgroundImage = "url(./../assets/post-it-note.jpg)";
         //   document.body.style.backgroundImage = "url(assets/post-it-note.jpg)";

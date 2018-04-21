@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {car} from '../../car';
 import {DataService} from '../data.service'
+import { PagerService } from '../_services/index'
+import { Http ,Response } from '@angular/http';
+
+
 
 @Component({
   selector: 'app-car-item',
@@ -14,10 +18,27 @@ export class CarItemComponent implements OnInit {
   selectedCar: car;
   toggleForm: boolean = false;
 
+   // array of all items to be paged
+   private allItems: any[];
+
+   // pager object
+   pager: any = {};
+
+   // paged items
+   pagedItems: any[];
+
+
+  constructor( private http:Http ,private pagerService: PagerService, private dataService: DataService) { }
+
+  
   getCars(){
     this.dataService.getCars()
     .subscribe( cars => {
       this.carList = cars;
+     this.allItems = cars;
+
+              // initialize to page 1
+              this.setPage(1);
      
     })
   }
@@ -76,10 +97,36 @@ export class CarItemComponent implements OnInit {
     })
   }
 
-  constructor(private dataService: DataService) { }
+  
+
+   
 
   ngOnInit() {
     this.getCars();
+   
+      // get dummy data
+     
+    /*  this.http.get('https://jsonplaceholder.typicode.com/posts')
+          .map((response: Response) => response.json())
+          .subscribe(data => {
+              // set items to json response
+              this.allItems = data;
+
+              // initialize to page 1
+              this.setPage(1);
+          }); */
+  }
+
+  setPage(page: number) {
+      if (page < 1 || page > this.pager.totalPages) {
+          return;
+      }
+
+      // get pager object from service
+      this.pager = this.pagerService.getPager(this.allItems.length, page);
+
+      // get current page of items
+      this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
   }
 
 }

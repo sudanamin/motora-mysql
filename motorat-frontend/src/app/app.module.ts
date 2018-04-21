@@ -4,6 +4,7 @@ import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import { CarItemComponent } from './car-item/car-item.component';
+import { PagerService } from './_services/index';
 
 
 
@@ -17,7 +18,7 @@ import { CarItemComponent } from './car-item/car-item.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [PagerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

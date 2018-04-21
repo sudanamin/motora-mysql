@@ -1,4 +1,4 @@
-
+<div class="container">
 <form #frm = "ngForm" (ngSubmit)="addCar(frm)" *ngIf="!toggleForm">
   <h2> ADD Car</h2>
   <div class="from-group">
@@ -86,4 +86,36 @@
     </div>
   </div>
   <br>
+</div>
+
+<!-- pagination -->
+<div>
+
+
+  <div class="text-center">
+      <h1>Angular 2 - Pagination Example with logic like Google</h1>
+
+      <!-- items being paged -->
+      <div *ngFor="let item of pagedItems">{{item.color}}</div>
+
+      <!-- pager -->
+      <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+          <li [ngClass]="{disabled:pager.currentPage === 1}">
+              <a (click)="setPage(1)">First</a>
+          </li>
+          <li [ngClass]="{disabled:pager.currentPage === 1}" class="page-item">
+              <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+          </li>
+          <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+              <a (click)="setPage(page)">{{page}}</a>
+          </li>
+          <li class="page-item"  [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+              <a (click)="setPage(pager.currentPage + 1)">Next</a>
+          </li>
+          <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+              <a (click)="setPage(pager.totalPages)">Last</a>
+          </li>
+      </ul>
+  </div>
+</div>
 </div>
