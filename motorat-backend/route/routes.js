@@ -4,6 +4,9 @@ const express = require('express');
 var router = express.Router();
 var mysql = require("mysql");
 
+var url = require('url');
+
+
 var connection = mysql.createConnection({
     host: "localhost",
     user: "root",
@@ -12,7 +15,38 @@ var connection = mysql.createConnection({
     port: "3306"
 });
 router.get('/cars', (req,res,next)=> {
-    connection.query("SELECT * FROM `cars_table`", function(err, cars) {
+
+    var whereClause = "WHERE 1 = 1 ";
+
+    var url_parts = url.parse(req.url, true);
+    var query = url_parts.query;
+
+
+    var color = req.query.color;
+    var model = req.query.model;
+    //var color = req.params.color;
+    console.log('color is :'+color);
+
+    if(color != null)
+      { 
+         whereClause += "AND color LIKE '"+color+"'";
+        console.log('cccccccccccc is :'+color);
+        //whereClause += "AND description LIKE '%keywords%'"
+      }else console.log('ddddddddddd is :'+color);
+
+      if(model != null)
+      { 
+         whereClause += "AND model LIKE '"+model+"'";
+        console.log('mmmmmmmmmm is :'+model);
+        //whereClause += "AND description LIKE '%keywords%'"
+      }else console.log('lllllllllll is :'+model);
+   /*  if(price != null)
+      {
+        whereClause += "AND price = '%price%'"
+       } */
+
+
+    connection.query("SELECT * FROM `cars_table` "+whereClause, function(err, cars) {
         if (err) {
             res.status(500);
             return next(err);

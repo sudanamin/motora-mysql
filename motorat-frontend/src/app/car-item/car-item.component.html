@@ -1,6 +1,6 @@
 <div class="container">
 <form #frm = "ngForm" (ngSubmit)="addCar(frm)" *ngIf="!toggleForm">
-  <h2> ADD Car</h2>
+  <h2> ADD a car</h2>
   <div class="from-group">
     <label for="">
       Model:
@@ -35,7 +35,7 @@
 
 <form #EditFrm = "ngForm" (ngSubmit)="EditCar(EditFrm)" *ngIf="toggleForm">
   <h2> Edit Car</h2>
-  <div class="from-group">
+  <div class="form-group">
     <label for="">
       Model:
     </label>
@@ -48,7 +48,7 @@
     [ngModel]="selectedCar.model">
   </div>
 
-  <div class="from-group">
+  <div class="form-group">
       <label for="">
         Color:
       </label>
@@ -62,7 +62,7 @@
     </div>
 <br>
 <button type="submit" name='button' class='btn btn-success'>Save</button>
-
+<button  name='button' class='btn btn-primary' (click)="toggleForm= !toggleForm">Cancel</button>
 </form>
 <br>
 <h2> Cars list </h2>

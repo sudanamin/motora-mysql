@@ -35,10 +35,10 @@ export class CarItemComponent implements OnInit {
     this.dataService.getCars()
     .subscribe( cars => {
       this.carList = cars;
-     this.allItems = cars;
+      this.allItems = cars;
 
               // initialize to page 1
-              this.setPage(1);
+      this.setPage(1);
      
     })
   }
