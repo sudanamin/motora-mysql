@@ -17,6 +17,7 @@ export class CarItemComponent implements OnInit {
   carList: car[] = [];
   selectedCar: car;
   toggleForm: boolean = false;
+  firstTime: boolean = false;
 
    // array of all items to be paged
    private allItems: any[];
@@ -36,9 +37,11 @@ export class CarItemComponent implements OnInit {
     .subscribe( cars => {
       this.carList = cars;
       this.allItems = cars;
+      
 
               // initialize to page 1
-      this.setPage(1);
+      if(this.firstTime == false )this.setPage(1);
+      this.firstTime = true;
      
     })
   }
