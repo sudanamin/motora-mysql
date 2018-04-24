@@ -31,12 +31,13 @@ export class PhotoSwipeComponent
         const options = {
             // optionName: 'option value'
             // for example:
-            index: 0 // start at first slide
+            index: 1 // start at first slide
         };
 
         // Initializes and opens PhotoSwipe
         const gallery = new PhotoSwipe(this.photoSwipe.nativeElement, PhotoSwipeUI_Default, images, options);
         gallery.init();
+        
     }
     // ========================================================================
 }

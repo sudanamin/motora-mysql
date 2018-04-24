@@ -19,31 +19,31 @@ export class AppComponent
     {
         const images : IImage[] = [
             {
-                src: 'http://via.placeholder.com/600x400',
+                src: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(117).jpg',
                 w: 600,
                 h: 400,
-                title: 'Image Caption'
+                title: 'Image CaptionImage Caption'
             },
             {
-                src: 'http://via.placeholder.com/800x600',
+                src: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(98).jpg',
                 w: 1200,
                 h: 900,
-                title: 'Image Caption'
+                title: 'Image Caption ImageCaption'
             },
             {
-                src: 'http://via.placeholder.com/960x960',
+                src: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(131).jpg',
                 w: 960,
                 h: 960,
                 title: 'Image Caption'
             },
             {
-                src: 'http://via.placeholder.com/1080x960',
+                src: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(128).jpg',
                 w: 1080,
                 h: 960,
                 title: 'Image Caption'
             },
             {
-                src: 'http://via.placeholder.com/1200x900',
+                src: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(111).jpg',
                 w: 1200,
                 h: 900,
                 title: 'Image Caption'
