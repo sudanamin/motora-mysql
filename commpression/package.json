@@ -1,0 +1,16 @@
+{
+  "name": "thu",
+  "version": "1.0.0",
+  "description": "test of th",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "amin",
+  "license": "MIT",
+  "dependencies": {
+    "compress-images": "^1.2.0",
+    "node-thumbnail": "^0.14.0",
+    "sharp": "^0.20.1"
+  }
+}
