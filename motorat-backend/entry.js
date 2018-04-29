@@ -10,7 +10,7 @@ const route = require("./route/routes");
 
 
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 
