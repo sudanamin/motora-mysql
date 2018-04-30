@@ -5,10 +5,10 @@ import * as _ from "lodash";
 
 @Component({
   selector: 'upload-form',
-  templateUrl: './upload-form.component.html',
-  styleUrls: ['./upload-form.component.scss']
+  templateUrl: './upoad-form.component.html',
+  styleUrls: ['./upoad-form.component.css']
 })
-export class UploadFormComponent {
+export class UpoadFormComponent{
 
   currentUpload: Upload;
   dropzoneActive:boolean = false;

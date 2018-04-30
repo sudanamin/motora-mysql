@@ -7,6 +7,7 @@ export class UploadService {
   constructor() { }
 
   pushUpload(upload: Upload) {
+    upload.name = upload.file.name
    /* let storageRef = firebase.storage().ref();
     let uploadTask = storageRef.child(`uploads/${upload.file.name}`).put(upload.file);
 

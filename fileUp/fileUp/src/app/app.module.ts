@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-
+import {UploadService} from './upload.service';
 import { AppComponent } from './app.component';
 import { UpoadFormComponent } from './upoad-form/upoad-form.component';
 import { FileDropDirective } from './file-drop.directive';
@@ -16,7 +16,7 @@ import { FileDropDirective } from './file-drop.directive';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [UploadService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
