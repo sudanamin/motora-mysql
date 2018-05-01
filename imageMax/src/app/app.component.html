@@ -1,8 +1,8 @@
 <input type="file" name='image' (change)="onImageChange($event)" accept="image/*" multiple >
-
+<button (click)="upload()">Upload {{imagePreviews.length}} files</button>
+<upload-form></upload-form>
 <div  *ngFor="let image of imagePreviews">
     name is : {{image.name}}
     <img [src]="sanitizer.bypassSecurityTrustUrl(image.url)">
 </div>
 
-<button (click)="upload()">Upload {{imagePreviews.length}} files</button>

@@ -32,8 +32,8 @@ export class AppComponent {
     for(var i=0;i<files.length;i++){
     let image = event.target.files[i];
     
-
-    this.ng2ImgMax.resizeImage(image, 100,10000).subscribe(
+    
+   this.ng2ImgMax.resizeImage(image, 100,10000).subscribe(
       result => {
         this.uploadedImage = new File([result], result.name);
         
@@ -61,7 +61,7 @@ export class AppComponent {
     };
   }
 
-  upload() {
+ /*  upload() {
 
     
     this.http.post("http://localhost:3000/api/setimg", this.fd)
@@ -69,5 +69,5 @@ export class AppComponent {
     .subscribe( result => {
       console.log("from server ok"+result.path)
     });
-  }
+  } */
 }
