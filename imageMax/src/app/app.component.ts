@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Ng2ImgMaxService } from 'ng2-img-max';
 import { DomSanitizer } from '@angular/platform-browser';
-import {Http} from '@angular/http';
+import { HttpClient, HttpEventType } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import { preview } from '../preview';
 
@@ -20,7 +20,7 @@ export class AppComponent {
   constructor(
     private ng2ImgMax: Ng2ImgMaxService,
     public sanitizer: DomSanitizer,
-    private http:Http
+    private http:HttpClient
   ) {}
 
   onImageChange(event) {
@@ -61,13 +61,13 @@ export class AppComponent {
     };
   }
 
- /*  upload() {
+  upload() {         // this should moved to service class
 
     
-    this.http.post("http://localhost:3000/api/setimg", this.fd)
+   /* this.http.post("http://localhost:3000/api/setimg", this.fd)
     .map(res => res.json())
     .subscribe( result => {
       console.log("from server ok"+result.path)
-    });
-  } */
+    });*/
+  }
 }
