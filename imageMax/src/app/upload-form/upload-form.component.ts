@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 //import { UploadService } from '../upload.service';
 //import { Upload } from '../upload';
-import * as _ from "lodash";
+//import * as _ from "lodash";
 import { preview } from '../../preview';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Ng2ImgMaxService } from 'ng2-img-max';
@@ -17,8 +17,8 @@ import { HttpClient, HttpEventType } from '@angular/common/http';
 })
 export class UploadFormComponent {
 
+  uploadProgress: number;
   uploadedImage: File;
-  //currentUpload: Upload;
   dropzoneActive: boolean = false;
   imagePreviews: preview[] = [];
   fd = new FormData();
@@ -33,13 +33,23 @@ export class UploadFormComponent {
     this.dropzoneActive = $event;
   }
 
+  onImageChange(event) {
+
+    var files = event.target.files;
+    this.resizeFiles(files);
+  }
+
   handleDrop(fileList: FileList) {
 
-    let filesIndex = _.range(fileList.length)
+    this.resizeFiles(fileList);
+  }
 
-    _.each(filesIndex, (idx) => {
-      fileList[idx]
-      this.ng2ImgMax.resizeImage(fileList[idx], 100, 10000).subscribe(
+  resizeFiles(files: FileList) {
+    for (var i = 0; i < files.length; i++) {
+      let image = files[i];
+
+
+      this.ng2ImgMax.resizeImage(image, 100, 10000).subscribe(
         result => {
           this.uploadedImage = new File([result], result.name);
 
@@ -53,10 +63,7 @@ export class UploadFormComponent {
           console.log('😢 Oh no!', error);
         }
       );
-      //this.getImagePreview(fileList[idx]);
-      //console.log(fileList[idx]);
     }
-    );
   }
 
   getImagePreview(file: File) {
@@ -78,17 +85,16 @@ export class UploadFormComponent {
     })
       .subscribe(event => {
         if (event.type === HttpEventType.UploadProgress) {
+          this.uploadProgress = Math.round(event.loaded / event.total * 100);
+          console.log("welcome");
           console.log('Upload Progress: ' + Math.round(event.loaded / event.total * 100) + '%')
         }
         else if (event.type === HttpEventType.Response) {
           console.log(event);
         }
       }
-  );
-    /* .map(res => res.json())
-    .subscribe( result => {
-      console.log("from server ok"+result.path)
-    }); */
+      );
+
   }
 
 }
