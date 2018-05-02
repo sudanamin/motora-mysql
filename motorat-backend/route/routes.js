@@ -132,7 +132,7 @@ var storage = multer.diskStorage({
      
     }
   });
-  var upload = multer({ storage: storage }).single('image');
+  var upload = multer({ storage: storage }).array('image');
  // upload.single('image');
 /*const upload = multer({
     dest:'images/', 
@@ -162,9 +162,10 @@ router.post('/setimg', (req, res) => {
             res.status(400).json({message: err.message})
 
         } else {
-            console.log("origana name :"+req.file.originalname);
+            console.log("origana name :"+req.files[0].originalname);
 
-            let path = `/images/${req.file.filename}`
+           // let path = `/images/${req.file.filename}`;
+           let path = "/test/";
             res.status(200).json({message: 'Image Uploaded Successfully !', path: path})
         }
     })

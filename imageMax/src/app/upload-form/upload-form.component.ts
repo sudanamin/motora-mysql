@@ -21,6 +21,8 @@ export class UploadFormComponent {
   uploadedImage: File;
   dropzoneActive: boolean = false;
   imagePreviews: preview[] = [];
+
+  //fd:FormData[] = [];
   fd = new FormData();
 
 
@@ -56,6 +58,9 @@ export class UploadFormComponent {
 
 
           this.getImagePreview(this.uploadedImage);
+          //var singleFd = new FormData();
+          //singleFd.append('image', this.uploadedImage, this.uploadedImage.name);
+          //this.fd.push(singleFd);
           this.fd.append('image', this.uploadedImage, this.uploadedImage.name);
           // this.upload();
         },
@@ -78,7 +83,7 @@ export class UploadFormComponent {
 
   upload() {         // this should moved to service class
 
-
+console.log('form data is :'+this.fd);
     this.http.post("http://localhost:3000/api/setimg", this.fd, {
       reportProgress: true,
       observe: 'events'
