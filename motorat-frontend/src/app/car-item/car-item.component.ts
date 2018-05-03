@@ -79,6 +79,7 @@ export class CarItemComponent implements OnInit {
   }
 
   showEditForm(car){
+    window.scrollTo(0, 0);
     this.selectedCar = car;
     this.toggleForm = !this.toggleForm;
 
