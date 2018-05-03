@@ -6,7 +6,8 @@ import {DataService} from '../data.service'
 @Component({
   selector: 'app-members',
   templateUrl: './members.component.html',
-  styleUrls: ['./members.component.css']
+  styleUrls: ['./members.component.css'],
+  providers: [DataService]
 })
 export class MembersComponent implements OnInit {
 
