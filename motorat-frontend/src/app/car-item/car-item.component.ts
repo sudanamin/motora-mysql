@@ -30,7 +30,7 @@ export class CarItemComponent implements OnInit {
    pagedItems: any[];
 
 
-  constructor( private http:HttpClient ,private pagerService: PagerService, private dataService: DataService) { }
+  constructor( private pagerService: PagerService, private dataService: DataService) { }
 
   
   getCars(){
