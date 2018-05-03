@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {car} from '../../car';
 import {DataService} from '../data.service'
 import { PagerService } from '../_services/index'
-import { Http ,Response } from '@angular/http';
+//import { Http ,Response } from '@angular/http';
+import { HttpClient, HttpEventType } from '@angular/common/http';
 
 
 
@@ -29,7 +30,7 @@ export class CarItemComponent implements OnInit {
    pagedItems: any[];
 
 
-  constructor( private http:Http ,private pagerService: PagerService, private dataService: DataService) { }
+  constructor( private http:HttpClient ,private pagerService: PagerService, private dataService: DataService) { }
 
   
   getCars(){
@@ -55,7 +56,7 @@ export class CarItemComponent implements OnInit {
 
     this.dataService.addCar(newCar)
     .subscribe(car =>{
-      console.log(car);
+      console.log("car is :"+ JSON.stringify(car));
       this.getCars();
     })
   }
@@ -70,7 +71,7 @@ export class CarItemComponent implements OnInit {
 
     this.dataService.updateCar(editCar)
     .subscribe( result => {
-      console.log('original Item to be updated:'+result.affectedRows);
+      console.log('original Item to be updated:'+result);
       this.getCars();
     });
 
@@ -87,8 +88,8 @@ export class CarItemComponent implements OnInit {
     console.log('car id is : '+car.car_id);
     this.dataService.deleteCar(car.car_id)
     .subscribe(data => {
-      console.log(data.affectedRows);
-      if(data.affectedRows == 1){
+      console.log(data);
+      if(data){
         for(var i=0 ; i<this.carList.length; i++){
           if(car.car_id == this.carList[i].car_id){
 
