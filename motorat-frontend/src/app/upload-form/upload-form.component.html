@@ -23,7 +23,7 @@
  </div>
 
 
-  <div class="dropzone"
+  <div class="droplet"
        fileDrop
        (filesDropped)="handleDrop($event)"
        (filesHovered)="dropzoneState($event)"
@@ -35,8 +35,10 @@
         <li *ngFor="let image of imagePreviews"> 
            
           
-            <img style="width: 90px;height:90px; border:1px solid white;" [src]="sanitizer.bypassSecurityTrustUrl(image.url)">
-        </li>
+            <img class="droplet-preview"  [src]="sanitizer.bypassSecurityTrustUrl(image.url)">
+            <div class="delete">&times;</div>
+           
+          </li>
 
       </ul>
       <h3 class="draghere">or Drag Here...</h3>
