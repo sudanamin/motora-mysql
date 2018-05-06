@@ -5,7 +5,7 @@
 
 <form #frm = "ngForm" (ngSubmit)="addCar(frm)" *ngIf="!toggleForm">
 
-  <h2 style='color:white'> Advertise to your car </h2>
+  <h2 style='color:white'> ad your car </h2>
 
 <div *ngIf="uploadProgress">
   <progress class="progress is-success" min=1 max=100 value="{{ uploadProgress }}"></progress>
@@ -32,11 +32,10 @@
       <!--  <i class="fa fa-cloud-upload fa-2x"></i> -->
       <ul class="files">
 
-        <li>  
-          <div  *ngFor="let image of imagePreviews">
-            name is : {{image.name}}
+        <li *ngFor="let image of imagePreviews"> 
+           
+          
             <img style="width: 90px;height:90px; border:1px solid white;" [src]="sanitizer.bypassSecurityTrustUrl(image.url)">
-          </div>
         </li>
 
       </ul>
