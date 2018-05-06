@@ -1,31 +1,142 @@
+
+
+<div class="container colourful">
+
+
+<form #frm = "ngForm" (ngSubmit)="addCar(frm)" *ngIf="!toggleForm">
+
+  <h2 style='color:white'> Advertise to your car </h2>
+
 <div *ngIf="uploadProgress">
   <progress class="progress is-success" min=1 max=100 value="{{ uploadProgress }}"></progress>
   Progress:  {{uploadProgress}}% Complete
 </div>
+<!-- <button (click)="upload()">Upload {{imagePreviews.length}} files</button> -->
 
-<br>
-<br>
 
-<input type="file" name='image' (change)="onImageChange($event)" accept="image/*" multiple >
-<button (click)="upload()">Upload {{imagePreviews.length}} files</button>
-
-<div  *ngFor="let image of imagePreviews">
-  name is : {{image.name}}
-  <img [src]="sanitizer.bypassSecurityTrustUrl(image.url)">
-</div>
 
 <div class="box">
 
-  <h2>Drop File</h2>
+  <h3 style='color:white'>upload car images...</h3>
+  <div class ="toolbar">
+    <input type="file" name='image' (change)="onImageChange($event)" value="Add Files..."  accept="image/*" multiple >
+ </div>
+
 
   <div class="dropzone"
        fileDrop
        (filesDropped)="handleDrop($event)"
        (filesHovered)="dropzoneState($event)"
        [ngClass]="{'active': dropzoneActive}">
+      
+      <!--  <i class="fa fa-cloud-upload fa-2x"></i> -->
+      <ul class="files">
 
-       <i class="fa fa-cloud-upload fa-2x"></i>
+        <li>  
+          <div  *ngFor="let image of imagePreviews">
+            name is : {{image.name}}
+            <img style="width: 90px;height:90px; border:1px solid white;" [src]="sanitizer.bypassSecurityTrustUrl(image.url)">
+          </div>
+        </li>
+
+      </ul>
+      <h3 class="draghere">or Drag Here...</h3>
+     
+  </div>
+ <br>
+
+
+</div>
+  <div class="from-group">
+    <label for="">
+      Model:
+    </label>
+
+    <input 
+    type="text"
+    class="form-control"
+    name="carModel"
+    value=""
+    ngModel
+    required>
+  </div>
+
+  <div class="from-group">
+      <label for="">
+        Color:
+      </label>
+  
+      <input 
+      type="text"
+      class="form-control"
+      name="carColor"
+      value=""
+      ngModel
+      required>
+    </div>
+<br>
+<button type="submit" name='button' class='btn btn-success'  [disabled]='frm.invalid'>Add ADS with {{imagePreviews.length}} images</button>
+
+</form>
+
+  
+  
+  <form #EditFrm = "ngForm" (ngSubmit)="EditCar(EditFrm)" *ngIf="toggleForm">
+    <h2> Edit Car</h2>
+    <div class="form-group">
+      <label for="">
+        Model:
+      </label>
+  
+      <input 
+      type="text"
+      class="form-control"
+      name="carmodel"
+      value=""
+      [ngModel]="selectedCar.model">
+    </div>
+  
+    <div class="form-group">
+        <label for="">
+          Color:
+        </label>
+    
+        <input 
+        type="text"
+        class="form-control"
+        name="carcolor"
+        value=""
+        [ngModel]="selectedCar.color">
+      </div>
+  <br>
+  <button type="submit" name='button' class='btn btn-success'>Save</button>
+  <button  name='button' class='btn btn-primary' (click)="toggleForm= !toggleForm">Cancel</button>
+  </form>
+  <br>
+  <h2> Cars list </h2>
+  
+    <div *ngFor="let car of carList" >
+      <div class="row">
+      <div class="col-md-1">
+       {{car.color}} 
+      </div>
+  
+      <div class='col-md-1'>
+        {{car.model}} 
+      </div>
+  
+      <div class='col-md-3'>
+        <button type='button' name="button" class='btn btn-primary' (click)="showEditForm(car)" [disabled]="toggleForm">Edit</button>
+      </div>
+  
+      <div class='col-md-2'>
+        <button type='button' name="button" class='btn btn-danger' (click)="deleteCar(car)" [disabled]="toggleForm">Delete</button>
+      </div>
+    </div>
+    <br>
+  </div>
+  
+  <!-- pagination -->
 
   </div>
-</div>
 

@@ -1,11 +1,80 @@
-.dropzone{
+.box .dropzone {
     position: relative;
-    width: 250px;
+    width: 100%;
     height: 250px;
-    margin: 10px;
+   /* margin: 10px; */
+    background-color: rgb(168, 127, 146);
+    margin-bottom: 5px;
     border: 1px rgb(209, 47, 47);
     float: left;
     border: 10px;
-    border-style: solid;
-    border-width: medium;
+    border-style: none;
+    
+    /* opacity: .25; */
+    /* border-width: thin; */
+}
+
+.draghere{
+    top:30%; left:40%; 
+    position: absolute; 
+    color:  rgba(255, 255, 255, .45);
+    
+
+}
+
+ul
+{ 
+overflow-x:hidden;
+white-space:nowrap; 
+
+width: 100%;
+} 
+
+li
+{ 
+display:inline; 
+}
+
+.files{
+    /* height: 100%; */
+    width: 100%;
+    overflow-y: auto;
+    padding: 5px;
+}
+.box .toolbar {
+    width: 100%;
+    margin-top: 5px;
+    overflow: hidden;
+    position: relative;
+    z-index: 3;
+    height: 25px;
+    border-radius: 3px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .25);
+    background: linear-gradient(to bottom, #ededed 0%, #dedede 100%);
+}
+
+.box .toolbar input {
+    display: inline-block;
+    background-color: transparent;
+    float: left;
+    overflow: hidden;
+    width: 100px;
+    height: 100%;
+    border: 0;
+    cursor: pointer;
+    border-right: 1px solid rgba(0, 0, 0, .1);
+    color: rgba(0, 0, 0, .75);
+    transition: all 0.25s;
+}
+.colourful {
+    background:
+        -webkit-linear-gradient(45deg, hsla(332, 18%, 55%, 1) 0%, hsla(332, 18%, 55%, 0) 70%),
+        -webkit-linear-gradient(315deg, hsla(290, 22%, 50%, 1) 10%, hsla(290, 22%, 50%, 0) 80%),
+        -webkit-linear-gradient(225deg, hsla(342, 27%, 50%, 1) 10%, hsla(342, 27%, 50%, 0) 80%),
+        -webkit-linear-gradient(135deg, hsla(169, 0%, 100%, 1) 100%, hsla(169, 0%, 100%, 0) 70%);
+    background:
+        linear-gradient(45deg, hsla(332, 18%, 55%, 1) 0%, hsla(332, 18%, 55%, 0) 70%),
+        linear-gradient(135deg, hsla(290, 22%, 50%, 1) 10%, hsla(290, 22%, 50%, 0) 80%),
+        linear-gradient(225deg, hsla(342, 27%, 50%, 1) 10%, hsla(342, 27%, 50%, 0) 80%),
+        linear-gradient(315deg, hsla(169, 0%, 100%, 1) 100%, hsla(169, 0%, 100%, 0) 70%);
 }
