@@ -4,11 +4,12 @@
     position: relative;
     border-radius: 2px;
     width: 100%;
-    height: 400px;
+    height: 300px;
     background-color: rgba(255, 255, 255, .1);
     margin-top: -5px;
     padding-top: 5px;
     transition: box-shadow 0.35s;
+    margin: auto;    
 }
 
 .draghere{
@@ -18,6 +19,14 @@
     
 
 }
+
+.titles{
+    color: white;
+}
+
+.labels{
+          color:  rgba(255, 255, 255, 0.61);
+    }
 
 ul
 { 
@@ -46,8 +55,8 @@ li
     position: absolute;
     border-radius: 50%;
     z-index: 101;
-    top: 35px;
-    left: 35px;
+    top: 25px;
+    left: 25px;
     opacity: 0;
     transition: all .30s;
     transform: scale(0.5);
@@ -62,7 +71,7 @@ li
 .droplet ul.files li div.delete:hover {
     background-color: rgba(0, 0, 0, .45);
 }
- droplet ul.files {
+ .droplet ul.files {
     height: 100%;
     width: 100%;
     overflow-y: auto;
@@ -71,12 +80,21 @@ li
     transition: all .5s;
 }
 
-
+.droplet ul.files li div.size {
+    background-color: rgba(255, 255, 255, .5);
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    pointer-events: none;
+    font-size: 9px;
+    font-family: Lato, Arial, Tahoma, Helvetica, sans-serif;
+    padding: 1px 4px;
+}
 
  .droplet ul.files li {
     width: 100px;
     height: 100px;
-    padding: 10px;
+    padding: 1px;
     float: left;
     position: relative;
     margin: 5px;
@@ -96,13 +114,14 @@ li
 
 .box .toolbar {
     width: 100%;
+
     margin-top: 5px;
     overflow: hidden;
     position: relative;
     z-index: 3;
     height: 25px;
     border-radius: 3px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, .25);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .25);
     background: linear-gradient(to bottom, #ededed 0%, #dedede 100%);
 }
 

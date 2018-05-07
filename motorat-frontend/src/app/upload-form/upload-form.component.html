@@ -1,23 +1,25 @@
 
+<div class="colourful">
+<div class="container">
 
-<div class="container colourful">
-
-
+  <div *ngIf="uploadProgress">
+    <progress class="progress is-success" min=1 max=100 value="{{ uploadProgress }}">
+      
+    </progress>
+    Progress:  {{uploadProgress}}% Complete
+  </div>
 <form #frm = "ngForm" (ngSubmit)="addCar(frm)" *ngIf="!toggleForm">
 
-  <h2 style='color:white'> ad your car </h2>
+  <h2 class="titles"> ad your car </h2>
 
-<div *ngIf="uploadProgress">
-  <progress class="progress is-success" min=1 max=100 value="{{ uploadProgress }}"></progress>
-  Progress:  {{uploadProgress}}% Complete
-</div>
+
 <!-- <button (click)="upload()">Upload {{imagePreviews.length}} files</button> -->
 
 
 
 <div class="box">
 
-  <h3 style='color:white'>upload car images...</h3>
+  <h3 class="labels">upload car images...</h3>
   <div class ="toolbar">
     <input type="file" name='image' (change)="onImageChange($event)" value="Add Files..."  accept="image/*" multiple >
  </div>
@@ -32,24 +34,26 @@
       <!--  <i class="fa fa-cloud-upload fa-2x"></i> -->
       <ul class="files">
 
-        <li *ngFor="let image of imagePreviews"> 
+        <li *ngFor="let image of bigImagePreviews"> 
            
-          
+          <a target="#" [href]="sanitizer.bypassSecurityTrustUrl(image.url)">
             <img class="droplet-preview"  [src]="sanitizer.bypassSecurityTrustUrl(image.url)">
-            <div class="delete">&times;</div>
-           
+          </a>
+
+            <div class="delete" (click)="removeImage(image.name);">&times;</div>
+            <div class="size">{{image.size / 1024 / 1024 | number}}MB</div>
           </li>
 
       </ul>
       <h3 class="draghere">or Drag Here...</h3>
      
   </div>
- <br>
 
 
 </div>
+ 
   <div class="from-group">
-    <label for="">
+    <label class="labels" for="">
       Model:
     </label>
 
@@ -63,7 +67,7 @@
   </div>
 
   <div class="from-group">
-      <label for="">
+      <label  class="labels" for="">
         Color:
       </label>
   
@@ -114,7 +118,7 @@
   <button  name='button' class='btn btn-primary' (click)="toggleForm= !toggleForm">Cancel</button>
   </form>
   <br>
-  <h2> Cars list </h2>
+  <h2  class="titles"> Cars list </h2>
   
     <div *ngFor="let car of carList" >
       <div class="row">
@@ -140,4 +144,6 @@
   <!-- pagination -->
 
   </div>
+</div>
+
 
