@@ -19,7 +19,7 @@ export class AppComponent
     {
         const images : IImage[] = [
             {
-                src: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(117).jpg',
+                src: '../../assets/ss.jpg',
                 w: 600,
                 h: 400,
                 title: 'Image CaptionImage Caption'

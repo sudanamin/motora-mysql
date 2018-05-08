@@ -31,7 +31,7 @@ export class PhotoSwipeComponent
         const options = {
             // optionName: 'option value'
             // for example:
-            index: 1 // start at first slide
+            index: 3 // start at first slide
         };
 
         // Initializes and opens PhotoSwipe
