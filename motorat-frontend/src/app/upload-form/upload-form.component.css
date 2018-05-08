@@ -1,3 +1,26 @@
+  /* progrsss bar  */
+
+
+#myProgress {
+    width:100%;
+    background-color: rgb(197, 30, 30);
+    position: fixed;
+    top: 0;
+    left:0;
+    height: 3.5px;
+  }
+  
+  #myBar {
+    width: 1%;
+    left:0;
+    height: 3.5px;
+    background-color: #4CAF50;
+    position: fixed;
+    top: 0;
+  }
+
+  /* progrsss bar  */
+
 .box .droplet {
     display: inline-block;
     z-index: 2;

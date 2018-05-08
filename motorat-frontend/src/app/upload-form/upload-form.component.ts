@@ -10,6 +10,7 @@ import 'rxjs/add/operator/map';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { car } from '../../car';
 import { DataService } from '../data.service'
+/* import { Form } from '@angular/forms'; */
 
 
 
@@ -29,6 +30,7 @@ export class UploadFormComponent {
   selectedCar: car;
   toggleForm: boolean = false;
   firstTime: boolean = false;
+  addForm: any;
 
   // array of all items to be paged
   private allItems: any[];
@@ -133,6 +135,7 @@ export class UploadFormComponent {
   }
 
   addCar(frm) {
+    this.addForm = frm;
     this.upload();
     let newCar: car = {
       model: frm.value.carModel,
@@ -144,10 +147,7 @@ export class UploadFormComponent {
         console.log("car is :" + JSON.stringify(car));
         if (frm.valid) {
           console.log("Form Submitted!");
-          frm.reset();
-          this.imagePreviews = [];
-          this.bigImagePreviews = [];
-          this.fd.delete("image");
+
         }
         //this.getCars();
       })
@@ -210,10 +210,23 @@ export class UploadFormComponent {
           if (event.type === HttpEventType.UploadProgress) {
             this.uploadProgress = Math.round(event.loaded / event.total * 100);
             console.log("welcome");
+            //if(event.loaded. === HttpEventType.)
+
             console.log('Upload Progress: ' + Math.round(event.loaded / event.total * 100) + '%')
           }
           else if (event.type === HttpEventType.Response) {
-            console.log(event);
+            if (event.statusText == 'OK') {
+              this.addForm.reset();
+              this.imagePreviews = [];
+              this.bigImagePreviews = [];
+              this.fd.delete("image");
+              this.uploadProgress = 0;
+              alert("added successfully");
+              console.log("event is:" + event.statusText);
+
+            }
+
+
           }
         }
         );
