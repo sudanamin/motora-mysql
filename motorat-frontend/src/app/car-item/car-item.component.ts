@@ -47,7 +47,7 @@ export class CarItemComponent implements OnInit {
     })
   }
 
-  addCar(frm){
+/*  addCar(frm){
     
     let newCar: car = {
       model:frm.value.carModel,
@@ -100,7 +100,7 @@ export class CarItemComponent implements OnInit {
         }
       }
     })
-  }
+  }*/
 
   
 

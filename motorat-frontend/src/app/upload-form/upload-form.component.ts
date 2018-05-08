@@ -149,7 +149,7 @@ export class UploadFormComponent {
           console.log("Form Submitted!");
 
         }
-        //this.getCars();
+        this.getCars();
       })
   }
 
