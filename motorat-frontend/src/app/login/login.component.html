@@ -1,0 +1,65 @@
+
+<div  *ngIf="auth.user | async; then loading else login">here is ignored</div>
+
+<ng-template #login>
+<!--<div class="form-container ">
+ <div class="form-container">
+  <!-- <img src="assets/images/lock.svg" id="lock">   -->
+ 
+     <!-- <span class="error" *ngIf="error">{{ error }}</span>
+ 
+   <button (click)="auth.facebookLogin()" id="fb">Login With Facebook</button><br>
+   <br>
+   <br>
+   <button (click)="auth.googleLogin()" id="google" ><i class="fa fa-google">Login With Google</i></button>
+   <br>
+   <br>
+   <button routerLink="/login-email" id="email">Email</button>
+
+   <br>
+   <br>
+ 
+   <a routerLink="/signup" routerLinkActive="active" class="alc">No account? <strong>Create one here</strong></a>
+ </div> -->
+
+ 
+
+ <div class="loginBox">
+  <img src="assets/images/user-login.svg" class="user">
+  <h2>Log In Here</h2>
+  <!-- <form> -->
+
+      <button (click)="auth.facebookLogin()" id="fb"  class="btn-si btn-facebook">Login With Facebook</button><br>
+      <br>
+      <br>
+      <button (click)="auth.googleLogin()" id="google" class="btn-si btn-google">Login With Google</button>
+     <!--  <button >Sign in with Google</button> -->
+      <br>
+      <br>
+      <br>
+      <p>Email</p>
+      <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+    
+    <!-- <input type="text" name="" placeholder="Enter Email">
+    <p>Password</p>
+    <input type="password" name="" placeholder="••••••"> -->
+    <input type="text" placeholder="Email address.." (ngModel)="email" name="email" class="txt" required>
+      <input type="password" placeholder="Password" (ngModel)="password" name="password" class="txt" required>
+
+    <input type="submit" name="" value="Sign In">
+  </form>
+    <a routerLink="/reset" routerLinkActive="active" class="alc">Forget Password</a>
+    <br>
+    <br>
+    <a routerLink="/signup" routerLinkActive="active" class="alc">No account? <strong>Create one here</strong></a>
+
+   
+    <a href='https://play.google.com/store/apps/details?id=com.ammostafa.stickykeep&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
+      <img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/></a>
+
+    <div class ="play">Our app is now available on Google Play.</div>
+
+</div>
+</ng-template>
+
+<ng-template #loading> Loading...</ng-template>

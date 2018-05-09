@@ -7,18 +7,22 @@ import { MembersComponent } from './members/members.component';
 
 import { AuthGuard } from './auth.guard';
 import { MainComponent } from './main/main.component';
+import { LoginComponent} from './login/login.component';
+import { SignupComponent} from './signup/signup.component';
+import { ResetPasswordComponent} from './reset-password/reset-password.component';
+
 
 
 export const router: Routes = [
     { path: '',   redirectTo: 'main', pathMatch: 'full' },
     { path:'main', component: MainComponent},
-    /*{ path: 'login', component: LoginComponent },
+    { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignupComponent },
-    { path: 'login-email', component: EmailComponent },
+   // { path: 'login-email', component: EmailComponent },
     { path: 'reset', component: ResetPasswordComponent },
     { path: 'members', component: MembersComponent, canActivate: [AuthGuard] }
-    */
-   { path: 'members', component: MembersComponent }
+   
+  // { path: 'members', component: MembersComponent }
 
    
 ]
