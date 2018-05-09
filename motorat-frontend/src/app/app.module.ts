@@ -15,6 +15,8 @@ import { Ng2ImgMaxModule } from 'ng2-img-max';
 //import { UserProfileComponent } from './users/user-profile/user-profile.component';
 
 import { AuthService } from './core/auth.service';
+import { AuthGuard } from './auth.guard';
+
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -59,6 +61,7 @@ var firebaseConfig = {
   providers: [
     PagerService,
     AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
