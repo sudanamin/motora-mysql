@@ -2,7 +2,7 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 //import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
 import { Router } from '@angular/router';
 //import { moveIn } from '../router.animations';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../core/auth.service';
 //import { AngularFirestore } from 'angularfire2/firestore';
 
 @Component({
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
 
   ngAfterViewInit() {
   //  document.querySelector('body').classList.add('blue');
-    document.body.style.backgroundImage = "url(../../assets/aa.jpg)";
+  document.body.style.backgroundImage = "url(../../assets/post-it-note.jpg)";
   //  document.body.style.backgroundRepeat = "no-repeat";
  //   document.body.style.backgroundPosition = "center"; 
 
