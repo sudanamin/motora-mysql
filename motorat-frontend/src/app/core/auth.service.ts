@@ -75,22 +75,23 @@ export class AuthService {
 
   //// Social Auth ////
   githubLogin() {
-    const provider = new firebase.auth.GithubAuthProvider()
+    const provider = new firebase.auth.GithubAuthProvider();
+    //const provider2 = new firebase.app().auth().GithubAuthProvider();
     return this.socialSignIn(provider);
   }
 
   googleLogin() {
-    const provider = new firebase.auth.GoogleAuthProvider()
+    const provider = new firebase.auth.GoogleAuthProvider();
     return this.socialSignIn(provider);
   }
 
   facebookLogin() {
-    const provider = new firebase.auth.FacebookAuthProvider()
+    const provider = new firebase.auth.FacebookAuthProvider();
     return this.socialSignIn(provider);
   }
 
   twitterLogin() {
-    const provider = new firebase.auth.TwitterAuthProvider()
+    const provider = new firebase.auth.TwitterAuthProvider();
     return this.socialSignIn(provider);
   }
 

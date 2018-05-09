@@ -24,7 +24,7 @@
     "angularfire2": "^5.0.0-rc.7",
     "bootstrap": "^4.1.0",
     "core-js": "^2.4.1",
-    "firebase": "^5.0.1",
+    "firebase": "^4.8.0",
     "jquery": "^3.3.1",
     "ng2-img-max": "^2.1.15",
     "rxjs": "^5.5.6",
