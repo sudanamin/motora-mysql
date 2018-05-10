@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {car} from '../../car';
 import {DataService} from '../data.service'
+import { AuthService } from '../core/auth.service';
 //import { PagerService } from '../_services/index'
 
 @Component({
@@ -14,21 +15,14 @@ export class MembersComponent implements OnInit {
  
 
 
-  constructor(  private dataService: DataService) { }
+  constructor( public auth: AuthService, private dataService: DataService) { }
 
   
-
-
-
-
-
-  
-
-   
-
   ngOnInit() {
+    
    // this.getCars();
-   
+  // var s = this.auth.authState.displayName;
+  // console.log("curent user is "+s);
       // get dummy data
      
     /*  this.http.get('https://jsonplaceholder.typicode.com/posts')

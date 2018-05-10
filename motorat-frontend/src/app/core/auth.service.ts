@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase/app';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
+//import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap'
 interface User {
@@ -29,17 +29,17 @@ export class AuthService {
 
   //    user: Observable<User>;
   constructor(private afAuth: AngularFireAuth,
-    private afs: AngularFirestore,
+  //  private afs: AngularFirestore,
     private router: Router) {
     //// Get auth data, then get firestore user document || null
     this.user = this.afAuth.authState
-      .switchMap(user => {
+     /*  .switchMap(user => {
         if (user) {
           return this.afs.doc<User>(`users/${user.uid}/userInfo/user`).valueChanges()
         } else {
           return Observable.of(null)
         }
-      })
+      }) */
   }
   // Returns true if user is logged in
   get authenticated(): boolean {
@@ -99,10 +99,10 @@ export class AuthService {
     return this.afAuth.auth.signInWithPopup(provider)
       .then((credential) => {
         this.authState = credential.user
-        this.updateUserData()
+  //      this.updateUserData()
         this.router.navigate(['/members']);
       })
-      .catch(error => console.log(error));
+      .catch(error => alert(error));
   }
 
 
@@ -111,7 +111,7 @@ export class AuthService {
     return this.afAuth.auth.signInAnonymously()
       .then((user) => {
         this.authState = user
-        this.updateUserData()
+ //       this.updateUserData()
       })
       .catch(error => console.log(error));
   }
@@ -121,18 +121,18 @@ export class AuthService {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
       .then((user) => {
         this.authState = user
-        this.updateUserData()
+  //      this.updateUserData()
       })
-      .catch(error => console.log(error));
+      .catch(error => alert(error));
   }
 
   emailLogin(email: string, password: string) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then((user) => {
         this.authState = user
-        this.updateUserData()
+   //     this.updateUserData()
       })
-      .catch(error => console.log(error));
+      .catch(error => alert(error));
   }
 
   // Sends email allowing user to reset password
@@ -140,8 +140,8 @@ export class AuthService {
     //var auth = firebase.auth();
 
     return this.afAuth.auth.sendPasswordResetEmail(email)
-      .then(() => console.log("email sent"))
-      .catch((error) => console.log("amin nnnn"+error))
+      .then(() => alert("email sent"))
+      .catch((error) => alert(error))
   }
 
 
@@ -154,7 +154,7 @@ export class AuthService {
 
 
   //// Helpers ////
-  private updateUserData() {
+ // private updateUserData() {
     // Writes user name and email to realtime db
     // useful if your app displays information about users or for admin features
     /* let path = `users/${this.currentUserId}`; // Endpoint on firebase
@@ -165,7 +165,7 @@ export class AuthService {
  
      this.db.object(path).update(data)
      .catch(error => console.log(error));*/
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.authState.uid}/userInfo/user`);
+   /*  const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.authState.uid}/userInfo/user`);
     const data: User = {
       uid: this.authState.uid,
       email: this.authState.email,
@@ -174,7 +174,7 @@ export class AuthService {
     }
     return userRef.set(data);
 
-  }
+  } */
 
 
 
