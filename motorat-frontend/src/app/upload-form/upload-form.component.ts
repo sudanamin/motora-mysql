@@ -10,6 +10,7 @@ import 'rxjs/add/operator/map';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { car } from '../../car';
 import { DataService } from '../data.service'
+import { AuthService } from '../core/auth.service';
 /* import { Form } from '@angular/forms'; */
 
 
@@ -47,7 +48,8 @@ export class UploadFormComponent {
   constructor(public sanitizer: DomSanitizer,
     private ng2ImgMax: Ng2ImgMaxService,
     private http: HttpClient,
-    private dataService: DataService
+    private dataService: DataService,
+    public auth: AuthService,
   ) { }
 
   dropzoneState($event: boolean) {
@@ -136,13 +138,20 @@ export class UploadFormComponent {
 
   addCar(frm) {
     this.addForm = frm;
-    this.upload();
     let newCar: car = {
       model: frm.value.carModel,
       color: frm.value.carColor
     }
-
-    this.dataService.addCar(newCar)
+    this.fd.append('color',frm.value.carColor);
+    this.fd.append('model',frm.value.carModel);
+    this.auth.user.subscribe(user =>{
+      var userId = user.uid;
+      this.fd.append('uid',userId);
+      this.upload();
+    })
+   
+  
+   /* this.dataService.addCar(newCar)
       .subscribe(car => {
         console.log("car is :" + JSON.stringify(car));
         if (frm.valid) {
@@ -150,7 +159,7 @@ export class UploadFormComponent {
 
         }
         this.getCars();
-      })
+      })*/
   }
 
   resizeFiles(files: FileList) {
@@ -200,11 +209,13 @@ export class UploadFormComponent {
 
 
   upload() {         // this should moved to service class
-    if (this.fd.has("image")) {
+    if (this.fd.has("color")) {
       console.log('form data is :' + this.fd);
+      
       this.http.post("http://localhost:3000/api/setimg", this.fd, {
         reportProgress: true,
-        observe: 'events'
+        observe: 'events',
+        //[params:string]: newCar.color
       })
         .subscribe(event => {
           if (event.type === HttpEventType.UploadProgress) {
@@ -220,6 +231,9 @@ export class UploadFormComponent {
               this.imagePreviews = [];
               this.bigImagePreviews = [];
               this.fd.delete("image");
+              this.fd.delete("color");
+              this.fd.delete("model");
+              this.fd.delete("uid");
               this.uploadProgress = 0;
               alert("added successfully");
               console.log("event is:" + event.statusText);

@@ -1,8 +1,8 @@
 
-<div *ngIf="auth.user | async as user">
+<!-- <div *ngIf="auth.user | async as user">
     hi {{user.email}}
     user id is  {{user.uid}}
-</div>
+</div> -->
 <button (click)="auth.signOut()" class="logoutButton">Logout</button>
 <upload-form></upload-form>
 

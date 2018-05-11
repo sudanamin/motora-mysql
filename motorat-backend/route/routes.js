@@ -132,7 +132,14 @@ var storage = multer.diskStorage({
      
     }
   });
-  var upload = multer({ storage: storage }).array('image');
+
+  var fields = [
+    { name: 'image', maxCount: 12 },
+    { name: 'color'},
+    { name: 'model'},
+    { name: 'uid'}
+  ]
+  var upload = multer({ storage: storage }).fields(fields); // var upload = multer({ storage: storage }).array('image');
  // upload.single('image');
 /*const upload = multer({
     dest:'images/', 
@@ -162,7 +169,14 @@ router.post('/setimg', (req, res) => {
             res.status(400).json({message: err.message})
 
         } else {
-            console.log("origana name :"+req.files[0].originalname);
+
+           // console.log("origana name :"+req.files[0].originalname);
+           console.log("origana name :"+JSON.stringify(req.files));
+           model = req.body.model;
+           color = req.body.color;
+           uid = req.body.uid;
+           console.log(uid+"  :"+"color"+req.body.color);
+
 
            // let path = `/images/${req.file.filename}`;
            let path = "/test/";
