@@ -126,9 +126,25 @@ var storage = multer.diskStorage({
       cb(null, './images/')
     },
     filename: function (req, file, cb) {
-        console.log("amin is :"+file.originalname);
+      //  console.log("amin is :"+file.path);
        // let mime = fileType(file).mime;
         cb(null,  Date.now() +"_"+file.originalname);
+       // console.log("image/"+file.filename);
+     /*    connection.query("INSERT INTO `cars_table` (model, color,USER_ID) VALUES (?, ?, ?)", [1,1,file.filename], function(err, result) {
+            if (err) {
+                res.status(500);
+                console.log(err);
+            }
+            else{
+            //res.json({msg:"added"});
+            //var msg = "added";
+            //return msg;
+           // msg = msg+"ccc";
+           // res.status(200).json({message: message+msg, result:result})
+            console.log("ok");
+            }
+    
+        }); */
      
     }
   });
@@ -164,23 +180,15 @@ router.post('/setimg', (req, res,next) => {
  var msg = "aa";
     upload(req, res, function (err) {
 
+           
+       
 
-        connection.query("INSERT INTO `cars_table` (model, color,USER_ID) VALUES (?, ?, ?)", [1,1,'AMIN123'], function(err, result) {
-            if (err) {
-                res.status(500);
-                return next(err);
-            }
-            else{
-            //res.json({msg:"added"});
-            //var msg = "added";
-            //return msg;
-            msg = msg+"ccc";
-            res.status(200).json({message: message+msg, result:result})
-            console.log(message);
-            }
-    
-        });
-
+      
+       //var name =JSON.parse(JSON.stringify(req.files));
+       var name =req.files;
+       console.log("json object "+name.image[0].path);
+       
+      
         if (err) {
 
             res.status(400).json({message: err.message})
@@ -192,13 +200,39 @@ router.post('/setimg', (req, res,next) => {
            model = req.body.model;
            color = req.body.color;
            uid = req.body.uid;
-           console.log(uid+"  :"+"color"+req.body.color);
+           console.log(model+"  :"+"color"+req.body.color);
+           connection.query("INSERT INTO `cars_table` (model, color) VALUES (?, ?)", [model,color], function(err, result) {
+            if (err) {
+                res.status(500);
+                return next(err);
+            }
+            else{
+            //res.json({msg:"added"});
+            console.log("added")
 
+            connection.query("INSERT INTO `car_images` ( IMAGE_URL,REF_APP_ID) VALUES ( ?, ?)", [req.files.image[0].path , result.insertId ], function(err, result) {
+                if (err) {
+                    res.status(500);
+                    return next(err);
+                }
+                else{
+                //res.json({msg:"added"});
+                //var msg = "added";
+                //return msg;
+                msg = msg+"ccc";
+                res.status(200).json({ result:result})
+                console.log(message);
+                }
+        
+            });
+            }
+    
+        });
 
            // let path = `/images/${req.file.filename}`;
            let path = "/test/";
            message = 'image upload succeffly';
-
+         //  res.status(200).json({message: message})
             
         }
     })
