@@ -160,9 +160,26 @@ var storage = multer.diskStorage({
     }
 }).single('image')*/
 
-router.post('/setimg', (req, res) => {
-
+router.post('/setimg', (req, res,next) => {
+ var msg = "aa";
     upload(req, res, function (err) {
+
+
+        connection.query("INSERT INTO `cars_table` (model, color,USER_ID) VALUES (?, ?, ?)", [1,1,'AMIN123'], function(err, result) {
+            if (err) {
+                res.status(500);
+                return next(err);
+            }
+            else{
+            //res.json({msg:"added"});
+            //var msg = "added";
+            //return msg;
+            msg = msg+"ccc";
+            res.status(200).json({message: message+msg, result:result})
+            console.log(message);
+            }
+    
+        });
 
         if (err) {
 
@@ -180,7 +197,9 @@ router.post('/setimg', (req, res) => {
 
            // let path = `/images/${req.file.filename}`;
            let path = "/test/";
-            res.status(200).json({message: 'Image Uploaded Successfully !', path: path})
+           message = 'image upload succeffly';
+
+            
         }
     })
 })
