@@ -48,7 +48,7 @@ router.get('/cars', (req,res,next)=> {
        } */
 
 
-    connection.query("SELECT * FROM `cars_table` "+whereClause, function(err, cars) {
+    connection.query("SELECT * FROM `car_images` "+whereClause, function(err, cars) {
         if (err) {
             res.status(500);
             return next(err);
@@ -201,7 +201,7 @@ router.post('/setimg', (req, res,next) => {
            color = req.body.color;
            uid = req.body.uid;
            console.log(model+"  :"+"color"+req.body.color);
-           connection.query("INSERT INTO `cars_table` (model, color) VALUES (?, ?)", [model,color], function(err, result) {
+           connection.query("INSERT INTO `cars_table` (model, color , USER_ID) VALUES (?, ?, ?)", [model,color, uid], function(err, result) {
             if (err) {
                 res.status(500);
                 return next(err);

@@ -39,6 +39,7 @@ export class CarItemComponent implements OnInit {
       this.carList = cars;
       this.allItems = cars;
       
+      
 
               // initialize to page 1
       if(this.firstTime == false )this.setPage(1);
@@ -132,6 +133,7 @@ export class CarItemComponent implements OnInit {
 
       // get current page of items
       this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
+      console.log("paged items:"+this.pagedItems[0].COLOR);
   }
 
 }
