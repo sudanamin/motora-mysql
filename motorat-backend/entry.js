@@ -15,6 +15,8 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 
 app.use(bodyparser.json());
+app.use(express.static(__dirname + '/images/') );
+
 
 app.use('/api', route);
 

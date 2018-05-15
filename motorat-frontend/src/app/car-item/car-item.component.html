@@ -11,16 +11,16 @@
       <h1>Angular 2 - Pagination Example with logic like Google</h1>
 
       <!-- items being paged -->
-      <div *ngFor="let item of pagedItems">
+      <div >
 
         <ul class="files" >
 
             <li *ngFor="let item of pagedItems" >
-                {{item.COLOR}}
+                {{item.IMAGE_URL}}
              <!--  <a target="#" [href]="sanitizer.bypassSecurityTrustUrl(image.url)">
                 <img  class="droplet-preview" [src]="sanitizer.bypassSecurityTrustUrl(image.url)">
               </a> -->
-              <img  class="droplet-preview" [src]="item.IMAGE_URL">
+              <img   [src]="item.IMAGE_URL">
              
             </li>
 

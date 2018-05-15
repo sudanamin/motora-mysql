@@ -8,6 +8,7 @@ const fileType = require('file-type')
 const fs = require('fs')
 var url = require('url');
 
+//app.use(express.static(__dirname ));
 
 var connection = mysql.createConnection({
     host: "localhost",
@@ -210,7 +211,7 @@ router.post('/setimg', (req, res,next) => {
             //res.json({msg:"added"});
             console.log("added")
 
-            connection.query("INSERT INTO `car_images` ( IMAGE_URL,REF_APP_ID) VALUES ( ?, ?)", [req.files.image[0].path , result.insertId ], function(err, result) {
+            connection.query("INSERT INTO `car_images` ( IMAGE_URL,REF_APP_ID) VALUES ( ?, ?)", ["http://localhost:3000/"+req.files.image[0].filename , result.insertId ], function(err, result) {
                 if (err) {
                     res.status(500);
                     return next(err);
