@@ -49,6 +49,51 @@ router.get('/cars', (req,res,next)=> {
        } */
 
 
+    connection.query("SELECT * FROM `cars_table` "+whereClause, function(err, cars) {
+        if (err) {
+            res.status(500);
+            return next(err);
+        }
+        else{
+        res.send(cars);
+        console.log(cars)
+        }
+
+    });
+})
+
+router.get('/carsimgs', (req,res,next)=> {
+
+    var whereClause = "WHERE 1 = 1 ";
+
+    var url_parts = url.parse(req.url, true);
+    var query = url_parts.query;
+
+
+    var color = req.query.color;
+    var model = req.query.model;
+    //var color = req.params.color;
+    console.log('color is :'+color);
+
+    if(color != null)
+      { 
+         whereClause += "AND color LIKE '"+color+"'";
+        console.log('cccccccccccc is :'+color);
+        //whereClause += "AND description LIKE '%keywords%'"
+      }else console.log('ddddddddddd is :'+color);
+
+      if(model != null)
+      { 
+         whereClause += "AND model LIKE '"+model+"'";
+        console.log('mmmmmmmmmm is :'+model);
+        //whereClause += "AND description LIKE '%keywords%'"
+      }else console.log('lllllllllll is :'+model);
+   /*  if(price != null)
+      {
+        whereClause += "AND price = '%price%'"
+       } */
+
+
     connection.query("SELECT * FROM `car_images` "+whereClause, function(err, cars) {
         if (err) {
             res.status(500);
@@ -68,7 +113,7 @@ router.post('/car', (req,res,next)=>{
     color = req.body.color;
     console.log(model+"  :"+"color"+color)
 
-    connection.query("INSERT INTO `cars_table` (model, color) VALUES (?, ?)", [model,color], function(err) {
+    connection.query("INSERT INTO `cars_table` (MODEL, COLOR) VALUES (?, ?)", [model,color], function(err) {
         if (err) {
             res.status(500);
             return next(err);
@@ -88,7 +133,7 @@ router.put('/car/:id', (req,res,next)=>{
     model = req.body.model;
     color = req.body.color;
 
-    connection.query("UPDATE `cars_table` SET model=?, color=? WHERE car_id=? ", [model,color,car_id], function(err,result) {   //to do AND author_id=?
+    connection.query("UPDATE `cars_table` SET MODEL=?, COLOR=? WHERE APPLICATION_ID=? ", [model,color,car_id], function(err,result) {   //to do AND author_id=?
         if (err) {
             res.status(500);
             return next(err);

@@ -85,9 +85,9 @@ export class UploadFormComponent {
   }
 
   EditCar(EditFrm) {
-    console.log('car id is :' + this.selectedCar.car_id);
+    console.log('car id is :' + this.selectedCar.APPLICATION_ID);
     let editCar: car = {
-      car_id: this.selectedCar.car_id,
+      APPLICATION_ID: this.selectedCar.APPLICATION_ID,
       model: EditFrm.value.carmodel,
       color: EditFrm.value.carcolor
     }
@@ -109,13 +109,13 @@ export class UploadFormComponent {
   }
 
   deleteCar(car) {
-    console.log('car id is : ' + car.car_id);
+    console.log('car id is : ' + car.APPLICATION_ID);
     this.dataService.deleteCar(car.car_id)
       .subscribe(data => {
         console.log(data);
         if (data) {
           for (var i = 0; i < this.carList.length; i++) {
-            if (car.car_id == this.carList[i].car_id) {
+            if (car.APPLICATION_ID == this.carList[i].APPLICATION_ID) {
 
               this.carList.splice(i, 1);
               console.log('on is deleted ');

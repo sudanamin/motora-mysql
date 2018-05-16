@@ -10,6 +10,11 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
+  getCarsImages(){
+    return this.http.get<Array<car>>("http://localhost:3000/api/carsimgs")
+    //.map(res => res.json())
+  }
+
   getCars(){
     return this.http.get<Array<car>>("http://localhost:3000/api/cars")
     //.map(res => res.json())
@@ -32,7 +37,7 @@ export class DataService {
     let headers = new HttpHeaders();
 
     headers.append('content-type','application/json');
-    return this.http.put<car>("http://localhost:3000/api/car/"+car.car_id, car, {headers:headers})
+    return this.http.put<car>("http://localhost:3000/api/car/"+car.APPLICATION_ID, car, {headers:headers})
     //.map( res => res.json());
 
   }

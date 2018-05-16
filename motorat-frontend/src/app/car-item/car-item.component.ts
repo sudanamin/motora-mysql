@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild  } from '@angular/core';
 import {car} from '../../car';
 import {DataService} from '../data.service'
 import { PagerService } from '../_services/index'
 //import { Http ,Response } from '@angular/http';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 
+import { PhotoSwipeComponent } from '../photo-swipe/photo-swipe.component';
+import { IImage              } from '../interfaces/image';
 
 
 @Component({
@@ -28,15 +30,58 @@ export class CarItemComponent implements OnInit {
 
    // paged items
    pagedItems: any[];
+   index:number =1;
+   @ViewChild('photoSwipe') photoSwipe: PhotoSwipeComponent;
 
 
   constructor( private pagerService: PagerService, private dataService: DataService) { }
 
+ 
+    // ========================================================================
+    openSlideshow()
+    {
+        const index = this.index;
+        const images : IImage[] = [
+            {
+                src: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(131).jpg',
+                w: 600,
+                h: 400,
+                title: 'Image CaptionImage Caption'
+            },
+            {
+                src: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(98).jpg',
+                w: 1200,
+                h: 900,
+                title: 'Image Caption ImageCaption'
+            },
+            {
+                src: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(131).jpg',
+                w: 960,
+                h: 960,
+                title: 'Image Caption'
+            },
+            {
+                src: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(128).jpg',
+                w: 1080,
+                h: 960,
+                title: 'Image Caption'
+            },
+            {
+                src: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(111).jpg',
+                w: 1200,
+                h: 900,
+                title: 'Image Caption'
+            },
+        ];
+
+        this.photoSwipe.openGallery(images,index);
+    }
+
   
   getCars(){
-    this.dataService.getCars()
+    this.dataService.getCarsImages()
     .subscribe( cars => {
-      this.carList = cars;
+     // this.carList = cars;
       this.allItems = cars;
       
       

@@ -1,11 +1,12 @@
 import { Component, ViewChild, ElementRef, Input } from '@angular/core';
 
 // Import PhotoSwipe
-import PhotoSwipe           from 'photoswipe';
-import PhotoSwipeUI_Default from 'photoswipe/dist/photoswipe-ui-default';
-
+//mport PhotoSwipe           from 'photoswipe';
+//import PhotoSwipeUI_Default from 'photoswipe/dist/photoswipe-ui-default';
+import * as PhotoSwipe from "photoswipe"; 
+import * as PhotoSwipeUI_Default from "photoswipe/dist/photoswipe-ui-default"
 // Image Interface
-import { IImage } from 'app/interfaces/image';
+import { IImage } from '../interfaces/image';
 
 @Component({
     selector   : 'app-photo-swipe',

@@ -12,11 +12,13 @@ import { IImage              } from 'app/interfaces/image';
 })
 export class AppComponent
 {
+    index:number =1;
     @ViewChild('photoSwipe') photoSwipe: PhotoSwipeComponent;
 
     // ========================================================================
     openSlideshow()
     {
+        const index = this.index;
         const images : IImage[] = [
             {
                 src: '../../assets/ss.jpg',
@@ -50,7 +52,9 @@ export class AppComponent
             },
         ];
 
-        this.photoSwipe.openGallery(images);
+        this.photoSwipe.openGallery(images,index);
     }
+
+
     // ========================================================================
 }

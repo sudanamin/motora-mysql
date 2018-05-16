@@ -4,6 +4,7 @@ import {HttpClientModule } from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import { CarItemComponent } from './car-item/car-item.component';
+import { PhotoSwipeComponent } from './photo-swipe/photo-swipe.component';
 import { PagerService } from './_services/index';
 import { MembersComponent } from './members/members.component';
 import { MainComponent } from './main/main.component';
@@ -41,7 +42,7 @@ var firebaseConfig = {
     MainComponent,
     FileDropDirective,
     UploadFormComponent,
-    //UserLoginComponent,
+    PhotoSwipeComponent,
     //UserProfileComponent,
     SignupComponent,
     ResetPasswordComponent,

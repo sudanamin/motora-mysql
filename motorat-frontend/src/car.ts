@@ -1,6 +1,6 @@
 export class car{
 
-    car_id?: number;
+    APPLICATION_ID?: number;
     model: number;
     color: string
 }
