@@ -242,7 +242,7 @@ router.post('/setimg', (req, res,next) => {
         } else {
 
            // console.log("origana name :"+req.files[0].originalname);
-           console.log("origana name :"+JSON.stringify(req.files));
+           
            model = req.body.model;
            color = req.body.color;
            uid = req.body.uid;
@@ -254,9 +254,18 @@ router.post('/setimg', (req, res,next) => {
             }
             else{
             //res.json({msg:"added"});
+            //req.files.image[0].filename
             console.log("added")
-
-            connection.query("INSERT INTO `car_images` ( IMAGE_URL,REF_APP_ID) VALUES ( ?, ?)", ["http://localhost:3000/"+req.files.image[0].filename , result.insertId ], function(err, result) {
+            console.log("origana name :"+JSON.stringify(req.files));
+            var images  = req.files.image;
+            console.log("ffff: "+images[0].size);
+            for(let i = 0; i < images.length; i++) {
+                var obj = images[i];
+            
+                console.log(obj.filename);
+            
+           //  for (let image of images){
+            connection.query("INSERT INTO `car_images` ( IMAGE_URL,REF_APP_ID) VALUES ( ?, ?)", ["http://localhost:3000/"+obj.filename , result.insertId ], function(err, result) {
                 if (err) {
                     res.status(500);
                     return next(err);
@@ -266,12 +275,17 @@ router.post('/setimg', (req, res,next) => {
                 //var msg = "added";
                 //return msg;
                 msg = msg+"ccc";
+                if(i == images.length - 1)
+                {
+                    console.log(i +"iamge lenghhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh ");
                 res.status(200).json({ result:result})
-                console.log(message);
+            }
+                //console.log(message);
                 }
         
             });
-            }
+            } 
+        }
     
         });
 

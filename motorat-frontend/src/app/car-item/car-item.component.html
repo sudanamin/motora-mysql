@@ -25,7 +25,7 @@
              <!--  <a target="#" [href]="sanitizer.bypassSecurityTrustUrl(image.url)">
                 <img  class="droplet-preview" [src]="sanitizer.bypassSecurityTrustUrl(image.url)">
               </a> -->
-              <img   [src]="item.IMAGE_URL">
+              <img (click)="openSlideshow();" style="width:100px;height:100px;" [src]="item.IMAGE_URL">
              
             </li>
 
