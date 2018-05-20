@@ -56,7 +56,7 @@ router.get('/cars', (req,res,next)=> {
         }
         else{
         res.send(cars);
-        console.log("cars  table :  "+cars)
+        console.log("cars  tttable :  "+cars)
         }
 
     });
@@ -152,17 +152,30 @@ router.delete('/car/:id', (req,res,next)=>{
 
     car_id = req.params.id;
     
-    connection.query("DELETE FROM `cars_table` WHERE car_id=?", [car_id], function(err,result) {
+
+    connection.query("DELETE FROM `car_images` WHERE REF_app_ID=?", [car_id], function(err,result) {
         if (err) {
             res.status(500);
             return next(err);
         }
         else{
-        res.json(result);
-        console.log("delete complete")
+       // res.json(result);
+        console.log("delete complete for car_images table for car id : "+car_id );
+        connection.query("DELETE FROM `cars_table` WHERE APPLICATION_ID=?", [car_id], function(err,result) {
+            if (err) {
+                res.status(500);
+                return next(err);
+            }
+            else{
+            res.json(result);
+            console.log("delete complete for cars_table car id : "+car_id );
+            }
+    
+        });
         }
 
     });
+   
 
 })
 
@@ -231,8 +244,7 @@ router.post('/setimg', (req, res,next) => {
 
       
        //var name =JSON.parse(JSON.stringify(req.files));
-       var name =req.files;
-       console.log("json object "+name.image[0].path);
+       
        
       
         if (err) {
@@ -242,12 +254,14 @@ router.post('/setimg', (req, res,next) => {
         } else {
 
            // console.log("origana name :"+req.files[0].originalname);
-           
+           var name =req.files;
+           if(name){
+           console.log("json object "+name.image[0].path);
            model = req.body.model;
            color = req.body.color;
            uid = req.body.uid;
            console.log(model+"  :"+"color"+req.body.color);
-           connection.query("INSERT INTO `cars_table` (model, color , USER_ID) VALUES (?, ?, ?)", [model,color, uid], function(err, result) {
+           connection.query("INSERT INTO `cars_table` (MODEL, COLOR , USER_ID) VALUES (?, ?, ?)", [model,color, uid], function(err, result) {
             if (err) {
                 res.status(500);
                 return next(err);
@@ -295,8 +309,13 @@ router.post('/setimg', (req, res,next) => {
          //  res.status(200).json({message: message})
             
         }
-    })
+        else res.send("some error occur on the server!") //if name 
+    }
+    
+
 })
+})
+
 
 router.get('/images/:imagename', (req, res) => {
 

@@ -110,7 +110,7 @@ export class UploadFormComponent {
 
   deleteCar(car) {
     console.log('car id is : ' + car.APPLICATION_ID);
-    this.dataService.deleteCar(car.car_id)
+    this.dataService.deleteCar(car.APPLICATION_ID)
       .subscribe(data => {
         console.log(data);
         if (data) {
@@ -237,6 +237,7 @@ export class UploadFormComponent {
               this.uploadProgress = 0;
               alert("added successfully");
               console.log("event is:" + event.statusText);
+              this.getCars();
 
             }
 
