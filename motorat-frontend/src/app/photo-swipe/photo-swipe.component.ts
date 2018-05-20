@@ -23,7 +23,7 @@ export class PhotoSwipeComponent
     constructor() { }
 
     // ========================================================================
-    openGallery(images?: IImage[],index?:number)
+    openGallery(images?,index?:number)
     {
         // Build gallery images array
         images = images || this.images;

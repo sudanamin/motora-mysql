@@ -38,10 +38,10 @@ export class CarItemComponent implements OnInit {
 
  
     // ========================================================================
-    openSlideshow()
-    {
+    openSlideshow(){
+
         const index = this.index;
-        const images : IImage[] = [
+       /*   const images : IImage[] = [
             {
                 src: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(131).jpg',
                 w: 600,
@@ -72,100 +72,45 @@ export class CarItemComponent implements OnInit {
                 h: 900,
                 title: 'Image Caption'
             },
-        ];
+        ];  */
 
-        this.photoSwipe.openGallery(images,index);
+      
+         const images = [
+
+        { src: 'http://via.placeholder.com/600x400', w: 600, h: 400 },
+        { src: 'http://via.placeholder.com/800x600', w: 800, h: 600 },
+        // ...
+    ]; 
+
+           
+    
+      const im=[] ;
+     for (var i=0 ; i<this.pagedItems.length; i++){
+        var obj = {src:this.pagedItems[i].IMAGE_URL, w: 1200, h: 900, title: 'image caption sososo '};
+        im.push(obj);
+     }
+           //this.photoSwipe.openGallery(images,index);
+           this.photoSwipe.openGallery(im,index);
+          // this.photoSwipe.openGallery(this.pagedItems,index);
     }
 
   
   getCars(){
+
     this.dataService.getCarsImages()
     .subscribe( cars => {
-     // this.carList = cars;
       this.allItems = cars;
-      
-      
-
-              // initialize to page 1
+   
       if(this.firstTime == false )this.setPage(1);
       this.firstTime = true;
      
     })
   }
 
-/*  addCar(frm){
-    
-    let newCar: car = {
-      model:frm.value.carModel,
-      color: frm.value.carColor
-    }
-
-    this.dataService.addCar(newCar)
-    .subscribe(car =>{
-      console.log("car is :"+ JSON.stringify(car));
-      this.getCars();
-    })
-  }
-
-  EditCar(EditFrm){
-    console.log('car id is :'+this.selectedCar.car_id);
-    let editCar: car = {
-      car_id: this.selectedCar.car_id,
-      model: EditFrm.value.carmodel,
-      color: EditFrm.value.carcolor
-    }
-
-    this.dataService.updateCar(editCar)
-    .subscribe( result => {
-      console.log('original Item to be updated:'+result);
-      this.getCars();
-    });
-
-    this.toggleForm = !this.toggleForm;
-  }
-
-  showEditForm(car){
-    window.scrollTo(0, 0);
-    this.selectedCar = car;
-    this.toggleForm = !this.toggleForm;
-
-  }
-
-  deleteCar(car){
-    console.log('car id is : '+car.car_id);
-    this.dataService.deleteCar(car.car_id)
-    .subscribe(data => {
-      console.log(data);
-      if(data){
-        for(var i=0 ; i<this.carList.length; i++){
-          if(car.car_id == this.carList[i].car_id){
-
-            this.carList.splice(i,1);
-            console.log('on is deleted ');
-          }
-        }
-      }
-    })
-  }*/
-
-  
-
-   
-
   ngOnInit() {
     this.getCars();
    
-      // get dummy data
-     
-    /*  this.http.get('https://jsonplaceholder.typicode.com/posts')
-          .map((response: Response) => response.json())
-          .subscribe(data => {
-              // set items to json response
-              this.allItems = data;
-
-              // initialize to page 1
-              this.setPage(1);
-          }); */
+   
   }
 
   setPage(page: number) {
@@ -178,7 +123,10 @@ export class CarItemComponent implements OnInit {
 
       // get current page of items
       this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
-      console.log("paged items:"+this.pagedItems[0].IMAGE_URL);
+      console.log("paged items:"+this.pagedItems[0].src);
   }
+
+
+
 
 }

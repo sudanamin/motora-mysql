@@ -56,7 +56,7 @@ router.get('/cars', (req,res,next)=> {
         }
         else{
         res.send(cars);
-        console.log(cars)
+        console.log("cars  table :  "+cars)
         }
 
     });
