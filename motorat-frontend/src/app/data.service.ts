@@ -15,6 +15,11 @@ export class DataService {
     //.map(res => res.json())
   }
 
+  getCImages(){
+    return this.http.get<Array<car>>("http://localhost:3000/api/cimges");
+    //.map(res => res.json())
+  }
+
   getCars(){
     return this.http.get<Array<car>>("http://localhost:3000/api/cars")
     //.map(res => res.json())

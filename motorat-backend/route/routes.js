@@ -329,5 +329,21 @@ router.get('/images/:imagename', (req, res) => {
 })
 
 
+router.get('/cimages', (req, res) => {
+
+    connection.query("SELECT REF_APP_ID,GROUP_CONCAT(IMAGE_URL) as gofi FROM `car_images` GROUP BY REF_APP_ID;", function(err, cars) {
+        if (err) {
+            res.status(500);
+            return next(err);
+        }
+        else{
+        res.send(cars);
+        console.log(cars)
+        }
+
+    });
+})
+
+
 
 module.exports = router;

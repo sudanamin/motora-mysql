@@ -85,19 +85,26 @@ export class CarItemComponent implements OnInit {
            
     
       const im=[] ;
+
+     // var arr = input.split(',');
      for (var i=0 ; i<this.pagedItems.length; i++){
-        var obj = {src:this.pagedItems[i].IMAGE_URL, w: 1200, h: 900, title: 'image caption sososo '};
+
+        var input = this.pagedItems[i].gofi;
+        var arr = input.split(',');
+        for (var i=0 ; i<arr.length; i++){
+        var obj = {src:arr[i], w: 1200, h: 900, title: 'image caption sososo '};
         im.push(obj);
-     }
+         }
            //this.photoSwipe.openGallery(images,index);
            this.photoSwipe.openGallery(im,index);
           // this.photoSwipe.openGallery(this.pagedItems,index);
     }
+}
 
   
   getCars(){
 
-    this.dataService.getCarsImages()
+    this.dataService.getCImages()
     .subscribe( cars => {
       this.allItems = cars;
    
