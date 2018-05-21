@@ -346,4 +346,19 @@ router.get('/cimages', (req, res) => {
 
 
 
+router.get('/carThum', (req, res) => {
+    let REF_APP_ID = req.params.REF_APP_ID
+        connection.query("SELECT REF_APP_ID,IMAGE_URL FROM `car_images` where REF_APP_ID = ?  && `IMAGE_URL` LIKE '%thum%'",[REF_APP_ID] ,function(err, cars) {
+        if (err) {
+            res.status(500);
+            return next(err);
+        }
+        else{
+        res.send(cars);
+        console.log(cars)
+        }
+
+    });
+})
+
 module.exports = router;

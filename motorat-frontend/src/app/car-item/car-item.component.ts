@@ -21,6 +21,7 @@ export class CarItemComponent implements OnInit {
   selectedCar: car;
   toggleForm: boolean = false;
   firstTime: boolean = false;
+   im = [];
 
    // array of all items to be paged
    private allItems: any[];
@@ -38,41 +39,10 @@ export class CarItemComponent implements OnInit {
 
  
     // ========================================================================
-    openSlideshow(){
+    openSlideshow(i,j){
 
         const index = this.index;
-       /*   const images : IImage[] = [
-            {
-                src: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(131).jpg',
-                w: 600,
-                h: 400,
-                title: 'Image CaptionImage Caption'
-            },
-            {
-                src: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(98).jpg',
-                w: 1200,
-                h: 900,
-                title: 'Image Caption ImageCaption'
-            },
-            {
-                src: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(131).jpg',
-                w: 960,
-                h: 960,
-                title: 'Image Caption'
-            },
-            {
-                src: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(128).jpg',
-                w: 1080,
-                h: 960,
-                title: 'Image Caption'
-            },
-            {
-                src: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(111).jpg',
-                w: 1200,
-                h: 900,
-                title: 'Image Caption'
-            },
-        ];  */
+      
 
       
          const images = [
@@ -83,33 +53,52 @@ export class CarItemComponent implements OnInit {
     ]; 
 
            
-    
-      const im=[] ;
+  
+    //this.photoSwipe.openGallery(images,index);
+    console.log('i is :'+i )
+    this.photoSwipe.openGallery(this.im[i].thums,j);
+}
 
+getCarsThumbnail(){
+
+
+      //  let im=[];
+      let ims=[] ;
      // var arr = input.split(',');
+     //console.log("length;"+this.pagedItems.length);
      for (var i=0 ; i<this.pagedItems.length; i++){
+
 
         var input = this.pagedItems[i].gofi;
         var arr = input.split(',');
-        for (var i=0 ; i<arr.length; i++){
-        var obj = {src:arr[i], w: 1200, h: 900, title: 'image caption sososo '};
-        im.push(obj);
-         }
+       // console.log(arr[0]);
+        for (var j=0 ; j<arr.length; j++){
+        var obj = {src:arr[j], w: 1200, h: 900, title: 'image caption sososo '};
+       // this.im.push( this.pagedItems[i].REF_APP_ID,obj);
+       ims.push(obj);
+       // obj=null;
+        }
+        
+        var allobjs = {id:this.pagedItems[i].REF_APP_ID,thums:ims};
+       this.im.push(allobjs);
+       ims = [];
+       //  ims.push({'app_id':this.pagedItems[i]},im);
+       //  console.log(ims[0]);
            //this.photoSwipe.openGallery(images,index);
-           this.photoSwipe.openGallery(im,index);
+          
           // this.photoSwipe.openGallery(this.pagedItems,index);
     }
-}
-
-  
+    console.log(this.im[0].thums);
+  }
   getCars(){
 
     this.dataService.getCImages()
     .subscribe( cars => {
       this.allItems = cars;
-   
       if(this.firstTime == false )this.setPage(1);
       this.firstTime = true;
+      this.getCarsThumbnail();
+
      
     })
   }
@@ -130,7 +119,7 @@ export class CarItemComponent implements OnInit {
 
       // get current page of items
       this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
-      console.log("paged items:"+this.pagedItems[0].src);
+      console.log("paged items:"+this.pagedItems[0].REF_APP_ID);
   }
 
 
