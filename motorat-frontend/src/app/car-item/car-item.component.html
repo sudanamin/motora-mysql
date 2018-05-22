@@ -21,7 +21,7 @@
         <ul class="files" >
 
             <li *ngFor="let thumbs of im;  let i = index">
-                <div *ngFor="let thumb of thumbs.thums;  let i = index">
+                <div *ngFor="let thumb of thumbs.thums;  let j = index">
               
              <!--  <a target="#" [href]="sanitizer.bypassSecurityTrustUrl(image.url)">
                 <img  class="droplet-preview" [src]="sanitizer.bypassSecurityTrustUrl(image.url)">

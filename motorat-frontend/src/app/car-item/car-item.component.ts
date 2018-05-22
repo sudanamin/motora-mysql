@@ -55,7 +55,8 @@ export class CarItemComponent implements OnInit {
            
   
     //this.photoSwipe.openGallery(images,index);
-    console.log('i is :'+i )
+    console.log('i is :'+i );
+    console.log('j is :'+j );
     this.photoSwipe.openGallery(this.im[i].thums,j);
 }
 
