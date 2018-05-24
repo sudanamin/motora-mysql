@@ -1,0 +1,20 @@
+div.num_of_img {
+    background-color: rgba(255, 255, 255, .5);
+    position: absolute;
+    bottom: 5px;
+    right: 5px; 
+    pointer-events: none;
+    font-size: 9px;
+    font-family: Lato, Arial, Tahoma, Helvetica, sans-serif;
+    padding: 1px 4px;
+   /*  position: absolute;*/
+    /*bottom: 8px;*/
+    left: 80px; 
+    /*width: 30px;*/
+}
+
+.container2 {
+    position: relative;
+    text-align: center;
+    color: red;
+}

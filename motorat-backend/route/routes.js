@@ -331,8 +331,11 @@ router.get('/images/:imagename', (req, res) => {
 
 router.get('/cimages', (req, res) => {
 
-    connection.query("SELECT REF_APP_ID,GROUP_CONCAT(IMAGE_URL) as gofi FROM `car_images` GROUP BY REF_APP_ID;", function(err, cars) {
-        if (err) {
+ //   connection.query("SELECT REF_APP_ID,GROUP_CONCAT(IMAGE_URL) as gofi FROM `car_images` GROUP BY REF_APP_ID;", function(err, cars) {
+    
+    connection.query("SELECT cars_table.MODEL ,car_images.REF_APP_ID,GROUP_CONCAT(car_images.IMAGE_URL) as gofi from car_images INNER JOIN cars_table ON car_images.REF_APP_ID =cars_table.APPLICATION_ID  GROUP BY car_images.REF_APP_ID ;", function(err, cars) {
+
+     if (err) {
             res.status(500);
             return next(err);
         }

@@ -80,7 +80,7 @@ getCarsThumbnail(){
        // obj=null;
         }
         
-        var allobjs = {id:this.pagedItems[i].REF_APP_ID,thums:ims};
+        var allobjs = {id:this.pagedItems[i].REF_APP_ID,thums:ims,model:this.pagedItems[i].MODEL};
        this.im.push(allobjs);
        ims = [];
        //  ims.push({'app_id':this.pagedItems[i]},im);
