@@ -20,10 +20,10 @@ export class DataService {
     //.map(res => res.json())
   }
 
-  getCarThumb(){
+  /*getCarThumb(){
     return this.http.get<Array<car>>("http://localhost:3000/api/carThum");
     //.map(res => res.json())
-  }
+  }*/
 
   getCars(){
     return this.http.get<Array<car>>("http://localhost:3000/api/cars")
