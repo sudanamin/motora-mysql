@@ -2,7 +2,27 @@
     <div class="center">
         <button class="btn btn-lg blue center" (click)="openSlideshow()">Open Slideshow</button>
     </div>
-    
+    <form #SearchFrm="ngForm" (ngSubmit)="SearchCar(SearchFrm)"  >
+        <h2> Search a Car</h2>
+        <div class="form-group">
+          <label for="">
+            Model:
+          </label>
+  
+          <input type="text" class="form-control" name="carmodel" value="" [ngModel]="selectedCar.MODEL">
+        </div>
+  
+        <div class="form-group">
+          <label for="">
+            Color:
+          </label>
+  
+          <input type="text" class="form-control" name="carcolor" value="" [ngModel]="selectedCar.COLOR">
+        </div>
+        <br>
+        <button type="submit" name='button' class='btn btn-success'>Search</button>
+         
+      </form>
     
     <app-photo-swipe #photoSwipe></app-photo-swipe>
 <br>
