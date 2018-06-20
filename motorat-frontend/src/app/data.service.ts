@@ -10,10 +10,10 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-  getCarsImages(){
+  /*getCarsImages(){
     return this.http.get<Array<car>>("http://localhost:3000/api/carsimgs")
     //.map(res => res.json())
-  }
+  }*/
 
   getCImages(){
     return this.http.get<Array<car>>("http://localhost:3000/api/cimages");

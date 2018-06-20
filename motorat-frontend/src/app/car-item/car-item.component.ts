@@ -19,8 +19,11 @@ export class CarItemComponent implements OnInit {
 
   carList: car[] = [];
   selectedCar: car;
+  ModelToSearch: number;
+  ColorToSearch: string;
   toggleForm: boolean = false;
   firstTime: boolean = false;
+   
    im = [];
 
    // array of all items to be paged

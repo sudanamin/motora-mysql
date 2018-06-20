@@ -9,7 +9,7 @@
             Model:
           </label>
   
-          <input type="text" class="form-control" name="carmodel" value="" [ngModel]="selectedCar.MODEL">
+          <input type="text" class="form-control" name="carmodel" value="" [ngModel]="ModelToSearch">
         </div>
   
         <div class="form-group">
@@ -17,7 +17,7 @@
             Color:
           </label>
   
-          <input type="text" class="form-control" name="carcolor" value="" [ngModel]="selectedCar.COLOR">
+          <input type="text" class="form-control" name="carcolor" value="" [ngModel]="ColorToSearch">
         </div>
         <br>
         <button type="submit" name='button' class='btn btn-success'>Search</button>
@@ -41,14 +41,14 @@
         <ul class="files" >
 
             <li *ngFor="let objs of im;  let i = index">
-               <!--  <div class="container2" *ngFor="let thumb of objs.thums;  let j = index"> -->
-              
-             <!--  <a target="#" [href]="sanitizer.bypassSecurityTrustUrl(image.url)">
+                 <div class="container2" *ngFor="let thumb of objs.thums;  let j = index"> 
+                <!-- <a target="#" [href]="sanitizer.bypassSecurityTrustUrl(image.url)">
+
                 <img  class="droplet-preview" [src]="sanitizer.bypassSecurityTrustUrl(image.url)">
-              </a> -->
-              <div class="container2">
+                
+              <div class="container2">-->
               <div class="num_of_img"> +: {{objs.thums.length}}  </div>
-              <img (click)="openSlideshow(i,j);" style="width:100px;height:100px;" [src]="objs.thums[0].src">
+              <img (click)="openSlideshow(i,j);" style="width:100px;height:100px;" [src]="objs.thums[j].src">
             </div> 
             <br> <br> <br>
             </li>
