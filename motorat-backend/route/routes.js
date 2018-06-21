@@ -60,7 +60,7 @@ router.get('/cars', (req, res, next) => {
     });
 })
 
-router.get('/carsimgs', (req, res, next) => {
+/*router.get('/carsimgs', (req, res, next) => {
 
     var whereClause = "WHERE 1 = 1 ";
 
@@ -89,7 +89,7 @@ router.get('/carsimgs', (req, res, next) => {
          whereClause += "AND price = '%price%'"
         } */
 
-
+/*
     connection.query("SELECT * FROM `car_images` " + whereClause, function (err, cars) {
         if (err) {
             res.status(500);
@@ -101,7 +101,7 @@ router.get('/carsimgs', (req, res, next) => {
         }
 
     });
-})
+})*/
 
 router.post('/car', (req, res, next) => {
 
@@ -313,7 +313,7 @@ router.post('/setimg', (req, res, next) => {
 })
 
 
-router.get('/images/:imagename', (req, res) => {
+/*router.get('/images/:imagename', (req, res) => {
 
     let imagename = req.params.imagename
     let imagepath = __dirname + "/images/" + imagename
@@ -322,14 +322,35 @@ router.get('/images/:imagename', (req, res) => {
 
     res.writeHead(200, { 'Content-Type': mime })
     res.end(image, 'binary')
-})
+})*/
 
 
 router.get('/cimages', (req, res) => {
 
     //   connection.query("SELECT REF_APP_ID,GROUP_CONCAT(IMAGE_URL) as gofi FROM `car_images` GROUP BY REF_APP_ID;", function(err, cars) {
+        var whereClause = "WHERE 1 = 1 ";
 
-    connection.query("SELECT cars_table.MODEL ,car_images.REF_APP_ID,GROUP_CONCAT(car_images.IMAGE_URL) as gofi from car_images INNER JOIN cars_table ON car_images.REF_APP_ID =cars_table.APPLICATION_ID  GROUP BY car_images.REF_APP_ID ;", function (err, cars) {
+        var url_parts = url.parse(req.url, true);
+        var query = url_parts.query;
+    
+    
+        var color = req.query.color;
+        var model = req.query.model;
+        //var color = req.params.color;
+        console.log('color is :' + color);
+    
+        if (color != null) {
+            whereClause += "AND color LIKE '" + color + "'";
+            console.log('cccccccccccc is :' + color);
+            //whereClause += "AND description LIKE '%keywords%'"
+        } else console.log('ddddddddddd is :' + color);
+    
+        if (model != null) {
+            whereClause += "AND model LIKE '" + model + "'";
+            console.log('mmmmmmmmmm is :' + model);
+            //whereClause += "AND description LIKE '%keywords%'"
+        } else console.log('lllllllllll is :' + model);
+    connection.query("SELECT cars_table.MODEL ,car_images.REF_APP_ID,GROUP_CONCAT(car_images.IMAGE_URL) as gofi from car_images INNER JOIN cars_table ON car_images.REF_APP_ID =cars_table.APPLICATION_ID "+whereClause+" GROUP BY car_images.REF_APP_ID ;", function (err, cars) {
 
         if (err) {
             res.status(500);
@@ -345,7 +366,7 @@ router.get('/cimages', (req, res) => {
 
 
 
-router.get('/carThum', (req, res) => {
+/*router.get('/carThum', (req, res) => {
     let REF_APP_ID = req.params.REF_APP_ID
     connection.query("SELECT REF_APP_ID,IMAGE_URL FROM `car_images` where REF_APP_ID = ?  && `IMAGE_URL` LIKE '%thum%'", [REF_APP_ID], function (err, cars) {
         if (err) {
@@ -358,6 +379,6 @@ router.get('/carThum', (req, res) => {
         }
 
     });
-})
+})*/
 
 module.exports = router;
