@@ -341,15 +341,15 @@ router.get('/cimages', (req, res) => {
     
         if (color != null) {
             whereClause += "AND color LIKE '" + color + "'";
-            console.log('cccccccccccc is :' + color);
+            console.log('color is :' + color);
             //whereClause += "AND description LIKE '%keywords%'"
-        } else console.log('ddddddddddd is :' + color);
+        } else console.log('color is :' + color);
     
         if (model != null) {
             whereClause += "AND model LIKE '" + model + "'";
-            console.log('mmmmmmmmmm is :' + model);
+            console.log('model is :' + model);
             //whereClause += "AND description LIKE '%keywords%'"
-        } else console.log('lllllllllll is :' + model);
+        } else console.log('model is :' + model);
     connection.query("SELECT cars_table.MODEL ,car_images.REF_APP_ID,GROUP_CONCAT(car_images.IMAGE_URL) as gofi from car_images INNER JOIN cars_table ON car_images.REF_APP_ID =cars_table.APPLICATION_ID "+whereClause+" GROUP BY car_images.REF_APP_ID ;", function (err, cars) {
 
         if (err) {
