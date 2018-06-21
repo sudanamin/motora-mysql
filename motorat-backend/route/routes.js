@@ -349,7 +349,7 @@ router.get('/cimages', (req, res) => {
             whereClause += "AND model LIKE '" + model + "'";
             console.log('model is :' + model);
             //whereClause += "AND description LIKE '%keywords%'"
-        } else console.log('model is :' + model);
+        } else console.log('modell is :' + model);
     connection.query("SELECT cars_table.MODEL ,car_images.REF_APP_ID,GROUP_CONCAT(car_images.IMAGE_URL) as gofi from car_images INNER JOIN cars_table ON car_images.REF_APP_ID =cars_table.APPLICATION_ID "+whereClause+" GROUP BY car_images.REF_APP_ID ;", function (err, cars) {
 
         if (err) {
