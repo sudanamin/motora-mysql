@@ -67,6 +67,7 @@ getCarsThumbnail(){
 
 
       //  let im=[];
+      this.im = [];
       let ims=[] ;
      // var arr = input.split(',');
      //console.log("length;"+this.pagedItems.length);
@@ -101,16 +102,21 @@ getCarsThumbnail(){
     this.dataService.getCImages(this.ModelToSearch,this.ColorToSearch)
     .subscribe( cars => {
       this.allItems = cars;
-      if(this.firstTime == true )this.setPage(1);
+
+      //if(this.firstTime == true )this.setPage(1);
+      if(this.allItems.length >0){   
+      this.setPage(1);
+      }
+      else {this.im = []}
       //this.setPage(1);
       this.firstTime = false;
-      this.getCarsThumbnail();
+    //  this.getCarsThumbnail();
 
      
     })
   }
 
-  /*SearchCar(SearchFrm){
+  SearchCar(SearchFrm){
 
     //console.log('car id is :' + this.selectedCar.APPLICATION_ID);
      
@@ -118,14 +124,8 @@ getCarsThumbnail(){
       this.ColorToSearch = SearchFrm.value.carcolor;
     
       this.getCars(this.ModelToSearch,this.ColorToSearch)
-    /*this.dataService.updateCar(editCar)
-      .subscribe(result => {
-        console.log('original Item to be updated:' + result);
-        this.getCars();
-      });
-
-   // this.toggleForm = !this.toggleForm;
-  }*/
+    
+  }
 
   ngOnInit() {
     this.getCars('','');
@@ -139,11 +139,18 @@ getCarsThumbnail(){
       }
 
       // get pager object from service
+      //this.im = [];
       this.pager = this.pagerService.getPager(this.allItems.length, page);
 
       // get current page of items
       this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
-      console.log("paged items:"+this.pagedItems[0].REF_APP_ID);
+
+     
+        
+        this.getCarsThumbnail();   
+       // console.log("paged items:"+this.pagedItems[0].REF_APP_ID);
+        console.log("paged items:"+this.pagedItems[0].gofi);
+      
   }
 
 
