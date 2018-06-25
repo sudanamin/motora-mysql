@@ -19,10 +19,10 @@ export class CarItemComponent implements OnInit {
 
   carList: car[] = [];
   selectedCar: car;
-  ModelToSearch: number;
-  ColorToSearch: string;
+  ModelToSearch: string ='';
+  ColorToSearch: string ='';
   toggleForm: boolean = false;
-  firstTime: boolean = false;
+  firstTime: boolean = true;
    
    im = [];
 
@@ -94,21 +94,41 @@ getCarsThumbnail(){
     }
     console.log(this.im[0].thums);
   }
-  getCars(){
-
-    this.dataService.getCImages()
+  getCars(model,color){
+     this.allItems =[];
+     this.pagedItems =[];
+     this.pager.pages = [];
+    this.dataService.getCImages(this.ModelToSearch,this.ColorToSearch)
     .subscribe( cars => {
       this.allItems = cars;
-      if(this.firstTime == false )this.setPage(1);
-      this.firstTime = true;
+      if(this.firstTime == true )this.setPage(1);
+      this.setPage(1);
+      this.firstTime = false;
       this.getCarsThumbnail();
 
      
     })
   }
 
+  SearchCar(SearchFrm){
+
+    //console.log('car id is :' + this.selectedCar.APPLICATION_ID);
+     
+      this.ModelToSearch = SearchFrm.value.carmodel;
+      this.ColorToSearch = SearchFrm.value.carcolor;
+    
+      this.getCars(this.ModelToSearch,this.ColorToSearch)
+    /*this.dataService.updateCar(editCar)
+      .subscribe(result => {
+        console.log('original Item to be updated:' + result);
+        this.getCars();
+      });*/
+
+    this.toggleForm = !this.toggleForm;
+  }
+
   ngOnInit() {
-    this.getCars();
+    this.getCars('','');
    
    
   }

@@ -15,10 +15,15 @@ export class DataService {
     //.map(res => res.json())
   }*/
 
-  getCImages(){
-    return this.http.get<Array<car>>("http://localhost:3000/api/cimages");
+  getCImages(model , color){
+    return this.http.get<Array<car>>("http://localhost:3000/api/cimages", {
+      params: {
+        model: model ,
+        color: color
+      }
     //.map(res => res.json())
   }
+    )}
 
   /*getCarThumb(){
     return this.http.get<Array<car>>("http://localhost:3000/api/carThum");

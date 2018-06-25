@@ -339,13 +339,13 @@ router.get('/cimages', (req, res) => {
         //var color = req.params.color;
         console.log('color is :' + color);
     
-        if (color != null) {
+        if (color != null && color !='') {
             whereClause += "AND color LIKE '" + color + "'";
             console.log('color is :' + color);
             //whereClause += "AND description LIKE '%keywords%'"
         } else console.log('color is :' + color);
     
-        if (model != null) {
+        if (model != null && model !='') {
             whereClause += "AND model LIKE '" + model + "'";
             console.log('model is :' + model);
             //whereClause += "AND description LIKE '%keywords%'"
