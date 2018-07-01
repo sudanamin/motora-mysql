@@ -328,10 +328,10 @@ router.post('/setimg', (req, res, next) => {
 router.get('/cimages', (req, res) => {
 
     //   connection.query("SELECT REF_APP_ID,GROUP_CONCAT(IMAGE_URL) as gofi FROM `car_images` GROUP BY REF_APP_ID;", function(err, cars) {
-        var whereClause = "WHERE 1 = 1 ";
+        var whereClause = "WHERE `IMAGE_URL` LIKE '%thum%' ";
 
-        var url_parts = url.parse(req.url, true);
-        var query = url_parts.query;
+        /* var url_parts = url.parse(req.url, true);
+        var query = url_parts.query; */
     
     
         var color = req.query.color;
@@ -366,8 +366,8 @@ router.get('/cimages', (req, res) => {
 
 
 
-/*router.get('/carThum', (req, res) => {
-    let REF_APP_ID = req.params.REF_APP_ID
+/* router.get('/carThum', (req, res) => {
+    let REF_APP_ID = req.query.REF_APP_ID
     connection.query("SELECT REF_APP_ID,IMAGE_URL FROM `car_images` where REF_APP_ID = ?  && `IMAGE_URL` LIKE '%thum%'", [REF_APP_ID], function (err, cars) {
         if (err) {
             res.status(500);
@@ -379,6 +379,6 @@ router.get('/cimages', (req, res) => {
         }
 
     });
-})*/
+}) */
 
 module.exports = router;

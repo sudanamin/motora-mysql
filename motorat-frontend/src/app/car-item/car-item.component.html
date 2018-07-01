@@ -40,16 +40,21 @@
 
         <ul class="files" >
 
-            <li *ngFor="let objs of im;  let i = index">
-                 <div class="container2" *ngFor="let thumb of objs.thums;  let j = index"> 
-                <!-- <a target="#" [href]="sanitizer.bypassSecurityTrustUrl(image.url)">
-
-                <img  class="droplet-preview" [src]="sanitizer.bypassSecurityTrustUrl(image.url)">
+            <li *ngFor="let objs of carsObjects;  let i = index">
+                 <!-- <div class="container2" *ngFor="let thumb of objs.thums;  let j = index"> 
                 
-              <div class="container2">-->
-              <div class="num_of_img"> +: {{objs.thums.length}}  </div>
-              <img (click)="openSlideshow(i,j);" style="width:100px;height:100px;" [src]="objs.thums[j].src">
-            </div> 
+                     <div class="num_of_img"> +: {{objs.thums.length}}  </div>
+                     <img (click)="openSlideshow(i,j);" style="width:100px;height:100px;" [src]="objs.thums[j].src">
+
+                 </div>  -->
+
+                <!--  <div class="container2" *ngFor="let thumb of objs.thums;  let j = index">  -->
+                
+                    <div class="num_of_img"> +: {{objs.thums.length}}  </div>
+                    <img (click)="openSlideshow(i,j);" style="width:100px;height:100px;" [src]="objs.thums[0].src">
+
+                <!-- </div> -->
+
             <br> <br> <br>
             </li>
            

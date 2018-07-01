@@ -24,7 +24,7 @@ export class CarItemComponent implements OnInit {
   toggleForm: boolean = false;
   firstTime: boolean = true;
    
-   im = [];
+   carsObjects = [];
 
    // array of all items to be paged
    private allItems: any[];
@@ -60,46 +60,47 @@ export class CarItemComponent implements OnInit {
     //this.photoSwipe.openGallery(images,index);
     console.log('i is :'+i );
     console.log('j is :'+j );
-    this.photoSwipe.openGallery(this.im[i].thums,j);
+    this.photoSwipe.openGallery(this.carsObjects[i].thums,j);
 }
 
 getCarsThumbnail(){
 
 
       //  let im=[];
-      this.im = [];
-      let ims=[] ;
+      this.carsObjects = [];
+      let gofiForGallery=[] ;
      // var arr = input.split(',');
      //console.log("length;"+this.pagedItems.length);
      for (var i=0 ; i<this.pagedItems.length; i++){
 
 
-        var input = this.pagedItems[i].gofi;
-        var arr = input.split(',');
+        var gofi = this.pagedItems[i].gofi;
+        var Gofi = gofi.split(',');
        // console.log(arr[0]);
-        for (var j=0 ; j<arr.length; j++){
-        var obj = {src:arr[j], w: 1200, h: 900, title: 'image caption sososo '};
+        for (var j=0 ; j<Gofi.length; j++){
+          var imgUrl = Gofi[j].replace("_thumb", "");
+        var iForGallery = {src:imgUrl, w: 1200, h: 900, title: 'image caption sososo '};
        // this.im.push( this.pagedItems[i].REF_APP_ID,obj);
-       ims.push(obj);
+       gofiForGallery.push(iForGallery);
        // obj=null;
         }
         
-        var allobjs = {id:this.pagedItems[i].REF_APP_ID,thums:ims,model:this.pagedItems[i].MODEL};
-       this.im.push(allobjs);
-       ims = [];
+        var carObject = {id:this.pagedItems[i].REF_APP_ID,thums:gofiForGallery,model:this.pagedItems[i].MODEL};
+       this.carsObjects.push(carObject);
+       gofiForGallery = [];
        //  ims.push({'app_id':this.pagedItems[i]},im);
        //  console.log(ims[0]);
            //this.photoSwipe.openGallery(images,index);
           
           // this.photoSwipe.openGallery(this.pagedItems,index);
     }
-    console.log(this.im[0].thums);
+    console.log(this.carsObjects[0].thums);
   }
   getCars(model,color){
     /*  this.allItems =[];
      this.pagedItems =[];
      this.pager.pages = []; */
-    this.dataService.getCImages(this.ModelToSearch,this.ColorToSearch)
+    this.dataService.getCImages(model,color)
     .subscribe( cars => {
       this.allItems = cars;
 
@@ -107,7 +108,7 @@ getCarsThumbnail(){
       if(this.allItems.length >0){   
       this.setPage(1);
       }
-      else {this.im = []}
+      else {this.carsObjects = []}
       //this.setPage(1);
       this.firstTime = false;
     //  this.getCarsThumbnail();

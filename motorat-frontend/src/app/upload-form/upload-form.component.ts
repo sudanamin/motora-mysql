@@ -34,7 +34,7 @@ export class UploadFormComponent {
   addForm: any;
 
   // array of all items to be paged
-  private allItems: any[];
+  //private allItems: any[];
 
   // pager object
   pager: any = {};
@@ -74,7 +74,7 @@ export class UploadFormComponent {
     this.dataService.getCars()
       .subscribe(cars => {
         this.carList = cars;
-        this.allItems = cars;
+       // this.allItems = cars;
 
 
         // initialize to page 1
@@ -163,13 +163,14 @@ export class UploadFormComponent {
   }
 
   resizeFiles(files: FileList) {
+    var time = Date.now() + "_" ;
     for (var i = 0; i < files.length; i++) {
       let image = files[i];
       this.fd.append('image', image, image.name);
       this.getbigImagePreview(image);
       this.ng2ImgMax.resizeImage(image, 100, 10000).subscribe(
         result => {
-          this.uploadedImage = new File([result], "thumb_" + result.name);
+          this.uploadedImage = new File([result], time+"thumb_" + result.name);
 
 
 
