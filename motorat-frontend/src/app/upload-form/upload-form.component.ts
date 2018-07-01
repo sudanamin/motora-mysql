@@ -166,11 +166,11 @@ export class UploadFormComponent {
     var time = Date.now() + "_" ;
     for (var i = 0; i < files.length; i++) {
       let image = files[i];
-      this.fd.append('image', image, image.name);
+      this.fd.append('image', image, time+image.name);
       this.getbigImagePreview(image);
       this.ng2ImgMax.resizeImage(image, 100, 10000).subscribe(
         result => {
-          this.uploadedImage = new File([result], time+"thumb_" + result.name);
+          this.uploadedImage = new File([result], time+ "thumb_" + result.name);
 
 
 

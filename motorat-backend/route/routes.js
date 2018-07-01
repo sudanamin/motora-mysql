@@ -183,7 +183,8 @@ var storage = multer.diskStorage({
     filename: function (req, file, cb) {
         //  console.log("amin is :"+file.path);
         // let mime = fileType(file).mime;
-        cb(null, Date.now() + "_" + file.originalname);
+        //cb(null, Date.now() + "_" + file.originalname);
+        cb(null,  file.originalname);
         // console.log("image/"+file.filename);
         /*    connection.query("INSERT INTO `cars_table` (model, color,USER_ID) VALUES (?, ?, ?)", [1,1,file.filename], function(err, result) {
                if (err) {
