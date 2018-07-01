@@ -60,7 +60,7 @@ export class CarItemComponent implements OnInit {
     //this.photoSwipe.openGallery(images,index);
     console.log('i is :'+i );
     console.log('j is :'+j );
-    this.photoSwipe.openGallery(this.carsObjects[i].thums,j);
+    this.photoSwipe.openGallery(this.carsObjects[i].images,j);
 }
 
 getCarsThumbnail(){
@@ -69,6 +69,7 @@ getCarsThumbnail(){
       //  let im=[];
       this.carsObjects = [];
       let gofiForGallery=[] ;
+      let gofThumbForShow= [];
      // var arr = input.split(',');
      //console.log("length;"+this.pagedItems.length);
      for (var i=0 ; i<this.pagedItems.length; i++){
@@ -78,16 +79,22 @@ getCarsThumbnail(){
         var Gofi = gofi.split(',');
        // console.log(arr[0]);
         for (var j=0 ; j<Gofi.length; j++){
+
+          var thumbForShow = Gofi[j];
+
           var imgUrl = Gofi[j].replace("_thumb", "");
-        var iForGallery = {src:imgUrl, w: 1200, h: 900, title: 'image caption sososo '};
-       // this.im.push( this.pagedItems[i].REF_APP_ID,obj);
-       gofiForGallery.push(iForGallery);
-       // obj=null;
+          var iForGallery = {src:imgUrl, w: 1200, h: 900, title: 'image caption sososo '};
+          // this.im.push( this.pagedItems[i].REF_APP_ID,obj);
+          gofThumbForShow.push(thumbForShow);
+          gofiForGallery.push(iForGallery);
+          // obj=null;
+
         }
         
-        var carObject = {id:this.pagedItems[i].REF_APP_ID,thums:gofiForGallery,model:this.pagedItems[i].MODEL};
+        var carObject = {id:this.pagedItems[i].REF_APP_ID,thums:gofThumbForShow,images:gofiForGallery,model:this.pagedItems[i].MODEL};
        this.carsObjects.push(carObject);
        gofiForGallery = [];
+       gofThumbForShow
        //  ims.push({'app_id':this.pagedItems[i]},im);
        //  console.log(ims[0]);
            //this.photoSwipe.openGallery(images,index);
