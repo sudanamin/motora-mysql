@@ -49,10 +49,10 @@
                  </div>  -->
 
                 <!--  <div class="container2" *ngFor="let thumb of obj.thums;  let j = index">  -->
-                
+                    <div class="container2" >
                     <div class="num_of_img"> +: {{obj.thums.length}}  </div>
-                    <img (click)="openSlideshow(i,j);" style="width:100px;height:100px;" [src]="obj.thums[i]">
-
+                    <img (click)="openSlideshow(i,j);" style="width:100px;height:100px;" [src]="obj.thums[0]">
+                   </div>
                 <!-- </div> -->
 
             <br> <br> <br>

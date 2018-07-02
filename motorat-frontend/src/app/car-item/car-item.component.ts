@@ -91,12 +91,13 @@ getCarsThumbnail(){
 
         }
 
-        console.log("gofThumbsForShow lengh:"+gofThumbsForShow.length);
+       /*  console.log("gofThumbsForShow lengh:"+gofThumbsForShow[i]);
+        console.log("gofiForGallery lengh:"+gofiForGallery[i].src); */
         
         var carObject = {id:this.pagedItems[i].REF_APP_ID,thums:gofThumbsForShow,images:gofiForGallery,model:this.pagedItems[i].MODEL};
        this.carsObjects.push(carObject);
        gofiForGallery = [];
-       gofThumbsForShow
+       gofThumbsForShow = [];
        //  ims.push({'app_id':this.pagedItems[i]},im);
        //  console.log(ims[0]);
            //this.photoSwipe.openGallery(images,index);
