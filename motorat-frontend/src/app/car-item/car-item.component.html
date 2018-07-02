@@ -40,18 +40,18 @@
 
         <ul class="files" >
 
-            <li *ngFor="let objs of carsObjects;  let i = index">
+            <li *ngFor="let obj of carsObjects;  let i = index">
                  <!-- <div class="container2" *ngFor="let thumb of objs.thums;  let j = index"> 
                 
-                     <div class="num_of_img"> +: {{objs.thums.length}}  </div>
-                     <img (click)="openSlideshow(i,j);" style="width:100px;height:100px;" [src]="objs.thums[j].src">
+                     <div class="num_of_img"> +: {{obj.thums.length}}  </div>
+                     <img (click)="openSlideshow(i,j);" style="width:100px;height:100px;" [src]="obj.thums[j].src">
 
                  </div>  -->
 
-                <!--  <div class="container2" *ngFor="let thumb of objs.thums;  let j = index">  -->
+                <!--  <div class="container2" *ngFor="let thumb of obj.thums;  let j = index">  -->
                 
-                    <div class="num_of_img"> +: {{objs.thums.length}}  </div>
-                    <img (click)="openSlideshow(i,j);" style="width:100px;height:100px;" [src]="objs.thums[i]">
+                    <div class="num_of_img"> +: {{obj.thums.length}}  </div>
+                    <img (click)="openSlideshow(i,j);" style="width:100px;height:100px;" [src]="obj.thums[i]">
 
                 <!-- </div> -->
 

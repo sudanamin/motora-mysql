@@ -69,7 +69,7 @@ getCarsThumbnail(){
       //  let im=[];
       this.carsObjects = [];
       let gofiForGallery=[] ;
-      let gofThumbForShow= [];
+      let gofThumbsForShow= [];
      // var arr = input.split(',');
      //console.log("length;"+this.pagedItems.length);
      for (var i=0 ; i<this.pagedItems.length; i++){
@@ -83,18 +83,20 @@ getCarsThumbnail(){
           var thumbForShow = Gofi[j];
 
           var imgUrl = Gofi[j].replace("_thumb", "");
-          var iForGallery = {src:imgUrl, w: 1200, h: 900, title: 'image caption sososo '};
+          var iForGallery = {thumb:thumbForShow ,src:imgUrl, w: 1200, h: 900, title: 'image caption sososo '};
           // this.im.push( this.pagedItems[i].REF_APP_ID,obj);
-          gofThumbForShow.push(thumbForShow);
+          gofThumbsForShow.push(thumbForShow);
           gofiForGallery.push(iForGallery);
           // obj=null;
 
         }
+
+        console.log("gofThumbsForShow lengh:"+gofThumbsForShow.length);
         
-        var carObject = {id:this.pagedItems[i].REF_APP_ID,thums:gofThumbForShow,images:gofiForGallery,model:this.pagedItems[i].MODEL};
+        var carObject = {id:this.pagedItems[i].REF_APP_ID,thums:gofThumbsForShow,images:gofiForGallery,model:this.pagedItems[i].MODEL};
        this.carsObjects.push(carObject);
        gofiForGallery = [];
-       gofThumbForShow
+       gofThumbsForShow
        //  ims.push({'app_id':this.pagedItems[i]},im);
        //  console.log(ims[0]);
            //this.photoSwipe.openGallery(images,index);
