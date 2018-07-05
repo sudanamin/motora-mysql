@@ -18,3 +18,13 @@ div.num_of_img {
     text-align: center;
     color: red;
 }
+
+.container-fluid {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.PlaceAd{
+  
+float: right;
+}
