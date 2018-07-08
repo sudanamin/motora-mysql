@@ -3,15 +3,15 @@
 
     <br>
     <br>
-<button class="PlaceAd btn btn-lg btn-danger" (click)="placeYourAd()">Place Your Ad</button>
+<button class="PlaceAd btn  btn-primary btn-lg" (click)="placeYourAd()">Place Your Ad</button>
 <br>
     <br>
     <br>
     <br>
-    <div class="SearchBox col-xs-2">
+    <div class="SearchBox col-md-2">
 
       <form #SearchFrm="ngForm" (ngSubmit)="SearchCar(SearchFrm)"  >
-        <h2 class="searchh2"> Search a Car</h2>
+        <h2 align="center" class="searchh2"> Search</h2>
         <div class="form-group ">
           <label for="">
             Model:
@@ -30,7 +30,7 @@
         </div>
          
       
-        <button type="submit" name='button' class='btn btn-lg btn-success' >Search</button>
+        <button type="submit" name='button' class='btn-block btn btn-primary' >Search</button>
          
      </form>
     </div>
@@ -40,19 +40,19 @@
 
 
 <!-- pagination -->
-<div class="col-xs-7">
+<div class="col-md-8">
 
 
-  <div class="text-center">
+  <div>
       <h1>Angular 2 - Pagination Example with logic like Google</h1>
 
       <!-- items being paged -->
       <div >
           <br>
 
-        <ul class="files" style="list-style:none" >
+        <ul  style="list-style:none" >
 
-            <li class="card" *ngFor="let obj of carsObjects;  let i = index">
+            <li  *ngFor="let obj of carsObjects;  let i = index">
                  <!-- <div class="container2" *ngFor="let thumb of objs.thums;  let j = index"> 
                 
                      <div class="num_of_img"> +: {{obj.thums.length}}  </div>
@@ -64,6 +64,7 @@
                         <div class="verticalLine"></div>
                     <div class='containerPrice'>{{obj.model}} AED </div>
                     <div class='containerTitle'>this is a title </div>
+                    <br>
                     <div class="container2" >
                        
                     <div class="num_of_img"> +{{obj.thums.length}}  </div>
@@ -100,7 +101,7 @@
 </div>          <!--   end of paginagtion  -->
 
 
-<div class="col-xs-3">
+<div class="col-md-2">
 
 </div>
 
