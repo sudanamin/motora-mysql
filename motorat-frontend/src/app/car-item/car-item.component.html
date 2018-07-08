@@ -11,7 +11,7 @@
     <div class="SearchBox col-xs-2">
 
       <form #SearchFrm="ngForm" (ngSubmit)="SearchCar(SearchFrm)"  >
-        <h2> Search a Car</h2>
+        <h2 class="searchh2"> Search a Car</h2>
         <div class="form-group ">
           <label for="">
             Model:
@@ -48,10 +48,11 @@
 
       <!-- items being paged -->
       <div >
+          <br>
 
         <ul class="files" style="list-style:none" >
 
-            <li *ngFor="let obj of carsObjects;  let i = index">
+            <li class="card" *ngFor="let obj of carsObjects;  let i = index">
                  <!-- <div class="container2" *ngFor="let thumb of objs.thums;  let j = index"> 
                 
                      <div class="num_of_img"> +: {{obj.thums.length}}  </div>
@@ -60,13 +61,17 @@
                  </div>  -->
 
                 <!--  <div class="container2" *ngFor="let thumb of obj.thums;  let j = index">  -->
+                        <div class="verticalLine"></div>
+                    <div class='containerPrice'>{{obj.model}} AED </div>
+                    <div class='containerTitle'>this is a title </div>
                     <div class="container2" >
-                    <div class="num_of_img"> +: {{obj.thums.length}}  </div>
-                    <img (click)="openSlideshow(i,j);" style="width:100px;height:100px;" [src]="obj.thums[0]">
+                       
+                    <div class="num_of_img"> +{{obj.thums.length}}  </div>
+                    <img (click)="openSlideshow(i,j);" style="width:150px; height:110px;" [src]="obj.thums[0]">
                    </div>
                 <!-- </div> -->
 
-            <br> <br> <br>
+                <hr>
             </li>
            
 

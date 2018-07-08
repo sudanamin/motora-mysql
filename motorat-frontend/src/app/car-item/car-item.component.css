@@ -4,20 +4,88 @@ div.num_of_img {
     bottom: 5px;
     right: 5px; 
     pointer-events: none;
-    font-size: 9px;
-    font-family: Lato, Arial, Tahoma, Helvetica, sans-serif;
+    font-size: 12px;
+    font-family: Lato, "Times New Roman", Tahoma, bold , Helvetica, sans-serif;
     padding: 1px 4px;
+
    /*  position: absolute;*/
     /*bottom: 8px;*/
-    left: 80px; 
-    /*width: 30px;*/
+    left: 140px; 
+    font-weight: bold;
+    /*max-width: 30px;*/
 }
 
 .container2 {
     position: relative;
-    text-align: center;
+    text-align: left;
     color: red;
+   
+    
+   /* height: 200px;*/
+    /*float: left;*/
+
 }
+
+.SearchBox {
+   /*  background-color: lightgrey; */
+    width: 300px;
+    border: 1px solid rgba(83, 50, 145, 0.575);
+    padding: 25px;
+    margin: 25px;
+}
+
+.searchh2{
+    
+    font-weight: bold;
+}
+
+.containerPrice{
+    color: red;
+    float: right; 
+    font-weight: bold;
+    /* text-align: right; */
+}
+
+.verticalLine {
+    border-left: 3px solid rgba(58, 33, 134, 0.514);
+    height: 140px;
+    float: left;
+    padding-right: 10px;
+}
+
+.containerTitle
+{
+     
+    /* float: left; */
+    text-align: left;
+    font-size: large;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+.priceAtitle{
+     padding: 20px; 
+}
+
+ul 
+{
+    line-height:80%;  
+  
+   
+}
+hr{
+     margin-top: 15px; 
+     padding: 0px; 
+     
+}
+
+/* img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+   
+} */
+
 
 .container-fluid {
     margin-left: 5%;
