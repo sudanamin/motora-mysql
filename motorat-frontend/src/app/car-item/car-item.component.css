@@ -1,15 +1,16 @@
-div.num_of_img {
-    background-color: rgba(255, 255, 255, .5);
+.num_of_img {
+    background-color: rgba(6, 17, 82, 0.781);
     position: absolute;
-    bottom: 5px;
+    /* bottom: 5px; */
     /* right: 5px;  */
     pointer-events: none;
-    font-size: 12px;
+    font-size: 13px;
     font-family: Lato, "Times New Roman", Tahoma, bold , Helvetica, sans-serif;
    /*  padding: 1px 4px; */
 
-  
-    /* left: 140px; */ 
+    /* top: 100px; */
+    color:white;
+    left: 140px; 
     font-weight: bold;
     
 }
@@ -19,6 +20,7 @@ div.num_of_img {
     text-align: left;
     font-weight: bold;
     color: black;
+    font-family:Tahoma;
      
 }
 
@@ -119,7 +121,7 @@ hr {
     display:block;
     /*  width: 96%;  */              
     /* background-color:black; */
-    height: 2px;
+    height: 4px;
   }
 
 /* img {
