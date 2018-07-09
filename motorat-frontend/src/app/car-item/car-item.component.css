@@ -41,14 +41,15 @@ div.num_of_img {
 }
 
 .containerPrice{
-    color: red;
+    color: #2A6496;
     float: right; 
     font-weight: bold;
     /* text-align: right; */
 }
 
 .verticalLine {
-    border-left: 3px solid rgba(58, 33, 134, 0.514);
+   /*  border-left: 3px solid rgba(58, 33, 134, 0.514); */
+    border-left: 3px solid #2A6496;
     height: 140px;
     float: left;
     padding-right: 10px;
@@ -101,3 +102,7 @@ hr{
   
 float: right;
 }
+
+
+
+

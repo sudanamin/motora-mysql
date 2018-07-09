@@ -3,7 +3,7 @@
 
     <br>
     <br>
-<button class="PlaceAd btn  btn-primary btn-md" (click)="placeYourAd()">Place Your Ad</button>
+<button class="PlaceAd btn  btn-primary btn-md" style="font-weight: bold;" (click)="placeYourAd()">Place Your Ad</button>
 <br>
     <br>
     <br>
@@ -61,20 +61,24 @@
                  </div>  -->
 
                 <!--  <div class="container2" *ngFor="let thumb of obj.thums;  let j = index">  -->
-                        <div class="verticalLine"></div>
+                <div class="cardd">   
+                        
+                    <div class="verticalLine"></div>
                     <div class='containerPrice'>{{obj.model}} AED </div>
-                    <div class='containerTitle'>this is a title </div>
+                  
+                    <div class='containerTitle' >Card title</div>
                     <br>
                     <div class="container2" >
-                       
                     <div class="num_of_img"> +{{obj.thums.length}}  </div>
                     <img (click)="openSlideshow(i,j);" style="width:150px; height:110px;" [src]="obj.thums[0]">
-                   </div>
-                <!-- </div> -->
-
-                <hr>
+                    </div>
+                    <hr>
+                   
+                </div>
+                
+                 
             </li>
-           
+                   
 
           </ul>
       </div>
