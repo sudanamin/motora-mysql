@@ -3,119 +3,133 @@
 
     <br>
     <br>
-<button class="PlaceAd btn  btn-primary btn-md" style="font-weight: bold;" (click)="placeYourAd()">Place Your Ad</button>
-<br>
+    <button class="PlaceAd btn  btn-primary btn-md" style="font-weight: bold;" (click)="placeYourAd()">Place Your Ad</button>
+    <br>
     <br>
     <br>
     <br>
     <div class="SearchBox col-md-2">
 
-      <form #SearchFrm="ngForm" (ngSubmit)="SearchCar(SearchFrm)"  >
-        <h2 align="center" class="searchh2"> Search</h2>
-        <div class="form-group ">
-          <label for="">
-            Model:
-          </label>
-  
-          <input  type="text" class="form-control" name="carmodel" value="" [ngModel]="ModelToSearch">
-        </div>
-         
-         
-        <div class="form-group ">
-          <label for="">
-            Color:
-          </label>
-  
-          <input  type="text" class="form-control" name="carcolor" value="" [ngModel]="ColorToSearch">
-        </div>
-         
-      
-        <button type="submit" name='button' class='btn-block btn btn-primary' >Search</button>
-         
-     </form>
+        <form #SearchFrm="ngForm" (ngSubmit)="SearchCar(SearchFrm)">
+            <h2 align="center" class="searchh2"> Search</h2>
+            <div class="form-group ">
+                <label for="">
+                    Model:
+                </label>
+
+                <input type="text" class="form-control" name="carmodel" value="" [ngModel]="ModelToSearch">
+            </div>
+
+
+            <div class="form-group ">
+                <label for="">
+                    Color:
+                </label>
+
+                <input type="text" class="form-control" name="carcolor" value="" [ngModel]="ColorToSearch">
+            </div>
+
+
+            <button type="submit" name='button' class='btn-block btn btn-primary'>Search</button>
+
+        </form>
     </div>
-    
+
     <app-photo-swipe #photoSwipe></app-photo-swipe>
- 
 
 
-<!-- pagination -->
-<div class="col-md-8">
+
+    <!-- pagination -->
+    <div class="col-md-8">
 
 
-  <div>
-      <!-- <h1>Angular 2 - Pagination Example with logic like Google</h1> -->
+        <div>
+            <!-- <h1>Angular 2 - Pagination Example with logic like Google</h1> -->
 
-      <!-- items being paged -->
-      <div >
-          <br>
+            <!-- items being paged -->
+            <div>
+                <br>
 
-        <ul  style="list-style:none" >
+                <ul style="list-style:none">
 
-            <li  *ngFor="let obj of carsObjects;  let i = index">
-                 <!-- <div class="container2" *ngFor="let thumb of objs.thums;  let j = index"> 
+                    <li *ngFor="let obj of carsObjects;  let i = index">
+                        <!-- <div class="container2" *ngFor="let thumb of objs.thums;  let j = index"> 
                 
                      <div class="num_of_img"> +: {{obj.thums.length}}  </div>
                      <img (click)="openSlideshow(i,j);" style="width:100px;height:100px;" [src]="obj.thums[j].src">
 
                  </div>  -->
 
-                <!--  <div class="container2" *ngFor="let thumb of obj.thums;  let j = index">  -->
-                <div class="cardd">   
+                        <!--  <div class="container2" *ngFor="let thumb of obj.thums;  let j = index">  -->
+                        <div class="cardd">
+
+
+                            <!-- <div class="contactBox"> contact </div> -->
+
+                            <div class="container2 col-md-8">
+                                <div class="verticalLine"></div>
+                                <div class='containerTitle'>Card title</div>
+                                <br><br>
+
+                                <div class="num_of_img"> +{{obj.thums.length}} </div>
+                                <img (click)="openSlideshow(i,j);" style="width:150px; height:110px;" [src]="obj.thums[0]">
+                                <br> <br>
+                                 <div> city: Abu Dhabi </div>
+                                 <br> 
+                                 
+                            </div>
+
+                            <div class="rightOfBox col-md-3">
+                                <div class='containerPrice'>price: 2000{{obj.model}} AED. </div>
+
+                                <br>
+                                <div class='containerKilo'>kilo meters: 18{{obj.model}} km. </div>
+                                
+                                <!-- <br> -->
+                                <br>
+                                <div class='containerYear'>year: 200{{obj.model}}. </div>
+                                <br> <br> <br> <br> 
+                                <div class="contactBox"> contact </div>
+                              
+                            </div>
+                            <hr>
+                        </div>
                         
-                    <div class="verticalLine"></div>
-                    <div class='containerPrice'>2000{{obj.model}} AED </div>
-                    <div class='containerTitle' >Card title</div>
-                    <br>
-                    <div class='containerKilo'>18{{obj.model}} km </div>
-                    <br>
-                    <!-- <div class="contactBox"> contact </div> -->
-                    
-                    <div class="container2" >
-                            
-                    <div class="num_of_img"> +{{obj.thums.length}}  </div>
-                    <img (click)="openSlideshow(i,j);" style="width:150px; height:110px;" [src]="obj.thums[0]">
-                    </div>
-                    <br>
-                    city: Abu Dhabi
-                    <div class='containerYear'>year:200{{obj.model}}  </div>
-                    <hr>
-                   
-                </div>
-                
-                 
-            </li>
-                   
+                      
 
-          </ul>
-      </div>
-
-      <!-- pager -->
-      <div class="pager">
-         <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
-          <li [ngClass]="{disabled:pager.currentPage === 1}">
-              <a (click)="setPage(1)">First</a>
-          </li>
-          <li [ngClass]="{disabled:pager.currentPage === 1}" class="page-item">
-              <a (click)="setPage(pager.currentPage - 1)">Previous</a>
-          </li>
-          <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
-              <a (click)="setPage(page)">{{page}}</a>
-          </li>
-          <li class="page-item"  [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-              <a (click)="setPage(pager.currentPage + 1)">Next</a>
-          </li>
-          <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-              <a (click)="setPage(pager.totalPages)">Last</a>
-          </li>
-      </ul>
-      </div>
-  </div>
-</div>          <!--   end of paginagtion  -->
+                    </li>
 
 
-<div class="col-md-2">
+                </ul>
+            </div>
 
-</div>
+            <!-- pager -->
+            <div class="pager">
+                <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+                    <li [ngClass]="{disabled:pager.currentPage === 1}">
+                        <a (click)="setPage(1)">First</a>
+                    </li>
+                    <li [ngClass]="{disabled:pager.currentPage === 1}" class="page-item">
+                        <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+                    </li>
+                    <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                        <a (click)="setPage(page)">{{page}}</a>
+                    </li>
+                    <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                        <a (click)="setPage(pager.currentPage + 1)">Next</a>
+                    </li>
+                    <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                        <a (click)="setPage(pager.totalPages)">Last</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--   end of paginagtion  -->
+
+
+    <div class="col-md-2">
+
+    </div>
 
 </div>
