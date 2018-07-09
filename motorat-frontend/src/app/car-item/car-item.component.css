@@ -22,7 +22,7 @@ div.num_of_img {
    
     
    /* height: 200px;*/
-    /*float: left;*/
+   /*  float: left; */
 
 }
 
@@ -34,6 +34,15 @@ div.num_of_img {
     margin: 1px;
 }
 
+.contactBox {
+    background-color: rgba(211, 211, 211, 0.185); 
+
+    width: 10em; 
+    border: 1px solid rgba(83, 50, 145, 0.575);
+    padding: 10px;
+    margin: 1px;
+    float: right;
+}
 .searchh2{
     
     font-weight: bold;
@@ -47,10 +56,24 @@ div.num_of_img {
     /* text-align: right; */
 }
 
+.containerKilo{
+    color: rgb(67, 152, 226);
+    float: right; 
+    font-weight: bold;
+    /* text-align: right; */
+}
+
+.containerYear{
+    color: black;
+    float: right; 
+    font-weight: bold;
+    /* text-align: right; */
+}
+
 .verticalLine {
    /*  border-left: 3px solid rgba(58, 33, 134, 0.514); */
     border-left: 3px solid #2A6496;
-    height: 140px;
+    height: 180px;
     float: left;
     padding-right: 10px;
 }

@@ -64,14 +64,21 @@
                 <div class="cardd">   
                         
                     <div class="verticalLine"></div>
-                    <div class='containerPrice'>{{obj.model}} AED </div>
-                  
+                    <div class='containerPrice'>2000{{obj.model}} AED </div>
                     <div class='containerTitle' >Card title</div>
                     <br>
+                    <div class='containerKilo'>18{{obj.model}} km </div>
+                    <br>
+                    <!-- <div class="contactBox"> contact </div> -->
+                    
                     <div class="container2" >
+                            
                     <div class="num_of_img"> +{{obj.thums.length}}  </div>
                     <img (click)="openSlideshow(i,j);" style="width:150px; height:110px;" [src]="obj.thums[0]">
                     </div>
+                    <br>
+                    city: Abu Dhabi
+                    <div class='containerYear'>year:200{{obj.model}}  </div>
                     <hr>
                    
                 </div>
