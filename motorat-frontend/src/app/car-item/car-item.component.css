@@ -140,7 +140,44 @@ hr {
 .PlaceAd{
   
 float: right;
+ 
+    text-align: left;
+    font-weight: bold;
+    color: rgba(184, 207, 228, 0.877);
+    /* font-family:Tahoma; */
 }
+
+.login{
+  
+    float: left;
+    text-align: left;
+    font-weight: bold;
+    color: rgba(184, 207, 228, 0.877);
+    font-family:Tahoma;
+    }
+
+.lang{
+    float: right;
+    text-align: left;
+    font-weight: bold;
+    color: white;
+    font-family:Tahoma;
+    /* float : left ; */
+}
+
+.about{
+    float: left;
+    text-align: left;
+    font-weight: bold;
+    color: white;
+    font-family:Tahoma;
+}
+
+  .tab{
+    background-color: rgba(0, 1, 3, 0.849);
+    overflow: auto;
+    
+} 
 
 
 

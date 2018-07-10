@@ -1,11 +1,25 @@
+<div class="tab">
+        <div class="col-md-2"> </div>
+        <div class="col-md-8">
+
+            <br>
+            <div class='about'> Home</div>
+            <div class='about'> &nbsp;&nbsp; About </div>
+            <div class='login'> &nbsp;&nbsp; login</div>
+            
+            <div class="PlaceAd " (click)="placeYourAd()">Place Your Ad</div>
+            <div class='lang'> العربية &nbsp;&nbsp;</div>
+              <br> <br> 
+        </div>
+    </div>
+
 <div class="container-fluid">
 
+   
 
     <br>
     <br>
-    <button class="PlaceAd btn  btn-primary btn-md" style="font-weight: bold;" (click)="placeYourAd()">Place Your Ad</button>
-    <br>
-    <br>
+    <br><br>
     <br>
     <br>
     <div class="SearchBox col-md-2">
@@ -68,35 +82,43 @@
 
                             <div class="container2 col-md-8">
                                 <div class="verticalLine"></div>
+
                                 <div class='containerTitle'>Card title</div>
-                                <br><br>
+                                <br>
+                                <br>
 
                                 <div class="num_of_img"> +{{obj.thums.length}} </div>
-                                
+
                                 <img (click)="openSlideshow(i,j);" style="width:150px; height:110px;" [src]="obj.thums[0]">
-                                <br> <br>
-                                 <div> city: Abu Dhabi </div>
-                                 <br> 
-                                 
+                                <br>
+                                <br>
+                                <div> Located: Abu Dhabi> Date: 22 April 2018.</div>
+                                <br>
+
                             </div>
 
                             <div class="rightOfBox col-md-3">
+
                                 <div class='containerPrice'>Price: 2000{{obj.model}} AED. </div>
 
                                 <br>
                                 <div class='containerKilo'>kilometers: 18{{obj.model}} km. </div>
-                                
+
                                 <!-- <br> -->
                                 <br>
                                 <div class='containerYear'>Year: 200{{obj.model}}. </div>
-                                <br> <br> <br> <br> 
-                                <div class="contactBox"> Contact </div>
-                              
+                                <br>
+                                <br>
+
+                                <br>
+                                <br>
+                                <div class="contactBox"> Show phone </div>
+
                             </div>
                             <hr>
                         </div>
-                        
-                      
+
+
 
                     </li>
 
