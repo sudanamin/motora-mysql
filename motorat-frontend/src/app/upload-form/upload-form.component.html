@@ -1,3 +1,20 @@
+<div class="tab">
+  <div class="col-md-2"> </div>
+  <div class="col-md-8">
+
+      <br>
+      <div class='about'> Home</div>
+      <div class='about'> &nbsp;&nbsp; About </div>
+      <div class='about'> &nbsp;&nbsp; Contact </div>
+      <div class='Logout' (click)="auth.signOut()"> &nbsp;&nbsp; Logout</div>
+      
+      <!-- <div class="PlaceAd " (click)="placeYourAd()">Place Your Ad</div> -->
+      <div class='lang'> العربية &nbsp;&nbsp;</div>
+        <br> <br> 
+  </div>
+</div>
+ 
+ 
 <div class="colourful">
 
   <div class="container">
@@ -5,7 +22,7 @@
 
     <form #frm="ngForm" (ngSubmit)="addCar(frm)" *ngIf="!toggleForm">
 
-      <h2 class="titles"> ad your car </h2>
+      <h3 class="titles"> Place Your Ad </h3>
 
 
       <!-- <button (click)="upload()">Upload {{imagePreviews.length}} files</button> -->
@@ -28,7 +45,7 @@
 
 
 
-        <h3 class="labels">upload car images...</h3>
+        <h4 class="label label-primary">    Upload car images</h4>
         <div class="toolbar">
           <input #file type="file" name='image' (change)="onImageChange($event)" value="Add Files..." accept="image/*" multiple>
          <!--  <button (click)="file.click()">Upload file</button> -->
@@ -52,7 +69,7 @@
             </li>
 
           </ul>
-          <h3 class="draghere" (click)="file.click()">Click or Drag Here...</h3>
+          <h3 class="draghere text-muted" (click)="file.click()">Click or Drag Here...</h3>
 
         </div>
 
@@ -60,22 +77,22 @@
       </div>
 
       <div class="from-group">
-        <label class="labels" for="">
-          Model:
+        <label class="label label-primary" for="">
+          Model
         </label>
 
         <input type="text" class="form-control" name="carModel" value="" ngModel required>
       </div>
 
       <div class="from-group">
-        <label class="labels" for="">
-          Color:
+        <label class="label label-primary" for="">
+          Color
         </label>
 
         <input type="text" class="form-control" name="carColor" value="" ngModel required>
       </div>
       <br>
-      <button type="submit" name='button' class='btn btn-success' [disabled]='frm.invalid'>Add ADS with {{bigImagePreviews.length}} images</button>
+      <button type="submit" name='button' class='btn btn-danger' [disabled]='frm.invalid'>Place ad with {{bigImagePreviews.length}} images</button>
 
     </form>
 
@@ -103,8 +120,8 @@
       <button name='button' class='btn btn-primary' (click)="toggleForm= !toggleForm">Cancel</button>
     </form>
     <br>
-    <h2 class="titles"> Cars list </h2>
-
+    <h3 class="titles"> Your previous ads </h3>
+     <br> 
     <div *ngFor="let car of carList">
       <div class="row">
         <div class="col-md-1">

@@ -1,6 +1,38 @@
-  /* progrsss bar  */
 
 
+  .Logout{
+  
+            float: right;
+             
+                text-align: left;
+                font-weight: bold;
+                color: rgba(184, 207, 228, 0.877);
+                /* font-family:Tahoma; */
+            }
+    
+  .lang{
+        float: right;
+        text-align: left;
+        font-weight: bold;
+        color: white;
+        font-family:Tahoma;
+        /* float : left ; */
+    }
+    
+  .about{
+        float: left;
+        text-align: left;
+        font-weight: bold;
+        color: white;
+        font-family:Tahoma;
+  }
+    
+   .tab{
+        background-color: rgba(0, 1, 3, 0.849);
+        overflow: auto;
+        
+  } 
+    
 #myProgress {
     width:100%;
     background-color: rgb(197, 30, 30);
@@ -28,27 +60,63 @@
     border-radius: 2px;
     width: 100%;
     height: 300px;
-    background-color: rgba(255, 255, 255, .1);
+    /* background-color: rgba(184, 207, 228, 0.288); */
+    background: linear-gradient(to bottom, #ededed2a 0%, #dededea8 100%);
     margin-top: -5px;
     padding-top: 5px;
     transition: box-shadow 0.35s;
     margin: auto;    
 }
 
+.box .toolbar {
+    width: 100%;
+
+    margin-top: 5px;
+    overflow: hidden;
+    position: relative;
+    z-index: 3;
+    height: 25px;
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .25);
+    /* background: linear-gradient(to bottom, #ce9999 0%, #a13f3f 100%); */
+    background: linear-gradient(to bottom, #ededed 0%, #dedede 100%);
+}
+
+.box .toolbar input {
+    display: inline-block;
+    background-color: transparent;
+    float: left;
+    overflow: hidden;
+    width: 100px;
+    height: 100%;
+    border: 0;
+    cursor: pointer;
+    border-right: 1px solid rgba(0, 0, 0, .1);
+    color: rgba(0, 0, 0, .75);
+    transition: all 0.25s;
+}
+
 .draghere{
     top:30%; left:40%; 
     position: absolute; 
-    color:  rgba(255, 255, 255, .45);
+     
+   /*  color: rgba(0, 0, 0, 0.281); */
+    /* color: rgb(149, 189, 226); */
+   
     
 
 }
 
 .titles{
-    color: white;
+    color: black;
+    /* font-size: large;*/
+    font-weight: bold; 
+    font-family:Tahoma; 
 }
 
 .labels{
-          color:  rgba(255, 255, 255, 0.61);
+          color:  black;
+          
     }
 
 ul
@@ -65,7 +133,7 @@ li
 }
 
 .droplet ul.files li div.delete {
-    background-color: rgba(0, 0, 0, .25);
+    background-color: rgba(139, 128, 231, 0.856);
     width: 50px;
     height: 50px;
     font-family: Lato, Arial, Tahoma, Helvetica, sans-serif;
@@ -129,39 +197,14 @@ li
     background-repeat: no-repeat;
     height: 96px;
     width: 96px;
-    background-color: white;
+    background-color: red;
     box-shadow: 0 0 10px rgba(0, 0, 0, .25);
     border: 1px solid white;
     display: block;
 }
 
-.box .toolbar {
-    width: 100%;
 
-    margin-top: 5px;
-    overflow: hidden;
-    position: relative;
-    z-index: 3;
-    height: 25px;
-    border-radius: 3px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .25);
-    background: linear-gradient(to bottom, #ededed 0%, #dedede 100%);
-}
-
-.box .toolbar input {
-    display: inline-block;
-    background-color: transparent;
-    float: left;
-    overflow: hidden;
-    width: 100px;
-    height: 100%;
-    border: 0;
-    cursor: pointer;
-    border-right: 1px solid rgba(0, 0, 0, .1);
-    color: rgba(0, 0, 0, .75);
-    transition: all 0.25s;
-}
-.colourful {
+/* .colourful {
     background:
         -webkit-linear-gradient(45deg, hsla(332, 18%, 55%, 1) 0%, hsla(332, 18%, 55%, 0) 70%),
         -webkit-linear-gradient(315deg, hsla(290, 22%, 50%, 1) 10%, hsla(290, 22%, 50%, 0) 80%),
@@ -172,4 +215,23 @@ li
         linear-gradient(135deg, hsla(290, 22%, 50%, 1) 10%, hsla(290, 22%, 50%, 0) 80%),
         linear-gradient(225deg, hsla(342, 27%, 50%, 1) 10%, hsla(342, 27%, 50%, 0) 80%),
         linear-gradient(315deg, hsla(169, 0%, 100%, 1) 100%, hsla(169, 0%, 100%, 0) 70%);
+} */
+
+.colourful {
+ /*    background:
+        -webkit-linear-gradient(45deg, rgb(201, 204, 221) 0%, hsla(332, 18%, 55%, 0) 70%),
+        -webkit-linear-gradient(315deg, rgb(99, 103, 155) 10%, hsla(290, 22%, 50%, 0) 80%),
+        -webkit-linear-gradient(225deg, rgb(135, 139, 172) 10%, hsla(342, 27%, 50%, 0) 80%),
+        -webkit-linear-gradient(135deg, rgb(226, 226, 233) 100%, hsla(169, 0%, 100%, 0) 70%); */
+      /*   background:
+        -webkit-linear-gradient(45deg, rgb(84, 98, 155) 0%, hsla(332, 18%, 55%, 0) 70%),
+        -webkit-linear-gradient(315deg, rgb(151, 154, 184) 10%, hsla(290, 22%, 50%, 0) 80%),
+        -webkit-linear-gradient(225deg, rgb(147, 149, 180) 10%, hsla(342, 27%, 50%, 0) 80%),
+        -webkit-linear-gradient(135deg, rgb(191, 191, 209) 100%, hsla(169, 0%, 100%, 0) 70%); */
+   /*  background:
+        linear-gradient(45deg, rgb(201, 204, 221) 0%, hsla(332, 18%, 55%, 0) 70%),
+        linear-gradient(135deg, rgb(99, 103, 155) 10%, hsla(290, 22%, 50%, 0) 80%),
+        linear-gradient(225deg, rgb(135, 139, 172) 10%, hsla(342, 27%, 50%, 0) 80%),
+        linear-gradient(315deg, rgb(226, 226, 233) 100%, hsla(169, 0%, 100%, 0) 70%); */
 }
+
