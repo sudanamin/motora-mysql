@@ -91,6 +91,7 @@ export class UploadFormComponent {
       model: EditFrm.value.carmodel,
       color: EditFrm.value.carcolor
     }
+    //console.log
 
     this.dataService.updateCar(editCar)
       .subscribe(result => {
@@ -142,8 +143,28 @@ export class UploadFormComponent {
       model: frm.value.carModel,
       color: frm.value.carColor
     }
-    this.fd.append('color',frm.value.carColor);
-    this.fd.append('model',frm.value.carModel);
+    console.log("form color iss : "+frm.value.carColor);
+    console.log("form model iss : "+frm.value.carModel);
+    console.log("form carYear iss : "+frm.value.carYear);
+    console.log("form carCity iss : "+frm.value.carCity);
+
+    console.log("form carSpecs iss : "+frm.value.carSpecs);
+    console.log("form carKilometers iss : "+frm.value.carKilometers);
+    console.log("form carPhone iss : "+frm.value.carPhone);
+    console.log("form carDESCRTIPTION iss : "+frm.value.carDESCRIPTION);
+
+    console.log("form carPrice iss : "+frm.value.carPrice);
+    console.log("form carCylinders iss : "+frm.value.carCylinders);
+    console.log("form carTransmission iss : "+frm.value.carTransmission);
+    console.log("form carWarranty iss : "+frm.value.carWarranty);
+
+    console.log("form carManufacter iss : "+frm.value.carManufacter);
+
+    if(frm.value.carModel == 'CAMRY')
+    this.fd.append('model','1');
+    if(frm.value.carColor == 'WHITE')
+    this.fd.append('color','1');
+
     this.auth.user.subscribe(user =>{
       var userId = user.uid;
       this.fd.append('uid',userId);
@@ -221,7 +242,7 @@ export class UploadFormComponent {
         .subscribe(event => {
           if (event.type === HttpEventType.UploadProgress) {
             this.uploadProgress = Math.round(event.loaded / event.total * 100);
-            console.log("welcome");
+            //console.log("welcome");
             //if(event.loaded. === HttpEventType.)
 
             console.log('Upload Progress: ' + Math.round(event.loaded / event.total * 100) + '%')

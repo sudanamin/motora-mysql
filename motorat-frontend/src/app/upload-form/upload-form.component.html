@@ -87,7 +87,7 @@
              City
           </label>
 
-          <select class="form-control" id="city">
+          <select class="form-control" name="carCity" ngModel>
               <option>Abu Dhabi</option>
               <option>Ajman</option>
               <option>Alain</option>
@@ -106,7 +106,7 @@
             Manufacter
           </label>
 
-          <select class="form-control"   id="exampleFormControlSelect1">
+          <select class="form-control"   name="carManufacter" ngModel>
               <option>NISSAN</option>
               <option>TOYOTA</option>
                
@@ -118,7 +118,7 @@
             Model
           </label>
 
-          <select class="form-control"   id="exampleFormControlSelect1">
+          <select class="form-control"   name="carModel" ngModel>
               <option>ALITIMA</option>
               <option>CAMRY</option>
                
@@ -130,7 +130,7 @@
             Price
           </label>
 
-          <input type="number" class="form-control" name="carModel" value="" ngModel required>
+          <input type="number" class="form-control" name="carPrice" value="" ngModel required>
         </div>
 
         
@@ -146,7 +146,7 @@
                 Year
               </label>
       
-              <select class="form-control"   id="Cylinders">
+              <select class="form-control"   name="carYear" ngModel>
                   <option>2019</option>
                   <option>2018</option>
                   <option>2017</option>
@@ -160,7 +160,7 @@
             Kilometers
           </label>
 
-          <input type="number" class="form-control" name="carModel" value="" ngModel required>
+          <input type="number" class="form-control" name="carKilometers" value="" ngModel required>
         </div>
 
         <div class="col-xs-3">
@@ -168,7 +168,7 @@
             Specs
           </label>
 
-          <select class="form-control"   id="Cylinders">
+          <select class="form-control"   name="carSpecs" ngModel>
               <option>GCC</option>
               <option>AMERICAN</option>
               <option>JAPANESE</option>
@@ -182,7 +182,7 @@
               No. Of Cylinders
             </label>
   
-            <select class="form-control"   id="Cylinders">
+            <select class="form-control"   name="carCylinders" ngModel>
                 <option>3</option>
                 <option>4</option>
                 <option>6</option>
@@ -204,7 +204,7 @@
               Warranty
             </label>
   
-            <select class="form-control"   id="exampleFormControlSelect1">
+            <select class="form-control"   name="carWarranty" ngModel>
                 <option>YES</option>
                 <option>NO</option>
                 <option>DOESN'T APPLY</option>
@@ -216,7 +216,7 @@
             Color
           </label>
 
-          <select class="form-control"   id="exampleFormControlSelect1">
+          <select class="form-control"  name="carColor"  ngModel>
               <option>WHITE</option>
               <option>BLACK</option>
                
@@ -227,7 +227,7 @@
           <label class="label label-primary" for="exampleFormControlSelect1">
             Transmission
           </label>
-                <select class="form-control"   id="exampleFormControlSelect1">
+                <select class="form-control"   name="carTransmission" ngModel>
                 <option>AUTOMATIC</option>
                 <option>MANUAL</option>
                  
@@ -240,7 +240,7 @@
             Contact Number
           </label>
 
-          <input type="text" class="form-control" name="phone" placeholder="Enter Phone number" value="" ngModel required>
+          <input type="text" class="form-control" name="carPhone" placeholder="Enter Phone number" value="" ngModel required>
         </div>
 
       </div>
@@ -248,7 +248,7 @@
 
       <div class="form-group">
           <label class="label label-primary" for="exampleFormControlTextarea1">DESCRIPTION</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          <textarea class="form-control" name="carDESCRIPTION" rows="3" ngModel></textarea>
         </div>
 
       <button type="submit" name='button' class='btn btn-danger' [disabled]='frm.invalid'>Place ad with {{bigImagePreviews.length}} images</button>

@@ -252,9 +252,11 @@ router.post('/setimg', (req, res, next) => {
 
             // console.log("origana name :"+req.files[0].originalname);
             var name = req.files;
-            console.log("name of req.files: "+ name.image[0].path);
-            if (name) {
-                console.log("json object " + name.image[0].path);
+            console.log("set image req.body.color 1 : "+req.body.color);
+             console.log("name of req.files: "+ name.toString );
+            if (  req.body.model !== 'undefined') {
+               // console.log("json object " + name.image[0].path);
+               console.log("set image req.body.color 2: "+req.body.color);
                 model = req.body.model;
                 color = req.body.color;
                 uid = req.body.uid;
@@ -264,7 +266,7 @@ router.post('/setimg', (req, res, next) => {
                         res.status(500);
                         return next(err);
                     }
-                    else {
+                    else {   if(   name.toString !==  undefined  ) {
                         //res.json({msg:"added"});
                         //req.files.image[0].filename
                         console.log("added")
@@ -296,7 +298,9 @@ router.post('/setimg', (req, res, next) => {
 
                             });
                         }
-                    }
+                      }
+                      else{res.status(200).json({ result: result })}
+                  }
 
                 });
 
