@@ -106,11 +106,11 @@ getCarsThumbnail(){
     }
     console.log(this.carsObjects[0].thums);
   }
-  getCars(model,color){
+  getCars(model,color, userID){
     /*  this.allItems =[];
      this.pagedItems =[];
      this.pager.pages = []; */
-    this.dataService.getCImages(model,color)
+    this.dataService.getCImages(model,color,userID)
     .subscribe( cars => {
       this.allItems = cars;
 
@@ -134,12 +134,12 @@ getCarsThumbnail(){
       this.ModelToSearch = SearchFrm.value.carmodel;
       this.ColorToSearch = SearchFrm.value.carcolor;
     
-      this.getCars(this.ModelToSearch,this.ColorToSearch)
+      this.getCars(this.ModelToSearch,this.ColorToSearch,"")
     
   }
 
   ngOnInit() {
-    this.getCars('','');
+    this.getCars('','',"");
    
    
   }

@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 //import { Upload } from '../upload';
 //import * as _ from "lodash";
 import { preview } from '../../preview';
+import { fileL } from '../../fileL';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Ng2ImgMaxService } from 'ng2-img-max';
 //import {Http} from '@angular/http';
@@ -28,6 +29,7 @@ export class UploadFormComponent {
   imagePreviews: preview[] = [];
   bigImagePreviews: preview[] = [];
   carList: car[] = [];
+  filesList: fileL[] = [];
   selectedCar: car;
   toggleForm: boolean = false;
   firstTime: boolean = false;
@@ -44,7 +46,7 @@ export class UploadFormComponent {
   //fd:FormData[] = [];
   fd = new FormData();
 
-
+   time = Date.now() + "_";
   constructor(public sanitizer: DomSanitizer,
     private ng2ImgMax: Ng2ImgMaxService,
     private http: HttpClient,
@@ -57,12 +59,39 @@ export class UploadFormComponent {
   }
 
   removeImage(imageName: string) {
+    
+
+    this.filesList.forEach(name => console.log("before "+name.name));
+
+    //console.log(ent1.entries());
+    let x = this.filesList.length;
+    for (let i = 0; i < x; i++) {
+        if( this.filesList[i].name === (this.time + "thumb_" +imageName) || this.filesList[i].name === (this.time+imageName)){
+        this.filesList.splice(i, 1);
+        i--;
+        x--;
+        }
+       /*  if (  { 
+        this.filesList.splice(i, 1);
+        i--;
+        x--;
+        } */
+        //this.filesList.splice(i, 1);
+     
+       
+      }
+    
+
     for (let i = 0; i < this.bigImagePreviews.length; i++) {
       if (this.bigImagePreviews[i].name === imageName) {
         this.bigImagePreviews.splice(i, 1);
-        break;
+        //this.filesList.splice(i, 1);
+     
+        //break;
       }
     }
+
+    this.filesList.forEach(name => console.log("after"+name.name));
 
   }
 
@@ -71,10 +100,10 @@ export class UploadFormComponent {
   }
 
   getCars() {
-    this.dataService.getCars()
+    this.dataService.getCImages("", "", this.auth.currentUserId)
       .subscribe(cars => {
         this.carList = cars;
-       // this.allItems = cars;
+        // this.allItems = cars;
 
 
         // initialize to page 1
@@ -143,55 +172,59 @@ export class UploadFormComponent {
       model: frm.value.carModel,
       color: frm.value.carColor
     }
-    console.log("form color iss : "+frm.value.carColor);
-    console.log("form model iss : "+frm.value.carModel);
-    console.log("form carYear iss : "+frm.value.carYear);
-    console.log("form carCity iss : "+frm.value.carCity);
+    console.log("form color iss : " + frm.value.carColor);
+    console.log("form model iss : " + frm.value.carModel);
+    console.log("form carYear iss : " + frm.value.carYear);
+    console.log("form carCity iss : " + frm.value.carCity);
 
-    console.log("form carSpecs iss : "+frm.value.carSpecs);
-    console.log("form carKilometers iss : "+frm.value.carKilometers);
-    console.log("form carPhone iss : "+frm.value.carPhone);
-    console.log("form carDESCRTIPTION iss : "+frm.value.carDESCRIPTION);
+    console.log("form carSpecs iss : " + frm.value.carSpecs);
+    console.log("form carKilometers iss : " + frm.value.carKilometers);
+    console.log("form carPhone iss : " + frm.value.carPhone);
+    console.log("form carDESCRTIPTION iss : " + frm.value.carDESCRIPTION);
 
-    console.log("form carPrice iss : "+frm.value.carPrice);
-    console.log("form carCylinders iss : "+frm.value.carCylinders);
-    console.log("form carTransmission iss : "+frm.value.carTransmission);
-    console.log("form carWarranty iss : "+frm.value.carWarranty);
+    console.log("form carPrice iss : " + frm.value.carPrice);
+    console.log("form carCylinders iss : " + frm.value.carCylinders);
+    console.log("form carTransmission iss : " + frm.value.carTransmission);
+    console.log("form carWarranty iss : " + frm.value.carWarranty);
 
-    console.log("form carManufacter iss : "+frm.value.carManufacter);
+    console.log("form carManufacter iss : " + frm.value.carManufacter);
 
-    if(frm.value.carModel == 'CAMRY')
-    this.fd.append('model','1');
-    if(frm.value.carColor == 'WHITE')
-    this.fd.append('color','1');
+    if (frm.value.carModel == 'CAMRY')
+      this.fd.append('model', '1');
+    if (frm.value.carColor == 'WHITE')
+      this.fd.append('color', '1');
 
-    this.auth.user.subscribe(user =>{
+    this.auth.user.subscribe(user => {
       var userId = user.uid;
-      this.fd.append('uid',userId);
+      this.fd.append('uid', userId);
       this.upload();
     })
-   
-  
-   /* this.dataService.addCar(newCar)
-      .subscribe(car => {
-        console.log("car is :" + JSON.stringify(car));
-        if (frm.valid) {
-          console.log("Form Submitted!");
+    /*this.fd.append('uid',this.auth.currentUserId);
+    this.upload();*/
 
-        }
-        this.getCars();
-      })*/
+
+    /* this.dataService.addCar(newCar)
+       .subscribe(car => {
+         console.log("car is :" + JSON.stringify(car));
+         if (frm.valid) {
+           console.log("Form Submitted!");
+ 
+         }
+         this.getCars();
+       })*/
   }
 
   resizeFiles(files: FileList) {
-    var time = Date.now() + "_" ;
+    
     for (var i = 0; i < files.length; i++) {
       let image = files[i];
-      this.fd.append('image', image, time+image.name);
+      //this.fd.append('image', image, this.time + image.name);
+      this.filesList.push({theFile:image,name:this.time + image.name});
+
       this.getbigImagePreview(image);
       this.ng2ImgMax.resizeImage(image, 100, 10000).subscribe(
         result => {
-          this.uploadedImage = new File([result], time+ "thumb_" + result.name);
+          this.uploadedImage = new File([result], this.time + "thumb_" + result.name);
 
 
 
@@ -199,7 +232,10 @@ export class UploadFormComponent {
           //var singleFd = new FormData();
           //singleFd.append('image', this.uploadedImage, this.uploadedImage.name);
           //this.fd.push(singleFd);
-          this.fd.append('image', this.uploadedImage, this.uploadedImage.name);
+
+          //this.fd.append('image', this.uploadedImage, this.uploadedImage.name);
+          this.filesList.push({theFile:this.uploadedImage,name:this.uploadedImage.name});
+
           // this.upload();
         },
         error => {
@@ -231,9 +267,16 @@ export class UploadFormComponent {
 
 
   upload() {         // this should moved to service class
+
+    for(let i =0 ;i < this.filesList.length ;i++){
+      this.fd.append('image',this.filesList[i].theFile,this.filesList[i].name);
+      console.log(this.filesList[i].name);
+    } 
+
+
     if (this.fd.has("color")) {
       console.log('form data is :' + this.fd);
-      
+
       this.http.post("http://localhost:3000/api/setimg", this.fd, {
         reportProgress: true,
         observe: 'events',
@@ -256,6 +299,7 @@ export class UploadFormComponent {
               this.fd.delete("color");
               this.fd.delete("model");
               this.fd.delete("uid");
+              this.filesList = [];
               this.uploadProgress = 0;
               alert("added successfully");
               console.log("event is:" + event.statusText);

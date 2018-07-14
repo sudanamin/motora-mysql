@@ -253,8 +253,8 @@ router.post('/setimg', (req, res, next) => {
             // console.log("origana name :"+req.files[0].originalname);
             var name = req.files;
             console.log("set image req.body.color 1 : "+req.body.color);
-             console.log("name of req.files: "+ name.toString );
-            if (  req.body.model !== 'undefined') {
+            // console.log("name of req.files: "+ req.files[0].originalname );
+            if (  req.body.model !==  undefined ) {
                // console.log("json object " + name.image[0].path);
                console.log("set image req.body.color 2: "+req.body.color);
                 model = req.body.model;
@@ -266,13 +266,13 @@ router.post('/setimg', (req, res, next) => {
                         res.status(500);
                         return next(err);
                     }
-                    else {   if(   name.toString !==  undefined  ) {
+                    else {   if(  req.files.image !== undefined  ) {
                         //res.json({msg:"added"});
                         //req.files.image[0].filename
                         console.log("added")
                         console.log("origana name :" + JSON.stringify(req.files));
                         var images = req.files.image;
-                        console.log("ffff: " + images[0].size);
+                       // console.log("ffff: " + images[0].size);
                         for (let i = 0; i < images.length; i++) {
                             var obj = images[i];
 
@@ -342,20 +342,20 @@ router.get('/cimages', (req, res) => {
         var color = req.query.color;
         var model = req.query.model;
         //var color = req.params.color;
-        console.log('color is :' + color);
+      //  console.log('color is :' + color);
     
         if (color != null && color !='') {
             whereClause += "AND color LIKE '" + color + "'";
-            console.log('color is :' + color);
+         //   console.log('color is :' + color);
             //whereClause += "AND description LIKE '%keywords%'"
-        } else console.log('color is :' + color);
+        } else //console.log('color is :' + color);
     
         if (model != null && model !='') {
             whereClause += "AND model LIKE '" + model + "'";
-            console.log('model is :' + model);
+           // console.log('model is :' + model);
             //whereClause += "AND description LIKE '%keywords%'"
-        } else console.log('modell is :' + model);
-    connection.query("SELECT cars_table.MODEL ,car_images.REF_APP_ID,GROUP_CONCAT(car_images.IMAGE_URL) as gofi from car_images INNER JOIN cars_table ON car_images.REF_APP_ID =cars_table.APPLICATION_ID "+whereClause+" GROUP BY car_images.REF_APP_ID ;", function (err, cars) {
+        } else //console.log('modell is :' + model);
+    connection.query("SELECT cars_table.MODEL ,cars_table.COLOR,USER_ID ,car_images.REF_APP_ID,GROUP_CONCAT(car_images.IMAGE_URL) as gofi from car_images INNER JOIN cars_table ON car_images.REF_APP_ID =cars_table.APPLICATION_ID "+whereClause+" GROUP BY car_images.REF_APP_ID ;", function (err, cars) {
 
         if (err) {
             res.status(500);
@@ -363,7 +363,7 @@ router.get('/cimages', (req, res) => {
         }
         else {
             res.send(cars);
-            console.log(cars)
+           // console.log( cars)
         }
 
     });

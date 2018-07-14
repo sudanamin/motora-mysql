@@ -15,11 +15,12 @@ export class DataService {
     //.map(res => res.json())
   }*/
 
-  getCImages(model , color){
+  getCImages(model , color, userID){
     return this.http.get<Array<car>>("http://localhost:3000/api/cimages", {
       params: {
         model: model ,
-        color: color
+        color: color,
+        userID: userID
       }
     //.map(res => res.json())
   }
