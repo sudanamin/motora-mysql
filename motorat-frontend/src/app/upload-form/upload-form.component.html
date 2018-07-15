@@ -281,7 +281,7 @@
     </form>
     <br>
     <h3 class="titles"> Your previous ads </h3>
-    <br>
+   <!--  <br>
     <div *ngFor="let car of carList">
       <div class="row">
         <div class="col-md-1">
@@ -301,7 +301,73 @@
         </div>
       </div>
       <br>
-    </div>
+    </div> -->
+
+    <div>
+      <br>
+
+      <ul style="list-style:none">
+
+          <li *ngFor="let obj of carsObjects;  let i = index">
+              <!-- <div class="container2" *ngFor="let thumb of objs.thums;  let j = index"> 
+      
+           <div class="num_of_img"> +: {{obj.thums.length}}  </div>
+           <img (click)="openSlideshow(i,j);" style="width:100px;height:100px;" [src]="obj.thums[j].src">
+
+       </div>  -->
+
+              <!--  <div class="container2" *ngFor="let thumb of obj.thums;  let j = index">  -->
+              <div class="cardd">
+
+
+                  <!-- <div class="contactBox"> contact </div> -->
+
+                  <div class="container2 col-md-8">
+                      <div class="verticalLine"></div>
+
+                      <div class='label label-primary'>Card titlee</div>   <!-- containerTitle -->
+                      <br>
+                      <br>
+
+                      <div class="num_of_img"> +{{obj.thums.length}} </div>
+
+                      <img (click)="openSlideshow(i,j);" style="width:150px; height:110px;" [src]="obj.thums[0]">
+                      <br>
+                      <br>
+                      <div> Located: Abu Dhabi> Date: 22 April 2018.</div>
+                      <br>
+
+                  </div>
+
+                  <div class="rightOfBox col-md-3">
+
+                      <div class='containerPrice'>Price: 2000{{obj.model}} AED. </div>
+
+                      <br>
+                      <div class='containerKilo'>kilometers: 18{{obj.model}} km. </div>
+
+                      <!-- <br> -->
+                      <br>
+                      <div class='containerYear'>Year: 200{{obj.model}}. </div>
+                      <br>
+                      <br>
+
+                      <br>
+                      <br>
+                      <div class="contactBox"> Show phone </div>
+                      <br> <br>  
+                  </div>
+                  
+                  <hr>
+              </div>
+
+
+
+          </li>
+
+
+      </ul>
+  </div>
 
     <!-- pagination -->
 

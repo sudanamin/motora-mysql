@@ -28,21 +28,21 @@ export class UploadFormComponent {
   dropzoneActive: boolean = false;
   imagePreviews: preview[] = [];
   bigImagePreviews: preview[] = [];
-  carList: car[] = [];
+  //carList: car[] = [];
   filesList: fileL[] = [];
   selectedCar: car;
   toggleForm: boolean = false;
   firstTime: boolean = false;
   addForm: any;
-
+  carsObjects = [];
   // array of all items to be paged
-  //private allItems: any[];
+  private allItems: any[];
 
   // pager object
   pager: any = {};
 
   // paged items
-  pagedItems: any[];
+  //pagedItems: any[];
   //fd:FormData[] = [];
   fd = new FormData();
 
@@ -102,8 +102,9 @@ export class UploadFormComponent {
   getCars() {
     this.dataService.getCImages("", "", this.auth.currentUserId)
       .subscribe(cars => {
-        this.carList = cars;
-        // this.allItems = cars;
+        //this.carList = cars;
+         this.allItems = cars;
+         this.getCarsThumbnail();
 
 
         // initialize to page 1
@@ -112,6 +113,51 @@ export class UploadFormComponent {
 
       })
   }
+
+  getCarsThumbnail(){
+
+
+    //  let im=[];
+    this.carsObjects = [];
+    let gofiForGallery=[] ;
+    let gofThumbsForShow= [];
+   // var arr = input.split(',');
+   //console.log("length;"+this.pagedItems.length);
+   for (var i=0 ; i<this.allItems.length; i++){
+
+
+      var gofi = this.allItems[i].gofi;
+      var Gofi = gofi.split(',');
+     // console.log(arr[0]);
+      for (var j=0 ; j<Gofi.length; j++){
+
+        var thumbForShow = Gofi[j];
+
+        var imgUrl = Gofi[j].replace("_thumb", "");
+        var iForGallery = {thumb:thumbForShow ,src:imgUrl, w: 1200, h: 900, title: 'image caption sososo '};
+        // this.im.push( this.pagedItems[i].REF_APP_ID,obj);
+        gofThumbsForShow.push(thumbForShow);
+        gofiForGallery.push(iForGallery);
+        // obj=null;
+
+      }
+
+     /*  console.log("gofThumbsForShow lengh:"+gofThumbsForShow[i]);
+      console.log("gofiForGallery lengh:"+gofiForGallery[i].src); */
+      
+      var carObject = {id:this.allItems[i].REF_APP_ID,thums:gofThumbsForShow,images:gofiForGallery,model:this.allItems[i].MODEL};
+     this.carsObjects.push(carObject);
+     gofiForGallery = [];
+     gofThumbsForShow = [];
+     //  ims.push({'app_id':this.pagedItems[i]},im);
+     //  console.log(ims[0]);
+         //this.photoSwipe.openGallery(images,index);
+        
+        // this.photoSwipe.openGallery(this.pagedItems,index);
+  }
+  console.log(this.carsObjects[0].thums);
+
+}
 
   EditCar(EditFrm) {
     console.log('car id is :' + this.selectedCar.APPLICATION_ID);
@@ -144,10 +190,10 @@ export class UploadFormComponent {
       .subscribe(data => {
         console.log(data);
         if (data) {
-          for (var i = 0; i < this.carList.length; i++) {
-            if (car.APPLICATION_ID == this.carList[i].APPLICATION_ID) {
+          for (var i = 0; i < this.allItems.length; i++) {
+            if (car.APPLICATION_ID == this.allItems[i].APPLICATION_ID) {
 
-              this.carList.splice(i, 1);
+              this.allItems.splice(i, 1);
               console.log('on is deleted ');
             }
           }

@@ -22,7 +22,7 @@ export class CarItemComponent implements OnInit {
   ModelToSearch: string ='';
   ColorToSearch: string ='';
   toggleForm: boolean = false;
-  firstTime: boolean = true;
+  //firstTime: boolean = true;
    
    carsObjects = [];
 
@@ -105,7 +105,9 @@ getCarsThumbnail(){
           // this.photoSwipe.openGallery(this.pagedItems,index);
     }
     console.log(this.carsObjects[0].thums);
+
   }
+  
   getCars(model,color, userID){
     /*  this.allItems =[];
      this.pagedItems =[];
@@ -120,7 +122,7 @@ getCarsThumbnail(){
       }
       else {this.carsObjects = []}
       //this.setPage(1);
-      this.firstTime = false;
+      //this.firstTime = false;
     //  this.getCarsThumbnail();
 
      
