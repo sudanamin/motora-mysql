@@ -104,7 +104,10 @@ export class UploadFormComponent {
       .subscribe(cars => {
         //this.carList = cars;
          this.allItems = cars;
-         this.getCarsThumbnail();
+         if(this.allItems.length !== 0){
+             this.getCarsThumbnail();
+         }
+         
 
 
         // initialize to page 1
@@ -155,7 +158,7 @@ export class UploadFormComponent {
         
         // this.photoSwipe.openGallery(this.pagedItems,index);
   }
-  console.log(this.carsObjects[0].thums);
+ // console.log(this.carsObjects[0].thums);
 
 }
 
@@ -185,15 +188,15 @@ export class UploadFormComponent {
   }
 
   deleteCar(car) {
-    console.log('car id is : ' + car.APPLICATION_ID);
-    this.dataService.deleteCar(car.APPLICATION_ID)
+    console.log('car id is : ' + car.id);
+    this.dataService.deleteCar(car.id)
       .subscribe(data => {
         console.log(data);
         if (data) {
-          for (var i = 0; i < this.allItems.length; i++) {
-            if (car.APPLICATION_ID == this.allItems[i].APPLICATION_ID) {
+          for (var i = 0; i < this.carsObjects.length; i++) {
+            if (car.id == this.carsObjects[i].id) {
 
-              this.allItems.splice(i, 1);
+              this.carsObjects.splice(i, 1);
               console.log('on is deleted ');
             }
           }
