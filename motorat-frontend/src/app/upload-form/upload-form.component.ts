@@ -185,6 +185,7 @@ export class UploadFormComponent {
     //console.log
 
    // this.dataService.updateCar(editCar)
+   let editFormData;
    this.dataService.updateCar(editCar.APPLICATION_ID,editFormData)
       .subscribe(result => {
         console.log('original Item to be updated:' + result);
@@ -231,10 +232,10 @@ export class UploadFormComponent {
 
   addCar(frm) {
     this.addForm = frm;
-    let newCar: car = {
+    /* let newCar: car = {
       Model: frm.value.carModel,
       Color: frm.value.carColor
-    }
+    } */
     console.log("form color iss : " + frm.value.carColor);
     console.log("form model iss : " + frm.value.carModel);
     console.log("form carYear iss : " + frm.value.carYear);
@@ -252,10 +253,30 @@ export class UploadFormComponent {
 
     console.log("form carManufacter iss : " + frm.value.carManufacter);
 
-    if (frm.value.carModel == 'CAMRY')
-      this.fd.append('model', '1');
+   /*  if (frm.value.carModel == 'CAMRY')
+      this.fd.append('model', '1'); */
     if (frm.value.carColor == 'WHITE')
       this.fd.append('color', '1');
+
+     this.fd.append('city', frm.value.carCity);
+     this.fd.append('manufacter', frm.value.carManufacter);
+     this.fd.append('price', frm.value.carPrice);
+     this.fd.append('year', frm.value.carYear);
+
+     this.fd.append('kilometers', frm.value.carKilometers);
+     this.fd.append('model',frm.value.carModel);
+     this.fd.append('specs', frm.value.carSpecs);
+     this.fd.append('cylinders', frm.value.carCylinders);
+
+     this.fd.append('warranty', frm.value.carWarranty);
+  //   this.fd.append('color', frm.value.carColor);
+     this.fd.append('transmission', frm.value.carTransmission);
+     this.fd.append('phone', frm.value.carPhone);
+
+     this.fd.append('description', frm.value.carDESCRIPTION);
+
+
+
 
     this.auth.user.subscribe(user => {
       var userId = user.uid;
@@ -359,9 +380,26 @@ export class UploadFormComponent {
               this.imagePreviews = [];
               this.bigImagePreviews = [];
               this.fd.delete("image");
-              this.fd.delete("color");
+
+              this.fd.delete("city");
+              this.fd.delete("manufacter");
               this.fd.delete("model");
+              this.fd.delete("price");
+
+              this.fd.delete("year");
+              this.fd.delete("kilometers");
+              this.fd.delete("specs");
+              this.fd.delete("cylinders");
+
+              this.fd.delete("warranty");
+              this.fd.delete("color");
+              this.fd.delete("transmission");
+              this.fd.delete("phone");
+
+              this.fd.delete("description");
+              
               this.fd.delete("uid");
+
               this.filesList = [];
               this.uploadProgress = 0;
               alert("added successfully");

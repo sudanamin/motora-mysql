@@ -207,9 +207,23 @@ var storage = multer.diskStorage({
 
 var fields = [
     { name: 'image', maxCount: 12 },
-    { name: 'color' },
+    { name: 'city' },
+    { name: 'manufacter' },
+    { name: 'price' },
+    { name: 'year' },
+
+    { name: 'kilometers' },
     { name: 'model' },
-    { name: 'uid' }
+    { name: 'specs' },
+    { name: 'cylinders' },
+    
+    { name: 'warranty' },
+    { name: 'color' },
+    { name: 'transmission' },
+    { name: 'phone' },
+    
+    { name: 'description' },
+    { name: 'uid' },
 ]
 var upload = multer({ storage: storage }).fields(fields); // var upload = multer({ storage: storage }).array('image');
 // upload.single('image');
@@ -251,8 +265,8 @@ router.post('/setimg', (req, res, next) => {
         } else {
 
             // console.log("origana name :"+req.files[0].originalname);
-            var name = req.files;
-            console.log("set image req.body.color 1 : "+req.body.color);
+            //var name = req.files;
+            console.log("description is  "+req.body.description);
             // console.log("name of req.files: "+ req.files[0].originalname );
             if (  req.body.model !==  undefined ) {
                // console.log("json object " + name.image[0].path);
@@ -261,7 +275,7 @@ router.post('/setimg', (req, res, next) => {
                 color = req.body.color;
                 uid = req.body.uid;
                 console.log(model + "  :" + "color" + req.body.color);
-                connection.query("INSERT INTO `cars_table` (MODEL, COLOR , USER_ID) VALUES (?, ?, ?)", [model, color, uid], function (err, result) {
+                connection.query("INSERT INTO `cars_table` (MODEL, COLOR , USER_ID) VALUES ((select cars.cars_models.MODEL_ID from cars.cars_models where MODEL_NAME = ? ), ?, ?)", [model, color, uid], function (err, result) {
                     if (err) {
                         res.status(500);
                         return next(err);
