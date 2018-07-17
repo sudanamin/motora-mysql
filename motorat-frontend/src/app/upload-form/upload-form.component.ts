@@ -255,8 +255,8 @@ export class UploadFormComponent {
 
    /*  if (frm.value.carModel == 'CAMRY')
       this.fd.append('model', '1'); */
-    if (frm.value.carColor == 'WHITE')
-      this.fd.append('color', '1');
+   /*  if (frm.value.carColor == 'WHITE')
+      this.fd.append('color', '1'); */
 
      this.fd.append('city', frm.value.carCity);
      this.fd.append('manufacter', frm.value.carManufacter);
@@ -269,7 +269,7 @@ export class UploadFormComponent {
      this.fd.append('cylinders', frm.value.carCylinders);
 
      this.fd.append('warranty', frm.value.carWarranty);
-  //   this.fd.append('color', frm.value.carColor);
+     this.fd.append('color', frm.value.carColor);
      this.fd.append('transmission', frm.value.carTransmission);
      this.fd.append('phone', frm.value.carPhone);
 

@@ -275,7 +275,11 @@ router.post('/setimg', (req, res, next) => {
                 color = req.body.color;
                 uid = req.body.uid;
                 console.log(model + "  :" + "color" + req.body.color);
-                connection.query("INSERT INTO `cars_table` (MODEL, COLOR , USER_ID) VALUES ((select cars.cars_models.MODEL_ID from cars.cars_models where MODEL_NAME = ? ), ?, ?)", [model, color, uid], function (err, result) {
+                connection.query(`INSERT INTO cars.cars_table (MODEL, COLOR , USER_ID) VALUES (
+                    (select cars.cars_models.MODEL_ID from cars.cars_models where MODEL_NAME = ? ),
+                    (select cars.colors.COLOR_ID from cars.colors where COLOR_NAME = ? ),
+                     ?)`
+                    , [model, color, uid], function (err, result) {
                     if (err) {
                         res.status(500);
                         return next(err);
