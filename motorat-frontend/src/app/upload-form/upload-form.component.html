@@ -240,7 +240,7 @@
             Contact Number
           </label>
 
-          <input type="text" class="form-control" name="carPhone" placeholder="Enter Phone number" value="" ngModel >
+          <input type="text" class="form-control" name="carPhone" placeholder="Enter Phone number" required value="" ngModel >
         </div>
 
       </div>
@@ -376,7 +376,7 @@
        Model
      </label>
 
-     <select class="form-control"   name="carmodel" [ngModel]="selectedCar.carmodel">
+     <select class="form-control"   name="carmodel" [ngModel]="selectedCar.model">
          <option>ALITIMA</option>
          <option>CAMRY</option>
           
@@ -474,7 +474,7 @@
        Color
      </label>
 
-     <select class="form-control"  name="carcolor" [ngModel]="selectedCar.carcolor">
+     <select class="form-control"  name="carcolor" [ngModel]="selectedCar.carColor">
          <option>WHITE</option>
          <option>BLACK</option>
           
@@ -498,27 +498,27 @@
        Contact Number
      </label>
 
-     <input type="text" class="form-control" name="carphone" placeholder="Enter Phone number" value="" [ngModel]="selectedCar.carphone">
+     <input type="text" class="form-control" name="carphone" placeholder="Enter Phone number"  value="" [ngModel]="selectedCar.Carphone">
    </div>
 
  </div>
  <!-- form row -->
 
  <div class="form-group">
-     <label class="label label-primary" for="exampleFormControlTextarea1">DESCRIPTION</label>
+     <label class="label label-primary" for="exampleFormControlTextarea1" >DESCRIPTION</label>
      <textarea class="form-control" name="cardescription" rows="3" [ngModel]="selectedCar.cardescription">
 
      </textarea>
    </div>
-
- <button type="submit" name='button' class='btn btn-danger' [disabled]='frm.invalid'>update ad with {{bigImagePreviews.length}} images</button>
+   <button type="submit" name='button' class='btn btn-success' [disabled]='EditFrm.invalid'>Save</button>
+   <button name='button' class='btn btn-default' (click)="toggleForm= !toggleForm">Cancel</button>
+ <!-- <button type="submit" name='button' class='btn btn-danger' [disabled]='EditFrm.invalid'>update ad with {{bigImagePreviews.length}} images</button> -->
 
 
 </form>
 
 
-    <br>
-    <h3 class="titles"> Your previous ads </h3>
+    
    <!--  <br>
     <div *ngFor="let car of carList">
       <div class="row">
@@ -541,7 +541,9 @@
       <br>
     </div> -->
 
-    <div>
+    <div *ngIf="!toggleForm">
+        <br>
+        <h3 class="titles"> Your previous ads </h3>
       <br>
 
       <ul style="list-style:none">
@@ -584,7 +586,7 @@
                     <button type='button' name="button" class='btn btn-primary' (click)="showEditForm(obj)" [disabled]="toggleForm">Edit</button>
                   </div>
           
-                  <div class='col-md-1'>
+                  <div class='col-md-3'>
                     <button type='button' name="button" class='btn btn-danger' (click)="deleteCar(obj)" [disabled]="toggleForm">Delete</button>
                   </div>
 

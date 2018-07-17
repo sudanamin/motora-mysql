@@ -165,13 +165,27 @@ export class UploadFormComponent {
   EditCar(EditFrm) {
     console.log('car id is :' + this.selectedCar.APPLICATION_ID);
     let editCar: car = {
+      /* APPLICATION_ID: this.selectedCar.APPLICATION_ID, */
+      /* Model: EditFrm.value.carmodel, */
       APPLICATION_ID: this.selectedCar.APPLICATION_ID,
-      model: EditFrm.value.carmodel,
-      color: EditFrm.value.carcolor
+      City:EditFrm.value.carcity,
+      Manufacter:EditFrm.value.carmanufacter,
+      Model: EditFrm.value.carmodel,
+      Price:EditFrm.value.carprice,
+      Year:EditFrm.value.caryear,
+      Kilometers:EditFrm.value.carkilometers,
+      Specs: EditFrm.value.carspecs,
+      NoOfCylinders:EditFrm.value.carcylinders,
+      Warranty: EditFrm.value.carwarranty,
+      Color: EditFrm.value.carcolor,
+      Transmission: EditFrm.value.cartransmission,
+      ContactNumber: EditFrm.value.carphone,
+      DESCRIPTION: EditFrm.value.carDESCRIPTION
     }
     //console.log
 
-    this.dataService.updateCar(editCar)
+   // this.dataService.updateCar(editCar)
+   this.dataService.updateCar(editCar.APPLICATION_ID,editFormData)
       .subscribe(result => {
         console.log('original Item to be updated:' + result);
         this.getCars();
@@ -218,8 +232,8 @@ export class UploadFormComponent {
   addCar(frm) {
     this.addForm = frm;
     let newCar: car = {
-      model: frm.value.carModel,
-      color: frm.value.carColor
+      Model: frm.value.carModel,
+      Color: frm.value.carColor
     }
     console.log("form color iss : " + frm.value.carColor);
     console.log("form model iss : " + frm.value.carModel);

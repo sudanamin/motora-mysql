@@ -49,11 +49,12 @@ export class DataService {
    // .map(res => res.json());
   }
 
-  updateCar(car){
+  updateCar(carID , formData ){
     let headers = new HttpHeaders();
 
     headers.append('content-type','application/json');
-    return this.http.put<car>("http://localhost:3000/api/car/"+car.APPLICATION_ID, car, {headers:headers})
+   /*  return this.http.put<car>("http://localhost:3000/api/car/"+carID, car, {headers:headers}) */
+   return this.http.put<car>("http://localhost:3000/api/car/"+carID, formData, {headers:headers})
     //.map( res => res.json());
 
   }
