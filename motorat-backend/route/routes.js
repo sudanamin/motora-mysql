@@ -207,8 +207,9 @@ var storage = multer.diskStorage({
 
 var fields = [
     { name: 'image', maxCount: 12 },
+
     { name: 'city' },
-    { name: 'manufacter' },
+    { name: 'manufacturer' },
     { name: 'price' },
     { name: 'year' },
 
@@ -245,7 +246,11 @@ var upload = multer({ storage: storage }).fields(fields); // var upload = multer
         callback(null, true);
     }
 }).single('image')*/
-
+function roughScale(x, base) {
+    var parsed = parseInt(x, base);
+    if (isNaN(parsed)) { return 0 }
+    return parsed ;
+  }
 router.post('/setimg', (req, res, next) => {
     var msg = "aa";
     upload(req, res, function (err) {
@@ -271,15 +276,51 @@ router.post('/setimg', (req, res, next) => {
             if (  req.body.model !==  undefined ) {
                // console.log("json object " + name.image[0].path);
                console.log("set image req.body.color 2: "+req.body.color);
-                model = req.body.model;
-                color = req.body.color;
+                //price =0;
+               // price = Number(req.body.price);
+                price = roughScale(req.body.price,10);
+                model = req.body.model; 
+
+                
+                year = roughScale(req.body.year,10);
+                manufacturer = req.body.manufacturer;
+                //kilometers =0;
+               // kilometers = Number(req.body.kilometers);
+                kilometers = roughScale(req.body.kilometers,10);
                 uid = req.body.uid;
+                city = roughScale(req.body.city,10);
+               // city = Number(req.body.city);
+                description = req.body.description;
+                ddate = Date.now();
+                //waranty =0;
+               // waranty = Number(req.body.waranty);
+               waranty = roughScale(req.body.waranty,10);
+                phone = req.body.phone;
+                color = req.body.color;
+                console.log('user macufactier is : '+manufacturer);
+                console.log('user description is : '+description);
+                console.log('user city is : '+city);
+                console.log('user id is : '+uid);
+                console.log('user waranty is : '+waranty);
+                console.log('user kilometers is : '+kilometers);
+                
+              /*   (select cars.MANUFACTURE.MANUFACTURE_ID from cars.MANUFACTURE where MANUFACTURE_NAME = ? ) */
                 console.log(model + "  :" + "color" + req.body.color);
-                connection.query(`INSERT INTO cars.cars_table (MODEL, COLOR , USER_ID) VALUES (
+              /*   connection.query(`INSERT INTO cars.cars_table (PRICE,MODEL,YEAR,MANUFACTURE,MILES,USER_ID,EMIRATE,DETAILS,DDATE,WARANTY,PHONE,COLOR) VALUES (? ,
                     (select cars.cars_models.MODEL_ID from cars.cars_models where MODEL_NAME = ? ),
-                    (select cars.colors.COLOR_ID from cars.colors where COLOR_NAME = ? ),
-                     ?)`
-                    , [model, color, uid], function (err, result) {
+                    ?,?,
+                    
+                    ?,?,?,?,?,?,?,
+                    (select cars.colors.COLOR_ID from cars.colors where COLOR_NAME = ? ))` */
+                    connection.query(`INSERT INTO cars.cars_table (PRICE,MODEL,YEAR,MANUFACTURE,MILES,USER_ID,
+                        EMIRATE,DETAILS,DDATE,WARANTY,PHONE,COLOR) VALUES (? ,
+                        (select cars.cars_models.MODEL_ID from cars.cars_models where MODEL_NAME = ? ),
+                        ?,(select cars.MANUFACTURE.MANUFACTURE_ID from cars.MANUFACTURE where MANUFACTURE_NAME = ? )
+                        ,
+                        ?,?,?,1,'1992-02-02',1,1,
+                        (select cars.colors.COLOR_ID from cars.colors where COLOR_NAME = ? ))`
+                     , [price,model,year,manufacturer, kilometers, uid,city,description , /*ddate,*/waranty, phone ,color], function (err, result) { 
+                  /*   , [model/* , uid, city?,ddate  ,color] , function (err, result) {*/
                     if (err) {
                         res.status(500);
                         return next(err);
@@ -373,8 +414,13 @@ router.get('/cimages', (req, res) => {
            // console.log('model is :' + model);
             //whereClause += "AND description LIKE '%keywords%'"
         } else //console.log('modell is :' + model);
-    connection.query("SELECT cars_table.MODEL ,cars_table.COLOR,USER_ID ,car_images.REF_APP_ID,GROUP_CONCAT(car_images.IMAGE_URL) as gofi from car_images INNER JOIN cars_table ON car_images.REF_APP_ID =cars_table.APPLICATION_ID "+whereClause+" GROUP BY car_images.REF_APP_ID ;", function (err, cars) {
+  /*  connection.query("SELECT cars_table.MODEL ,cars_table.COLOR,USER_ID ,car_images.REF_APP_ID,GROUP_CONCAT(car_images.IMAGE_URL) as gofi from car_images INNER JOIN cars_table ON car_images.REF_APP_ID =cars_table.APPLICATION_ID "+whereClause+" GROUP BY car_images.REF_APP_ID ;", function (err, cars) {
+ */
 
+connection.query(`SELECT MODEL_NAME, MODEL,DDATE, COLOR ,REF_APP_ID, GROUP_CONCAT(IMAGE_URL) as gofi FROM  car_images  
+INNER JOIN  cars_table on cars_table.APPLICATION_ID = car_images.REF_APP_ID
+inner join  cars_models  on cars_table.MODEL = cars_models.MODEL_ID 
+where   MODEL > 0  GROUP BY car_images.REF_APP_ID;`, function (err, cars,next) {
         if (err) {
             res.status(500);
             return next(err);

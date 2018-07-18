@@ -10,6 +10,7 @@ import { Ng2ImgMaxService } from 'ng2-img-max';
 import 'rxjs/add/operator/map';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { car } from '../../car';
+import {Utils} from '../../util';
 import { DataService } from '../data.service'
 import { AuthService } from '../core/auth.service';
 /* import { Form } from '@angular/forms'; */
@@ -236,7 +237,7 @@ export class UploadFormComponent {
       Model: frm.value.carModel,
       Color: frm.value.carColor
     } */
-    console.log("form color iss : " + frm.value.carColor);
+    /* console.log("form color iss : " + frm.value.carColor);
     console.log("form model iss : " + frm.value.carModel);
     console.log("form carYear iss : " + frm.value.carYear);
     console.log("form carCity iss : " + frm.value.carCity);
@@ -251,17 +252,30 @@ export class UploadFormComponent {
     console.log("form carTransmission iss : " + frm.value.carTransmission);
     console.log("form carWarranty iss : " + frm.value.carWarranty);
 
-    console.log("form carManufacter iss : " + frm.value.carManufacter);
+    console.log("form carManufacter iss : " + frm.value.carManufacter); */
 
    /*  if (frm.value.carModel == 'CAMRY')
       this.fd.append('model', '1'); */
    /*  if (frm.value.carColor == 'WHITE')
       this.fd.append('color', '1'); */
-
-     this.fd.append('city', frm.value.carCity);
-     this.fd.append('manufacter', frm.value.carManufacter);
+      var city =12 ;
+    if(frm.value.carCity){
+       city = Utils.convertCitytoInt(frm.value.carCity);
+       console.log('heelo from insiede')
+    
+    }
+    this.fd.append('city', city.toString());
+     this.fd.append('manufacturer', frm.value.carManufacturer);
+     console.log("manusf factor is :"+frm.value.carManufacturer)
      this.fd.append('price', frm.value.carPrice);
-     this.fd.append('year', frm.value.carYear);
+    // this.fd.append('year', frm.value.carYear);
+     let year = 1;
+       if(frm.value.carYear != "⋘ 2015")  {
+             year = Utils.convertYeartoInt(frm.value.carYear);
+            
+     }
+     this.fd.append('year', year.toString());
+     console.log('year is '+year)
 
      this.fd.append('kilometers', frm.value.carKilometers);
      this.fd.append('model',frm.value.carModel);
@@ -275,7 +289,7 @@ export class UploadFormComponent {
 
      this.fd.append('description', frm.value.carDESCRIPTION);
 
-
+     
 
 
     this.auth.user.subscribe(user => {
