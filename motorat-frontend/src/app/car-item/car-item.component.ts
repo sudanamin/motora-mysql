@@ -65,7 +65,7 @@ export class CarItemComponent implements OnInit {
 
 getCarsThumbnail(){
 
-
+  console.log("the lord of the ring " );
       //  let im=[];
       this.carsObjects = [];
       let gofiForGallery=[] ;
@@ -76,7 +76,7 @@ getCarsThumbnail(){
 
 
         var gofi = this.pagedItems[i].gofi;
-        var Gofi = gofi.split(',');
+        if(gofi) var Gofi = gofi.split(',');else Gofi =[];
        // console.log(arr[0]);
         for (var j=0 ; j<Gofi.length; j++){
 
@@ -103,8 +103,9 @@ getCarsThumbnail(){
            //this.photoSwipe.openGallery(images,index);
           
           // this.photoSwipe.openGallery(this.pagedItems,index);
+          console.log("the lord of the ring " );
     }
-    console.log(this.carsObjects[0].thums);
+    console.log("the lord of the ring " );
 
   }
   
@@ -162,7 +163,8 @@ getCarsThumbnail(){
         
         this.getCarsThumbnail();   
        // console.log("paged items:"+this.pagedItems[0].REF_APP_ID);
-        console.log("paged items:"+this.pagedItems[0].gofi);
+        console.log("all yyy is : "+this.allItems.length);
+        console.log("the lord of the ring ");
       
   }
 

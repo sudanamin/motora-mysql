@@ -419,10 +419,9 @@ router.get('/cimages', (req, res,next) => {
   /*  connection.query("SELECT cars_table.MODEL ,cars_table.COLOR,USER_ID ,car_images.REF_APP_ID,GROUP_CONCAT(car_images.IMAGE_URL) as gofi from car_images INNER JOIN cars_table ON car_images.REF_APP_ID =cars_table.APPLICATION_ID "+whereClause+" GROUP BY car_images.REF_APP_ID ;", function (err, cars) {
  */
 
-connection.query(`SELECT MODEL_NAME, MODEL,DDATE, COLOR ,REF_APP_ID, GROUP_CONCAT(IMAGE_URL) as gofi FROM  car_images  
-INNER JOIN  cars_table on cars_table.APPLICATION_ID = car_images.REF_APP_ID
-inner join  cars_models  on cars_table.MODEL = cars_models.MODEL_ID 
-where   MODEL > 0  GROUP BY car_images.REF_APP_ID;`, function (err, cars) {
+connection.query(`SELECT * FROM  (select REF_APP_ID, GROUP_CONCAT(IMAGE_URL) as gofi from car_images where IMAGE_URL LIKE '%thum%' GROUP BY REF_APP_ID ) as im
+right JOIN  cars_table on cars_table.APPLICATION_ID = im.REF_APP_ID   
+left join  cars_models  on  MODEL = cars_models.MODEL_ID `, function (err, cars) {
         if (err) {
             res.status(500);
             return next(err);
