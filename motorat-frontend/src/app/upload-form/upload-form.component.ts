@@ -258,24 +258,12 @@ export class UploadFormComponent {
       this.fd.append('model', '1'); */
    /*  if (frm.value.carColor == 'WHITE')
       this.fd.append('color', '1'); */
-      var city =12 ;
-    if(frm.value.carCity){
-       city = Utils.convertCitytoInt(frm.value.carCity);
-       console.log('heelo from insiede')
+     
     
-    }
-    this.fd.append('city', city.toString());
+     var city = Utils.convertCitytoInt(frm.value.carCity); this.fd.append('city', city.toString());
      this.fd.append('manufacturer', frm.value.carManufacturer);
-     console.log("manusf factor is :"+frm.value.carManufacturer)
      this.fd.append('price', frm.value.carPrice);
-    // this.fd.append('year', frm.value.carYear);
-     let year = 1;
-       if(frm.value.carYear != "⋘ 2015")  {
-             year = Utils.convertYeartoInt(frm.value.carYear);
-            
-     }
-     this.fd.append('year', year.toString());
-     console.log('year is '+year)
+     let  year = Utils.convertYeartoInt(frm.value.carYear); this.fd.append('year', year.toString());
 
      this.fd.append('kilometers', frm.value.carKilometers);
      this.fd.append('model',frm.value.carModel);
@@ -293,9 +281,12 @@ export class UploadFormComponent {
 
 
     this.auth.user.subscribe(user => {
+      if (user){
       var userId = user.uid;
+      
       this.fd.append('uid', userId);
       this.upload();
+    }
     })
     /*this.fd.append('uid',this.auth.currentUserId);
     this.upload();*/
@@ -396,7 +387,7 @@ export class UploadFormComponent {
               this.fd.delete("image");
 
               this.fd.delete("city");
-              this.fd.delete("manufacter");
+              this.fd.delete("manufacturer");
               this.fd.delete("model");
               this.fd.delete("price");
 

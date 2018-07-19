@@ -10,13 +10,23 @@ export  class Utils {
            case "Ras Alkhaima": return 6;
            case "Sharjah": return 7;
            case "Um Alqwain": return 8;
+           default : return 0;
         }
          
     }
-    static convertYeartoInt(val: number) {
+    static convertYeartoInt(val: string) {
 
-        if ( val>=2000) return val - 2000;
-        if ( val<2000) return val - 1900; 
+        if(val == '⋘ 2015') return 1989;
+        else 
+           {
+               if(    val  ){
+                console.log("val 2 is "+val) ;
+        let val2 = parseInt(val);
+        if ( val2>=2000) return val2 - 2000;
+        if ( val2<2000) return val2 - 1900; 
+           }
+           else { console.log("val is "+val) ;  return 0;  }
+        }
          
     }
 

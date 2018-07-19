@@ -294,8 +294,9 @@ router.post('/setimg', (req, res, next) => {
                 ddate = Date.now();
                 //waranty =0;
                // waranty = Number(req.body.waranty);
-               waranty = roughScale(req.body.waranty,10);
-                phone = req.body.phone;
+                waranty = roughScale(req.body.waranty,10);
+                phone = roughScale(req.body.phone,10);
+              
                 color = req.body.color;
                 console.log('user macufactier is : '+manufacturer);
                 console.log('user description is : '+description);
@@ -303,8 +304,9 @@ router.post('/setimg', (req, res, next) => {
                 console.log('user id is : '+uid);
                 console.log('user waranty is : '+waranty);
                 console.log('user kilometers is : '+kilometers);
+                console.log('user phone is : '+phone);
                 
-              /*   (select cars.MANUFACTURE.MANUFACTURE_ID from cars.MANUFACTURE where MANUFACTURE_NAME = ? ) */
+              /*   (1992-02-02 select cars.MANUFACTURE.MANUFACTURE_ID from cars.MANUFACTURE where MANUFACTURE_NAME = ? ) */
                 console.log(model + "  :" + "color" + req.body.color);
               /*   connection.query(`INSERT INTO cars.cars_table (PRICE,MODEL,YEAR,MANUFACTURE,MILES,USER_ID,EMIRATE,DETAILS,DDATE,WARANTY,PHONE,COLOR) VALUES (? ,
                     (select cars.cars_models.MODEL_ID from cars.cars_models where MODEL_NAME = ? ),
@@ -317,7 +319,7 @@ router.post('/setimg', (req, res, next) => {
                         (select cars.cars_models.MODEL_ID from cars.cars_models where MODEL_NAME = ? ),
                         ?,(select cars.MANUFACTURE.MANUFACTURE_ID from cars.MANUFACTURE where MANUFACTURE_NAME = ? )
                         ,
-                        ?,?,?,1,'1992-02-02',1,1,
+                        ?,?,?,?,NOW(),?,?,
                         (select cars.colors.COLOR_ID from cars.colors where COLOR_NAME = ? ))`
                      , [price,model,year,manufacturer, kilometers, uid,city,description , /*ddate,*/waranty, phone ,color], function (err, result) { 
                   /*   , [model/* , uid, city?,ddate  ,color] , function (err, result) {*/
@@ -389,7 +391,7 @@ router.post('/setimg', (req, res, next) => {
 })*/
 
 
-router.get('/cimages', (req, res) => {
+router.get('/cimages', (req, res,next) => {
 
     //   connection.query("SELECT REF_APP_ID,GROUP_CONCAT(IMAGE_URL) as gofi FROM `car_images` GROUP BY REF_APP_ID;", function(err, cars) {
         var whereClause = "WHERE `IMAGE_URL` LIKE '%thum%' ";
@@ -420,7 +422,7 @@ router.get('/cimages', (req, res) => {
 connection.query(`SELECT MODEL_NAME, MODEL,DDATE, COLOR ,REF_APP_ID, GROUP_CONCAT(IMAGE_URL) as gofi FROM  car_images  
 INNER JOIN  cars_table on cars_table.APPLICATION_ID = car_images.REF_APP_ID
 inner join  cars_models  on cars_table.MODEL = cars_models.MODEL_ID 
-where   MODEL > 0  GROUP BY car_images.REF_APP_ID;`, function (err, cars,next) {
+where   MODEL > 0  GROUP BY car_images.REF_APP_ID;`, function (err, cars) {
         if (err) {
             res.status(500);
             return next(err);
