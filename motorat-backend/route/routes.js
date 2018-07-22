@@ -357,6 +357,7 @@ router.post('/setimg/:app_id', (req, res, next) => {
                     ?,?,?,?,?,?,?,
                     (select cars.colors.COLOR_ID from cars.colors where COLOR_NAME = ? ))` */
                     if(req.params.app_id == 0)
+                    {
                     connection.query(`INSERT INTO cars.cars_table (PRICE,MODEL,YEAR,MANUFACTURE,MILES,USER_ID,
                         EMIRATE,DETAILS,DDATE,WARANTY,PHONE,COLOR) VALUES (? ,
                         (select cars.cars_models.MODEL_ID from cars.cars_models where MODEL_NAME = ? ),
@@ -407,6 +408,58 @@ router.post('/setimg/:app_id', (req, res, next) => {
                   }
 
                 });
+            }else {
+                connection.query(`UPDATE  cars.cars_table (PRICE,MODEL,YEAR,MANUFACTURE,MILES,USER_ID,
+                    EMIRATE,DETAILS,DDATE,WARANTY,PHONE,COLOR) VALUES (? ,
+                    (select cars.cars_models.MODEL_ID from cars.cars_models where MODEL_NAME = ? ),
+                    ?,(select cars.MANUFACTURE.MANUFACTURE_ID from cars.MANUFACTURE where MANUFACTURE_NAME = ? )
+                    ,
+                    ?,?,?,?,NOW(),?,?,
+                    (select cars.colors.COLOR_ID from cars.colors where COLOR_NAME = ? ))`
+                 , [price,model,year,manufacturer, kilometers, uid,city,description , /*ddate,*/waranty, phone ,color], function (err, result) { 
+              /*   , [model/* , uid, city?,ddate  ,color] , function (err, result) {*/
+                if (err) {
+                    res.status(500);
+                    return next(err);
+                }
+                else {   if(  req.files.image !== undefined  ) {
+                    //res.json({msg:"added"});
+                    //req.files.image[0].filename
+                    console.log("added")
+                    console.log("origana name :" + JSON.stringify(req.files));
+                    var images = req.files.image;
+                   // console.log("ffff: " + images[0].size);
+                    for (let i = 0; i < images.length; i++) {
+                        var obj = images[i];
+
+                        console.log(obj.filename);
+
+                        //  for (let image of images){
+                        connection.query("INSERT INTO `car_images` ( IMAGE_URL,REF_APP_ID) VALUES ( ?, ?)", [hostName + obj.filename, result.insertId], function (err, result) {
+                            if (err) {
+                                res.status(500);
+                                return next(err);
+                            }
+                            else {
+                                //res.json({msg:"added"});
+                                //var msg = "added";
+                                //return msg;
+                                msg = msg + "ccc";
+                                if (i == images.length - 1) {
+                                    console.log(i + "iamge lenghhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh ");
+                                    res.status(200).json({ result: result })
+                                }
+                                //console.log(message);
+                            }
+
+                        });
+                    }
+                  }
+                  else{res.status(200).json({ result: result })}
+              }
+
+            });
+            }
 
                 // let path = `/images/${req.file.filename}`;
                 let path = "/test/";
