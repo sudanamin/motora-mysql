@@ -35,7 +35,7 @@ export class UploadFormComponent {
   toggleForm: boolean = false;
   firstTime: boolean = false;
   addForm: any;
-  carsObjects = [];
+  carsObjects : car[]=[];
   // array of all items to be paged
   private allItems: any[];
 
@@ -149,7 +149,14 @@ export class UploadFormComponent {
      /*  console.log("gofThumbsForShow lengh:"+gofThumbsForShow[i]);
       console.log("gofiForGallery lengh:"+gofiForGallery[i].src); */
       
-      var carObject = {id:this.allItems[i].REF_APP_ID,thums:gofThumbsForShow,images:gofiForGallery,model:this.allItems[i].MODEL};
+      var carObject = {APPLICATION_ID:this.allItems[i].REF_APP_ID,City:this.allItems[i].CITY,
+        Manufacter:this.allItems[i].MANUFACTER, Model:this.allItems[i].MODEL,Price:this.allItems[i].PRICE,
+        Year:this.allItems[i].YEAR, Kilometers: this.allItems[i].MILES,Specs:this.allItems[i].SPECS,
+        NoOfCylinders:this.allItems[i].CYLINDERS,Warranty:this.allItems[i].WARANTY,Color:this.allItems[i].COLOR,
+        Transmission:this.allItems[i].TRANSMISSION,ContactNumber:this.allItems[i].PHONE,
+        Date:this.allItems[i].DDATE,
+        DESCRIPTION:this.allItems[i].DETAILS,
+        Thums:gofThumbsForShow,Images:gofiForGallery,};
      this.carsObjects.push(carObject);
      gofiForGallery = [];
      gofThumbsForShow = [];
@@ -165,11 +172,16 @@ export class UploadFormComponent {
 
   EditCar(EditFrm) {
     console.log('car id is :' + this.selectedCar.APPLICATION_ID);
-    let editCar: car = {
+    this.addForm = EditFrm;///////////////////////////////////////////////////////////////////////
+   // City:EditFrm.value.carcity,
+      var city = Utils.convertCitytoInt(EditFrm.value.carcity);
+      //this.fd.append('city', city.toString());
+    
+      let editCar: car = {
       /* APPLICATION_ID: this.selectedCar.APPLICATION_ID, */
       /* Model: EditFrm.value.carmodel, */
       APPLICATION_ID: this.selectedCar.APPLICATION_ID,
-      City:EditFrm.value.carcity,
+      City:city,
       Manufacter:EditFrm.value.carmanufacter,
       Model: EditFrm.value.carmodel,
       Price:EditFrm.value.carprice,
@@ -181,7 +193,9 @@ export class UploadFormComponent {
       Color: EditFrm.value.carcolor,
       Transmission: EditFrm.value.cartransmission,
       ContactNumber: EditFrm.value.carphone,
-      DESCRIPTION: EditFrm.value.carDESCRIPTION
+       Date:null, 
+      DESCRIPTION: EditFrm.value.carDESCRIPTION,
+      
     }
     //console.log
 
@@ -199,6 +213,7 @@ export class UploadFormComponent {
   showEditForm(car) {
     window.scrollTo(0, 0);
     this.selectedCar = car;
+    
     this.toggleForm = !this.toggleForm;
 
   }
@@ -210,7 +225,7 @@ export class UploadFormComponent {
         console.log(data);
         if (data) {
           for (var i = 0; i < this.carsObjects.length; i++) {
-            if (car.id == this.carsObjects[i].id) {
+            if (car.id == this.carsObjects[i].APPLICATION_ID) {
 
               this.carsObjects.splice(i, 1);
               console.log('on is deleted ');
@@ -362,11 +377,13 @@ export class UploadFormComponent {
       console.log(this.filesList[i].name);
     } 
 
+    var url;
+    if (this.fd.has("APPLICATION_ID")) {   /////////////////////////// if it has applicaction id this is mean its from edit form
+       url = "http://localhost:3000/api/updateCar";
+    }
+    else url =  "http://localhost:3000/api/setimg";
 
-    if (this.fd.has("color")) {
-      console.log('form data is :' + this.fd);
-
-      this.http.post("http://localhost:3000/api/setimg", this.fd, {
+      this.http.post(url, this.fd, {
         reportProgress: true,
         observe: 'events',
         //[params:string]: newCar.color
@@ -384,8 +401,10 @@ export class UploadFormComponent {
               this.addForm.reset();
               this.imagePreviews = [];
               this.bigImagePreviews = [];
-              this.fd.delete("image");
 
+              this.fd.delete("APPLICATION_ID");
+              this.fd.delete("image");
+              
               this.fd.delete("city");
               this.fd.delete("manufacturer");
               this.fd.delete("model");
@@ -418,7 +437,7 @@ export class UploadFormComponent {
         }
         );
 
-    }
+    
 
   }
 }

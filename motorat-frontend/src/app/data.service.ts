@@ -49,6 +49,11 @@ export class DataService {
    // .map(res => res.json());
   }
 
+  deleteImage(image_id){
+    return this.http.delete("http://localhost:3000/api/image/"+image_id);
+   // .map(res => res.json());
+  }
+
   updateCar(carID , formData ){
     let headers = new HttpHeaders();
 

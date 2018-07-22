@@ -175,6 +175,37 @@ router.delete('/car/:id', (req, res, next) => {
 
 })
 
+router.delete('/image/:id', (req, res, next) => {
+
+    image_id = req.params.image_id;
+
+
+    connection.query("DELETE FROM `car_images` WHERE REF_app_ID=?", [image_id], function (err, result) {
+        if (err) {
+            res.status(500);
+            return next(err);
+        }
+        else {
+            // res.json(result);
+            console.log("delete complete for car_images table for image id : " + image_id);
+           /*  connection.query("DELETE FROM `cars_table` WHERE APPLICATION_ID=?", [image_id], function (err, result) {
+                if (err) {
+                    res.status(500);
+                    return next(err);
+                }
+                else {
+                    res.json(result);
+                    console.log("delete complete for cars_table car id : " + car_id);
+                }
+
+            }); */
+        }
+
+    });
+
+
+})
+
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
