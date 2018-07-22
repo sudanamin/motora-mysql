@@ -28,6 +28,7 @@ export class UploadFormComponent {
   uploadedImage: File;
   dropzoneActive: boolean = false;
   imagePreviews: preview[] = [];
+  //EditFormImagePreviews: preview[] = [];
   bigImagePreviews: preview[] = [];
   //carList: car[] = [];
   filesList: fileL[] = [];
@@ -46,6 +47,7 @@ export class UploadFormComponent {
   //pagedItems: any[];
   //fd:FormData[] = [];
   fd = new FormData();
+  /* editFD = new FormData(); */
 
    time = Date.now() + "_";
   constructor(public sanitizer: DomSanitizer,
@@ -57,6 +59,15 @@ export class UploadFormComponent {
 
   dropzoneState($event: boolean) {
     this.dropzoneActive = $event;
+  }
+
+ 
+  cancelEditing(){
+  this.toggleForm= !this.toggleForm;
+  this.filesList = [];
+  this.bigImagePreviews = [];
+ // this.EditFormImagePreviews = [];
+
   }
 
   removeImage(imageName: string) {
@@ -92,7 +103,18 @@ export class UploadFormComponent {
       }
     }
 
-    this.filesList.forEach(name => console.log("after"+name.name));
+  //  this.filesList.forEach(name => console.log("after"+name.name));
+
+  }
+
+  removeImageFromServer(imageName: string) {
+
+    this.dataService.deleteImage(imageName).subscribe(result => {
+
+      console.log(result);
+      this.getCars();
+
+    });
 
   }
 
@@ -149,7 +171,7 @@ export class UploadFormComponent {
      /*  console.log("gofThumbsForShow lengh:"+gofThumbsForShow[i]);
       console.log("gofiForGallery lengh:"+gofiForGallery[i].src); */
       
-      var carObject = {APPLICATION_ID:this.allItems[i].REF_APP_ID,City:this.allItems[i].CITY,
+      var carObject = {APPLICATION_ID:this.allItems[i].APPLICATION_ID,City:this.allItems[i].CITY,
         Manufacter:this.allItems[i].MANUFACTER, Model:this.allItems[i].MODEL,Price:this.allItems[i].PRICE,
         Year:this.allItems[i].YEAR, Kilometers: this.allItems[i].MILES,Specs:this.allItems[i].SPECS,
         NoOfCylinders:this.allItems[i].CYLINDERS,Warranty:this.allItems[i].WARANTY,Color:this.allItems[i].COLOR,
@@ -177,9 +199,8 @@ export class UploadFormComponent {
       var city = Utils.convertCitytoInt(EditFrm.value.carcity);
       //this.fd.append('city', city.toString());
     
-      let editCar: car = {
-      /* APPLICATION_ID: this.selectedCar.APPLICATION_ID, */
-      /* Model: EditFrm.value.carmodel, */
+  /*     let editCar: car = {
+      
       APPLICATION_ID: this.selectedCar.APPLICATION_ID,
       City:city,
       Manufacter:EditFrm.value.carmanufacter,
@@ -193,21 +214,52 @@ export class UploadFormComponent {
       Color: EditFrm.value.carcolor,
       Transmission: EditFrm.value.cartransmission,
       ContactNumber: EditFrm.value.carphone,
-       Date:null, 
+      
       DESCRIPTION: EditFrm.value.carDESCRIPTION,
       
-    }
+    } */
+  this.fd.append("APPLICATION_ID",this.selectedCar.APPLICATION_ID);
+    var city = Utils.convertCitytoInt(EditFrm.value.carcity); this.fd.append('city', city.toString());
+    this.fd.append('manufacturer', EditFrm.value.carmanufacturer);
+    this.fd.append('price', EditFrm.value.carprice);
+    let  year = Utils.convertYeartoInt(EditFrm.value.caryear); this.fd.append('year', year.toString());
+
+    this.fd.append('kilometers', EditFrm.value.carkilometers);
+    this.fd.append('model',EditFrm.value.carmodel);
+    this.fd.append('specs', EditFrm.value.carspecs);
+    this.fd.append('cylinders', EditFrm.value.carcylinders);
+
+    this.fd.append('warranty', EditFrm.value.carwarranty);
+    this.fd.append('color', EditFrm.value.carcolor);
+    this.fd.append('transmission', EditFrm.value.cartransmission);
+    this.fd.append('phone', EditFrm.value.carphone);
+
+    this.fd.append('description', EditFrm.value.carDESCRIPTION);
+
+    
+
+
+   this.auth.user.subscribe(user => {
+     if (user){
+     var userId = user.uid;
+     
+     this.fd.append('uid', userId);
+     this.upload();
+   }
+   })
     //console.log
 
    // this.dataService.updateCar(editCar)
-   let editFormData;
-   this.dataService.updateCar(editCar.APPLICATION_ID,editFormData)
+ //  let editFormData;
+ /*  this.dataService.updateCar(editCar.APPLICATION_ID,editFormData)
       .subscribe(result => {
         console.log('original Item to be updated:' + result);
         this.getCars();
       });
-
+**/
     this.toggleForm = !this.toggleForm;
+    this.bigImagePreviews = [];
+    this.filesList = [];
   }
 
   showEditForm(car) {
@@ -215,17 +267,19 @@ export class UploadFormComponent {
     this.selectedCar = car;
     
     this.toggleForm = !this.toggleForm;
+    this.filesList = [];
+    this.bigImagePreviews = [];
 
   }
 
   deleteCar(car) {
-    console.log('car id is : ' + car.id);
-    this.dataService.deleteCar(car.id)
+    console.log('car id is : ' + car.APPLICATION_ID);
+    this.dataService.deleteCar(car.APPLICATION_ID)
       .subscribe(data => {
         console.log(data);
         if (data) {
           for (var i = 0; i < this.carsObjects.length; i++) {
-            if (car.id == this.carsObjects[i].APPLICATION_ID) {
+            if (car.APPLICATION_ID == this.carsObjects[i].APPLICATION_ID) {
 
               this.carsObjects.splice(i, 1);
               console.log('on is deleted ');
@@ -354,6 +408,10 @@ export class UploadFormComponent {
     reader.readAsDataURL(file);
 
     reader.onload = () => {
+    /*   if(this.toggleForm) {
+        
+        this.EditFormImagePreviews.push({ url: reader.result, name: file.name, size: file.size });
+      } else  */
       this.imagePreviews.push({ url: reader.result, name: file.name, size: file.size });
 
     };
@@ -364,6 +422,10 @@ export class UploadFormComponent {
     reader.readAsDataURL(file);
 
     reader.onload = () => {
+     /*  if(this.toggleForm) {
+        
+       // this.EditFormImagePreviews.push({ url: reader.result, name: file.name, size: file.size });
+      } else  */
       this.bigImagePreviews.push({ url: reader.result, name: file.name, size: file.size });
 
     };
@@ -380,6 +442,7 @@ export class UploadFormComponent {
     var url;
     if (this.fd.has("APPLICATION_ID")) {   /////////////////////////// if it has applicaction id this is mean its from edit form
        url = "http://localhost:3000/api/updateCar";
+       console.log("its update only");
     }
     else url =  "http://localhost:3000/api/setimg";
 

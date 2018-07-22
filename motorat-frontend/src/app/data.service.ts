@@ -49,8 +49,12 @@ export class DataService {
    // .map(res => res.json());
   }
 
-  deleteImage(image_id){
-    return this.http.delete("http://localhost:3000/api/image/"+image_id);
+  deleteImage(image_url){
+    var image_name = image_url.substring(22);
+    console.log('image name is '+image_name +"image url is "+image_url);
+   
+    
+    return this.http.delete("http://localhost:3000/api/image/"+image_name);
    // .map(res => res.json());
   }
 

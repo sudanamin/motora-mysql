@@ -8,6 +8,8 @@ const fileType = require('file-type')
 const fs = require('fs')
 var url = require('url');
 
+var hostName = "http://localhost:3000/";
+
 //app.use(express.static(__dirname ));
 
 var connection = mysql.createConnection({
@@ -144,6 +146,9 @@ router.put('/car/:id', (req, res, next) => {
 
 })
 
+
+/* router.post('/updateCar' */
+
 router.delete('/car/:id', (req, res, next) => {
 
     car_id = req.params.id;
@@ -175,19 +180,23 @@ router.delete('/car/:id', (req, res, next) => {
 
 })
 
-router.delete('/image/:id', (req, res, next) => {
+router.delete('/image/:imageName', (req, res, next) => {
 
-    image_id = req.params.image_id;
+    image_name = req.params.imageName;
+    image_url1 = hostName+image_name;
+    image_url2 = image_url1.replace("_thumb", "");
+    console.log('image to delte is '+image_url1)
 
 
-    connection.query("DELETE FROM `car_images` WHERE REF_app_ID=?", [image_id], function (err, result) {
+    connection.query("DELETE  FROM `car_images` WHERE IMAGE_URL=? or IMAGE_URL=?", [image_url1,image_url2], function (err, result) {
         if (err) {
             res.status(500);
             return next(err);
         }
         else {
             // res.json(result);
-            console.log("delete complete for car_images table for image id : " + image_id);
+            console.log("delete complete for car_images table for image id : " + image_url1);
+            res.json(result);
            /*  connection.query("DELETE FROM `cars_table` WHERE APPLICATION_ID=?", [image_id], function (err, result) {
                 if (err) {
                     res.status(500);
@@ -371,7 +380,7 @@ router.post('/setimg', (req, res, next) => {
                             console.log(obj.filename);
 
                             //  for (let image of images){
-                            connection.query("INSERT INTO `car_images` ( IMAGE_URL,REF_APP_ID) VALUES ( ?, ?)", ["http://localhost:3000/" + obj.filename, result.insertId], function (err, result) {
+                            connection.query("INSERT INTO `car_images` ( IMAGE_URL,REF_APP_ID) VALUES ( ?, ?)", [hostName + obj.filename, result.insertId], function (err, result) {
                                 if (err) {
                                     res.status(500);
                                     return next(err);

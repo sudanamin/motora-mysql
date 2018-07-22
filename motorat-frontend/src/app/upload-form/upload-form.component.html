@@ -76,7 +76,7 @@
 
 
       </div>
-
+      <br>  
       <!--  <div class='col-md-6'> -->
 
       <div class="form-group row">
@@ -307,7 +307,7 @@
 
    <h4 class="label label-primary"> Upload car images</h4>
    <div class="toolbar">
-     <input #file type="file" name='image' (change)="onImageChange($event)" value="Add Files..." accept="image/*" multiple>
+     <input #file type="file" name='edit_image' (change)="onImageChange($event)" value="Add Files..." accept="image/*" multiple>
      <!--  <button (click)="file.click()">Upload file</button> -->
 
    </div>
@@ -318,24 +318,41 @@
      <!--  <i class="fa fa-cloud-upload fa-2x"></i> -->
      <ul class="files" (click)="$event.stopPropagation()">
 
-       <li *ngFor="let image of bigImagePreviews">
+       <li *ngFor="let image of selectedCar.Thums">
 
-         <a target="#" [href]="sanitizer.bypassSecurityTrustUrl(image.url)">
+         <!-- <a target="#" [href]="sanitizer.bypassSecurityTrustUrl(image.url)">
            <img class="droplet-preview" [src]="sanitizer.bypassSecurityTrustUrl(image.url)">
-         </a>
+         </a> -->
+         <a target="#" [href]="image">
+          <img class="droplet-preview" [src]="image">
+        </a>
 
-         <div class="delete" (click)="removeImage(image.name);">&times;</div>
+         <div class="delete" (click)="removeImageFromServer(image);">&times;</div>
          <div class="size">{{image.size / 1024 / 1024 | number}}MB</div>
        </li>
 
      </ul>
+
+     <ul class="files" (click)="$event.stopPropagation()">
+
+      <li *ngFor="let image of bigImagePreviews">
+
+        <a target="#" [href]="sanitizer.bypassSecurityTrustUrl(image.url)">
+          <img class="droplet-preview" [src]="sanitizer.bypassSecurityTrustUrl(image.url)">
+        </a>
+
+        <div class="delete" (click)="removeImage(image.name);">&times;</div>
+        <div class="size">{{image.size / 1024 / 1024 | number}}MB</div>
+      </li>
+
+    </ul>
      <h3 class="draghere text-muted" (click)="file.click()">Click or Drag Here...</h3>
 
    </div>
 
 
  </div>
-
+ <br>  
  <!--  <div class='col-md-6'> -->
 
  <div class="form-group row">
@@ -441,7 +458,7 @@
    </div>
 
    <div class="col-xs-3">
-       <label class="label label-primary" for="Cylinders">
+       <label class="label label-primary" for="carcylinders">
          No. Of Cylinders
        </label>
 
@@ -463,7 +480,7 @@
    
 
    <div class="col-xs-3">
-       <label class="label label-primary" for="">
+       <label class="label label-primary" for="carwarranty">
          Warranty
        </label>
 
@@ -475,7 +492,7 @@
      </div>
 
    <div class="col-xs-3">
-     <label class="label label-primary" for="color">
+     <label class="label label-primary" for="carcolor">
        Color
      </label>
 
@@ -487,7 +504,7 @@
    </div>
 
    <div class="col-xs-3">
-     <label class="label label-primary" for="exampleFormControlSelect1">
+     <label class="label label-primary" for="cartransmission">
        Transmission
      </label>
            <select class="form-control"   name="cartransmission" [ngModel]="selectedCar.Transmission">
@@ -499,7 +516,7 @@
    </div>
 
    <div class="col-xs-3">
-     <label class="label label-primary" for="phone">
+     <label class="label label-primary" for="carphone">
        Contact Number
      </label>
 
@@ -516,7 +533,7 @@
      </textarea>
    </div>
    <button type="submit" name='button' class='btn btn-success' [disabled]='EditFrm.invalid'>Save</button>
-   <button name='button' class='btn btn-default' (click)="toggleForm= !toggleForm">Cancel</button>
+   <button name='button' class='btn btn-default' (click)="cancelEditing();">Cancel</button>
  <!-- <button type="submit" name='button' class='btn btn-danger' [disabled]='EditFrm.invalid'>update ad with {{bigImagePreviews.length}} images</button> -->
 
 
@@ -576,9 +593,9 @@
 
                       
 
-                      <div class="num_of_img"> +{{obj.thums.length}} </div>
+                      <div class="num_of_img"> +{{obj.Thums.length}} </div>
 
-                      <img (click)="openSlideshow(i,j);" style="width:150px; height:110px;" [src]="obj.thums[0]">
+                      <img (click)="openSlideshow(i,j);" style="width:150px; height:110px;" [src]="obj.Thums[0]">
                       <br>
                      
                       <br>
