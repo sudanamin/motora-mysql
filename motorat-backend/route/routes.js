@@ -291,7 +291,9 @@ function roughScale(x, base) {
     if (isNaN(parsed)) { return 0 }
     return parsed ;
   }
-router.post('/setimg', (req, res, next) => {
+router.post('/setimg/:app_id', (req, res, next) => {
+
+    console.log('  this is app id'+req.params.app_id )
     var msg = "aa";
     upload(req, res, function (err) {
 
@@ -354,6 +356,7 @@ router.post('/setimg', (req, res, next) => {
                     
                     ?,?,?,?,?,?,?,
                     (select cars.colors.COLOR_ID from cars.colors where COLOR_NAME = ? ))` */
+                    if(req.params.app_id == 0)
                     connection.query(`INSERT INTO cars.cars_table (PRICE,MODEL,YEAR,MANUFACTURE,MILES,USER_ID,
                         EMIRATE,DETAILS,DDATE,WARANTY,PHONE,COLOR) VALUES (? ,
                         (select cars.cars_models.MODEL_ID from cars.cars_models where MODEL_NAME = ? ),

@@ -444,7 +444,7 @@ export class UploadFormComponent {
        url = "http://localhost:3000/api/updateCar";
        console.log("its update only");
     }
-    else url =  "http://localhost:3000/api/setimg";
+    else url =  "http://localhost:3000/api/setimg/0";
 
       this.http.post(url, this.fd, {
         reportProgress: true,
