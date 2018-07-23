@@ -340,6 +340,8 @@ router.post('/setimg/:app_id', (req, res, next) => {
                 phone = roughScale(req.body.phone,10);
               
                 color = req.body.color;
+
+                cylinders =  roughScale(req.body.cylinders,10);
                 console.log('user macufactier is : '+manufacturer);
                 console.log('user description is : '+description);
                 console.log('user city is : '+city);
@@ -359,13 +361,13 @@ router.post('/setimg/:app_id', (req, res, next) => {
                     if(req.params.app_id == 0)
                     {
                     connection.query(`INSERT INTO cars.cars_table (PRICE,MODEL,YEAR,MANUFACTURE,MILES,USER_ID,
-                        EMIRATE,DETAILS,DDATE,WARANTY,PHONE,COLOR) VALUES (? ,
+                        EMIRATE,DETAILS,DDATE,WARANTY,PHONE,COLOR, CYLINDERS) VALUES (? ,
                         (select cars.cars_models.MODEL_ID from cars.cars_models where MODEL_NAME = ? ),
                         ?,(select cars.MANUFACTURE.MANUFACTURE_ID from cars.MANUFACTURE where MANUFACTURE_NAME = ? )
                         ,
                         ?,?,?,?,NOW(),?,?,
-                        (select cars.colors.COLOR_ID from cars.colors where COLOR_NAME = ? ))`
-                     , [price,model,year,manufacturer, kilometers, uid,city,description , /*ddate,*/waranty, phone ,color], function (err, result) { 
+                        (select cars.colors.COLOR_ID from cars.colors where COLOR_NAME = ? ),?)`
+                     , [price,model,year,manufacturer, kilometers, uid,city,description , /*ddate,*/waranty, phone ,color,cylinders], function (err, result) { 
                   /*   , [model/* , uid, city?,ddate  ,color] , function (err, result) {*/
                     if (err) {
                         res.status(500);
@@ -409,14 +411,12 @@ router.post('/setimg/:app_id', (req, res, next) => {
 
                 });
             }else {
-                connection.query(`UPDATE  cars.cars_table (PRICE,MODEL,YEAR,MANUFACTURE,MILES,USER_ID,
-                    EMIRATE,DETAILS,DDATE,WARANTY,PHONE,COLOR) VALUES (? ,
-                    (select cars.cars_models.MODEL_ID from cars.cars_models where MODEL_NAME = ? ),
-                    ?,(select cars.MANUFACTURE.MANUFACTURE_ID from cars.MANUFACTURE where MANUFACTURE_NAME = ? )
-                    ,
-                    ?,?,?,?,NOW(),?,?,
-                    (select cars.colors.COLOR_ID from cars.colors where COLOR_NAME = ? ))`
-                 , [price,model,year,manufacturer, kilometers, uid,city,description , /*ddate,*/waranty, phone ,color], function (err, result) { 
+                connection.query(`UPDATE  cars.cars_table set PRICE = ? ,
+                MODEL =(select cars.cars_models.MODEL_ID from cars.cars_models where MODEL_NAME = ? ),YEAR = ? ,
+                MANUFACTURE = (select cars.MANUFACTURE.MANUFACTURE_ID from cars.MANUFACTURE where MANUFACTURE_NAME = ? ) ,MILES = ? ,USER_ID = ? ,
+                    EMIRATE = ? ,DETAILS = ? ,DDATE = NOW() ,WARANTY = ? ,PHONE = ? ,
+                    COLOR = (select cars.colors.COLOR_ID from cars.colors where COLOR_NAME = ? ), CYLINDERS = ? where APPLICATION_ID =?`
+                 , [price,model,year,manufacturer, kilometers, uid,city,description , /*ddate,*/waranty, phone ,color,cylinders,result.insertId], function (err, result) { 
               /*   , [model/* , uid, city?,ddate  ,color] , function (err, result) {*/
                 if (err) {
                     res.status(500);
@@ -435,7 +435,7 @@ router.post('/setimg/:app_id', (req, res, next) => {
                         console.log(obj.filename);
 
                         //  for (let image of images){
-                        connection.query("INSERT INTO `car_images` ( IMAGE_URL,REF_APP_ID) VALUES ( ?, ?)", [hostName + obj.filename, result.insertId], function (err, result) {
+                        connection.query("INSERT INTO `car_images` ( IMAGE_URL,REF_APP_ID) VALUES ( ?, ?)", [hostName + obj.filename, req.params.app_id], function (err, result) {
                             if (err) {
                                 res.status(500);
                                 return next(err);

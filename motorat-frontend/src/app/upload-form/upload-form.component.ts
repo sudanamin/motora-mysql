@@ -110,6 +110,14 @@ export class UploadFormComponent {
   removeImageFromServer(imageName: string) {
 
     this.dataService.deleteImage(imageName).subscribe(result => {
+      for (let i = 0; i < this.selectedCar.Thums.length; i++) {
+        if (this.selectedCar.Thums[i] === imageName) {
+          this.selectedCar.Thums.splice(i, 1);
+          //this.filesList.splice(i, 1);
+       
+          //break;
+        }
+      }
 
       console.log(result);
       this.getCars();
@@ -245,6 +253,7 @@ export class UploadFormComponent {
      
      this.fd.append('uid', userId);
      this.upload();
+     this.filesList = [];
    }
    })
     //console.log
@@ -259,7 +268,7 @@ export class UploadFormComponent {
 **/
     this.toggleForm = !this.toggleForm;
     this.bigImagePreviews = [];
-    this.filesList = [];
+    
   }
 
   showEditForm(car) {
@@ -439,14 +448,19 @@ export class UploadFormComponent {
       console.log(this.filesList[i].name);
     } 
 
-    var url;
+   /*  var url;
     if (this.fd.has("APPLICATION_ID")) {   /////////////////////////// if it has applicaction id this is mean its from edit form
        url = "http://localhost:3000/api/updateCar";
        console.log("its update only");
-    }
-    else url =  "http://localhost:3000/api/setimg/0";
+    } */
 
-      this.http.post(url, this.fd, {
+    var app_id = '0';
+    if (this.fd.has("APPLICATION_ID")) {   /////////////////////////// if it has applicaction id this is mean its from edit form
+       app_id= this.selectedCar.APPLICATION_ID;
+    }
+   // else url =  "http://localhost:3000/api/setimg/0";
+
+      this.http.post("http://localhost:3000/api/setimg/"+app_id, this.fd, {
         reportProgress: true,
         observe: 'events',
         //[params:string]: newCar.color

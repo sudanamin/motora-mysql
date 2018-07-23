@@ -330,11 +330,7 @@
          <div class="delete" (click)="removeImageFromServer(image);">&times;</div>
          <div class="size">{{image.size / 1024 / 1024 | number}}MB</div>
        </li>
-
-     </ul>
-
-     <ul class="files" (click)="$event.stopPropagation()">
-
+     </ul>     <ul class="files" (click)="$event.stopPropagation()">
       <li *ngFor="let image of bigImagePreviews">
 
         <a target="#" [href]="sanitizer.bypassSecurityTrustUrl(image.url)">
@@ -568,7 +564,7 @@
         <h3 class="titles"> Your previous ads </h3>
       <br>
 
-      <ul style="list-style:none">
+      <ul class="carsObjects" style="list-style:none">
 
           <li class='memberLi' *ngFor="let obj of carsObjects;  let i = index">
               <!-- <div class="container2" *ngFor="let thumb of objs.thums;  let j = index"> 

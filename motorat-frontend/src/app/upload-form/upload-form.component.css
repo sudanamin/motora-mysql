@@ -59,7 +59,8 @@
     position: relative;
     border-radius: 2px;
     width: 100%;
-    height: 200px;
+    height: auto;
+    min-height: 200px;
     /* background-color: rgba(184, 207, 228, 0.288); */
     background: linear-gradient(to bottom, #ededed2a 0%, #dededea8 100%);
     margin-top: -5px;
@@ -119,13 +120,13 @@
           
     }
 
-ul
-{ 
-overflow-x:hidden;
-white-space:nowrap; 
+.carsObjects
+  { 
+    overflow-x:hidden;
+    white-space:nowrap; 
 
-width: 100%;
-} 
+    width: 100%;
+  } 
 
 .memberLi{
 
@@ -170,12 +171,16 @@ li
 }
  .droplet ul.files {
    /*  height: 100%; */
-    width: 100%;
+   /*  width: 100%; */
     display: inline-block;
     overflow-y: auto;
     padding: 5px;
     list-style-type: none;
     transition: all .5s;
+}
+
+ul{
+    display: inline-block;
 }
 
 .droplet ul.files li div.size {
