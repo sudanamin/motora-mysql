@@ -4,6 +4,7 @@ import {DataService} from '../data.service'
 
 //import { PagerService } from '../_services/index'
 
+
 @Component({
   selector: 'app-members',
   templateUrl: './members.component.html',

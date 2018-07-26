@@ -24,6 +24,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { ContactComponent } from './contact/contact.component';
+import { AboutComponent } from './about/about.component';
 
 var firebaseConfig = {
   apiKey: "AIzaSyAIblq6kLPLBguR_GUkRgzTu8ou219yoLk",
@@ -46,7 +48,9 @@ var firebaseConfig = {
     //UserProfileComponent,
     SignupComponent,
     ResetPasswordComponent,
-    LoginComponent
+    LoginComponent,
+    ContactComponent,
+    AboutComponent
     
   ],
   imports: [

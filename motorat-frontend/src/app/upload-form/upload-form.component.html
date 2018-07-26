@@ -3,9 +3,9 @@
   <div class="col-md-8">
 
     <br>
-    <div class='about'>  <a>Home</a></div>
-    <div class='about'> &nbsp;&nbsp; <a style="color:white;">About</a> </div>
-    <div class='about'> &nbsp;&nbsp; <a style="color:white;">Contact</a> </div>
+    <div class='about' (click)= "router.navigate(['/main'])">  <a>Home</a></div>
+    <div class='about' (click)= "router.navigate(['/about'])"> &nbsp;&nbsp; <a style="color:white;">About</a> </div>
+    <div class='about' (click)= "router.navigate(['/contact'])"> &nbsp;&nbsp; <a style="color:white;">Contact</a> </div>
     <div class='Logout' (click)="auth.signOut()"> &nbsp;&nbsp; <a style="color: rgba(184, 207, 228, 0.877);">Logout</a></div>
 
     <!-- <div class="PlaceAd " (click)="placeYourAd()">Place Your Ad</div> -->

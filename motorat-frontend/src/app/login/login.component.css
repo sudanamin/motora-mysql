@@ -22,7 +22,7 @@
 		background-size: 2em;
 		border-radius: 0.5em;
 		border: none;
-		color: white;
+		color: rgba(184, 207, 228, 0.877);
 		cursor: pointer;
 		font-size: 1em;
 		height: 2em;
@@ -32,13 +32,13 @@
 		transition: all 0.5s; }
 	  /*google button */
 	  .btn-google {
-		background-color: #dd4b39;
+		background-color: #d863549d;
 		background-image: url("assets/images/google.svg");
 		border-radius: 20px;
 		width: 100%;
 	}
 		.btn-google:hover {
-			background: #e0e414; 
+			background: white; 
 			color: #59685f;}
 		.btn-google:active {
 		  background-color: #c23321; }
@@ -47,29 +47,66 @@
 	 .btn-facebook {
 		/* padding: 50% 0; */
 		vertical-align: middle;
-			background-color: #5876da;
+			background-color: #5876da6b;
 			background-image: url("assets/images/facebook.svg");
 			border-radius: 20px;
 			width: 100%;
 		}
 			.btn-facebook:hover {
-				background: #e0e414;
+				background: white;
 				color: #59685f;}
 			.btn-facebook:active {
 			  background-color: #c23321; }
+
+ .tab{
+				background-color: rgba(0, 1, 3, 0.849);
+				overflow: auto;
+				
+			} 
+			
 .loginBox
 {
 	position: absolute;
 	top: 50%;
-	left: 85%;
+	left: 50%;
 	transform: translate(-50%,-50%);
 	width: 350px;
 	/*/height: 80%; */
 	padding: 60px 30px;
 	margin-top: 15px;
 	box-sizing: border-box;
-	background: rgba(0,0,0,.5);
+	background-color: rgba(10, 26, 58, 0.719);
 }
+
+.login{
+  
+    float: left;
+    text-align: left;
+    font-weight: bold;
+	color: rgba(184, 207, 228, 0.877);
+	
+    font-family:Tahoma;
+    }
+
+.lang{
+    float: right;
+    text-align: left;
+    font-weight: bold;
+	
+	
+	font-family:Tahoma;
+	
+    /* float : left ; */
+}
+
+.about{
+    float: left;
+    text-align: left;
+    font-weight: bold;
+    color: white;
+    font-family:Tahoma;
+}
+
 .user
 {
 	opacity: 0.9;
@@ -81,11 +118,11 @@
 	top: calc(-100px/2);
 	left: calc(50% - 50px);
 }
-h2
+h3
 {
 	margin: 0;
 	padding: 0 0 20px;
-	color: #efed40;
+	color: white;
 	text-align: center;
 }
 .loginBox p
@@ -93,7 +130,7 @@ h2
 	margin: 0;
 	padding: 0;
 	font-weight: bold;
-	color: #fff;
+	color: rgba(184, 207, 228, 0.877);
 }
 .loginBox input
 {
@@ -115,7 +152,7 @@ h2
 .loginBox input[type="text"]:hover,
 .loginBox input[type="password"]:hover
 {
-	border-bottom: 1px solid #e0e414;
+	border-bottom: 1px solid white;
 	/*color: #262626;*/
 }
 ::placeholder
@@ -129,18 +166,18 @@ h2
 	height: 2em;
 	color: #fff;
 	font-size: 16px;
-	background: #ff267e;
+	background:   rgba(18, 24, 31, 0.877);
 	cursor: pointer;
 	border-radius: 20px;
 }
 .loginBox input[type="submit"]:hover
 {
-	background: #e0e414;
+	background: white;
 	color: #59685f;
 }
 .loginBox a
 {
-	color: #fff;
+	color: rgba(184, 207, 228, 0.877);
 	font-size: 14px;
 	font-weight: bold;
 	text-decoration: none;

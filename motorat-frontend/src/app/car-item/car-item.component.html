@@ -20,11 +20,11 @@
 
             <br>
             <div class='about'> <a style="color:white;">Home</a></div>
-            <div class='about'> &nbsp;&nbsp; <a style="color:white;">About</a> </div>
-            <div class='about'> &nbsp;&nbsp; <a style="color:white;">Contact</a> </div>
-            <div class='login'> &nbsp;&nbsp; <a style="color: rgba(184, 207, 228, 0.877);">Login</a></div>
+            <div class='about' (click)= "router.navigate(['/about'])"> &nbsp;&nbsp; <a style="color:white;">About</a> </div>
+            <div class='about'(click)= "router.navigate(['/contact'])"> &nbsp;&nbsp; <a style="color:white;">Contact</a> </div>
+            <div class='login' (click)= "router.navigate(['/members'])"> &nbsp;&nbsp; <a style="color: rgba(184, 207, 228, 0.877);">Login</a></div>
             
-            <div class="PlaceAd " (click)="placeYourAd()"><a>Place Your Ad</a></div>
+            <div class="PlaceAd " (click)= "router.navigate(['/members'])"><a>Place Your Ad</a></div>
             <div class='lang'> <a style="color:white;">العربية </a>&nbsp;&nbsp;</div>
               <br> <br> 
         </div>

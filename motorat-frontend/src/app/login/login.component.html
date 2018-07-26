@@ -22,11 +22,25 @@
    <a routerLink="/signup" routerLinkActive="active" class="alc">No account? <strong>Create one here</strong></a>
  </div> -->
 
- 
+ <div class="tab">
+  <div class="col-md-2"> </div>
+  <div class="col-md-8">
+
+      <br>
+      <div class='about' (click)= "router.navigate(['/main'])"> <a style="color:white;">Home</a></div>
+      <div class='about' (click)= "router.navigate(['/about'])"> &nbsp;&nbsp; <a style="color:white;">About</a> </div>
+      <div class='about' (click)= "router.navigate(['/contact'])"> &nbsp;&nbsp; <a style="color:white;">Contact</a> </div>
+      
+      
+      
+      <div class='lang' > <a style="color: rgba(184, 207, 228, 0.877);">العربية </a>&nbsp;&nbsp;</div>
+        <br> <br> 
+  </div>
+</div>    
 
  <div class="loginBox">
-  <img src="assets/images/user-login.svg" class="user">
-  <h2>Log In Here</h2>
+  
+  <h3>Log In Here</h3>
   <!-- <form> -->
 
       <button (click)="auth.facebookLogin()" id="fb"  class="btn-si btn-facebook">Login With Facebook</button><br>
@@ -54,10 +68,10 @@
     <a routerLink="/signup" routerLinkActive="active" class="alc">No account? <strong>Create one here</strong></a>
 
    
-    <a href='https://play.google.com/store/apps/details?id=com.ammostafa.stickykeep&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
+   <!--  <a href='https://play.google.com/store/apps/details?id=com.ammostafa.stickykeep&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
       <img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/></a>
 
-    <div class ="play">Our app is now available on Google Play.</div>
+    <div class ="play">Our app is now available on Google Play.</div> -->
 
 </div>
 </ng-template>

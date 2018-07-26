@@ -14,6 +14,7 @@ import {Utils} from '../../util';
 import { DataService } from '../data.service'
 import { AuthService } from '../core/auth.service';
 /* import { Form } from '@angular/forms'; */
+import {Router} from "@angular/router";
 
 
 
@@ -55,6 +56,7 @@ export class UploadFormComponent {
     private http: HttpClient,
     private dataService: DataService,
     public auth: AuthService,
+    private router: Router
   ) { }
 
   dropzoneState($event: boolean) {

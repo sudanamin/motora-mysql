@@ -11,11 +11,17 @@ import { LoginComponent} from './login/login.component';
 import { SignupComponent} from './signup/signup.component';
 import { ResetPasswordComponent} from './reset-password/reset-password.component';
 
+import { ContactComponent} from './contact/contact.component';
+import { AboutComponent} from './about/about.component';
+
+
 
 
 export const router: Routes = [
-    { path: '',   redirectTo: 'login', pathMatch: 'full' },
+    { path: '',   redirectTo: 'main', pathMatch: 'full' },
     { path:'main', component: MainComponent},
+    { path: 'contact', component: ContactComponent },
+    { path: 'about', component: AboutComponent },
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignupComponent },
    // { path: 'login-email', component: EmailComponent },

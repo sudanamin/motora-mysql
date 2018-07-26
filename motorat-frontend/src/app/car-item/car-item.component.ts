@@ -3,10 +3,11 @@ import {car} from '../../car';
 import {DataService} from '../data.service'
 import { PagerService } from '../_services/index'
 //import { Http ,Response } from '@angular/http';
-import { HttpClient, HttpEventType } from '@angular/common/http';
+/* import { HttpClient, HttpEventType } from '@angular/common/http'; */
 
 import { PhotoSwipeComponent } from '../photo-swipe/photo-swipe.component';
-import { IImage              } from '../interfaces/image';
+/* import { IImage              } from '../interfaces/image'; */
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -38,7 +39,8 @@ export class CarItemComponent implements OnInit {
    @ViewChild('photoSwipe') photoSwipe: PhotoSwipeComponent;
 
 
-  constructor( private pagerService: PagerService, private dataService: DataService) { }
+  constructor(    private router: Router,
+    private pagerService: PagerService, private dataService: DataService) { }
 
  
     // ========================================================================
