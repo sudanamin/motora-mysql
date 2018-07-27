@@ -26,6 +26,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
+import { FooterComponent } from './footer/footer.component';
 
 var firebaseConfig = {
   apiKey: "AIzaSyAIblq6kLPLBguR_GUkRgzTu8ou219yoLk",
@@ -50,7 +51,8 @@ var firebaseConfig = {
     ResetPasswordComponent,
     LoginComponent,
     ContactComponent,
-    AboutComponent
+    AboutComponent,
+    FooterComponent
     
   ],
   imports: [

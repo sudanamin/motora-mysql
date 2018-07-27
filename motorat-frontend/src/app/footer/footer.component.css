@@ -1,0 +1,21 @@
+hr {
+    
+    clear:both;
+    display:block;
+    color: black;
+    height: 4px;
+  }
+
+  .text-center{
+      text-align: left;
+   
+  }
+ 
+
+  footer {
+      background-color:  rgb(3, 17, 31); 
+  }
+
+ .footerUp{
+    color: rgba(214, 206, 206, 0.336);
+  }
