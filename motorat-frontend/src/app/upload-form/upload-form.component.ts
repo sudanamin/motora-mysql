@@ -504,6 +504,7 @@ export class UploadFormComponent {
               this.fd.delete("uid");
 
               this.filesList = [];
+              this.time = Date.now() + "_";
               this.uploadProgress = 0;
               alert("added successfully");
               console.log("event is:" + event.statusText);

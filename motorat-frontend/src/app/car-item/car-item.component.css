@@ -10,7 +10,7 @@
 
     /* top: 100px; */
     color:white;
-    left: 140px; 
+    left: 155px; 
     font-weight: bold;
     
 }
@@ -18,9 +18,9 @@
 .rightOfBox{
     float: left;
     text-align: left;
-    font-weight: bold;
+   /*  font-weight: bold; */
     color: black;
-    font-family:Tahoma;
+    font-family:Verdana, sans-serif;
      
 }
 
@@ -37,7 +37,7 @@
 }
 
 .SearchBox {
-    background-color: rgba(211, 211, 211, 0.185); 
+    background-color: rgba(211, 211, 211, 0.432); 
     /* background-color: rgba(211, 211, 211, 0.404);  */
     /* width: 200px; */
    /*  border: 1px solid rgba(83, 50, 145, 0.575); */
@@ -58,7 +58,9 @@
 }
 .searchh2{
     
-    font-weight: bold;
+  /*   font-weight: bold; */
+  font-family:Verdana, sans-serif;
+
    /*  align :center; */
 }
 
@@ -100,12 +102,13 @@
     text-align: left;
     font-size: large;
     font-weight: bold;
-    font-family:Tahoma;
+    font-family:Verdana, sans-serif;
    /*  padding-bottom: center; */
 }
 
-.priceAtitle{
-    /*  padding: 20px;  */
+.title{
+    font-family: Verdana, sans-serif;
+    font-weight: bold;
 }
 
 ul 
@@ -153,7 +156,7 @@ float: right;
     text-align: left;
     font-weight: bold;
     color: rgba(184, 207, 228, 0.877);
-    font-family:Tahoma;
+    font-family:Verdana, sans-serif;
     }
 
 .lang{
@@ -170,7 +173,7 @@ float: right;
     text-align: left;
     font-weight: bold;
     color: white;
-    font-family:Tahoma;
+    font-family:Verdana, sans-serif;
 }
 
   .tab{

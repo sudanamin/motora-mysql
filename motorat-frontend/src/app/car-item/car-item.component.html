@@ -42,13 +42,13 @@
     <div class="SearchBox col-md-2">
 
         <form #SearchFrm="ngForm" (ngSubmit)="SearchCar(SearchFrm)">
-            <h2 align="center" class="searchh2"> Search</h2>
+            <h3 align="center" class="searchh2"> Search</h3>
             <div class="form-group ">
                 <label for="">
                     Model:
                 </label>
 
-                <input type="text" class="form-control" name="carmodel" value="" [ngModel]="ModelToSearch">
+                <input type="text" class="form-control  input-sm" name="carmodel" value="" [ngModel]="ModelToSearch">
             </div>
 
 
@@ -57,11 +57,11 @@
                     Color:
                 </label>
 
-                <input type="text" class="form-control" name="carcolor" value="" [ngModel]="ColorToSearch">
+                <input type="text" class="form-control  input-sm" name="carcolor" value="" [ngModel]="ColorToSearch">
             </div>
 
 
-            <button type="submit" name='button' class='btn-block btn btn-primary'>Search</button>
+            <button type="submit" name='button' class=' btn btn-sm btn-primary'>Search</button>
 
         </form>
     </div>
@@ -100,36 +100,37 @@
                             <div class="container2 col-md-8">
                                 <div class="verticalLine"></div>
 
-                                <div class='label label-primary'>Card titlee</div>   <!-- containerTitle -->
-                                <br>
+                                <div class="title">title</div>   <!-- containerTitle -->
+                                
                                 <br>
 
                                 <div class="num_of_img"> +{{obj.thums.length}} </div>
 
-                                <img (click)="openSlideshow(i,j);" style="width:150px; height:110px;" [src]="obj.thums[0]">
+                                <img (click)="openSlideshow(i,j);" style="width:170px; height:115px;" [src]="obj.thums[0]">
                                 <br>
                                 <br>
                                 <div> Located: Abu Dhabi> Date: 22 April 2018.</div>
-                                <br>
+                                <br><br> 
 
                             </div>
 
                             <div class="rightOfBox col-md-3">
 
-                                <div class='containerPrice'>Price: 2000{{obj.model}} AED. </div>
+                                <div  >Price: <span class='title' >2000{{obj.model}}</span> AED. </div>
 
                                 <br>
-                                <div class='containerKilo'>kilometers: 18{{obj.model}} km. </div>
+                                <div class='containerKilo'>kilometers: <span class='title' >18{{obj.model}} </span> km.</div>
 
                                 <!-- <br> -->
                                 <br>
-                                <div class='containerYear'>Year: 200{{obj.model}}. </div>
+                                <div class='containerYear'>Year: <span class='title' >2010{{obj.model}}.</span> </div>
                                 <br>
                                 <br>
 
                                 <br>
                                 <br>
-                                <div class="contactBox"> Show phone </div>
+                                <br>
+                                <div class="btn btn-primary btn-xs"> Show phone  </div>
                                 <br> <br>  
                             </div>
                             

@@ -342,6 +342,11 @@ router.post('/setimg/:app_id', (req, res, next) => {
                 color = req.body.color;
 
                 cylinders =  roughScale(req.body.cylinders,10);
+
+                
+                transmission = roughScale(req.body.transmission,10);
+                specs =  roughScale(req.body.specs,10);
+
                 console.log('user macufactier is : '+manufacturer);
                 console.log('user description is : '+description);
                 console.log('user city is : '+city);
@@ -361,13 +366,13 @@ router.post('/setimg/:app_id', (req, res, next) => {
                     if(req.params.app_id == 0)
                     {
                     connection.query(`INSERT INTO cars.cars_table (PRICE,MODEL,YEAR,MANUFACTURE,MILES,USER_ID,
-                        EMIRATE,DETAILS,DDATE,WARANTY,PHONE,COLOR, CYLINDERS) VALUES (? ,
+                        EMIRATE,DETAILS,DDATE,WARANTY,PHONE,COLOR, CYLINDERS ,SPECS, TRANSMISSION) VALUES (? ,
                         (select cars.cars_models.MODEL_ID from cars.cars_models where MODEL_NAME = ? ),
                         ?,(select cars.MANUFACTURE.MANUFACTURE_ID from cars.MANUFACTURE where MANUFACTURE_NAME = ? )
                         ,
                         ?,?,?,?,NOW(),?,?,
-                        (select cars.colors.COLOR_ID from cars.colors where COLOR_NAME = ? ),?)`
-                     , [price,model,year,manufacturer, kilometers, uid,city,description , /*ddate,*/waranty, phone ,color,cylinders], function (err, result) { 
+                        (select cars.colors.COLOR_ID from cars.colors where COLOR_NAME = ? ),?,?,?)`
+                     , [price,model,year,manufacturer, kilometers, uid,city,description , /*ddate,*/waranty, phone ,color,cylinders,specs,transmission], function (err, result) { 
                   /*   , [model/* , uid, city?,ddate  ,color] , function (err, result) {*/
                     if (err) {
                         res.status(500);
@@ -490,34 +495,36 @@ router.post('/setimg/:app_id', (req, res, next) => {
 router.get('/cimages', (req, res,next) => {
 
     //   connection.query("SELECT REF_APP_ID,GROUP_CONCAT(IMAGE_URL) as gofi FROM `car_images` GROUP BY REF_APP_ID;", function(err, cars) {
-        var whereClause = "WHERE `IMAGE_URL` LIKE '%thum%' ";
-
+        //var whereClause = "WHERE `IMAGE_URL` LIKE '%%' "; 
+        var whereClause = "WHERE 1 = 1 "; 
+       
         /* var url_parts = url.parse(req.url, true);
         var query = url_parts.query; */
     
     
         var color = req.query.color;
         var model = req.query.model;
+        console.log('modle and color to search:'+model +"  color: "+color);
         //var color = req.params.color;
       //  console.log('color is :' + color);
     
         if (color != null && color !='') {
-            whereClause += "AND color LIKE '" + color + "'";
+            whereClause += " AND color LIKE '" + color + "'";
          //   console.log('color is :' + color);
             //whereClause += "AND description LIKE '%keywords%'"
-        } else //console.log('color is :' + color);
+        }  //console.log('color is :' + color);
     
         if (model != null && model !='') {
-            whereClause += "AND model LIKE '" + model + "'";
+            whereClause += " AND model LIKE '" + model + "'";
            // console.log('model is :' + model);
             //whereClause += "AND description LIKE '%keywords%'"
-        } else //console.log('modell is :' + model);
+        }  //console.log('modell is :' + model);
   /*  connection.query("SELECT cars_table.MODEL ,cars_table.COLOR,USER_ID ,car_images.REF_APP_ID,GROUP_CONCAT(car_images.IMAGE_URL) as gofi from car_images INNER JOIN cars_table ON car_images.REF_APP_ID =cars_table.APPLICATION_ID "+whereClause+" GROUP BY car_images.REF_APP_ID ;", function (err, cars) {
  */
-
+console.log('color and model to search for'+whereClause);
 connection.query(`SELECT * FROM  (select REF_APP_ID, GROUP_CONCAT(IMAGE_URL) as gofi from car_images where IMAGE_URL LIKE '%thum%' GROUP BY REF_APP_ID ) as im
 right JOIN  cars_table on cars_table.APPLICATION_ID = im.REF_APP_ID   
-left join  cars_models  on  MODEL = cars_models.MODEL_ID `, function (err, cars) {
+left join  cars_models  on  MODEL = cars_models.MODEL_ID `+whereClause, function (err, cars) {
         if (err) {
             res.status(500);
             return next(err);

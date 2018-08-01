@@ -67,7 +67,7 @@ export class CarItemComponent implements OnInit {
 
 getCarsThumbnail(){
 
-  console.log("the lord of the ring " );
+  //console.log("the lord of the ring " );
       //  let im=[];
       this.carsObjects = [];
       let gofiForGallery=[] ;
@@ -105,9 +105,9 @@ getCarsThumbnail(){
            //this.photoSwipe.openGallery(images,index);
           
           // this.photoSwipe.openGallery(this.pagedItems,index);
-          console.log("the lord of the ring " );
+        
     }
-    console.log("the lord of the ring " );
+   
 
   }
   
@@ -135,7 +135,7 @@ getCarsThumbnail(){
   SearchCar(SearchFrm){
 
     //console.log('car id is :' + this.selectedCar.APPLICATION_ID);
-     
+    this.carsObjects = [];
       this.ModelToSearch = SearchFrm.value.carmodel;
       this.ColorToSearch = SearchFrm.value.carcolor;
     
@@ -165,8 +165,8 @@ getCarsThumbnail(){
         
         this.getCarsThumbnail();   
        // console.log("paged items:"+this.pagedItems[0].REF_APP_ID);
-        console.log("all yyy is : "+this.allItems.length);
-        console.log("the lord of the ring ");
+        console.log("all  is : "+this.allItems.length);
+      
       
   }
 
