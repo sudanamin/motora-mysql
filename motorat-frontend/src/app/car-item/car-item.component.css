@@ -1,5 +1,5 @@
 .num_of_img {
-    background-color: rgba(6, 17, 82, 0.781);
+    background-color: rgba(184, 12, 12, 0.801);
     position: absolute;
     /* bottom: 5px; */
     /* right: 5px;  */
@@ -117,11 +117,7 @@
 }
 
 
-.title:hover{
-     
-   
-    font-size: x-large;
-}
+ 
 img{
    width:170px; 
    height:115px; 
@@ -144,18 +140,19 @@ showPhone:hover{
 }
 
 
-.fontVerdana{
-    font-family: Verdana, Geneva, sans-serif;
+.fontUbuntu{
+    font-family: ubuntu;
     font-weight:   normal;
-
+ 
     
 }
 
 .SearchTitle{
 
-    font-family: Verdana, Geneva, sans-serif;
-    font-weight:   bold;
-    font-size: normal;
+    font-family: ubuntu;
+     
+    font-size: x-large;
+    
   
 
     
@@ -211,39 +208,43 @@ hr {
 float: right;
  
     text-align: left;
-    font-weight: bold;
+   /*  font-weight: bold; */
     color: rgba(184, 207, 228, 0.877);
-    /* font-family:Tahoma; */
+    font-family:ubuntu;
+    font-size: medium;
 }
 
 .login{
   
     float: left;
     text-align: left;
-    font-weight: bold;
+    font-size: medium;
+    /* font-weight: bold; */
     color: rgba(184, 207, 228, 0.877);
-    font-family:Verdana, sans-serif;
+    font-family:ubuntu;
     }
 
 .lang{
     float: right;
     text-align: left;
     font-weight: bold;
-    color: white;
-    font-family:Tahoma;
+    color: rgba(78, 10, 10, 0.699);
+    font-family:ubuntu;
+    font-size: medium;
     /* float : left ; */
 }
 
 .about{
     float: left;
     text-align: left;
-    font-weight: bold;
-    color: white;
-    font-family:Verdana, sans-serif;
+   /*  font-weight: bold; */
+    color: rgba(255, 255, 255, 0.781);
+    font-family:ubuntu;
+    font-size: medium;
 }
 
   .tab{
-    background-color: rgba(3, 1, 0, 0.808);
+    background-color: rgb(3, 17, 31);
     overflow: auto;
     
 } 
