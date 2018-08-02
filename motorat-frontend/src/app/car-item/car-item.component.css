@@ -142,7 +142,8 @@ showPhone:hover{
 
 .fontUbuntu{
     font-family: ubuntu;
-    font-weight:   normal;
+  /*   font-weight:   normal; */
+ /*  font-style: italic; */
  
     
 }
