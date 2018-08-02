@@ -107,9 +107,40 @@
 }
 
 .title{
-    font-family: Verdana, sans-serif;
+    font-family: Verdana, Geneva, sans-serif;
+
     font-weight: bold;
 }
+
+.details{
+    font-weight:   normal;
+    font-size:  small;
+    font-family: Verdana, Geneva, sans-serif;
+
+}
+
+
+.fontVerdana{
+    font-family: Verdana, Geneva, sans-serif;
+    font-weight:   normal;
+
+    
+}
+
+.detailsBold{
+    font-weight:   bold;
+    font-size:   small;
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+.SearchDetails{
+    font-weight:   normal;
+   /*  font-size: x-small; */
+    font-family: Verdana, Geneva, sans-serif;
+
+}
+
+
 
 ul 
 {

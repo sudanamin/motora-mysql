@@ -14,56 +14,93 @@
         </div>
     </div> -->
 
- <div class="tab">
-        <div class="col-md-2"> </div>
-        <div class="col-md-8">
+<div class="tab">
+    <div class="col-md-2"> </div>
+    <div class="col-md-8">
 
-            <br>
-            <div class='about'> <a style="color:white;">Home</a></div>
-            <div class='about' (click)= "router.navigate(['/about'])"> &nbsp;&nbsp; <a style="color:white;">About</a> </div>
-            <div class='about'(click)= "router.navigate(['/contact'])"> &nbsp;&nbsp; <a style="color:white;">Contact</a> </div>
-            <div class='login' (click)= "router.navigate(['/members'])"> &nbsp;&nbsp; <a style="color: rgba(184, 207, 228, 0.877);">Login</a></div>
-            
-            <div class="PlaceAd " (click)= "router.navigate(['/members'])"><a>Place Your Ad</a></div>
-            <div class='lang'> <a style="color:white;">العربية </a>&nbsp;&nbsp;</div>
-              <br> <br> 
+        <br>
+        <div class='about'>
+            <a style="color:white;">Home</a>
         </div>
-    </div>    
+        <div class='about' (click)="router.navigate(['/about'])"> &nbsp;&nbsp;
+            <a style="color:white;">About</a>
+        </div>
+        <div class='about' (click)="router.navigate(['/contact'])"> &nbsp;&nbsp;
+            <a style="color:white;">Contact</a>
+        </div>
+        <div class='login' (click)="router.navigate(['/members'])"> &nbsp;&nbsp;
+            <a style="color: rgba(184, 207, 228, 0.877);">Login</a>
+        </div>
+
+        <div class="PlaceAd " (click)="router.navigate(['/members'])">
+            <a>Place Your Ad</a>
+        </div>
+        <div class='lang'>
+            <a style="color:white;">العربية </a>&nbsp;&nbsp;</div>
+        <br>
+        <br>
+    </div>
+</div>
 
 <div class="container-fluid">
 
-   
+
 
     <br>
     <br>
-    <br><br>
     <br>
     <br>
-    <div class="SearchBox col-md-2">
+    <br>
+    <br>
+    <div class="col-md-1"> </div>
 
-        <form #SearchFrm="ngForm" (ngSubmit)="SearchCar(SearchFrm)">
-            <h4 align="center" class="title"> Search</h4>
-            <div class="form-group ">
-                <label for="">
-                    Model:
-                </label>
 
-                <input type="text" class="form-control  input-sm" name="carmodel" value="" [ngModel]="ModelToSearch">
+    <div class=" col-md-2">
+
+        <div class="row">
+            <div class="col-md-2"> </div>
+            <div class="SearchBox col-md-10">
+                <form #SearchFrm="ngForm" (ngSubmit)="SearchCar(SearchFrm)">
+                    <h4 align="center" class="fontVerdana"> Search</h4>
+                    <div class="form-group ">
+                        <label for="" class='fontVerdana'>
+                            Model:
+                        </label>
+
+                        <input type="text" class="form-control  input-sm" name="carmodel" value="" [ngModel]="ModelToSearch">
+                    </div>
+
+
+                    <div class="form-group ">
+                        <label for="" class='fontVerdana'>
+                            Color:
+                        </label>
+
+                        <input type="text" class="form-control  input-sm" name="carcolor" value="" [ngModel]="ColorToSearch">
+                    </div>
+
+                    <div class="form-group ">
+                        <label for="" class='fontVerdana'>
+                            year:
+                        </label>
+
+                        <input type="text" class="form-control  input-sm" name="carmodel" value="" [ngModel]="ModelToSearch">
+                    </div>
+
+
+                    <div class="form-group ">
+                        <label for="" class='fontVerdana'>
+                            kilometers:
+                        </label>
+
+                        <input type="text" class="form-control  input-sm" name="carcolor" value="" [ngModel]="ColorToSearch">
+                    </div>
+
+                    <button type="submit" name='button' class=' btn btn-sm btn-primary'>Search</button>
+
+                </form>
             </div>
-
-
-            <div class="form-group ">
-                <label for="">
-                    Color:
-                </label>
-
-                <input type="text" class="form-control  input-sm" name="carcolor" value="" [ngModel]="ColorToSearch">
-            </div>
-
-
-            <button type="submit" name='button' class=' btn btn-sm btn-primary'>Search</button>
-
-        </form>
+        </div>
     </div>
 
     <app-photo-swipe #photoSwipe></app-photo-swipe>
@@ -71,7 +108,7 @@
 
 
     <!-- pagination -->
-    <div class="col-md-8">
+    <div class="col-md-7">
 
 
         <div>
@@ -100,8 +137,9 @@
                             <div class="container2 col-md-8">
                                 <div class="verticalLine"></div>
 
-                                <div class="title">title</div>   <!-- containerTitle -->
-                                
+                                <div class="title">Nissan altima 2009 GCC</div>
+                                <!-- containerTitle -->
+
                                 <br>
 
                                 <div class="num_of_img"> +{{obj.thums.length}} </div>
@@ -110,30 +148,36 @@
                                 <br>
                                 <br>
                                 <div> Located: Abu Dhabi> Date: 22 April 2018.</div>
-                                <br><br> 
+                                <br>
+                                <br>
 
                             </div>
 
                             <div class="rightOfBox col-md-3">
 
-                                <div  >Price: <span class='title' >2000{{obj.model}}</span> AED. </div>
+                                <div class='details'>Price:
+                                    <span class='detailsBold'>2000{{obj.model}} AED. </span></div>
 
                                 <br>
-                                <div class='containerKilo'>kilometers: <span class='title' >18{{obj.model}} </span> km.</div>
+                                <div class='details'>kilometers:
+                                    <span class='detailsBold'>18{{obj.model}} km. </span></div>
 
                                 <!-- <br> -->
                                 <br>
-                                <div class='containerYear'>Year: <span class='title' >2010{{obj.model}}.</span> </div>
+                                <div class='details'>Year:
+                                    <span class='detailsBold'>2010{{obj.model}}.</span>
+                                </div>
                                 <br>
                                 <br>
 
                                 <br>
                                 <br>
                                 <br>
-                                <div class="btn btn-primary btn-sm"> Show phone  </div>
-                                <br> <br>  
+                                <div class="btn btn-primary btn-sm"> Show phone </div>
+                                <br>
+                                <br>
                             </div>
-                            
+
                             <hr>
                         </div>
 

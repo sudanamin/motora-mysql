@@ -27,7 +27,7 @@
 		font-size: 1em;
 		height: 2em;
 		line-height: 1em;
-		padding: 0 2em 0 4em;
+		padding: 0 2em 0 3em;
 		text-decoration: none;
 		transition: all 0.5s; }
 	  /*google button */
@@ -66,14 +66,14 @@
 			
 .loginBox
 {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%,-50%);
-	width: 350px;
+	/* position: absolute; */
+	/* top: 50%;
+	left: 50%; */
+	/* transform: translate(-50%,-50%); */
+	/* width: 350px; */
 	/*/height: 80%; */
 	padding: 60px 30px;
-	margin-top: 15px;
+	margin-top: 35px;
 	box-sizing: border-box;
 	background-color: rgba(10, 26, 58, 0.719);
 }
