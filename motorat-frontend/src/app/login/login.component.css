@@ -107,6 +107,10 @@
     font-family:Tahoma;
 }
 
+.fontUbuntu{
+	 font-family : Ubuntu;
+	 
+}
 .user
 {
 	opacity: 0.9;
@@ -118,7 +122,7 @@
 	top: calc(-100px/2);
 	left: calc(50% - 50px);
 }
-h3
+h4
 {
 	margin: 0;
 	padding: 0 0 20px;
@@ -152,7 +156,7 @@ h3
 .loginBox input[type="text"]:hover,
 .loginBox input[type="password"]:hover
 {
-	border-bottom: 1px solid white;
+	border-bottom: 1px solid rgb(31, 76, 201);
 	/*color: #262626;*/
 }
 ::placeholder

@@ -43,9 +43,9 @@
  
     <div class="row"> 
 <div class="col-md-4"> </div>
- <div class="loginBox  mx-auto  col-md-3">
+ <div class="loginBox fontUbuntu mx-auto  col-md-3">
   
-  <h3>Log In Here</h3>
+  <h4 >Login here</h4>
   <!-- <form> -->
 
       <button (click)="auth.facebookLogin()" id="fb"  class="btn-si btn-facebook">Login With Facebook</button><br>
@@ -56,21 +56,21 @@
       <br>
       <br>
       <br>
-      <p>Email</p>
+      <p >Email</p>
       <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
     
     <!-- <input type="text" name="" placeholder="Enter Email">
     <p>Password</p>
     <input type="password" name="" placeholder="••••••"> -->
-    <input type="text" placeholder="Email address.." (ngModel)="email" name="email" class="txt" required>
-      <input type="password" placeholder="Password" (ngModel)="password" name="password" class="txt" required>
+    <input type="text" style='font-style: italic;' placeholder="Email address.." (ngModel)="email" name="email" class="txt" required>
+      <input type="password" style='font-style: italic;' placeholder="Password" (ngModel)="password" name="password" class="txt" required>
 
     <input type="submit" name="" value="Sign In">
   </form>
-    <a routerLink="/reset" routerLinkActive="active" class="alc">Forget Password</a>
+    <a  routerLink="/reset" routerLinkActive="active" class="alc">Forget Password</a>
     <br>
     <br>
-    <a routerLink="/signup" routerLinkActive="active" class="alc">No account? <strong>Create one here</strong></a>
+    <a  fontUbunturouterLink="/signup" routerLinkActive="active" class="alc">No account? <strong>Create one here</strong></a>
 
    
    <!--  <a href='https://play.google.com/store/apps/details?id=com.ammostafa.stickykeep&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>

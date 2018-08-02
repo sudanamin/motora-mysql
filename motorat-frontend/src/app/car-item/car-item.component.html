@@ -13,7 +13,13 @@
               <br> <br> 
         </div>
     </div> -->
-
+  
+<!-- 
+   <h1 style='display: inline;
+   font-family: Tangerine, serif; color:black;'>Motorat.ae</h1>
+    <h1 align='right' style='display: inline;
+   font-family: Ubuntu; font-weight: bold '>We Bring The Best For You</h1> -->
+ 
 <div class="tab">
     <div class="col-md-2"> </div>
     <div class="col-md-8">
@@ -58,10 +64,10 @@
     <div class=" col-md-2">
 
         <div class="row">
-            <div class="col-md-2"> </div>
-            <div class="SearchBox col-md-10">
+            <div class="col-md-1"> </div>
+            <div class="SearchBox col-md-11">
                 <form #SearchFrm="ngForm" (ngSubmit)="SearchCar(SearchFrm)">
-                    <h4 align="center" class="fontVerdana"> Search</h4>
+                    <h4 align="center" class="SearchTitle"> Search</h4>
                     <div class="form-group ">
                         <label for="" class='fontVerdana'>
                             Model:
@@ -96,7 +102,7 @@
                         <input type="text" class="form-control  input-sm" name="carcolor" value="" [ngModel]="ColorToSearch">
                     </div>
 
-                    <button type="submit" name='button' class=' btn btn-sm btn-primary'>Search</button>
+                    <button type="submit" name='button' class=' btn btn-block  btn-primary'>Search</button>
 
                 </form>
             </div>
@@ -137,14 +143,15 @@
                             <div class="container2 col-md-8">
                                 <div class="verticalLine"></div>
 
-                                <div class="title">Nissan altima 2009 GCC</div>
+                                <div class="title"> Nissan Altima GCC
+                                 </div>
                                 <!-- containerTitle -->
 
                                 <br>
 
                                 <div class="num_of_img"> +{{obj.thums.length}} </div>
 
-                                <img (click)="openSlideshow(i,j);" style="width:170px; height:115px;" [src]="obj.thums[0]">
+                                <img (click)="openSlideshow(i,j);"  [src]="obj.thums[0]">
                                 <br>
                                 <br>
                                 <div> Located: Abu Dhabi> Date: 22 April 2018.</div>
@@ -173,7 +180,7 @@
                                 <br>
                                 <br>
                                 <br>
-                                <div class="btn btn-primary btn-sm"> Show phone </div>
+                                <div class="showPhone btn btn-warning btn-sm"> Show phone </div>
                                 <br>
                                 <br>
                             </div>

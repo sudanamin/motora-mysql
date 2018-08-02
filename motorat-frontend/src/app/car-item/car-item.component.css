@@ -10,7 +10,7 @@
 
     /* top: 100px; */
     color:white;
-    left: 155px; 
+    left: 35px; 
     font-weight: bold;
     
 }
@@ -37,7 +37,7 @@
 }
 
 .SearchBox {
-    background-color: rgba(211, 211, 211, 0.432); 
+    background-color: rgba(216, 221, 214, 0.705); 
     /* background-color: rgba(211, 211, 211, 0.404);  */
     /* width: 200px; */
    /*  border: 1px solid rgba(83, 50, 145, 0.575); */
@@ -89,6 +89,7 @@
    /*  border-left: 3px solid rgba(58, 33, 134, 0.514); */
     border-left: 3px solid #2A6496;
     height: 180px;
+   
     float: left;
     padding-right: 10px;
 }
@@ -107,15 +108,38 @@
 }
 
 .title{
-    font-family: Verdana, Geneva, sans-serif;
+    font-family: Ubuntu;
 
+   font-size: large;
     font-weight: bold;
+   
+    color:black;
 }
 
+
+.title:hover{
+     
+   
+    font-size: x-large;
+}
+img{
+   width:170px; 
+   height:115px; 
+}
+
+img:hover{
+    width:210px; 
+    height:145px;
+}
+showPhone:hover{
+     
+   
+    font-size: x-large;
+}
 .details{
-    font-weight:   normal;
-    font-size:  small;
-    font-family: Verdana, Geneva, sans-serif;
+    /*  font-weight:   normal;  */
+     font-size:  small; 
+    font-family:  ubuntu;
 
 }
 
@@ -127,10 +151,21 @@
     
 }
 
+.SearchTitle{
+
+    font-family: Verdana, Geneva, sans-serif;
+    font-weight:   bold;
+    font-size: normal;
+  
+
+    
+}
+
+
 .detailsBold{
     font-weight:   bold;
     font-size:   small;
-    font-family: Verdana, Geneva, sans-serif;
+    font-family:  ubuntu;
 }
 
 .SearchDetails{
@@ -208,7 +243,7 @@ float: right;
 }
 
   .tab{
-    background-color: rgba(0, 1, 3, 0.849);
+    background-color: rgba(3, 1, 0, 0.808);
     overflow: auto;
     
 } 
