@@ -9,6 +9,11 @@ a{
 	
 }
 
+.logo{
+    vertical-align: bottom;
+   /*  margin-bottom:-20px ; */
+}
+
 .num_of_img {
     background-color: red;
     position: absolute;
@@ -254,12 +259,17 @@ float: right;
     color: rgba(255, 255, 255, 0.781);
     font-family:ubuntu;
     font-size: medium;
+    vertical-align: middle;
+    
 }
 
   .tab{
     background-color: rgb(3, 17, 31);
     overflow: auto;
+    align-items : center;
     
+   
+  border: none;
 } 
 
 
