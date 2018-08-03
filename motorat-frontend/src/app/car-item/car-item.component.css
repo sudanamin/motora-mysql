@@ -11,6 +11,8 @@ a{
 
 .logo{
     vertical-align: bottom;
+    margin-bottom: .0em;
+    margin-top: 1em;
    /*  margin-bottom:-20px ; */
 }
 
@@ -229,7 +231,8 @@ float: right;
     color: rgba(184, 207, 228, 0.877);
     font-family:ubuntu;
     font-size: medium;
-   /*  font-weight: bold; */
+    margin-bottom: .5em;
+    margin-top: .5em;
 }
 
 .login{
@@ -249,7 +252,8 @@ float: right;
     color: rgba(78, 10, 10, 0.699);
     font-family:ubuntu;
     font-size: medium;
-    /* float : left ; */
+    margin-bottom: .5em;
+    margin-top: .5em;
 }
 
 .about{
@@ -259,7 +263,8 @@ float: right;
     color: rgba(255, 255, 255, 0.781);
     font-family:ubuntu;
     font-size: medium;
-    vertical-align: middle;
+    margin-bottom: .5em;
+    margin-top: .5em;
     
 }
 
