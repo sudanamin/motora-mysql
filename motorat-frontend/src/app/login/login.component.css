@@ -1,4 +1,13 @@
+a:hover{
+	 
+	font-style: italic;
+	text-decoration: none;
+}
 
+a{
+	color:white;
+	
+}
 	
 	 img {
 		border:1px solid rgb(152, 207, 23);
@@ -158,7 +167,7 @@ h4
 .loginBox input[type="text"]:hover,
 .loginBox input[type="password"]:hover
 {
-	border-bottom: 1px solid rgb(201, 93, 31);
+	border-bottom: 1px solid greenyellow;
 	/*color: #262626;*/
 }
 ::placeholder

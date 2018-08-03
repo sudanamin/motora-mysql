@@ -1,5 +1,16 @@
+a:hover{
+	 
+	font-style: italic;
+	text-decoration: none;
+}
+
+a{
+	color:white;
+	
+}
+
 .num_of_img {
-    background-color: rgba(184, 12, 12, 0.801);
+    background-color: red;
     position: absolute;
     /* bottom: 5px; */
     /* right: 5px;  */
@@ -213,6 +224,7 @@ float: right;
     color: rgba(184, 207, 228, 0.877);
     font-family:ubuntu;
     font-size: medium;
+   /*  font-weight: bold; */
 }
 
 .login{
@@ -227,7 +239,7 @@ float: right;
 
 .lang{
     float: right;
-    text-align: left;
+    text-align: right;
     font-weight: bold;
     color: rgba(78, 10, 10, 0.699);
     font-family:ubuntu;
