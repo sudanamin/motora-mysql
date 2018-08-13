@@ -2,6 +2,9 @@ import { Component, OnInit, ElementRef, ViewChild  } from '@angular/core';
 import {car} from '../../car';
 import {DataService} from '../data.service'
 import { PagerService } from '../_services/index'
+
+import { TranslateService } from '@ngx-translate/core';
+
 //import { Http ,Response } from '@angular/http';
 /* import { HttpClient, HttpEventType } from '@angular/common/http'; */
 
@@ -26,6 +29,7 @@ export class CarItemComponent implements OnInit {
   //firstTime: boolean = true;
    
    carsObjects = [];
+   toggleLanguage = false;
 
    // array of all items to be paged
    private allItems: any[];
@@ -40,7 +44,19 @@ export class CarItemComponent implements OnInit {
 
 
   constructor(    private router: Router,
-    private pagerService: PagerService, private dataService: DataService) { }
+    private pagerService: PagerService, private dataService: DataService,private translate: TranslateService) {
+      translate.setDefaultLang('en');
+      
+    }
+
+    switchLanguage(language: string) {
+     // <HTMLElement>document.querySelector(".details").Style.cssText = "--my-var: #000";
+      this.toggleLanguage = !this.toggleLanguage;
+      if(this.toggleLanguage == true)
+         this.translate.use('ar');
+      else
+         this.translate.use('en')
+    }
 
  
     // ========================================================================

@@ -18,15 +18,17 @@
 
  <!--   <h1  style='display: inline;font-weight: bold;  text-decoration: underline; 
    font-family: Tangerine,serif;  color:orange;'>Motorat.ae>   </h1> -->
+   
+
    <div class='row' >
         <div class="col-md-1"></div>
         <div class="col-md-6">
                 
                 <h1 class='logo' align='right' style='display: inline;  
-               font-family:ubuntu; font-weight: bold '> &nbsp; We bring THE BEST for you</h1>
+               font-family:ubuntu; font-weight: bold ' translate>Title</h1>
                </div>
                <div class="col-md-2"></div>
-   <div class="col-md-3">
+   <div class="col-md-3 ">
         <h1  class='logo' style='display: inline;font-weight: bold;  text-decoration: underline; 
         font-family: Tangerine,serif;  color:orange;'>Motorat.ae>   </h1>
    <img  class='logo'  style='width:80px;height:25px;    vertical-align: bottom;   ' src="assets/logo.png">
@@ -60,7 +62,7 @@
             <a style='color:rgb(151, 151, 247)'>Place Ad Now</a>
         </div>
         <div class='lang'>
-            <a  >العربية </a>&nbsp;&nbsp;</div>
+            <a (click)="switchLanguage()" translate>lang </a>&nbsp;&nbsp;</div>
         
           
     </div>
@@ -181,10 +183,10 @@
 
                             </div>
 
-                            <div class="rightOfBox col-md-3">
+                            <div [class.toggleLang]="toggleLanguage" class="rightOfBox col-md-3">
 
-                                <div class='details'>Price:
-                                    <span class='detailsBold'>2000{{obj.model}} AED </span></div>
+                                <div class='details' translate>Price: 
+                                    <span class='detailsBold'>3000{{obj.model}} AED </span></div>
 
                                 <br>
                                 <div class='details'>kilometers:

@@ -1,3 +1,7 @@
+.rtltest{
+    direction: rtl;
+}
+
 a:hover{
 	 
 	font-style: italic;
@@ -33,12 +37,18 @@ a{
     
 }
 
+.toggleLang{
+    text-align: right;
+    direction: rtl;
+}
+
 .rightOfBox{
     float: left;
-    text-align: left;
+ /*  //  text-align: left; */
    /*  font-weight: bold; */
     color: black;
     font-family:Verdana, sans-serif;
+ /*  //  text-align: right; */
      
 }
 
@@ -154,7 +164,8 @@ showPhone:hover{
     /*  font-weight:   normal;  */
      font-size:  small; 
     font-family:  ubuntu;
-
+    
+   
 }
 
 
@@ -182,6 +193,8 @@ showPhone:hover{
     font-weight:   bold;
     font-size:   small;
     font-family:  ubuntu;
+    direction: rtl;
+    
 }
 
 .SearchDetails{

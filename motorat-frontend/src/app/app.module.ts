@@ -12,6 +12,10 @@ import { routes } from './app.routes';
 import { FileDropDirective } from './file-drop.directive';
 import { UploadFormComponent } from './upload-form/upload-form.component';
 import { Ng2ImgMaxModule } from 'ng2-img-max';
+
+import {  HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 //import { UserLoginComponent } from './users/user-login/user-login.component';
 //import { UserProfileComponent } from './users/user-profile/user-profile.component';
 
@@ -27,6 +31,11 @@ import { SignupComponent } from './signup/signup.component';
 import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
 import { FooterComponent } from './footer/footer.component';
+
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 var firebaseConfig = {
   apiKey: "AIzaSyAIblq6kLPLBguR_GUkRgzTu8ou219yoLk",
@@ -59,6 +68,13 @@ var firebaseConfig = {
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
     Ng2ImgMaxModule,
     routes,
     AngularFireAuthModule,
