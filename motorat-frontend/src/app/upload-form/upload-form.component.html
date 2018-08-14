@@ -516,7 +516,7 @@
        Contact Number
      </label>
 
-     <input type="text" class="form-control" name="carphone" placeholder="Enter Phone number"  value="" [ngModel]="selectedCar.ContactNumber">
+     <input type="text" class="form-control" name="carphone" placeholder="Enter Phone number" required value="" [ngModel]="selectedCar.ContactNumber">
    </div>
 
  </div>
@@ -528,7 +528,7 @@
 
      </textarea>
    </div>
-   <button type="submit" name='button' class='btn btn-success' [disabled]='EditFrm.invalid'>Save</button>
+   <button type="submit" name='button' class='btn btn-success' [disabled]='EditFrm.invalid || imageNotReady'>Save</button>
    <button name='button' class='btn btn-default' (click)="cancelEditing();">Cancel</button>
  <!-- <button type="submit" name='button' class='btn btn-danger' [disabled]='EditFrm.invalid'>update ad with {{bigImagePreviews.length}} images</button> -->
 

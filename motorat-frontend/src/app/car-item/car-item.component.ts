@@ -26,6 +26,7 @@ export class CarItemComponent implements OnInit {
   ModelToSearch: string ='';
   ColorToSearch: string ='';
   toggleForm: boolean = false;
+ 
   //firstTime: boolean = true;
    
    carsObjects = [];
@@ -112,7 +113,17 @@ getCarsThumbnail(){
        /*  console.log("gofThumbsForShow lengh:"+gofThumbsForShow[i]);
         console.log("gofiForGallery lengh:"+gofiForGallery[i].src); */
         
-        var carObject = {id:this.pagedItems[i].REF_APP_ID,thums:gofThumbsForShow,images:gofiForGallery,model:this.pagedItems[i].MODEL};
+        var carObject = {
+          id:this.pagedItems[i].REF_APP_ID,
+          thums:gofThumbsForShow,images:gofiForGallery,
+          model:this.pagedItems[i].MODEL,
+          color:this.pagedItems[i].COLOR,
+          city:this.pagedItems[i].EMIRATE,
+          date:this.pagedItems[i].DDATE,
+          kilometers:this.pagedItems[i].MILES,
+          price:this.pagedItems[i].PRICE,
+          year:this.pagedItems[i].YEAR,
+        };
        this.carsObjects.push(carObject);
        gofiForGallery = [];
        gofThumbsForShow = [];

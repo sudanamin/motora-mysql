@@ -177,7 +177,7 @@
                                 <img (click)="openSlideshow(i,j);"  [src]="obj.thums[0]">
                                 <br>
                                 <br>
-                                <div class='fontUbuntu'>  Located: Abu Dhabi> Date: 22 April 2018</div>
+                                <div class='fontUbuntu'>  Located: {{cities[obj.city-1]}}> Date: {{obj.date| date :  "dd MMMM yyyy" }}</div>
                                 <br>
                                 <br>
 
@@ -186,16 +186,16 @@
                             <div [class.toggleLang]="toggleLanguage" class="rightOfBox col-md-3">
 
                                 <div class='details' translate>Price: 
-                                    <span class='detailsBold'>3000{{obj.model}} AED </span></div>
+                                    <span class='detailsBold'> {{obj.price}} AED </span></div>
 
                                 <br>
                                 <div class='details'>kilometers:
-                                    <span class='detailsBold'>18{{obj.model}} km </span></div>
+                                    <span class='detailsBold'> {{obj.kilometers}} km </span></div>
 
                                 <!-- <br> -->
                                 <br>
                                 <div class='details'>Year:
-                                    <span class='detailsBold'>2010{{obj.model}}</span>
+                                    <span class='detailsBold'> 20{{obj.year}}</span>
                                 </div>
                                 <br>
                                 <br>

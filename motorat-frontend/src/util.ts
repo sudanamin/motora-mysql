@@ -39,4 +39,20 @@ export  class Utils {
          
     }  
 
+    static convertSpecsToInt(val: string) {
+
+        switch (val) {
+            case "GCC": return 1;
+            case "AMERICAN": return 2;
+            case "JAPANESE": return 3;
+            case "EUROPE": return 4;
+            case "OTHER": return 5;
+             
+            default : return 0;
+         }
+         
+         
+    }  
+
+
 }

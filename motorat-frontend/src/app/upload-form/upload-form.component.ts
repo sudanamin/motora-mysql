@@ -35,6 +35,7 @@ export class UploadFormComponent {
   filesList: fileL[] = [];
   selectedCar: car;
   toggleForm: boolean = false;
+  imageNotReady: boolean = false;
   firstTime: boolean = false;
   addForm: any;
   carsObjects : car[]=[];
@@ -236,7 +237,8 @@ export class UploadFormComponent {
 
     this.fd.append('kilometers', EditFrm.value.carkilometers);
     this.fd.append('model',EditFrm.value.carmodel);
-    this.fd.append('specs', EditFrm.value.carspecs);
+    var specs = Utils.convertSpecsToInt(EditFrm.value.carspecs) ; this.fd.append('specs', specs.toString());
+    console.log("spec form edit form is :"+specs);
     this.fd.append('cylinders', EditFrm.value.carcylinders);
 
     this.fd.append('warranty', EditFrm.value.carwarranty);
@@ -347,7 +349,8 @@ export class UploadFormComponent {
 
      this.fd.append('kilometers', frm.value.carKilometers);
      this.fd.append('model',frm.value.carModel);
-     this.fd.append('specs', frm.value.carSpecs);
+     var specs = Utils.convertSpecsToInt(frm.value.carSpecs) ; this.fd.append('specs', specs.toString());
+      
      this.fd.append('cylinders', frm.value.carCylinders);
 
      this.fd.append('warranty', frm.value.carWarranty);
@@ -386,6 +389,7 @@ export class UploadFormComponent {
   resizeFiles(files: FileList) {
     
     for (var i = 0; i < files.length; i++) {
+      this.imageNotReady = true;
       let image = files[i];
       //this.fd.append('image', image, this.time + image.name);
       this.filesList.push({theFile:image,name:this.time + image.name});
@@ -404,7 +408,7 @@ export class UploadFormComponent {
 
           //this.fd.append('image', this.uploadedImage, this.uploadedImage.name);
           this.filesList.push({theFile:this.uploadedImage,name:this.uploadedImage.name});
-
+          this.imageNotReady = false;
           // this.upload();
         },
         error => {
@@ -412,6 +416,7 @@ export class UploadFormComponent {
         }
       );
     }
+  
   }
 
   getImagePreview(file: File) {
