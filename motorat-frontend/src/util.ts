@@ -54,5 +54,22 @@ export  class Utils {
          
     }  
 
+    static convertIntToSpecs(val: number) {
+
+        switch (val) {
+            case 1 : return "GCC";
+            case 2: return "AMERICAN";
+            case 3: return "JAPANESE";
+            case 4: return "EUROPE";
+            case 5: return "OTHER";
+             
+            default : return 0;
+         }
+         
+         
+    } 
+
+
+
 
 }

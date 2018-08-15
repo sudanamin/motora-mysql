@@ -2,7 +2,7 @@ import { Component, OnInit, ElementRef, ViewChild  } from '@angular/core';
 import {car} from '../../car';
 import {DataService} from '../data.service'
 import { PagerService } from '../_services/index'
-
+import {Utils} from '../../util';
 import { TranslateService } from '@ngx-translate/core';
 
 //import { Http ,Response } from '@angular/http';
@@ -28,6 +28,8 @@ export class CarItemComponent implements OnInit {
   toggleForm: boolean = false;
  
   //firstTime: boolean = true;
+  cities = ["Abu Dabu","Ajman","Al ain","Dubai","Fujuira","Ras Alkhima","Sharjah","Um Alquiin"];
+  specs = ["GCC","AMERICAN","JAPANESE","EUROPE","OTHER"];
    
    carsObjects = [];
    toggleLanguage = false;
@@ -112,7 +114,7 @@ getCarsThumbnail(){
 
        /*  console.log("gofThumbsForShow lengh:"+gofThumbsForShow[i]);
         console.log("gofiForGallery lengh:"+gofiForGallery[i].src); */
-        
+        console.log('price is '+this.pagedItems[i].PRICE);
         var carObject = {
           id:this.pagedItems[i].REF_APP_ID,
           thums:gofThumbsForShow,images:gofiForGallery,
@@ -123,6 +125,7 @@ getCarsThumbnail(){
           kilometers:this.pagedItems[i].MILES,
           price:this.pagedItems[i].PRICE,
           year:this.pagedItems[i].YEAR,
+          specs:Utils.convertIntToSpecs(this.pagedItems[i].SPECS),
         };
        this.carsObjects.push(carObject);
        gofiForGallery = [];

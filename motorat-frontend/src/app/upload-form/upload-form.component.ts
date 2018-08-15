@@ -36,6 +36,7 @@ export class UploadFormComponent {
   selectedCar: car;
   toggleForm: boolean = false;
   imageNotReady: boolean = false;
+  saveOrLoading:string  = 'Save';
   firstTime: boolean = false;
   addForm: any;
   carsObjects : car[]=[];
@@ -184,7 +185,7 @@ export class UploadFormComponent {
       
       var carObject = {APPLICATION_ID:this.allItems[i].APPLICATION_ID,City:this.allItems[i].CITY,
         Manufacter:this.allItems[i].MANUFACTER, Model:this.allItems[i].MODEL,Price:this.allItems[i].PRICE,
-        Year:this.allItems[i].YEAR, Kilometers: this.allItems[i].MILES,Specs:this.allItems[i].SPECS,
+        Year:this.allItems[i].YEAR, Kilometers: this.allItems[i].MILES, Specs:Utils.convertIntToSpecs(this.allItems[i].SPECS),
         NoOfCylinders:this.allItems[i].CYLINDERS,Warranty:this.allItems[i].WARANTY,Color:this.allItems[i].COLOR,
         Transmission:this.allItems[i].TRANSMISSION,ContactNumber:this.allItems[i].PHONE,
         Date:this.allItems[i].DDATE,
@@ -390,6 +391,7 @@ export class UploadFormComponent {
     
     for (var i = 0; i < files.length; i++) {
       this.imageNotReady = true;
+      this.saveOrLoading = 'loading';
       let image = files[i];
       //this.fd.append('image', image, this.time + image.name);
       this.filesList.push({theFile:image,name:this.time + image.name});
@@ -409,6 +411,7 @@ export class UploadFormComponent {
           //this.fd.append('image', this.uploadedImage, this.uploadedImage.name);
           this.filesList.push({theFile:this.uploadedImage,name:this.uploadedImage.name});
           this.imageNotReady = false;
+          this.saveOrLoading = 'Save';
           // this.upload();
         },
         error => {

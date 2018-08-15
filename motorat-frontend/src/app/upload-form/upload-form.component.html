@@ -528,7 +528,7 @@
 
      </textarea>
    </div>
-   <button type="submit" name='button' class='btn btn-success' [disabled]='EditFrm.invalid || imageNotReady'>Save</button>
+   <button type="submit" name='button' class='btn btn-success' [disabled]='EditFrm.invalid || imageNotReady'>{{saveOrLoading}}</button>
    <button name='button' class='btn btn-default' (click)="cancelEditing();">Cancel</button>
  <!-- <button type="submit" name='button' class='btn btn-danger' [disabled]='EditFrm.invalid'>update ad with {{bigImagePreviews.length}} images</button> -->
 

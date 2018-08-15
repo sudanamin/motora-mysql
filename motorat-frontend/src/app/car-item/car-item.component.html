@@ -177,7 +177,7 @@
                                 <img (click)="openSlideshow(i,j);"  [src]="obj.thums[0]">
                                 <br>
                                 <br>
-                                <div class='fontUbuntu'>  Located: {{cities[obj.city-1]}}> Date: {{obj.date| date :  "dd MMMM yyyy" }}</div>
+                                <div class='fontUbuntu'>  Located: {{cities[obj.city -1]}}> Date: {{obj.date| date :  "dd MMMM yyyy" }}</div>
                                 <br>
                                 <br>
 
@@ -198,6 +198,10 @@
                                     <span class='detailsBold'> 20{{obj.year}}</span>
                                 </div>
                                 <br>
+                                <div class='details'>Specs:
+                                    <span class='detailsBold'>  {{ obj.specs}}</span>
+                                </div>
+
                                 <br>
 
                                 <br>
@@ -229,7 +233,7 @@
                         <a (click)="setPage(pager.currentPage - 1)">Previous</a>
                     </li>
                     <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
-                        <a (click)="setPage(page)">{{page}}</a>
+                        <a class='ppage' (click)="setPage(page)">{{page}}</a>
                     </li>
                     <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
                         <a (click)="setPage(pager.currentPage + 1)">Next</a>
