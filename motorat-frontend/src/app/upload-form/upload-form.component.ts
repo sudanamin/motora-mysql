@@ -184,7 +184,12 @@ export class UploadFormComponent {
       console.log("gofiForGallery lengh:"+gofiForGallery[i].src); */
       
       var carObject = {APPLICATION_ID:this.allItems[i].APPLICATION_ID,City:this.allItems[i].CITY,
-        Manufacter:this.allItems[i].MANUFACTER, Model:this.allItems[i].MODEL,Price:this.allItems[i].PRICE,
+        Manufacturer:this.allItems[i].MANUFACTER, 
+        Manufacturer_name:this.allItems[i].MANUFACTURE_NAME, 
+        Model:this.allItems[i].MODEL,
+        Model_name:this.allItems[i].MODEL_NAME,
+
+        Price:this.allItems[i].PRICE,
         Year:this.allItems[i].YEAR, Kilometers: this.allItems[i].MILES, Specs:Utils.convertIntToSpecs(this.allItems[i].SPECS),
         NoOfCylinders:this.allItems[i].CYLINDERS,Warranty:this.allItems[i].WARANTY,Color:this.allItems[i].COLOR,
         Transmission:this.allItems[i].TRANSMISSION,ContactNumber:this.allItems[i].PHONE,

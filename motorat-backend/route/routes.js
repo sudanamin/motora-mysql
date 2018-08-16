@@ -347,8 +347,8 @@ router.post('/setimg/:app_id', (req, res, next) => {
                 transmission = roughScale(req.body.transmission,10);
                 specs =  roughScale(req.body.specs,10);
 
-                console.log('user specs is : '+specs);
-                console.log('user description is : '+description);
+                console.log('user manufacturer is AAAAAAAAAA : '+manufacturer);
+                console.log('user model is : '+model);
                 console.log('user city is : '+city);
                 console.log('user id is : '+uid);
                 console.log('user waranty is : '+waranty);
@@ -525,7 +525,9 @@ router.get('/cimages', (req, res,next) => {
 console.log('color and model to search for'+whereClause);
 connection.query(`SELECT * FROM  (select REF_APP_ID, GROUP_CONCAT(IMAGE_URL) as gofi from car_images where IMAGE_URL LIKE '%thum%' GROUP BY REF_APP_ID ) as im
 right JOIN  cars_table on cars_table.APPLICATION_ID = im.REF_APP_ID   
-left join  cars_models  on  MODEL = cars_models.MODEL_ID `+whereClause, function (err, cars) {
+left join  cars_models  on  MODEL = cars_models.MODEL_ID
+left join   manufacture  on  manufacture = manufacture.manufacture_ID
+ `+whereClause, function (err, cars) {
         if (err) {
             res.status(500);
             return next(err);

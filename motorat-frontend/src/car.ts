@@ -3,8 +3,11 @@ export class car{
     APPLICATION_ID?: any;
 
     City:any;
-    Manufacter:string;
+    Manufacturer:string;
+    Manufacturer_name:string;
     Model: any;
+    Model_name: any;
+
     Price:any;
 
     Year:any;
@@ -20,6 +23,8 @@ export class car{
     DESCRIPTION: string;
     Thums:string[];
     Images:string[];
+
+
      
    
     

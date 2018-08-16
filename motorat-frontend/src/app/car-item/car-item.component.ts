@@ -118,7 +118,8 @@ getCarsThumbnail(){
         var carObject = {
           id:this.pagedItems[i].REF_APP_ID,
           thums:gofThumbsForShow,images:gofiForGallery,
-          model:this.pagedItems[i].MODEL,
+          manufacture:this.pagedItems[i].MANUFACTURE_NAME,
+          model:this.pagedItems[i].MODEL_NAME,
           color:this.pagedItems[i].COLOR,
           city:this.pagedItems[i].EMIRATE,
           date:this.pagedItems[i].DDATE,
