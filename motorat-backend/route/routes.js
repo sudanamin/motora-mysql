@@ -336,7 +336,7 @@ router.post('/setimg/:app_id', (req, res, next) => {
                 ddate = Date.now();
                 //waranty =0;
                // waranty = Number(req.body.waranty);
-                waranty = roughScale(req.body.waranty,10);
+                warranty = roughScale(req.body.warranty,10);
                 phone = roughScale(req.body.phone,10);
               
                 color = req.body.color;
@@ -351,7 +351,7 @@ router.post('/setimg/:app_id', (req, res, next) => {
                 console.log('user model is : '+model);
                 console.log('user city is : '+city);
                 console.log('user id is : '+uid);
-                console.log('user waranty is : '+waranty);
+                console.log('user waranty is : '+warranty);
                 console.log('user kilometers is : '+kilometers);
                 console.log('user phone is : '+phone);
                 
@@ -372,7 +372,7 @@ router.post('/setimg/:app_id', (req, res, next) => {
                         ,
                         ?,?,?,?,NOW(),?,?,
                         (select cars.colors.COLOR_ID from cars.colors where COLOR_NAME = ? ),?,?,?)`
-                     , [price,model,year,manufacturer, kilometers, uid,city,description , /*ddate,*/waranty, phone ,color,cylinders,specs,transmission], function (err, result) { 
+                     , [price,model,year,manufacturer, kilometers, uid,city,description , /*ddate,*/warranty, phone ,color,cylinders,specs,transmission], function (err, result) { 
                   /*   , [model/* , uid, city?,ddate  ,color] , function (err, result) {*/
                     if (err) {
                         res.status(500);
@@ -421,8 +421,8 @@ router.post('/setimg/:app_id', (req, res, next) => {
                 MODEL =(select cars.cars_models.MODEL_ID from cars.cars_models where MODEL_NAME = ? ),YEAR = ? ,
                 MANUFACTURE = (select cars.MANUFACTURE.MANUFACTURE_ID from cars.MANUFACTURE where MANUFACTURE_NAME = ? ) ,MILES = ? ,USER_ID = ? ,
                     EMIRATE = ? ,DETAILS = ? ,DDATE = NOW() ,WARANTY = ? ,PHONE = ? ,TRANSMISSION = ?,
-                    COLOR = (select cars.colors.COLOR_ID from cars.colors where COLOR_NAME = ? ), CYLINDERS = ? ,SPECS = ? where APPLICATION_ID =?`
-                 , [price,model,year,manufacturer, kilometers, uid,city,description , /*ddate,*/waranty, phone ,transmission,color,cylinders,specs,req.params.app_id], function (err, result) { 
+                    COLOR = ?, CYLINDERS = ? ,SPECS = ? where APPLICATION_ID =?`
+                 , [price,model,year,manufacturer, kilometers, uid,city,description , /*ddate,*/warranty, phone ,transmission,color,cylinders,specs,req.params.app_id], function (err, result) { 
               /*   , [model/* , uid, city?,ddate  ,color] , function (err, result) {*/
                 if (err) {
                     res.status(500);

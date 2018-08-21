@@ -45,7 +45,8 @@ export class UploadFormComponent {
 
   // pager object
   pager: any = {};
-
+  cities = ["Abu Dabu","Ajman","Al ain","Dubai","Fujuira","Ras Alkhima","Sharjah","Um Alquiin"];
+  specs = ["GCC","AMERICAN","JAPANESE","EUROPE","OTHER"];
   // paged items
   //pagedItems: any[];
   //fd:FormData[] = [];
@@ -183,16 +184,22 @@ export class UploadFormComponent {
      /*  console.log("gofThumbsForShow lengh:"+gofThumbsForShow[i]);
       console.log("gofiForGallery lengh:"+gofiForGallery[i].src); */
       
-      var carObject = {APPLICATION_ID:this.allItems[i].APPLICATION_ID,City:this.allItems[i].CITY,
+      var carObject = {APPLICATION_ID:this.allItems[i].APPLICATION_ID,
+        City:Utils.convertIntToCity(this.allItems[i].EMIRATE),
         Manufacturer:this.allItems[i].MANUFACTER, 
         Manufacturer_name:this.allItems[i].MANUFACTURE_NAME, 
         Model:this.allItems[i].MODEL,
         Model_name:this.allItems[i].MODEL_NAME,
 
         Price:this.allItems[i].PRICE,
-        Year:this.allItems[i].YEAR, Kilometers: this.allItems[i].MILES, Specs:Utils.convertIntToSpecs(this.allItems[i].SPECS),
-        NoOfCylinders:this.allItems[i].CYLINDERS,Warranty:this.allItems[i].WARANTY,Color:this.allItems[i].COLOR,
-        Transmission:this.allItems[i].TRANSMISSION,ContactNumber:this.allItems[i].PHONE,
+        Year:this.allItems[i].YEAR,
+         Kilometers: this.allItems[i].MILES, 
+         Specs:Utils.convertIntToSpecs(this.allItems[i].SPECS),
+        NoOfCylinders:this.allItems[i].CYLINDERS,
+        Warranty:Utils.convertIntToWaranty(this.allItems[i].WARANTY),
+        Color:Utils.convertIntToColor(this.allItems[i].COLOR),
+        Transmission:Utils.convertIntToTransmission(this.allItems[i].TRANSMISSION),
+        ContactNumber:this.allItems[i].PHONE,
         Date:this.allItems[i].DDATE,
         DESCRIPTION:this.allItems[i].DETAILS,
         Thums:gofThumbsForShow,Images:gofiForGallery,};
@@ -239,17 +246,24 @@ export class UploadFormComponent {
     var city = Utils.convertCitytoInt(EditFrm.value.carcity); this.fd.append('city', city.toString());
     this.fd.append('manufacturer', EditFrm.value.carmanufacturer);
     this.fd.append('price', EditFrm.value.carprice);
-    let  year = Utils.convertYeartoInt(EditFrm.value.caryear); this.fd.append('year', year.toString());
-
+  /*   let  year = Utils.convertYeartoInt(EditFrm.value.caryear); this.fd.append('year', year.toString()); */
+  this.fd.append('year',EditFrm.value.caryear);
     this.fd.append('kilometers', EditFrm.value.carkilometers);
     this.fd.append('model',EditFrm.value.carmodel);
     var specs = Utils.convertSpecsToInt(EditFrm.value.carspecs) ; this.fd.append('specs', specs.toString());
-    console.log("spec form edit form is :"+specs);
+    
     this.fd.append('cylinders', EditFrm.value.carcylinders);
 
-    this.fd.append('warranty', EditFrm.value.carwarranty);
-    this.fd.append('color', EditFrm.value.carcolor);
-    this.fd.append('transmission', EditFrm.value.cartransmission);
+    var waranty = Utils.convertWarantyToInt(EditFrm.value.carwarranty) ; 
+    this.fd.append('warranty', waranty.toString());
+    console.log("wanary form edit form is :"+waranty);
+    var color = Utils.convertColorToInt(EditFrm.value.carcolor) ; 
+    console.log("color is :"+color);
+    this.fd.append('color', color.toString());
+
+    var transmission = Utils.convertTransmissionToInt(EditFrm.value.cartransmission);
+    this.fd.append('transmission', transmission.toString());
+
     this.fd.append('phone', EditFrm.value.carphone);
 
     this.fd.append('description', EditFrm.value.carDESCRIPTION);
@@ -351,7 +365,8 @@ export class UploadFormComponent {
      var city = Utils.convertCitytoInt(frm.value.carCity); this.fd.append('city', city.toString());
      this.fd.append('manufacturer', frm.value.carManufacturer);
      this.fd.append('price', frm.value.carPrice);
-     let  year = Utils.convertYeartoInt(frm.value.carYear); this.fd.append('year', year.toString());
+
+     let  year =  this.fd.append('year',frm.value.carYear);   
 
      this.fd.append('kilometers', frm.value.carKilometers);
      this.fd.append('model',frm.value.carModel);
@@ -359,9 +374,14 @@ export class UploadFormComponent {
       
      this.fd.append('cylinders', frm.value.carCylinders);
 
-     this.fd.append('warranty', frm.value.carWarranty);
-     this.fd.append('color', frm.value.carColor);
-     this.fd.append('transmission', frm.value.carTransmission);
+     var waranty = Utils.convertWarantyToInt(frm.value.carWarranty) ; 
+     this.fd.append('warranty', waranty.toString());
+
+     var color = Utils.convertColorToInt(frm.value.carColor) ; 
+     this.fd.append('color', color.toString());
+
+     var transmission = Utils.convertTransmissionToInt(frm.value.cartransmission);
+    this.fd.append('transmission', transmission.toString());
      this.fd.append('phone', frm.value.carPhone);
 
      this.fd.append('description', frm.value.carDESCRIPTION);

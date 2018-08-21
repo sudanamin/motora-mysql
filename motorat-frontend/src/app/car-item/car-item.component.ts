@@ -120,13 +120,14 @@ getCarsThumbnail(){
           thums:gofThumbsForShow,images:gofiForGallery,
           manufacture:this.pagedItems[i].MANUFACTURE_NAME,
           model:this.pagedItems[i].MODEL_NAME,
-          color:this.pagedItems[i].COLOR,
-          city:this.pagedItems[i].EMIRATE,
+          color:Utils.convertIntToColor(this.pagedItems[i].COLOR),
+          city:Utils.convertIntToCity(this.pagedItems[i].EMIRATE),
           date:this.pagedItems[i].DDATE,
           kilometers:this.pagedItems[i].MILES,
           price:this.pagedItems[i].PRICE,
           year:this.pagedItems[i].YEAR,
           specs:Utils.convertIntToSpecs(this.pagedItems[i].SPECS),
+          waranty:Utils.convertIntToWaranty(this.allItems[i].WARANTY),
         };
        this.carsObjects.push(carObject);
        gofiForGallery = [];

@@ -142,7 +142,7 @@
       <div class="form-group row">
 
           <div class="col-xs-3">
-              <label class="label label-primary" for="color">
+              <label class="label label-primary" for="Year">
                 Year
               </label>
       
@@ -218,8 +218,18 @@
           </label>
 
           <select class="form-control"  name="carColor"  ngModel>
-              <option>WHITE</option>
-              <option>BLACK</option>
+               
+              <option>Silver</option>
+              <option>White</option>
+              <option>Brown</option>
+              <option> Black</option>
+              <option>Blue</option>
+              <option>Red</option>
+              <option>Gray</option>
+              <option>Green</option>
+              <option>Gold</option>
+              <option>Yellow</option>
+              <option>Other</option>
                
             </select>
         </div>
@@ -378,7 +388,7 @@
       Manufacturer
      </label>
 
-     <select class="form-control"   name="carmanufacturer" value="" [ngModel]="selectedCar.Manufacturer_name">
+     <select class="form-control"   name="carmanufacturer"   [ngModel]="selectedCar.Manufacturer_name">
          <option>NISSAN</option>
          <option>TOYOTA</option>
           
@@ -493,8 +503,17 @@
      </label>
 
      <select class="form-control"  name="carcolor" [ngModel]="selectedCar.Color">
-         <option>WHITE</option>
-         <option>BLACK</option>
+      <option>Silver</option>
+      <option>White</option>
+      <option>Brown</option>
+      <option> Black</option>
+      <option>Blue</option>
+      <option>Red</option>
+      <option>Gray</option>
+      <option>Green</option>
+      <option>Gold</option>
+      <option>Yellow</option>
+      <option>Other</option>
           
        </select>
    </div>
@@ -504,8 +523,8 @@
        Transmission
      </label>
            <select class="form-control"   name="cartransmission" [ngModel]="selectedCar.Transmission">
-           <option>AUTOMATIC</option>
-           <option>MANUAL</option>
+           <option>Automatic</option>
+           <option>Manual</option>
             
          </select>
      
@@ -583,7 +602,7 @@
                   <div class="container2 col-md-5">
                       <div class="verticalLine"></div>
 
-                      <div class='label label-primary'>Card titlee</div>   <!-- containerTitle -->
+                      <div class='label label-primary'> {{obj.Manufacturer_name}}> {{obj.Model_name }}>  {{obj.Year}}</div>   <!-- containerTitle -->
                       <br>
                       <br>
 
@@ -595,7 +614,7 @@
                       <br>
                      
                       <br>
-                      <div> Located: Abu Dhabi> Date: 22 April 2018.</div>
+                      <div> Located: {{obj.City}}> Date: {{obj.Date| date :  "dd MMMM yyyy" }}</div>
                       <br>
 
                   </div>
@@ -610,18 +629,23 @@
 
                   <div class="rightOfBox col-md-3">
 
-                      <div class='containerPrice'>Price: 2000{{obj.model}} AED. </div>
+                      <div class='containerPrice'>Price:  {{obj.Price}} AED. </div>
 
                       <br>
-                      <div class='containerKilo'>kilometers: 18{{obj.model}} km. </div>
+                      <div class='containerKilo'>kilometers:  {{obj.Kilometers}} km. </div>
 
                       <!-- <br> -->
                       <br>
-                      <div class='containerYear'>Year: 200{{obj.model}}. </div>
+                      <div class='containerYear'> Specification: {{obj.Specs}} </div>
                       <br>
-                      <div class='containerYear'>Manufacturer:  {{obj.Manufacturer_name}} </div>
+                      <div class='containerYear'>Cylinders:  {{obj.NoOfCylinders}} </div>
                       <br>
-
+                      <div class='containerYear'>Transmission:  {{obj.Transmission}} </div>
+                      <br>
+                      <div class='containerYear'>Color:  {{obj.Color}} </div>
+                      <br>
+                      <div class='containerYear'>Warranty:  {{obj.Warranty}} </div>
+                      <br>
                       <br>
                       <br>
                       <div class="contactBox"> Show phone </div>

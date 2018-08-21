@@ -1,4 +1,6 @@
 export  class Utils {
+
+  
     static convertCitytoInt(val: string) { 
 
         switch (val) {
@@ -14,21 +16,101 @@ export  class Utils {
         }
          
     }
-    static convertYeartoInt(val: string) {
 
-        if(val == '⋘ 2015') return 1989;
-        else 
-           {
-               if(    val  ){
-                console.log("val 2 is "+val) ;
-        let val2 = parseInt(val);
-        if ( val2>=2000) return val2 - 2000;
-        if ( val2<2000) return val2 - 1900; 
-           }
-           else { console.log("val is "+val) ;  return 0;  }
+    static convertIntToCity(val: number) { 
+
+        switch (val) {
+           case 1: return  "Abu Dhabi";
+           case 2: return "Ajman";
+           case 3: return "Alain";
+           case 4: return "Dubai";
+           case 5: return "Fujaira";
+           case 6: return "Ras Alkhaima";
+           case 7: return  "Sharjah";
+           case 8: return "Um Alqwain";
+           default : return 0;
         }
          
     }
+
+    static convertColorToInt(val: string){
+
+        switch (val){
+            case "Silver" :return 1;
+            case "White" : return 2;
+            case "Brown" : return 3;
+            case "Black" : return 4;
+            case "Blue" : return 5;
+            case "Red" : return 6;
+            case "Gray" : return 7;
+            case "Green" : return 8;
+            case "Gold" : return 9;
+            case "Yellow" : return 10;
+            default: return 0;
+        }
+    }
+
+    static convertIntToColor(val: number){
+
+        switch (val){
+            case 1:return  "Silver";
+            case 2: return "White" ;
+            case  3: return "Brown";
+            case  4: return "Black";
+            case  5: return "Blue";
+            case  6: return "Red";
+            case  7: return "Gray";
+            case 8: return "Green" ;
+            case  9: return "Gold";
+            case  10: return "Yellow";
+            default: return "Other";
+        }
+    }
+
+    static convertWarantyToInt(val: string){
+
+        switch (val){
+            case "YES" :return 1;
+            case "NO" : return 2;
+            case "DOESN'T APPLY" : return 3;
+             
+            default: return 0;
+        }
+    }
+
+    static convertIntToWaranty(val: number){
+
+        switch (val){
+            case 1 :return "YES";
+            case 2 : return "NO";
+            case 3 : return "DOESN'T APPLY";
+             
+            default: return 0;
+        }
+    }
+
+    static convertIntToTransmission(val: number) { 
+
+        switch (val) {
+           case 1: return  "Automatic";
+           case 2: return "Manual";
+          
+           default : return 0;
+        }
+         
+    }
+
+    static convertTransmissionToInt(val: string) { 
+
+        switch (val) {
+           case "Automatic": return  1;
+           case "Manual": return 2;
+            
+           default : return 0;
+        }
+         
+    }
+ 
 
     static convertDatetoShow(val: string) {
 

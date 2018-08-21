@@ -1,6 +1,6 @@
 export class preview{
 
-    url:string;
+    url:string | ArrayBuffer;
     name: string;
     size:number;
 }
