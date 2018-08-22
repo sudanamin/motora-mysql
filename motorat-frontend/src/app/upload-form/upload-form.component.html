@@ -75,53 +75,23 @@
 
       </div>
 
-
-      <div class="box">
-
-
-
-        <h4 class="label label-primary"> Upload car images</h4>
-        <div class="toolbar">
-          <input #file type="file" name='image' (change)="onImageChange($event)" value="Add Files..." accept="image/*" multiple>
-          <!--  <button (click)="file.click()">Upload file</button> -->
-
-        </div>
-
-
-        <div class="droplet" fileDrop (filesDropped)="handleDrop($event)" (filesHovered)="dropzoneState($event)" [ngClass]="{'active': dropzoneActive}">
-
-          <!--  <i class="fa fa-cloud-upload fa-2x"></i> -->
-          <ul class="files" (click)="$event.stopPropagation()">
-
-            <li *ngFor="let image of bigImagePreviews">
-
-              <a target="#" [href]="sanitizer.bypassSecurityTrustUrl(image.url)">
-                <img class="droplet-preview" [src]="sanitizer.bypassSecurityTrustUrl(image.url)">
-              </a>
-
-              <div class="delete" (click)="removeImage(image.name);">&times;</div>
-              <div class="size">{{image.size / 1024 / 1024 | number}}MB</div>
-            </li>
-
-          </ul>
-          <h3 class="draghere text-muted" (click)="file.click()">Click or Drag Here...</h3>
-
-        </div>
-
-
-      </div>
-      <br>  
+ 
+ 
+<div class="col-container">
+   
+  
+     
       <!--  <div class='col-md-6'> -->
-
+<div class='box col'>
       <div class="form-group row">
         
 
-        <div class="col-xs-3">
+        <div class="col-xs-6">
           <label class="label label-primary" for="city">
              City
           </label>
 
-          <select class="form-control" name="carCity" ngModel>
+          <select class="form-control input-sm" name="carCity" ngModel>
               <option selected value >Abu Dhabi</option>
               <option>Ajman</option>
               <option>Alain</option>
@@ -135,36 +105,38 @@
             </select>
         </div>
 
-        <div class="col-xs-3">
+        <div class="col-xs-6">
           <label class="label label-primary" for="">
             Manufacturer
           </label>
 
-          <select class="form-control"   name="carManufacturer" ngModel>
+          <select class="form-control input-sm"   name="carManufacturer" ngModel>
               <option>NISSAN</option>
               <option>TOYOTA</option>
                
             </select>
         </div>
+</div>   <!--  //form goup row close  -->
 
-        <div class="col-xs-3">
+<div class="form-group row">
+        <div class="col-xs-6">
           <label class="label label-primary" for="">
             Model
           </label>
 
-          <select class="form-control"   name="carModel" ngModel>
+          <select class="form-control input-sm"   name="carModel" ngModel>
               <option>ALTIMA</option>
               <option>CAMRY</option>
                
             </select>
         </div>
 
-        <div class="col-xs-3">
+        <div class="col-xs-6">
           <label class="label label-primary" for="">
             Price
           </label>
 
-          <input type="number" class="form-control" name="carPrice" value="" ngModel >
+          <input type="number" class="form-control input-sm" name="carPrice" value="" ngModel >
         </div>
 
         
@@ -175,12 +147,12 @@
 
       <div class="form-group row">
 
-          <div class="col-xs-3">
+          <div class="col-xs-6">
               <label class="label label-primary" for="Year">
                 Year
               </label>
       
-              <select class="form-control"   name="carYear" ngModel>
+              <select class="form-control input-sm"   name="carYear" ngModel>
                   <option>2019</option>
                   <option>2018</option>
                   <option>2017</option>
@@ -190,20 +162,21 @@
                 </select>
             </div>
 
-        <div class="col-xs-3">
+        <div class="col-xs-6">
           <label class="label label-primary" for="">
             Kilometers
           </label>
 
-          <input type="number" class="form-control" name="carKilometers" value="" ngModel >
+          <input type="number" class="form-control input-sm" name="carKilometers" value="" ngModel >
         </div>
-
-        <div class="col-xs-3">
+</div>
+<div class="form-group row">
+        <div class="col-xs-6">
           <label class="label label-primary" for="carSpecs">
             Specs
           </label>
 
-          <select class="form-control"   name="carSpecs" ngModel>
+          <select class="form-control input-sm"   name="carSpecs" ngModel>
               <option>GCC</option>
               <option>AMERICAN</option>
               <option>JAPANESE</option>
@@ -212,12 +185,12 @@
             </select>
         </div>
 
-        <div class="col-xs-3">
+        <div class="col-xs-6">
             <label class="label label-primary" for="Cylinders">
               No. Of Cylinders
             </label>
   
-            <select class="form-control"   name="carCylinders" ngModel>
+            <select class="form-control input-sm"   name="carCylinders" ngModel>
                 <option>3</option>
                 <option>4</option>
                 <option>6</option>
@@ -234,24 +207,24 @@
       <div class="form-group row">
         
 
-        <div class="col-xs-3">
+        <div class="col-xs-6">
             <label class="label label-primary" for="carWarranty">
               Warranty
             </label>
   
-            <select class="form-control"   name="carWarranty" ngModel>
+            <select class="form-control input-sm"   name="carWarranty" ngModel>
                 <option>YES</option>
                 <option>NO</option>
                 <option>DOESN'T APPLY</option>
               </select>
           </div>
 
-        <div class="col-xs-3">
+        <div class="col-xs-6">
           <label class="label label-primary" for="color">
             Color
           </label>
 
-          <select class="form-control"  name="carColor"  ngModel>
+          <select class="form-control input-sm"  name="carColor"  ngModel>
                
               <option>Silver</option>
               <option>White</option>
@@ -267,12 +240,14 @@
                
             </select>
         </div>
+        </div>
 
-        <div class="col-xs-3">
+        <div class="form-group row">
+        <div class="col-xs-6">
           <label class="label label-primary" for="carTransmission">
             Transmission
           </label>
-                <select class="form-control"   name="carTransmission" ngModel>
+                <select class="form-control input-sm"   name="carTransmission" ngModel>
                 <option>AUTOMATIC</option>
                 <option>MANUAL</option>
                  
@@ -280,27 +255,75 @@
           
         </div>
 
-        <div class="col-xs-3">
+        <div class="col-xs-6">
           <label class="label label-primary" for="carPhone">
             Contact Number
           </label>
 
-          <input type="text" class="form-control" name="carPhone" placeholder="Enter Phone number"  value="" ngModel >
+          <input type="text" class="form-control input-sm" name="carPhone" placeholder="Enter Phone number"  value="" ngModel >
         </div>
 
       </div>
       <!-- form row -->
 
-      <div class="form-group">
-          <label class="label label-primary" for="exampleFormControlTextarea1">DESCRIPTION</label>
-          <textarea class="form-control" name="carDESCRIPTION" rows="3" ngModel></textarea>
-        </div>
+    
 
-      <button type="submit" name='button' class='btn btn-danger' [disabled]='frm.invalid'>Place ad with {{bigImagePreviews.length}} images</button>
+    
 
-
+    </div>  <!--  form inputs closed  -->
+  
+    
+         
+        <div class="box col">
+           <!--  <div class="form-group row"> -->
+                <div class="form-group row">
+                    <label class="label label-primary" for="exampleFormControlTextarea1">DESCRIPTION</label>
+                    <textarea class="form-control input-sm" name="carDESCRIPTION" rows="5" ngModel></textarea>
+                  </div>
+               <!--  </div> -->
+  
+            <div class="form-group row">
+          <div class="label label-primary"> Upload car images</div>
+          <div class="toolbar">
+            <input #file type="file" name='image' (change)="onImageChange($event)" value="Add Files..." accept="image/*" multiple>
+            <!--  <button (click)="file.click()">Upload file</button> -->
+  
+          </div>
+  
+  
+          <div class="droplet" fileDrop (filesDropped)="handleDrop($event)" (filesHovered)="dropzoneState($event)" > <!-- [ngClass]="{'active': dropzoneActive}" -->
+  
+            <!--  <i class="fa fa-cloud-upload fa-2x"></i> -->
+            <ul class="files" (click)="$event.stopPropagation()">
+  
+              <li *ngFor="let image of bigImagePreviews">
+  
+                <a target="#" [href]="sanitizer.bypassSecurityTrustUrl(image.url)">
+                  <img class="droplet-preview" [src]="sanitizer.bypassSecurityTrustUrl(image.url)">
+                </a>
+  
+                <div class="delete" (click)="removeImage(image.name);">&times;</div>
+                <div class="size">{{image.size / 1024 / 1024 | number}}MB</div>
+              </li>
+  
+            </ul>
+            <h3 class="draghere text-muted" (click)="file.click()">Click or Drag Here...</h3>
+          <br>
+          <br>
+          <br>
+          <br> 
+          
+          </div>
+          
+          </div>
+         
+        </div><!-- box closed -->
+       
+  </div>  
+<br>
+  <button type="submit" name='button' class='btn btn-danger btn-sm' [disabled]='frm.invalid'>Place ad with {{bigImagePreviews.length}} images</button>
     </form>
-
+  
 
 
 <!--     <form #EditFrm="ngForm" (ngSubmit)="EditCar(EditFrm)" *ngIf="toggleForm">
@@ -403,7 +426,7 @@
         City
      </label>
 
-     <select class="form-control" name="carcity" value="" [ngModel]="selectedCar.City">
+     <select class="form-control input-sm" name="carcity" value="" [ngModel]="selectedCar.City">
          <option>Abu Dhabi</option>
          <option>Ajman</option>
          <option>Alain</option>
@@ -422,7 +445,7 @@
       Manufacturer
      </label>
 
-     <select class="form-control"   name="carmanufacturer"   [ngModel]="selectedCar.Manufacturer_name">
+     <select class="form-control input-sm"   name="carmanufacturer"   [ngModel]="selectedCar.Manufacturer_name">
          <option>NISSAN</option>
          <option>TOYOTA</option>
           
@@ -434,7 +457,7 @@
        Model
      </label>
 
-     <select class="form-control"   name="carmodel" [ngModel]="selectedCar.Model_name">
+     <select class="form-control input-sm"   name="carmodel" [ngModel]="selectedCar.Model_name">
          <option>ALTIMA</option>
          <option>CAMRY</option>
           
@@ -446,7 +469,7 @@
        Price
      </label>
 
-     <input type="number" class="form-control" name="carprice" value="" [ngModel]="selectedCar.Price">
+     <input type="number" class="form-control input-sm" name="carprice" value="" [ngModel]="selectedCar.Price">
    </div>
 
    
@@ -462,7 +485,7 @@
            Year
          </label>
  
-         <select class="form-control"   name="caryear" [ngModel]="selectedCar.Year">
+         <select class="form-control input-sm"   name="caryear" [ngModel]="selectedCar.Year">
           
              <option>2015</option>
              <option>2014</option> 
@@ -480,7 +503,7 @@
        Kilometers
      </label>
 
-     <input type="number" class="form-control" name="carkilometers" value=""[ngModel]="selectedCar.Kilometers">
+     <input type="number" class="form-control input-sm" name="carkilometers" value=""[ngModel]="selectedCar.Kilometers">
    </div>
 
    <div class="col-xs-3">
@@ -488,7 +511,7 @@
        Specs
      </label>
 
-     <select class="form-control"   name="carspecs" [ngModel]="selectedCar.Specs">
+     <select class="form-control input-sm"   name="carspecs" [ngModel]="selectedCar.Specs">
          <option>GCC</option>
          <option>AMERICAN</option>
          <option>JAPANESE</option>
@@ -502,7 +525,7 @@
          No. Of Cylinders
        </label>
 
-       <select class="form-control"   name="carcylinders" [ngModel]="selectedCar.NoOfCylinders">
+       <select class="form-control input-sm"   name="carcylinders" [ngModel]="selectedCar.NoOfCylinders">
            <option>3</option>
            <option>4</option>
            <option>6</option>
@@ -524,7 +547,7 @@
          Warranty
        </label>
 
-       <select class="form-control"   name="carwarranty" [ngModel]="selectedCar.Warranty">
+       <select class="form-control input-sm"   name="carwarranty" [ngModel]="selectedCar.Warranty">
            <option>YES</option>
            <option>NO</option>
            <option>DOESN'T APPLY</option>
@@ -536,7 +559,7 @@
        Color
      </label>
 
-     <select class="form-control"  name="carcolor" [ngModel]="selectedCar.Color">
+     <select class="form-control input-sm"  name="carcolor" [ngModel]="selectedCar.Color">
       <option>Silver</option>
       <option>White</option>
       <option>Brown</option>
@@ -556,7 +579,7 @@
      <label class="label label-primary" for="cartransmission">
        Transmission
      </label>
-           <select class="form-control"   name="cartransmission" [ngModel]="selectedCar.Transmission">
+           <select class="form-control input-sm"    name="cartransmission" [ngModel]="selectedCar.Transmission">
            <option>Automatic</option>
            <option>Manual</option>
             
@@ -569,7 +592,7 @@
        Contact Number
      </label>
 
-     <input type="text" class="form-control" name="carphone" placeholder="Enter Phone number" required value="" [ngModel]="selectedCar.ContactNumber">
+     <input type="text" class="form-control input-sm" name="carphone" placeholder="Enter Phone number" required value="" [ngModel]="selectedCar.ContactNumber">
    </div>
 
  </div>
@@ -577,12 +600,12 @@
 
  <div class="form-group">
      <label class="label label-primary" for="exampleFormControlTextarea1" >DESCRIPTION</label>
-     <textarea class="form-control" name="cardescription" rows="3" [ngModel]="selectedCar.DESCRIPTION">
+     <textarea class="form-control input-sm" name="cardescription" rows="3" [ngModel]="selectedCar.DESCRIPTION">
 
      </textarea>
    </div>
-   <button type="submit" name='button' class='btn btn-success' [disabled]='EditFrm.invalid || imageNotReady'>{{saveOrLoading}}</button>
-   <button name='button' class='btn btn-default' (click)="cancelEditing();">Cancel</button>
+   <button type="submit" name='button' class='btn btn-success btn-sm' [disabled]='EditFrm.invalid || imageNotReady'>{{saveOrLoading}}</button>
+   <button name='button' class='btn btn-default btn-sm' (click)="cancelEditing();">Cancel</button>
  <!-- <button type="submit" name='button' class='btn btn-danger' [disabled]='EditFrm.invalid'>update ad with {{bigImagePreviews.length}} images</button> -->
 
 
@@ -654,11 +677,11 @@
                   </div>
 
                   <div class='col-md-1'>
-                    <button type='button' name="button" class='btn btn-primary' (click)="showEditForm(obj)" [disabled]="toggleForm">Edit</button>
+                    <button type='button' name="button" class='btn btn-primary btn-sm' (click)="showEditForm(obj)" [disabled]="toggleForm">Edit</button>
                   </div>
           
                   <div class='col-md-3'>
-                    <button type='button' name="button" class='btn btn-danger' (click)="deleteCar(obj)" [disabled]="toggleForm">Delete</button>
+                    <button type='button' name="button" class='btn btn-danger btn-sm' (click)="deleteCar(obj)" [disabled]="toggleForm">Delete</button>
                   </div>
 
                   <div class="rightOfBox col-md-3">

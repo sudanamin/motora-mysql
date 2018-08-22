@@ -87,25 +87,68 @@ a{
   }
 
   /* progrsss bar  */
+select {
+   /*  max-width: 25%; */
+}
+
+/* .col-container2 {
+    display: table; /* Make the container element behave like a table  
+    width: 100%; /* Set full-width to expand the whole page  
+}
+
+.col2 {
+    display: table-cell; /* Make elements inside the container behave like table cells  
+} */
+
+.col-container {
+    display: table;
+    width: 100%;
+    padding :5px;
+    border: 1px  outset rgba(39, 25, 122, 0.877);
+    border-style:    dashed    ;
+}
+.col {
+    display: table-cell;
+    padding: 16px;
+}
+.box{
+   
+  /*  border: 1px solid rgba(184, 207, 228, 0.877); */
+    width: 50%;
+     
+}
+
+.descrip{
+    margin-bottom: 3px;
+    align-content: bottom;
+}
 
 .box .droplet {
-    display: inline-block;
+   /*  display: inline-block; */
     z-index: 2;
     position: relative;
     border-radius: 2px;
     width: 100%;
-    height: auto;
-    min-height: 200px;
+    height:  100%;
+  /*   background-color: red; */
+     
+   /*  min-height: 300px; */
     /* background-color: rgba(184, 207, 228, 0.288); */
-    background: linear-gradient(to bottom, #ededed2a 0%, #dededea8 100%);
+    /* background: linear-gradient(to bottom, #ededed2a 0%, #dededea8 100%); */
+  /*  background: red; */
     margin-top: -5px;
     padding-top: 5px;
     transition: box-shadow 0.35s;
     margin: auto;    
+    
+}
+
+.test{
+    background-color: blue;
 }
 
 .box .toolbar {
-    width: 100%;
+    /* width: 50%; */
 
     margin-top: 5px;
     overflow: hidden;
@@ -132,10 +175,12 @@ a{
     transition: all 0.25s;
 }
 
+ 
+
 .draghere{
-    top:30%; left:40%; 
+    top:50%; left:30%; 
     position: absolute; 
-     
+     text-align: center;
    /*  color: rgba(0, 0, 0, 0.281); */
     /* color: rgb(149, 189, 226); */
    
@@ -464,9 +509,5 @@ float: right;
     margin-bottom: .5em;
     margin-top: .5em;
 }
-
-
-
-
 
 
