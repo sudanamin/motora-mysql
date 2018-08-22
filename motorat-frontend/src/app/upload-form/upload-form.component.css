@@ -1,35 +1,70 @@
+a:hover{
+	 
+	font-style: italic;
+	text-decoration: none;
+}
 
+a{
+	color:white;
+	
+}
 
   .Logout{
   
             float: right;
              
                 text-align: left;
-                font-weight: bold;
+               /*  font-weight: bold; */
                 color: rgba(184, 207, 228, 0.877);
+                font-family:ubuntu;
+                font-size: medium;
+                margin-bottom: .5em;
+                margin-top: .5em;
                 /* font-family:Tahoma; */
             }
     
-  .lang{
-        float: right;
-        text-align: left;
-        font-weight: bold;
-        color: white;
-        font-family:Tahoma;
-        /* float : left ; */
-    }
+            .lang{
+                /* float: right;
+                text-align: left;
+               
+                font-size: medium;
+                 font-weight: bold; 
+                
+                font-family:ubuntu; */
+
+                float: right;
+                text-align: right;
+                font-weight: bold;
+                color: rgba(78, 10, 10, 0.699);
+                font-family:ubuntu;
+                font-size: medium;
+                margin-bottom: .5em;
+                margin-top: .5em;
+                
+                /* float : left ; */
+            }
     
-  .about{
+ /*  .about{
         float: left;
         text-align: left;
         font-weight: bold;
         color: white;
         font-family:Tahoma;
-  }
+  } */
     
+.logo{
+    vertical-align: bottom;
+    margin-bottom: .0em;
+    margin-top: 1em;
+   /*  margin-bottom:-20px ; */
+}
    .tab{
-        background-color: rgba(0, 1, 3, 0.849);
-        overflow: auto;
+    background-color: rgb(3, 17, 31);
+    overflow: auto;
+    align-items : center;
+    
+   
+  border: none;
         
   } 
     
@@ -395,6 +430,8 @@ float: right;
     text-align: left;
     font-weight: bold;
     color: rgba(184, 207, 228, 0.877);
+    margin-bottom: .5em;
+    margin-top: .5em;
     /* font-family:Tahoma; */
 }
 
@@ -405,30 +442,30 @@ float: right;
     font-weight: bold;
     color: rgba(184, 207, 228, 0.877);
     font-family:Tahoma;
+    margin-bottom: .5em;
+    margin-top: .5em;
     }
 
-.lang{
+/* .lang{
     float: right;
     text-align: left;
     font-weight: bold;
     color: white;
     font-family:Tahoma;
     /* float : left ; */
-}
+/*} */
 
 .about{
     float: left;
     text-align: left;
-    font-weight: bold;
+     font-size: medium;
     color: white;
-    font-family:Tahoma;
+    font-family:ubuntu;
+    margin-bottom: .5em;
+    margin-top: .5em;
 }
 
-  .tab{
-    background-color: rgba(0, 1, 3, 0.849);
-    overflow: auto;
-    
-} 
+
 
 
 

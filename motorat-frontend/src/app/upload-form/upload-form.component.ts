@@ -15,6 +15,7 @@ import { DataService } from '../data.service'
 import { AuthService } from '../core/auth.service';
 /* import { Form } from '@angular/forms'; */
 import {Router} from "@angular/router";
+import { TranslateService } from '@ngx-translate/core';
 
 
 
@@ -42,6 +43,7 @@ export class UploadFormComponent {
   carsObjects : car[]=[];
   // array of all items to be paged
   private allItems: any[];
+  toggleLanguage = false;
 
   // pager object
   pager: any = {};
@@ -59,8 +61,20 @@ export class UploadFormComponent {
     private http: HttpClient,
     private dataService: DataService,
     public auth: AuthService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private translate: TranslateService) {
+      translate.setDefaultLang('en');
+      
+    }
+
+    switchLanguage(language: string) {
+      // <HTMLElement>document.querySelector(".details").Style.cssText = "--my-var: #000";
+       this.toggleLanguage = !this.toggleLanguage;
+       if(this.toggleLanguage == true)
+          this.translate.use('ar');
+       else
+          this.translate.use('en')
+     }
 
   dropzoneState($event: boolean) {
     this.dropzoneActive = $event;

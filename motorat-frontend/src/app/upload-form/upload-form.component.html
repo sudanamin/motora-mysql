@@ -1,20 +1,54 @@
-<div class="tab">
+<!-- <div class="tab">
   <div class="col-md-2"> </div>
   <div class="col-md-8">
 
     <br>
-    <div class='about' (click)= "router.navigate(['/main'])">  <a>Home</a></div>
+    <div class='about' (click)= "router.navigate(['/main'])">  <a style="color:white;">Home</a></div>
     <div class='about' (click)= "router.navigate(['/about'])"> &nbsp;&nbsp; <a style="color:white;">About</a> </div>
     <div class='about' (click)= "router.navigate(['/contact'])"> &nbsp;&nbsp; <a style="color:white;">Contact</a> </div>
     <div class='Logout' (click)="auth.signOut()"> &nbsp;&nbsp; <a style="color: rgba(184, 207, 228, 0.877);">Logout</a></div>
 
     <!-- <div class="PlaceAd " (click)="placeYourAd()">Place Your Ad</div> -->
-    <div class='lang'> <a style="color:white;">العربية</a> &nbsp;&nbsp;</div>
+   <!--  <div class='lang'> <a style="color:white;">العربية</a> &nbsp;&nbsp;</div>
     <br>
     <br>
   </div>
+</div> -->
+
+<div class='row' >
+  <div class="col-md-1"></div>
+  <div class="col-md-6">
+          
+          <h1 class='logo' align='right' style='display: inline;  
+         font-family:ubuntu; font-weight: bold ' translate>MembersTitle</h1>
+         </div>
+         <div class="col-md-2"></div>
+<div class="col-md-3 ">
+  <h2  class='logo' style='display: inline;font-weight: bold;  text-decoration: underline; 
+  font-family: Tangerine,serif;  color:orange;'>Motorat.ae>   </h2>
+<img  class='logo'  style='width:80px;height:25px;    vertical-align: bottom;   ' src="assets/logo.png">
 </div>
 
+
+
+
+</div>
+<div class="tab">
+  <div class="col-md-2"> </div>
+  <div class="col-md-8">
+
+       
+      <div class='about' (click)= "router.navigate(['/main'])"> <a style="color:white;"><i class="fa fa-home" style="font-size:normal;color:greenyellow"></i>&nbsp;Home &nbsp;|</a></div>
+      <div class='about' (click)= "router.navigate(['/about'])"> &nbsp; <a style="color:white;">About &nbsp;|</a> </div>
+      <div class='about' (click)= "router.navigate(['/contact'])"> &nbsp; <a style="color:white;">Contact</a> </div>
+      <div class='Logout' (click)="auth.signOut()">    <a style="color: rgba(184, 207, 228, 0.877);">  Log out <i class="fa fa-sign-out" style="color:red;font-size:normal"></i></a></div>
+      
+      
+      <div class='lang' > <a (click)="switchLanguage()" style="color: white;">العربية </a>&nbsp;&nbsp;</div>
+          
+  </div>
+  <div class="col-md-2"> </div>
+</div>
 
 <div class="colourful">
 
