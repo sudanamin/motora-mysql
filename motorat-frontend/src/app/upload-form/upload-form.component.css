@@ -115,6 +115,7 @@ select {
    
   /*  border: 1px solid rgba(184, 207, 228, 0.877); */
     width: 50%;
+    height: 100%;
      
 }
 
@@ -129,12 +130,14 @@ select {
     position: relative;
     border-radius: 2px;
     width: 100%;
-    height:  100%;
-  /*   background-color: red; */
+     height: auto;
+
+
+   /*  background-color: rgb(211, 200, 200); */
      
    /*  min-height: 300px; */
     /* background-color: rgba(184, 207, 228, 0.288); */
-    /* background: linear-gradient(to bottom, #ededed2a 0%, #dededea8 100%); */
+    background: linear-gradient(to bottom, #ededed2a 0%, #dededea8 100%);
   /*  background: red; */
     margin-top: -5px;
     padding-top: 5px;
@@ -175,12 +178,21 @@ select {
     transition: all 0.25s;
 }
 
- 
+ .clickOrDrag{
+     padding: 1px;
+     text-align: center; 
+ }
 
 .draghere{
-    top:50%; left:30%; 
-    position: absolute; 
-     text-align: center;
+    /* top:30%; left:30%; 
+    position: absolute; */
+    font-family:Ubuntu; 
+    font-weight: bold; 
+    font-size:  medium;
+    
+     color:rgba(0, 0, 0, 0.562)   ;
+    min-height: 135px;
+    height: auto;
    /*  color: rgba(0, 0, 0, 0.281); */
     /* color: rgb(149, 189, 226); */
    
@@ -192,7 +204,7 @@ select {
     color: black;
     /* font-size: large;*/
     font-weight: bold; 
-    font-family:Tahoma; 
+    font-family:Ubuntu; 
 }
 
 .labels{
@@ -257,6 +269,8 @@ li
     padding: 5px;
     list-style-type: none;
     transition: all .5s;
+    height: 100%;
+    text-align: left;
 }
 
 ul{

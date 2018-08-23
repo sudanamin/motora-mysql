@@ -24,7 +24,8 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: './upload-form.component.html',
   styleUrls: ['./upload-form.component.css']
 })
-export class UploadFormComponent {
+export class UploadFormComponent   {
+   
 
   uploadProgress: number;
   uploadedImage: File;
