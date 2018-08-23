@@ -291,7 +291,7 @@
           </div>
   
   
-          <div id="droplet1" class="droplet" fileDrop (filesDropped)="handleDrop($event)" (filesHovered)="dropzoneState($event)" > <!-- [ngClass]="{'active': dropzoneActive}" -->
+          <div class="droplet" fileDrop (filesDropped)="handleDrop($event)" (filesHovered)="dropzoneState($event)" > <!-- [ngClass]="{'active': dropzoneActive}" -->
   
             <!--  <i class="fa fa-cloud-upload fa-2x"></i> -->
             <div class="draghere text-muted" (click)="file.click()">
@@ -318,7 +318,7 @@
         </div>
           
         <div class="form-group row">
-          <button type="submit" name='button' class='btn btn-warning btn-sm' [disabled]='frm.invalid'>Submit ( {{bigImagePreviews.length}} images)</button>
+          <button type="submit" name='button' class='btn btn-warning btn-sm' [disabled]='frm.invalid'>Go ( {{bigImagePreviews.length}} images)</button>
         </div>
          
         </div><!-- box closed -->
@@ -370,21 +370,22 @@
  </div>
 
 
- <div class="box">
+<!--  <div class="box">
 
 
 
    <h4 class="label label-primary"> Upload car images</h4>
    <div class="toolbar">
      <input #file type="file" name='edit_image' (change)="onImageChange($event)" value="Add Files..." accept="image/*" multiple>
-     <!--  <button (click)="file.click()">Upload file</button> -->
-
+     <!--  <button (click)="file.click()">Upload file</button>   -->
+ <!--
    </div>
 
 
    <div class="droplet" fileDrop (filesDropped)="handleDrop($event)" (filesHovered)="dropzoneState($event)" [ngClass]="{'active': dropzoneActive}">
 
      <!--  <i class="fa fa-cloud-upload fa-2x"></i> -->
+      <!--
      <ul class="files" (click)="$event.stopPropagation()">
 
        <li *ngFor="let image of selectedCar.Thums">
@@ -392,6 +393,7 @@
          <!-- <a target="#" [href]="sanitizer.bypassSecurityTrustUrl(image.url)">
            <img class="droplet-preview" [src]="sanitizer.bypassSecurityTrustUrl(image.url)">
          </a> -->
+          <!--
          <a target="#" [href]="image">
           <img class="droplet-preview" [src]="image">
         </a>
@@ -416,14 +418,25 @@
    </div>
 
 
- </div>
- <br>  
- <!--  <div class='col-md-6'> -->
+ </div> -->
 
- <div class="form-group row">
+
+   
+ <!--  <div class='col-md-6'> -->
+    <div class="col-container">
+   
+  
+     
+        <!--  <div class='col-md-6'> -->
+  <div class='box col'>
+        <div class="form-group row">
+          
+  
+          <div class="col-xs-6">
+ 
    
 
-   <div class="col-xs-3">
+    
      <label class="label label-primary" for="carcity">
         City
      </label>
@@ -442,7 +455,7 @@
        </select>
    </div>
 
-   <div class="col-xs-3">
+   <div class="col-xs-6">
      <label class="label label-primary" for="carmanufacturer">
       Manufacturer
      </label>
@@ -453,8 +466,11 @@
           
        </select>
    </div>
+  </div>
 
-   <div class="col-xs-3">
+  <div class="form-group row">
+
+   <div class="col-xs-6">
      <label class="label label-primary" for="carmodel">
        Model
      </label>
@@ -466,7 +482,7 @@
        </select>
    </div>
 
-   <div class="col-xs-3">
+   <div class="col-xs-6">
      <label class="label label-primary" for="carprice">
        Price
      </label>
@@ -482,7 +498,7 @@
 
  <div class="form-group row">
 
-      <div class="col-xs-3">
+      <div class="col-xs-6">
          <label class="label label-primary" for="caryear">
            Year
          </label>
@@ -500,15 +516,19 @@
            </select>
        </div>
   
-   <div class="col-xs-3">
+   <div class="col-xs-6">
      <label class="label label-primary" for="carkilometers">
        Kilometers
      </label>
 
      <input type="number" class="form-control input-sm" name="carkilometers" value=""[ngModel]="selectedCar.Kilometers">
    </div>
+  </div>
 
-   <div class="col-xs-3">
+
+   <div class="form-group row">
+
+   <div class="col-xs-6">
      <label class="label label-primary" for="color">
        Specs
      </label>
@@ -522,7 +542,7 @@
        </select>
    </div>
 
-   <div class="col-xs-3">
+   <div class="col-xs-6">
        <label class="label label-primary" for="carcylinders">
          No. Of Cylinders
        </label>
@@ -544,7 +564,7 @@
  <div class="form-group row">
    
 
-   <div class="col-xs-3">
+   <div class="col-xs-6">
        <label class="label label-primary" for="carwarranty">
          Warranty
        </label>
@@ -556,7 +576,7 @@
          </select>
      </div>
 
-   <div class="col-xs-3">
+   <div class="col-xs-6">
      <label class="label label-primary" for="carcolor">
        Color
      </label>
@@ -576,8 +596,11 @@
           
        </select>
    </div>
+  </div>
 
-   <div class="col-xs-3">
+
+  <div class="form-group row">
+   <div class="col-xs-6">
      <label class="label label-primary" for="cartransmission">
        Transmission
      </label>
@@ -589,7 +612,7 @@
      
    </div>
 
-   <div class="col-xs-3">
+   <div class="col-xs-6">
      <label class="label label-primary" for="carphone">
        Contact Number
      </label>
@@ -598,19 +621,90 @@
    </div>
 
  </div>
+</div>
  <!-- form row -->
 
- <div class="form-group">
+
+ <div class="box col">
+      
+
+
+ <div class="form-group row">
      <label class="label label-primary" for="exampleFormControlTextarea1" >DESCRIPTION</label>
-     <textarea class="form-control input-sm" name="cardescription" rows="3" [ngModel]="selectedCar.DESCRIPTION">
+     <textarea class="form-control input-sm" name="cardescription" rows="5" [ngModel]="selectedCar.DESCRIPTION">
 
      </textarea>
    </div>
-   <button type="submit" name='button' class='btn btn-success btn-sm' [disabled]='EditFrm.invalid || imageNotReady'>{{saveOrLoading}}</button>
-   <button name='button' class='btn btn-default btn-sm' (click)="cancelEditing();">Cancel</button>
+ 
  <!-- <button type="submit" name='button' class='btn btn-danger' [disabled]='EditFrm.invalid'>update ad with {{bigImagePreviews.length}} images</button> -->
+ <!--
+        <div class="box col">
+           <!--  <div class="form-group row"> -->
+             <!--  <div class="form-group row">
+                  <label class="label label-primary" for="exampleFormControlTextarea1">DESCRIPTION</label>
+                  <textarea class="form-control input-sm" name="carDESCRIPTION" rows="5" ngModel></textarea>
+                </div> -->
+             <!--  </div> -->
+
+             <div class="form-group row">
+        <div class="label label-primary"> Upload car images</div>
+        <div class="toolbar">
+          <input #file type="file" name='edit_image' (change)="onImageChange($event)" value="Add Files..." accept="image/*" multiple>
+          <!--  <button (click)="file.click()">Upload file</button> -->
+
+        </div>
 
 
+        <div class="droplet" fileDrop (filesDropped)="handleDrop($event)" (filesHovered)="dropzoneState($event)" > <!-- [ngClass]="{'active': dropzoneActive}" -->
+
+          <!--  <i class="fa fa-cloud-upload fa-2x"></i> -->
+          <div class="draghere text-muted" (click)="file.click()">
+             <div class='clickOrDrag'>Click or Drag Here... <br>Maximum 10 images </div>
+             <ul class="files" (click)="$event.stopPropagation()">
+
+                <li *ngFor="let image of selectedCar.Thums">
+         
+                  <!-- <a target="#" [href]="sanitizer.bypassSecurityTrustUrl(image.url)">
+                    <img class="droplet-preview" [src]="sanitizer.bypassSecurityTrustUrl(image.url)">
+                  </a> -->
+                   
+                  <a target="#" [href]="image">
+                   <img class="droplet-preview" [src]="image">
+                 </a>
+         
+                  <div class="delete" (click)="removeImageFromServer(image);">&times;</div>
+                  <div class="size">{{image.size / 1024 / 1024 | number}}MB</div>
+                </li>
+              </ul>   
+                <ul class="files" (click)="$event.stopPropagation()">
+
+            <li *ngFor="let image of bigImagePreviews">
+
+              <a target="#" [href]="sanitizer.bypassSecurityTrustUrl(image.url)">
+                <img class="droplet-preview" [src]="sanitizer.bypassSecurityTrustUrl(image.url)">
+              </a>
+
+              <div class="delete" (click)="removeImage(image.name);">&times;</div>
+              <div class="size">{{image.size / 1024 / 1024 | number}}MB</div>
+            </li>
+
+          </ul>
+      
+       
+        
+          </div>
+        
+        </div>
+      </div>
+        
+      <div class="form-group row">
+          <button type="submit" name='button' class='btn btn-success btn-sm' [disabled]='EditFrm.invalid || imageNotReady'>{{saveOrLoading}}</button>
+          <button name='button' class='btn btn-default btn-sm' (click)="cancelEditing();">Cancel</button>
+      </div>
+       
+      </div><!-- box closed -->
+     
+</div> 
 </form>
 
 
