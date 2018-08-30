@@ -54,8 +54,9 @@ export class CarItemComponent implements OnInit {
 
     switchLanguage(language: string) {
      // <HTMLElement>document.querySelector(".details").Style.cssText = "--my-var: #000";
-      this.toggleLanguage = !this.toggleLanguage;
-      if(this.toggleLanguage == true)
+     Utils.toggleLanguage = !Utils.toggleLanguage;
+     this.toggleLanguage = Utils.toggleLanguage;
+      if(Utils.toggleLanguage == true)
          this.translate.use('ar');
       else
          this.translate.use('en')

@@ -14,7 +14,7 @@
 <footer  class="page-footer cent font-small mdb-color pt-4">
   
   <!-- Footer Links -->
-  <div class="container text-center text-md-left">
+  <div class="container text-center text-md-left" [class.toggleLang]="toggleLanguage">
 
     <!-- Footer links -->
     <div class="row footerUp">
@@ -23,9 +23,8 @@
       <div class="col-md-1"> </div>
       <!-- Grid column -->
       <div class="col-md-3"> 
-        <h6 class="text-uppercase mb-4 font-weight-bold"><b>Company name</b></h6>
-        <p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit amet, consectetur
-          adipisicing elit.</p>
+        <h6 class="text-uppercase mb-4 font-weight-bold"><b translate>CompanyName</b></h6>
+        <p translate>OurCompany</p>
       </div>
       <!-- Grid column -->
 
@@ -33,25 +32,25 @@
 
       <!-- Grid column -->
       <div class="col-md-2"> 
-        <h6 class="text-uppercase mb-4 font-weight-bold"><b>City</b></h6>
-        <p>
-          Abu Dhabi
+        <h6 class="text-uppercase mb-4 font-weight-bold"><b translate>City</b></h6>
+        <p translate>
+          AbuDhabi
         </p>
-        <p>
+        <p translate>
           Ajman
         </p>
-        <p>Alain</p>
-        <p>
+        <p translate>Alain</p>
+        <p translate>
            Dubai
         </p>
-        <p>
+        <p translate>
           Fujaira
         </p>
-        <p>
-            Ras Alkhaima
+        <p translate>
+          RasAlkaima
           </p>
-          <p>
-             Um Alquain
+          <p translate>
+            UmmAlquwain
             </p>
       </div>
       <!-- Grid column -->
@@ -60,16 +59,20 @@
 
       <!-- Grid column -->
       <div class="col-md-2"> 
-        <h6 class="text-uppercase mb-4 font-weight-bold"><b>Useful links</b></h6>
+        <h6 class="text-uppercase mb-4 font-weight-bold"><b translate>UsefulLinks</b></h6>
         <p>
            Your Account 
         <p>
            Become an Affiliate 
         </p>
+       
+      
+        
+  
         <p>
           Shipping Rates 
         </p>
-        <p>
+        <p translate>
             Help 
         </p>
       </div>
@@ -78,8 +81,20 @@
   <!--     <hr class="w-100 clearfix d-md-none"> -->
 
       <!-- Grid column -->
-      <div class="text-primary" class="col-md-3"> 
-        <h6 class="text-uppercase "> <b>Contact</b></h6>
+      <div class="text-primary" class="col-md-1"> 
+        <h6 class="text-uppercase "> <b translate>Language</b></h6>
+        <p>
+          <a (click)="switchLanguage('ar')"  >العربية </a></p>
+        <p>
+          <a (click)="switchLanguage('en')"  > English</a></p>
+         
+      </div>
+      
+
+
+
+      <div class="text-primary" class="col-md-2"> 
+        <h6 class="text-uppercase "> <b translate>Contact</b></h6>
         <p>
           <i class="fa fa-home mr-3"></i> Dubai, International City, AE</p>
         <p>

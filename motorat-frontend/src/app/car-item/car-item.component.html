@@ -30,7 +30,9 @@
                <div class="col-md-2"></div>
    <div class="col-md-3 ">
         <h2  class='logo' style='display: inline;font-weight: bold;  text-decoration: underline; 
-        font-family: Tangerine,serif;  color:orange;'>Motorat.ae>   </h2>
+        font-family: Tangerine,serif;  color:orange;'>Canary.ae>   </h2>
+   
+  <!--  <img  class='logo'  style='width:80px;height:65px;    vertical-align: bottom;   ' src="assets/eagle.svg"> -->
    <img  class='logo'  style='width:80px;height:25px;    vertical-align: bottom;   ' src="assets/logo.png">
 </div>
 
@@ -71,6 +73,11 @@
     
 </div>
 
+<!-- <img  class='logo'  style='width:150px;height:200px;  display: block;
+margin-left: auto;
+margin-right: auto;      ' src="assets/eagle.svg"> -->
+
+
 <div class="container-fluid" [class.toggleLang]="toggleLanguage">
 
 
@@ -88,7 +95,7 @@
 
         <div class="row">
             <div class="col-md-1"> </div>
-            <div class="SearchBox fontUbuntu col-md-11">
+            <div class="SearchBox fontUbuntu col-md-11" >
                 <form #SearchFrm="ngForm" (ngSubmit)="SearchCar(SearchFrm)">
                     <h4 align="center" class="SearchTitle" translate> Search</h4>
                     <div class="form-group ">
@@ -177,13 +184,13 @@
                                 <img (click)="openSlideshow(i,j);"  [src]="obj.thums[0]">
                                 <br>
                                 <br>
-                                <div class='fontUbuntu' >  <i translate>Located:</i> {{obj.city}} , <i translate>Date:</i> {{obj.date| date :  "dd MMMM yyyy" }}</div>
+                                <div class='fontUbuntu'>  <i translate>Located:</i> {{obj.city}} , <i translate>Date:</i> {{obj.date| date :  "dd MMMM yyyy" }}</div>
                                 <br>
                                 <br>
 
                             </div>
 
-                            <div [class.toggleLang]="toggleLanguage" class="rightOfBox col-md-3">
+                            <div   class="rightOfBox col-md-3" >
 
                                 <div class='details' translate>Price: 
                                     <span class='detailsBold'> {{obj.price}} <i translate> AED</i> </span></div>
@@ -249,7 +256,7 @@
 
 
     <div class="col-md-2">
-
+        
     </div>
-
+   
 </div>

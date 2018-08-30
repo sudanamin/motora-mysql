@@ -21,3 +21,18 @@ hr {
     font-family: ubuntu;
     
   }
+
+  a{
+    color: rgba(241, 237, 237, 0.637);
+  }
+
+  a:hover{
+	 
+	font-style: italic;
+	text-decoration: none;
+}
+
+  .toggleLang{
+    text-align: right;
+    direction: rtl;
+}
