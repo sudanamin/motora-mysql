@@ -17,7 +17,7 @@
     "Located:": "المدينة:",
     "Date:": "التاريخ:",
     "Color:": "اللون:",
-    "Macufacturer:": "الصانع",
+    "Manufacturer:": "الصانع",
     "Model:": "الموديل:",
     "Contact": "إتصل بنا",
     "ContactNumber":"رقم الهاتف",
@@ -25,6 +25,7 @@
     "Cylinder:": "السلندر:",
     "Transmission:": "ناقل الحركة:",
     "warranty:": "الضمان:",
+    "DESCRIPTION":"الوصف",
     "Previous": "السابق",
     "First": "الأول",
     "Last": "الأخير",
@@ -49,7 +50,7 @@
     "UploadImage": "رفع الصور",
     "PlaceAdTitle": "أضف إعلانك",
     "EditAdTitle": "تعديل إعلانك",
-    "YourPreviousAd": "أعلاناتك السابقة",
+    "YourPreviousAd": "إعلاناتك السابقة",
     "Edit": "تحرير",
     "Delete": "حذف"
 }

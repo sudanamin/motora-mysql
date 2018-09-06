@@ -107,7 +107,7 @@
 
         <div class="col-xs-6">
           <label class="label label-primary" for="" translate>
-            Manufacturer
+            Manufacturer:
           </label>
 
           <select class="form-control input-sm"   name="carManufacturer" ngModel>
@@ -121,7 +121,7 @@
 <div class="form-group row">
         <div class="col-xs-6">
           <label class="label label-primary" for="" translate>
-            Model
+            Model:
           </label>
 
           <select class="form-control input-sm"   name="carModel" ngModel>
@@ -133,7 +133,7 @@
 
         <div class="col-xs-6">
           <label class="label label-primary" for="" translate>
-            Price
+            Price:
           </label>
 
           <input type="number" class="form-control input-sm" name="carPrice" value="" ngModel >
@@ -149,7 +149,7 @@
 
           <div class="col-xs-6">
               <label class="label label-primary" for="Year" translate> 
-                Year
+                Year:
               </label>
       
               <select class="form-control input-sm"   name="carYear" ngModel>
@@ -164,7 +164,7 @@
 
         <div class="col-xs-6">
           <label class="label label-primary" for="" translate>
-            Kilometers
+            Kilometers:
           </label>
 
           <input type="number" class="form-control input-sm" name="carKilometers" value="" ngModel >
@@ -173,7 +173,7 @@
 <div class="form-group row">
         <div class="col-xs-6">
           <label class="label label-primary" for="carSpecs" translate>
-            Specs
+            Specs:
           </label>
 
           <select class="form-control input-sm"   name="carSpecs" ngModel>
@@ -187,7 +187,7 @@
 
         <div class="col-xs-6">
             <label class="label label-primary" for="Cylinders" translate>
-              Cylinder
+              Cylinder:
             </label>
   
             <select class="form-control input-sm"   name="carCylinders" ngModel>
@@ -209,7 +209,7 @@
 
         <div class="col-xs-6">
             <label class="label label-primary" for="carWarranty" translate>
-              Warranty
+              warranty:
             </label>
   
             <select class="form-control input-sm"   name="carWarranty" ngModel>
@@ -221,7 +221,7 @@
 
         <div class="col-xs-6">
           <label class="label label-primary" for="color" translate>
-            Color
+            Color:
           </label>
 
           <select class="form-control input-sm"  name="carColor"  ngModel>
@@ -245,7 +245,7 @@
         <div class="form-group row">
         <div class="col-xs-6">
           <label class="label label-primary" for="carTransmission" translate>
-            Transmission
+            Transmission:
           </label>
                 <select class="form-control input-sm"   name="carTransmission" ngModel>
                 <option>AUTOMATIC</option>
@@ -767,7 +767,7 @@
                       <br>
                      
                       <br>
-                      <div> Located: {{obj.City}}> Date: {{obj.Date| date :  "dd MMMM yyyy" }}</div>
+                      <div> <i translate>Located:</i> {{obj.City}}> <i translate> Date:</i> {{obj.Date| date :  "dd MMMM yyyy" }}</div>
                       <br>
 
                   </div>
@@ -782,22 +782,22 @@
 
                   <div class="rightOfBox col-md-3">
 
-                      <div class='containerPrice'><i translate>Price</i> :  {{obj.Price}} AED. </div>
+                      <div class='containerPrice'><i translate>Price:</i>   {{obj.Price}} AED. </div>
 
                       <br>
-                      <div class='containerKilo'><i translate>kilometers</i>:  {{obj.Kilometers}} km. </div>
+                      <div class='containerKilo'><i translate> Kilometers:</i>  {{obj.Kilometers}} km. </div>
 
                       <!-- <br> -->
                       <br>
-                      <div class='containerYear'> <i translate>Specification</i>: {{obj.Specs}} </div>
+                      <div class='containerYear'> <i translate>Specs:</i> {{obj.Specs}} </div>
                       <br>
-                      <div class='containerYear'><i translate>Cylinders</i>:  {{obj.NoOfCylinders}} </div>
+                      <div class='containerYear'><i translate>Cylinder:</i>  {{obj.NoOfCylinders}} </div>
                       <br>
-                      <div class='containerYear'><span translate>Transmission</span> :  {{obj.Transmission}} </div>
+                      <div class='containerYear'><span translate>Transmission:</span>   {{obj.Transmission}} </div>
                       <br>
-                      <div class='containerYear'><i translate>Color</i>:  {{obj.Color}} </div>
+                      <div class='containerYear'><i translate>Color:</i> {{obj.Color}} </div>
                       <br>
-                      <div class='containerYear'><i translate>Warranty</i>:  {{obj.Warranty}} </div>
+                      <div class='containerYear'><i translate>warranty:</i> {{obj.Warranty}} </div>
                       <br>
                       <br>
                       <br>
