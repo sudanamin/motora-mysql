@@ -20,6 +20,7 @@
     "Macufacturer:": "Macufacturer:",
     "Model:": "Model:",
     "Contact": "Contact",
+    "ContactNumber":"Contact Number",
     "Phone:": "Show Phone",
     "Cylinder:": "Cylinder:",
     "Transmission:": "Transmission:",
@@ -47,6 +48,7 @@
     "image": "Images",
     "UploadImage": "Upload Car Images",
     "PlaceAdTitle": "Place Your Ad",
+    "EditAdTitle": "Edit Your Ad",
     "YourPreviousAd": "Your Previous Ads",
     "Edit": "Edit",
     "Delete": "Delete"

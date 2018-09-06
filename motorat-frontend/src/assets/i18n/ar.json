@@ -20,6 +20,7 @@
     "Macufacturer:": "الصانع",
     "Model:": "الموديل:",
     "Contact": "إتصل بنا",
+    "ContactNumber":"رقم الهاتف",
     "Phone:": "عرض رقم الهاتــف",
     "Cylinder:": "السلندر:",
     "Transmission:": "ناقل الحركة:",
@@ -46,7 +47,8 @@
     "Submit": "أعلن",
     "image": "صور",
     "UploadImage": "رفع الصور",
-    "PlaceAdTitle": "ضغ إعلانك",
+    "PlaceAdTitle": "أضف إعلانك",
+    "EditAdTitle": "تعديل إعلانك",
     "YourPreviousAd": "أعلاناتك السابقة",
     "Edit": "تحرير",
     "Delete": "حذف"

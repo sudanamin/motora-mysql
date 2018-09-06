@@ -38,13 +38,13 @@
   <div class="col-md-8">
 
        
-      <div class='about' (click)= "router.navigate(['/main'])"> <a style="color:white;"><i class="fa fa-home" style="font-size:normal;color:greenyellow"></i>&nbsp;Home &nbsp;|</a></div>
-      <div class='about' (click)= "router.navigate(['/about'])"> &nbsp; <a style="color:white;">About &nbsp;|</a> </div>
-      <div class='about' (click)= "router.navigate(['/contact'])"> &nbsp; <a style="color:white;">Contact</a> </div>
-      <div class='Logout' (click)="auth.signOut()">    <a style="color: rgba(184, 207, 228, 0.877);">  Log out <i class="fa fa-sign-out" style="color:red;font-size:normal"></i></a></div>
+      <div class='about' (click)= "router.navigate(['/main'])"> <a style="color:white;"><i class="fa fa-home" style="font-size:normal;color:greenyellow"></i>&nbsp;<span translate>Home</span> &nbsp;|</a></div>
+      <div class='about' (click)= "router.navigate(['/about'])"> &nbsp; <a style="color:white;"><span translate>About</span> &nbsp;|</a> </div>
+      <div class='about' (click)= "router.navigate(['/contact'])"> &nbsp; <a style="color:white;" translate>Contact</a> </div>
+      <div class='Logout' (click)="auth.signOut()">    <a style="color: rgba(184, 207, 228, 0.877);" >  <span translate>Logout</span> <i class="fa fa-sign-out" style="color:red;font-size:normal"></i></a></div>
       
       
-      <div class='lang' > <a (click)="switchLanguage()" style="color: white;">العربية </a>&nbsp;&nbsp;</div>
+      <div class='lang' > <a (click)="switchLanguage()" style="color: white;" translate="">lang </a>&nbsp;&nbsp;</div>
           
   </div>
   <div class="col-md-2"> </div>
@@ -57,7 +57,7 @@
 
     <form #frm="ngForm" (ngSubmit)="addCar(frm)" *ngIf="!toggleForm">
 
-      <h3 class="titles"> Place Your Ad </h3>
+      <h3 class="titles" translate> PlaceAdTitle </h3>
 
 
       <!-- <button (click)="upload()">Upload {{imagePreviews.length}} files</button> -->
@@ -87,13 +87,13 @@
         
 
         <div class="col-xs-6">
-          <label class="label label-primary" for="city">
+          <label class="label label-primary" for="city" translate>
              City
           </label>
 
           <select class="form-control input-sm" name="carCity" ngModel>
               <option selected value >Abu Dhabi</option>
-              <option>Ajman</option>
+              <option >Ajman</option>
               <option>Alain</option>
               <option>Dubai</option>
               <option selected>Fujaira</option>
@@ -106,7 +106,7 @@
         </div>
 
         <div class="col-xs-6">
-          <label class="label label-primary" for="">
+          <label class="label label-primary" for="" translate>
             Manufacturer
           </label>
 
@@ -120,7 +120,7 @@
 
 <div class="form-group row">
         <div class="col-xs-6">
-          <label class="label label-primary" for="">
+          <label class="label label-primary" for="" translate>
             Model
           </label>
 
@@ -132,7 +132,7 @@
         </div>
 
         <div class="col-xs-6">
-          <label class="label label-primary" for="">
+          <label class="label label-primary" for="" translate>
             Price
           </label>
 
@@ -148,7 +148,7 @@
       <div class="form-group row">
 
           <div class="col-xs-6">
-              <label class="label label-primary" for="Year">
+              <label class="label label-primary" for="Year" translate> 
                 Year
               </label>
       
@@ -163,7 +163,7 @@
             </div>
 
         <div class="col-xs-6">
-          <label class="label label-primary" for="">
+          <label class="label label-primary" for="" translate>
             Kilometers
           </label>
 
@@ -172,7 +172,7 @@
 </div>
 <div class="form-group row">
         <div class="col-xs-6">
-          <label class="label label-primary" for="carSpecs">
+          <label class="label label-primary" for="carSpecs" translate>
             Specs
           </label>
 
@@ -186,8 +186,8 @@
         </div>
 
         <div class="col-xs-6">
-            <label class="label label-primary" for="Cylinders">
-              No. Of Cylinders
+            <label class="label label-primary" for="Cylinders" translate>
+              Cylinder
             </label>
   
             <select class="form-control input-sm"   name="carCylinders" ngModel>
@@ -208,7 +208,7 @@
         
 
         <div class="col-xs-6">
-            <label class="label label-primary" for="carWarranty">
+            <label class="label label-primary" for="carWarranty" translate>
               Warranty
             </label>
   
@@ -220,7 +220,7 @@
           </div>
 
         <div class="col-xs-6">
-          <label class="label label-primary" for="color">
+          <label class="label label-primary" for="color" translate>
             Color
           </label>
 
@@ -244,7 +244,7 @@
 
         <div class="form-group row">
         <div class="col-xs-6">
-          <label class="label label-primary" for="carTransmission">
+          <label class="label label-primary" for="carTransmission" translate>
             Transmission
           </label>
                 <select class="form-control input-sm"   name="carTransmission" ngModel>
@@ -256,8 +256,8 @@
         </div>
 
         <div class="col-xs-6">
-          <label class="label label-primary" for="carPhone">
-            Contact Number
+          <label class="label label-primary" for="carPhone" translate> 
+            ContactNumber
           </label>
 
           <input type="text" class="form-control input-sm" name="carPhone" placeholder="Enter Phone number"  value="" ngModel >
@@ -277,13 +277,13 @@
         <div class="box col">
            <!--  <div class="form-group row"> -->
                 <div class="form-group row">
-                    <label class="label label-primary" for="exampleFormControlTextarea1">DESCRIPTION</label>
+                    <label class="label label-primary" for="exampleFormControlTextarea1" translate>DESCRIPTION</label>
                     <textarea class="form-control input-sm" name="carDESCRIPTION" rows="5" ngModel></textarea>
                   </div>
                <!--  </div> -->
   
                <div class="form-group row">
-          <div class="label label-primary"> Upload car images</div>
+          <div class="label label-primary" translate> UploadImage</div>
           <div class="toolbar">
             <input #file type="file" name='image' (change)="onImageChange($event)" value="Add Files..." accept="image/*" multiple>
             <!--  <button (click)="file.click()">Upload file</button> -->
@@ -351,7 +351,7 @@
     </form>
  -->
  <form #EditFrm="ngForm" (ngSubmit)="EditCar(EditFrm)" *ngIf="toggleForm">
- <h3 class="titles"> Edit Your Ad </h3>
+ <h3 class="titles"> EditAdTitle </h3>
 
 
  <!-- <button (click)="upload()">Upload {{imagePreviews.length}} files</button> -->
@@ -437,7 +437,7 @@
    
 
     
-     <label class="label label-primary" for="carcity">
+     <label class="label label-primary" for="carcity" translate>
         City
      </label>
 
@@ -456,7 +456,7 @@
    </div>
 
    <div class="col-xs-6">
-     <label class="label label-primary" for="carmanufacturer">
+     <label class="label label-primary" for="carmanufacturer" translate>
       Manufacturer
      </label>
 
@@ -471,7 +471,7 @@
   <div class="form-group row">
 
    <div class="col-xs-6">
-     <label class="label label-primary" for="carmodel">
+     <label class="label label-primary" for="carmodel" translate>
        Model
      </label>
 
@@ -483,7 +483,7 @@
    </div>
 
    <div class="col-xs-6">
-     <label class="label label-primary" for="carprice">
+     <label class="label label-primary" for="carprice" translate>
        Price
      </label>
 
@@ -499,7 +499,7 @@
  <div class="form-group row">
 
       <div class="col-xs-6">
-         <label class="label label-primary" for="caryear">
+         <label class="label label-primary" for="caryear" translate>
            Year
          </label>
  
@@ -517,7 +517,7 @@
        </div>
   
    <div class="col-xs-6">
-     <label class="label label-primary" for="carkilometers">
+     <label class="label label-primary" for="carkilometers" translate>
        Kilometers
      </label>
 
@@ -529,7 +529,7 @@
    <div class="form-group row">
 
    <div class="col-xs-6">
-     <label class="label label-primary" for="color">
+     <label class="label label-primary" for="color" translate>
        Specs
      </label>
 
@@ -543,8 +543,8 @@
    </div>
 
    <div class="col-xs-6">
-       <label class="label label-primary" for="carcylinders">
-         No. Of Cylinders
+       <label class="label label-primary" for="carcylinders" translate>
+          Cylinders
        </label>
 
        <select class="form-control input-sm"   name="carcylinders" [ngModel]="selectedCar.NoOfCylinders">
@@ -565,7 +565,7 @@
    
 
    <div class="col-xs-6">
-       <label class="label label-primary" for="carwarranty">
+       <label class="label label-primary" for="carwarranty" translate>
          Warranty
        </label>
 
@@ -577,7 +577,7 @@
      </div>
 
    <div class="col-xs-6">
-     <label class="label label-primary" for="carcolor">
+     <label class="label label-primary" for="carcolor" translate>
        Color
      </label>
 
@@ -601,7 +601,7 @@
 
   <div class="form-group row">
    <div class="col-xs-6">
-     <label class="label label-primary" for="cartransmission">
+     <label class="label label-primary" for="cartransmission" translate>
        Transmission
      </label>
            <select class="form-control input-sm"    name="cartransmission" [ngModel]="selectedCar.Transmission">
@@ -613,8 +613,8 @@
    </div>
 
    <div class="col-xs-6">
-     <label class="label label-primary" for="carphone">
-       Contact Number
+     <label class="label label-primary" for="carphone" translate>
+       ContactNumber
      </label>
 
      <input type="text" class="form-control input-sm" name="carphone" placeholder="Enter Phone number" required value="" [ngModel]="selectedCar.ContactNumber">
@@ -630,7 +630,7 @@
 
 
  <div class="form-group row">
-     <label class="label label-primary" for="exampleFormControlTextarea1" >DESCRIPTION</label>
+     <label class="label label-primary" for="exampleFormControlTextarea1"  translate>DESCRIPTION</label>
      <textarea class="form-control input-sm" name="cardescription" rows="5" [ngModel]="selectedCar.DESCRIPTION">
 
      </textarea>
@@ -647,7 +647,7 @@
              <!--  </div> -->
 
              <div class="form-group row">
-        <div class="label label-primary"> Upload car images</div>
+        <div class="label label-primary" translate> UploadImage</div>
         <div class="toolbar">
           <input #file type="file" name='edit_image' (change)="onImageChange($event)" value="Add Files..." accept="image/*" multiple>
           <!--  <button (click)="file.click()">Upload file</button> -->
@@ -733,7 +733,7 @@
 
     <div *ngIf="!toggleForm">
         <br>
-        <h3 class="titles"> Your previous ads </h3>
+        <h3 class="titles" translate> YourPreviousAd </h3>
       <br>
 
       <ul class="carsObjects" style="list-style:none">
@@ -782,27 +782,27 @@
 
                   <div class="rightOfBox col-md-3">
 
-                      <div class='containerPrice'>Price:  {{obj.Price}} AED. </div>
+                      <div class='containerPrice'><i translate>Price</i> :  {{obj.Price}} AED. </div>
 
                       <br>
-                      <div class='containerKilo'>kilometers:  {{obj.Kilometers}} km. </div>
+                      <div class='containerKilo'><i translate>kilometers</i>:  {{obj.Kilometers}} km. </div>
 
                       <!-- <br> -->
                       <br>
-                      <div class='containerYear'> Specification: {{obj.Specs}} </div>
+                      <div class='containerYear'> <i translate>Specification</i>: {{obj.Specs}} </div>
                       <br>
-                      <div class='containerYear'>Cylinders:  {{obj.NoOfCylinders}} </div>
+                      <div class='containerYear'><i translate>Cylinders</i>:  {{obj.NoOfCylinders}} </div>
                       <br>
-                      <div class='containerYear'>Transmission:  {{obj.Transmission}} </div>
+                      <div class='containerYear'><span translate>Transmission</span> :  {{obj.Transmission}} </div>
                       <br>
-                      <div class='containerYear'>Color:  {{obj.Color}} </div>
+                      <div class='containerYear'><i translate>Color</i>:  {{obj.Color}} </div>
                       <br>
-                      <div class='containerYear'>Warranty:  {{obj.Warranty}} </div>
+                      <div class='containerYear'><i translate>Warranty</i>:  {{obj.Warranty}} </div>
                       <br>
                       <br>
                       <br>
                       <!-- <div class="contactBox"> Show phone </div> -->
-                      <button type='button' name="button" class='btn btn-primary btn-sm'>Show phone</button>
+                      <button type='button' name="button" class='btn btn-primary btn-sm'><i translate>Phone</i></button>
                       <br> <br>  
                   </div>
                   
