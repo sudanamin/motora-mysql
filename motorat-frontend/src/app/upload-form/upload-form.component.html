@@ -50,9 +50,9 @@
   <div class="col-md-2"> </div>
 </div>
 
-<div class="colourful">
 
-  <div class="container">
+
+  <div class="container" [class.toggleLang]="toggleLanguage" >
 
 
     <form #frm="ngForm" (ngSubmit)="addCar(frm)" *ngIf="!toggleForm">
@@ -318,7 +318,7 @@
         </div>
           
         <div class="form-group row">
-          <button type="submit" name='button' class='btn btn-warning btn-sm' [disabled]='frm.invalid'>Go ( {{bigImagePreviews.length}} images)</button>
+          <button type="submit" name='button' class='btn btn-warning btn-sm' [disabled]='frm.invalid'><span translate>GoUpload</span> ( {{bigImagePreviews.length}} images)</button>
         </div>
          
         </div><!-- box closed -->
@@ -776,8 +776,10 @@
                     <button type='button' name="button" class='btn btn-primary btn-sm' (click)="showEditForm(obj)" [disabled]="toggleForm">Edit</button>
                   </div>
           
-                  <div class='col-md-3'>
+                  <div class='col-md-1'>
                     <button type='button' name="button" class='btn btn-danger btn-sm' (click)="deleteCar(obj)" [disabled]="toggleForm">Delete</button>
+                  </div>
+                  <div class='col-md-2'>
                   </div>
 
                   <div class="rightOfBox col-md-3">
@@ -820,4 +822,3 @@
     <!-- pagination -->
 
   </div>
-</div>

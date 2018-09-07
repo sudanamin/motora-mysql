@@ -3,7 +3,7 @@ import {car} from '../../car';
 import {DataService} from '../data.service'
 import { PagerService } from '../_services/index'
 import {Utils} from '../../util';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 //import { Http ,Response } from '@angular/http';
 /* import { HttpClient, HttpEventType } from '@angular/common/http'; */
@@ -24,6 +24,7 @@ export class CarItemComponent implements OnInit {
   carList: car[] = [];
   selectedCar: car;
   ModelToSearch: string ='';
+  YearToSearch: string ='';
   ColorToSearch: string ='';
   toggleForm: boolean = false;
  
@@ -178,6 +179,10 @@ getCarsThumbnail(){
 
   ngOnInit() {
     this.getCars('','',"");
+    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      this.toggleLanguage = Utils.toggleLanguage;
+      // do something
+    });
    
    
   }

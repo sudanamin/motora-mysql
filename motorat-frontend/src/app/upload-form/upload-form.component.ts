@@ -15,7 +15,7 @@ import { DataService } from '../data.service'
 import { AuthService } from '../core/auth.service';
 /* import { Form } from '@angular/forms'; */
 import {Router} from "@angular/router";
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 
 
@@ -70,8 +70,9 @@ export class UploadFormComponent   {
 
     switchLanguage(language: string) {
       // <HTMLElement>document.querySelector(".details").Style.cssText = "--my-var: #000";
-       this.toggleLanguage = !this.toggleLanguage;
-       if(this.toggleLanguage == true)
+      Utils.toggleLanguage = !Utils.toggleLanguage;
+      this.toggleLanguage = Utils.toggleLanguage;
+      if(Utils.toggleLanguage == true)
           this.translate.use('ar');
        else
           this.translate.use('en')
@@ -148,6 +149,10 @@ export class UploadFormComponent   {
 
   ngOnInit() {
     this.getCars();
+    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      this.toggleLanguage = Utils.toggleLanguage;
+      // do something
+    });
   }
 
   getCars() {
