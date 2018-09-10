@@ -158,7 +158,10 @@ select {
 
 .box .toolbar {
     /* width: 50%; */
-
+   /*  direction: rtl; */
+    
+    text-align: right;
+    align-content: center;
     margin-top: 5px;
     overflow: hidden;
     position: relative;
@@ -171,7 +174,9 @@ select {
 }
 
 .box .toolbar input {
-    display: inline-block;
+    margin-left: 40%;
+   
+      display: inline-block;
     background-color: transparent;
     float: left;
     overflow: hidden;
