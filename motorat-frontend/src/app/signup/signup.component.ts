@@ -8,24 +8,30 @@ import { AuthService } from '../core/auth.service';
 })
 export class SignupComponent implements OnInit {
   error: any;
+  i:number = 0;
   constructor(public auth: AuthService,private router: Router) {
   }
   ngOnInit() {
   }
 
-  onSubmit(formData) {
-    if(formData.valid) {
-      var email = formData.value.email;
+/*   EditCar(editForm){
+    console.log(editForm.value.carManufacturer)
+    this.i++;
+  }
+ */
+  onSubmit(signupForm) {
+    if(signupForm.valid) {
+      var email = signupForm.value.email;
       console.log("sign in form data"+ email);
       this.auth.emailSignUp(
-        formData.value.email,
-         formData.value.password
+        signupForm.value.email,
+        signupForm.value.password
       ).then(
         (success) => {
         console.log(success);
        // this.router.navigate(['/login'])
       }).then(() => {
-        this.auth.emailLogin(formData.value.email,formData.value.password)
+        this.auth.emailLogin(signupForm.value.email,signupForm.value.password)
       }).then(
         () => {
        // console.log(success);

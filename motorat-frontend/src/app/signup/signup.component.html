@@ -5,14 +5,32 @@
 
   <span class="error" *ngIf="error" >{{ error }}</span>
     
-  <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+  <form #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)">
 
-    <input type="text" placeholder="Email address.." name="email" class="txt" required>
+    <input type="text" name="email" class="txt" ngModel required>
     <br>
-    <input type="password" placeholder="Password"  name="password" class="txt" required>
+    <input type="password"  name="password" class="txt" ngModel required>
     <br>
     <br>
+   
 
-    <button type="submit" [disabled]="!formData.valid" class="basic-btn">Create my account</button>
+    <button type="submit" [disabled]="signupForm.invalid" class="basic-btn">Create my account</button>
   </form>
+  
+
+ <!--  <form #EditFrm="ngForm" (ngSubmit)="EditCar(EditFrm)" >
+      {{EditFrm.valid}}
+      <div>
+          <label class="label label-primary" for="" translate>
+            Manufacturer:
+          </label>
+
+          <select class="form-control input-sm"   name="carManufacturer" ngModel required>
+              <option>NISSAN</option>
+              <option>TOYOTA</option>
+               
+            </select>
+        </div>
+      <button type="submit"   [disabled]='EditFrm.invalid'>submit</button>
+    </form> -->
 </div>
