@@ -505,7 +505,8 @@ router.get('/cimages', (req, res,next) => {
     
         var color = req.query.color;
         var model = req.query.model;
-        console.log('modle and color to search:'+model +"  color: "+color);
+        var userId = req.query.userID;
+        console.log('modle and color to search:'+model +"  color: "+color+" user id"+userId) ;
         //var color = req.params.color;
       //  console.log('color is :' + color);
     
@@ -520,6 +521,13 @@ router.get('/cimages', (req, res,next) => {
            // console.log('model is :' + model);
             //whereClause += "AND description LIKE '%keywords%'"
         }  //console.log('modell is :' + model);
+
+        if (userId != null && userId !='') {
+            whereClause += " AND USER_ID LIKE '" + userId + "'";
+             console.log('user id  is :' + userId);
+            //whereClause += "AND description LIKE '%keywords%'"
+        }
+
   /*  connection.query("SELECT cars_table.MODEL ,cars_table.COLOR,USER_ID ,car_images.REF_APP_ID,GROUP_CONCAT(car_images.IMAGE_URL) as gofi from car_images INNER JOIN cars_table ON car_images.REF_APP_ID =cars_table.APPLICATION_ID "+whereClause+" GROUP BY car_images.REF_APP_ID ;", function (err, cars) {
  */
 console.log('color and model to search for'+whereClause);

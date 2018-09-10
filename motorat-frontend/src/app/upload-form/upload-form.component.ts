@@ -156,7 +156,12 @@ export class UploadFormComponent   {
   }
 
   getCars() {
-    this.dataService.getCImages("", "", this.auth.currentUserId)
+
+    this.auth.user.subscribe(user => {
+      
+    var toSearch = {userID:user.uid};
+    console.log('user id is :'+toSearch.userID)
+    this.dataService.getCImages(toSearch)
       .subscribe(cars => {
         //this.carList = cars;
          this.allItems = cars;
@@ -171,6 +176,7 @@ export class UploadFormComponent   {
          this.firstTime = true;*/
 
       })
+    })
   }
 
   getCarsThumbnail(){

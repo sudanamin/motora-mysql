@@ -15,14 +15,16 @@ export class DataService {
     //.map(res => res.json())
   }*/
 
-  getCImages(model , color, userID){
+  getCImages(toSearch ){
+
+    
     
     return this.http.get<Array<car>>("http://localhost:3000/api/cimages", {
-      params: {
+      params: toSearch/* {
         model: model ,
         color: color,
         userID: userID
-      }
+      } */
     //.map(res => res.json())
   }
     )}
@@ -32,10 +34,10 @@ export class DataService {
     //.map(res => res.json())
   }*/
 
-  getCars(){
+/*   getCars(){
     return this.http.get<Array<car>>("http://localhost:3000/api/cars")
     //.map(res => res.json())
-  }
+  } */
 
   addCar(newCar){
     let headers = new HttpHeaders();

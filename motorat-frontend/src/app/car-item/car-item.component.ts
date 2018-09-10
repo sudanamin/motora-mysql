@@ -149,7 +149,8 @@ getCarsThumbnail(){
     /*  this.allItems =[];
      this.pagedItems =[];
      this.pager.pages = []; */
-    this.dataService.getCImages(model,color,userID)
+     var toSearch = {model:model,color:color}
+    this.dataService.getCImages(toSearch)
     .subscribe( cars => {
       this.allItems = cars;
 
