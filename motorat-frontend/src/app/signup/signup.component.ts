@@ -15,7 +15,8 @@ export class SignupComponent implements OnInit {
 
   onSubmit(formData) {
     if(formData.valid) {
-      console.log(formData.value);
+      var email = formData.value.email;
+      console.log("sign in form data"+ email);
       this.auth.emailSignUp(
         formData.value.email,
          formData.value.password
