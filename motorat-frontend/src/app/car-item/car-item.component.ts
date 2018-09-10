@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild  } from '@angular/core';
+import { Component, OnInit, ViewChild  } from '@angular/core';
 import {car} from '../../car';
 import {DataService} from '../data.service'
 import { PagerService } from '../_services/index'
@@ -27,6 +27,7 @@ export class CarItemComponent implements OnInit {
   YearToSearch: string ='';
   ColorToSearch: string ='';
   toggleForm: boolean = false;
+  show_me:boolean = true;
  
   //firstTime: boolean = true;
   cities = ["Abu Dabu","Ajman","Al ain","Dubai","Fujuira","Ras Alkhima","Sharjah","Um Alquiin"];
@@ -67,7 +68,7 @@ export class CarItemComponent implements OnInit {
     // ========================================================================
     openSlideshow(i,j){
 
-        const index = this.index;
+     /*    const index = this.index;
       
 
       
@@ -77,7 +78,7 @@ export class CarItemComponent implements OnInit {
         { src: 'http://via.placeholder.com/800x600', w: 800, h: 600 },
         // ...
     ]; 
-
+ */
            
   
     //this.photoSwipe.openGallery(images,index);
@@ -106,7 +107,8 @@ getCarsThumbnail(){
           var thumbForShow = Gofi[j];
 
           var imgUrl = Gofi[j].replace("_thumb", "");
-          var iForGallery = {thumb:thumbForShow ,src:imgUrl, w: 1200, h: 900, title: 'image caption sososo '};
+          console.log("description is : "+ this.pagedItems[i].DETAILS);
+          var iForGallery = {thumb:thumbForShow ,src:imgUrl, w: 1200, h: 900, title: this.pagedItems[i].DETAILS};
           // this.im.push( this.pagedItems[i].REF_APP_ID,obj);
           gofThumbsForShow.push(thumbForShow);
           gofiForGallery.push(iForGallery);
@@ -129,7 +131,10 @@ getCarsThumbnail(){
           price:this.pagedItems[i].PRICE,
           year:this.pagedItems[i].YEAR,
           specs:Utils.convertIntToSpecs(this.pagedItems[i].SPECS),
-          waranty:Utils.convertIntToWaranty(this.allItems[i].WARANTY),
+          warranty:Utils.convertIntToWaranty(this.allItems[i].WARANTY),
+          transmission:Utils.convertIntToTransmission(this.pagedItems[i].TRANSMISSION),
+          cylinder:this.pagedItems[i].CYLINDERS,
+          phone:this.pagedItems[i].PHONE
         };
        this.carsObjects.push(carObject);
        gofiForGallery = [];
@@ -145,11 +150,11 @@ getCarsThumbnail(){
 
   }
   
-  getCars(model,color, userID){
+  getCars(toSearch){
     /*  this.allItems =[];
      this.pagedItems =[];
      this.pager.pages = []; */
-     var toSearch = {model:model,color:color}
+   //  var toSearch = {model:model,color:color}
     this.dataService.getCImages(toSearch)
     .subscribe( cars => {
       this.allItems = cars;
@@ -171,15 +176,17 @@ getCarsThumbnail(){
 
     //console.log('car id is :' + this.selectedCar.APPLICATION_ID);
     this.carsObjects = [];
-      this.ModelToSearch = SearchFrm.value.carmodel;
-      this.ColorToSearch = SearchFrm.value.carcolor;
-    
-      this.getCars(this.ModelToSearch,this.ColorToSearch,"")
+
+    var toSearch ={
+      model:this.ModelToSearch = SearchFrm.value.carmodel,
+      color:Utils.convertColorToInt(SearchFrm.value.carcolor)
+    }
+      this.getCars(toSearch)
     
   }
 
   ngOnInit() {
-    this.getCars('','',"");
+    this.getCars('');
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.toggleLanguage = Utils.toggleLanguage;
       // do something

@@ -46,7 +46,8 @@ export  class Utils {
             case "Green" : return 8;
             case "Gold" : return 9;
             case "Yellow" : return 10;
-            default: return 0;
+            case "Other" : return 11;
+            default: return -1;
         }
     }
 

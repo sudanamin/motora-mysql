@@ -510,14 +510,14 @@ router.get('/cimages', (req, res,next) => {
         //var color = req.params.color;
       //  console.log('color is :' + color);
     
-        if (color != null && color !='') {
+        if (color != null && color !='' && color !='-1') {
             whereClause += " AND color LIKE '" + color + "'";
          //   console.log('color is :' + color);
             //whereClause += "AND description LIKE '%keywords%'"
         }  //console.log('color is :' + color);
     
         if (model != null && model !='') {
-            whereClause += " AND model LIKE '" + model + "'";
+            whereClause += " AND model_NAME LIKE '" + model + "'";
            // console.log('model is :' + model);
             //whereClause += "AND description LIKE '%keywords%'"
         }  //console.log('modell is :' + model);
