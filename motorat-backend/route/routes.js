@@ -535,7 +535,7 @@ connection.query(`SELECT * FROM  (select REF_APP_ID, GROUP_CONCAT(IMAGE_URL) as 
 right JOIN  cars_table on cars_table.APPLICATION_ID = im.REF_APP_ID   
 left join  cars_models  on  MODEL = cars_models.MODEL_ID
 left join   manufacture  on  manufacture = manufacture.manufacture_ID
- `+whereClause, function (err, cars) {
+ `+whereClause , function (err, cars) {
         if (err) {
             res.status(500);
             return next(err);

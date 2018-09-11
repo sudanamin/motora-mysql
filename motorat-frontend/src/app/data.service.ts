@@ -15,7 +15,7 @@ export class DataService {
     //.map(res => res.json())
   }*/
 
-  getCImages(toSearch ){
+  getCImages(toSearch  ){
 
     
     
