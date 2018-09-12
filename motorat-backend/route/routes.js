@@ -8,6 +8,8 @@ const fileType = require('file-type')
 const fs = require('fs')
 var url = require('url');
 
+ var query;
+
 var hostName = "http://localhost:3000/";
 
 //app.use(express.static(__dirname ));
@@ -62,48 +64,7 @@ router.get('/cars', (req, res, next) => {
     });
 })
 
-/*router.get('/carsimgs', (req, res, next) => {
 
-    var whereClause = "WHERE 1 = 1 ";
-
-    var url_parts = url.parse(req.url, true);
-    var query = url_parts.query;
-
-
-    var color = req.query.color;
-    var model = req.query.model;
-    //var color = req.params.color;
-    console.log('color is :' + color);
-
-    if (color != null) {
-        whereClause += "AND color LIKE '" + color + "'";
-        console.log('cccccccccccc is :' + color);
-        //whereClause += "AND description LIKE '%keywords%'"
-    } else console.log('ddddddddddd is :' + color);
-
-    if (model != null) {
-        whereClause += "AND model LIKE '" + model + "'";
-        console.log('mmmmmmmmmm is :' + model);
-        //whereClause += "AND description LIKE '%keywords%'"
-    } else console.log('lllllllllll is :' + model);
-    /*  if(price != null)
-       {
-         whereClause += "AND price = '%price%'"
-        } */
-
-/*
-    connection.query("SELECT * FROM `car_images` " + whereClause, function (err, cars) {
-        if (err) {
-            res.status(500);
-            return next(err);
-        }
-        else {
-            res.send(cars);
-            console.log(cars)
-        }
-
-    });
-})*/
 
 router.post('/car', (req, res, next) => {
 
@@ -217,30 +178,16 @@ router.delete('/image/:imageName', (req, res, next) => {
 
 
 var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
+    destination:'./images/'
+     /*function (req, file, cb) {
         cb(null, './images/')
-    },
+    }*/,
     filename: function (req, file, cb) {
         //  console.log("amin is :"+file.path);
         // let mime = fileType(file).mime;
         //cb(null, Date.now() + "_" + file.originalname);
         cb(null,  file.originalname);
-        // console.log("image/"+file.filename);
-        /*    connection.query("INSERT INTO `cars_table` (model, color,USER_ID) VALUES (?, ?, ?)", [1,1,file.filename], function(err, result) {
-               if (err) {
-                   res.status(500);
-                   console.log(err);
-               }
-               else{
-               //res.json({msg:"added"});
-               //var msg = "added";
-               //return msg;
-              // msg = msg+"ccc";
-              // res.status(200).json({message: message+msg, result:result})
-               console.log("ok");
-               }
        
-           }); */
 
     }
 });
@@ -266,7 +213,7 @@ var fields = [
     { name: 'description' },
     { name: 'uid' },
 ]
-var upload = multer({ storage: storage }).fields(fields); // var upload = multer({ storage: storage }).array('image');
+var upload = multer({ storage: storage ,limits: {fileSize: 10000000, files: 10} }).fields(fields); // var upload = multer({ storage: storage }).array('image');
 // upload.single('image');
 /*const upload = multer({
     dest:'images/', 
@@ -481,16 +428,7 @@ router.post('/setimg/:app_id', (req, res, next) => {
 })
 
 
-/*router.get('/images/:imagename', (req, res) => {
 
-    let imagename = req.params.imagename
-    let imagepath = __dirname + "/images/" + imagename
-    let image = fs.readFileSync(imagepath)
-    let mime = fileType(image).mime
-
-    res.writeHead(200, { 'Content-Type': mime })
-    res.end(image, 'binary')
-})*/
 
 
 router.get('/cimages', (req, res,next) => {
@@ -522,47 +460,63 @@ router.get('/cimages', (req, res,next) => {
             //whereClause += "AND description LIKE '%keywords%'"
         }  //console.log('modell is :' + model);
 
-        if (userId != null && userId !='') {
+         if (userId != null && userId !='') {
             whereClause += " AND USER_ID LIKE '" + userId + "'";
              console.log('user id  is :' + userId);
             //whereClause += "AND description LIKE '%keywords%'"
-        }
+        }  
 
   /*  connection.query("SELECT cars_table.MODEL ,cars_table.COLOR,USER_ID ,car_images.REF_APP_ID,GROUP_CONCAT(car_images.IMAGE_URL) as gofi from car_images INNER JOIN cars_table ON car_images.REF_APP_ID =cars_table.APPLICATION_ID "+whereClause+" GROUP BY car_images.REF_APP_ID ;", function (err, cars) {
  */
+
+
 console.log('color and model to search for'+whereClause);
-connection.query(`SELECT * FROM  (select REF_APP_ID, GROUP_CONCAT(IMAGE_URL) as gofi from car_images where IMAGE_URL LIKE '%thum%' GROUP BY REF_APP_ID ) as im
+
+var count=0;
+
+ var queryforCount = `SELECT count(*) as count FROM  (select REF_APP_ID, GROUP_CONCAT(IMAGE_URL) as gofi from car_images where IMAGE_URL LIKE '%thum%' GROUP BY REF_APP_ID ) as im
 right JOIN  cars_table on cars_table.APPLICATION_ID = im.REF_APP_ID   
 left join  cars_models  on  MODEL = cars_models.MODEL_ID
 left join   manufacture  on  manufacture = manufacture.manufacture_ID
- `+whereClause +' limit '+offset+ ' ,100' , function (err, cars) {
+ `+whereClause;
+
+connection.query(queryforCount , function (err, count) {
+     if (err) {
+         res.status(500);
+         return next(err);
+     }
+     else {
+        // res.send(count);
+         count = count;
+
+         var  query = `SELECT * FROM  (select REF_APP_ID, GROUP_CONCAT(IMAGE_URL) as gofi from car_images where IMAGE_URL LIKE '%thum%' GROUP BY REF_APP_ID ) as im
+   right JOIN  cars_table on cars_table.APPLICATION_ID = im.REF_APP_ID   
+   left join  cars_models  on  MODEL = cars_models.MODEL_ID
+   left join   manufacture  on  manufacture = manufacture.manufacture_ID
+    `+whereClause +' limit '+offset+ ' ,100';
+            connection.query(query , function (err, cars) {
         if (err) {
             res.status(500);
+            
             return next(err);
         }
         else {
-            res.send(cars);
+
+            res.send(count.concat(cars));
            // console.log( cars)
         }
 
     });
+        // console.log( cars)
+     }
+
+ });
+
+
+
+  
 })
 
 
-
-/* router.get('/carThum', (req, res) => {
-    let REF_APP_ID = req.query.REF_APP_ID
-    connection.query("SELECT REF_APP_ID,IMAGE_URL FROM `car_images` where REF_APP_ID = ?  && `IMAGE_URL` LIKE '%thum%'", [REF_APP_ID], function (err, cars) {
-        if (err) {
-            res.status(500);
-            return next(err);
-        }
-        else {
-            res.send(cars);
-            console.log(cars)
-        }
-
-    });
-}) */
 
 module.exports = router;

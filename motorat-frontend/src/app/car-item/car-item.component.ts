@@ -49,6 +49,7 @@ export class CarItemComponent implements OnInit {
   currentOffset: number =0;
   currentPage: number =1;
   toSearch: any = {};
+  count: any;
 
 
   constructor(private router: Router,
@@ -134,7 +135,7 @@ export class CarItemComponent implements OnInit {
         price: this.pagedItems[i].PRICE,
         year: this.pagedItems[i].YEAR,
         specs: Utils.convertIntToSpecs(this.pagedItems[i].SPECS),
-        warranty: Utils.convertIntToWaranty(this.allItems[i].WARANTY),
+        warranty: Utils.convertIntToWaranty(this.pagedItems[i].WARANTY),
         transmission: Utils.convertIntToTransmission(this.pagedItems[i].TRANSMISSION),
         cylinder: this.pagedItems[i].CYLINDERS,
         phone: this.pagedItems[i].PHONE
@@ -153,16 +154,23 @@ export class CarItemComponent implements OnInit {
 
   }
 
-  getCars(toSearch,offset) {
+  getCars(toSearch,offset,) {
     /*  this.allItems =[];
      this.pagedItems =[];
      this.pager.pages = []; */
     //  var toSearch = {model:model,color:color}
     var offsetObject =  {'offset': offset};
+    //var Count =  {'count': count};
+
+
     Object.assign(toSearch,offsetObject);
     this.dataService.getCImages(toSearch)
       .subscribe(cars => {
-        this.allItems = cars;
+
+        var a = cars.slice(0, 1);
+        this.count = a[0].count;
+        console.log("count is :"+this.count);
+        this.allItems = cars.slice(1, cars.length);
         this.currentOffset = offset;
         //if(this.firstTime == true )this.setPage(1);
        // if (! (toSearch.offset>1)) {
@@ -191,7 +199,9 @@ export class CarItemComponent implements OnInit {
       model: this.ModelToSearch = SearchFrm.value.carmodel,
       color: Utils.convertColorToInt(SearchFrm.value.carcolor)
     }
+     
 
+    this.currentPage = 1;
     this.toSearch = toSearch;
     this.getCars(this.toSearch,0)
 
@@ -224,10 +234,12 @@ export class CarItemComponent implements OnInit {
     }
     
      
-    this.pager = this.pagerService.getPager(this.allItems.length, page);
+    
+   // this.pager = this.pagerService.getPager(this.allItems.length, page);   //count(*)
+   this.pager =  this.pagerService.getPager(this.count, page);
 
     // get current page of items
-    this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
+    this.pagedItems = this.allItems.slice(this.pager.startIndex - offset, this.pager.endIndex + 1 - offset);
 
 
 

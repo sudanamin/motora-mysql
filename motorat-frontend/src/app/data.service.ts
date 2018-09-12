@@ -19,7 +19,7 @@ export class DataService {
 
     
     
-    return this.http.get<Array<car>>("http://localhost:3000/api/cimages", {
+    return this.http.get<Array<any>>("http://localhost:3000/api/cimages", {
       params: toSearch/* {
         model: model ,
         color: color,
@@ -39,13 +39,13 @@ export class DataService {
     //.map(res => res.json())
   } */
 
-  addCar(newCar){
+ /*  addCar(newCar){
     let headers = new HttpHeaders();
     headers.append('content-type','application/json');
     return this.http.post<car>('http://localhost:3000/api/car', newCar , {headers: headers})
           // .map(res => res.json());
 
-  }
+  } */
 
   deleteCar(id){
     return this.http.delete<car>("http://localhost:3000/api/car/"+id)

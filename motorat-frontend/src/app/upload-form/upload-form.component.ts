@@ -160,11 +160,15 @@ export class UploadFormComponent   {
     this.auth.user.subscribe(user => {
       
     var toSearch = {userID:user.uid};
+    var offsetObject =  {'offset': 0};
+    Object.assign(toSearch,offsetObject);
+
     console.log('user id is :'+toSearch.userID)
     this.dataService.getCImages(toSearch)
       .subscribe(cars => {
         //this.carList = cars;
-         this.allItems = cars;
+        
+         this.allItems = cars.slice(1, cars.length);
          if(this.allItems.length !== 0){
              this.getCarsThumbnail();
          }
