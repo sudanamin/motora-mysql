@@ -24,7 +24,7 @@
     "Phone:": "Show Phone",
     "Cylinder:": "Cylinder:",
     "Transmission:": "Transmission:",
-    "warranty:": "warranty:",
+    "warranty:": "Warranty:",
     "DESCRIPTION":"DESCRIPTION",
     "Previous": "Previous",
     "First": "First",
@@ -36,6 +36,7 @@
     "CompanyName": "COMPANY NAME",
     "OurCompany":"Established in 2018, the site focuses on all the available technical capabilities and uses the latest technology available to offer car  real estate and travel advertising services to help support these areas always better.",
     "City": "CITY",
+    "city": "City",
     "Language":"LANGUAGE",
     "UsefulLinks": "USEFUL LINKS",
     "AbuDhabi": "Abu-Dhabi",
@@ -55,5 +56,8 @@
     "Edit": "Edit",
     "Delete": "Delete",
     "Images":"images",
-    "Click":"Click or Drag Here"
+    "Click":"Click or Drag Here",
+    "Manual":"Manual",
+    "Automatic":"Automatic",
+    "Gold":"Gold"
 }

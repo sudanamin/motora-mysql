@@ -13,51 +13,52 @@
               <br> <br> 
         </div>
     </div> -->
-  
 
 
- <!--   <h1  style='display: inline;font-weight: bold;  text-decoration: underline; 
+
+<!--   <h1  style='display: inline;font-weight: bold;  text-decoration: underline; 
    font-family: Tangerine,serif;  color:orange;'>Motorat.ae>   </h1> -->
-   
 
-   <div class='row' >
-        <div class="col-md-1"></div>
-        <div class="col-md-6">
-                
-                <h1 class='logo' align='right' style='display: inline;  
+
+<div class='row'>
+    <div class="col-md-1"></div>
+    <div class="col-md-6">
+
+        <h1 class='logo' align='right' style='display: inline;  
                font-family:ubuntu; font-weight: bold ' translate>Title</h1>
-               </div>
-               <div class="col-md-2"></div>
-   <div class="col-md-3 ">
-        <h2  class='logo' style='display: inline;font-weight: bold;  text-decoration: underline; 
-        font-family: Tangerine,serif;  color:orange;'>Canary.ae>   </h2>
-   
-  <!--  <img  class='logo'  style='width:80px;height:65px;    vertical-align: bottom;   ' src="assets/eagle.svg"> -->
-   <img  class='logo'  style='width:80px;height:25px;    vertical-align: bottom;   ' src="assets/logo.png">
-</div>
+    </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-3 ">
+        <h2 class='logo' style='display: inline;font-weight: bold;  text-decoration: underline; 
+        font-family: Tangerine,serif;  color:orange;'>Zezenia.ae> </h2>
+
+        <!--  <img  class='logo'  style='width:80px;height:65px;    vertical-align: bottom;   ' src="assets/eagle.svg"> -->
+        <img class='logo' style='width:80px;height:25px;    vertical-align: bottom;   ' src="assets/logo.png">
+    </div>
 
 
 
 
 </div>
- 
-<div class="tab" >
-           
+
+<div class="tab">
+
     <div class="col-md-2"> </div>
     <div class="col-md-8">
 
-      
-        <div class='about'>
-            <a translate>Register</a> &nbsp;| &nbsp;    
+
+       
+        <div class='about' (click)="router.navigate(['/about'])">
+            <a translate>About</a> &nbsp;| &nbsp;
         </div>
-        <div class='about' (click)="router.navigate(['/about'])">  
-            <a translate >About</a> &nbsp;| &nbsp;  
+        <div class='about' (click)="router.navigate(['/contact'])">
+            <a translate>Contact </a> &nbsp;| &nbsp;
         </div>
-        <div class='about' (click)="router.navigate(['/contact'])"> 
-            <a translate>Contact </a> &nbsp;| &nbsp; 
-        </div>
-        <div class='login about' (click)="router.navigate(['/members'])"> &nbsp; &nbsp; &nbsp; 
-            <a style="color: rgba(241, 237, 237, 0.493);"translate><i class="fa fa-sign-in" style="font-size:normal;color:orange">&nbsp;</i>Login</a>
+        <div class='about'   (click)="router.navigate(['/members'])">
+                <a translate>Register</a> &nbsp;| &nbsp;
+            </div>
+        <div class='login about' (click)="router.navigate(['/members'])"> &nbsp; &nbsp; &nbsp;
+            <a style="color: rgba(241, 237, 237, 0.493);" translate><i class="fa fa-sign-in" style="font-size:normal;color:orange">&nbsp;</i>Login</a>
         </div>
 
         <div class="PlaceAd " (click)="router.navigate(['/members'])">
@@ -65,12 +66,12 @@
         </div>
         <div class='lang'>
             <a (click)="switchLanguage()" translate>lang </a>&nbsp;&nbsp;</div>
-        
-          
+
+
     </div>
     <div class="col-md-2"> </div>
 
-    
+
 </div>
 
 <!-- <img  class='logo'  style='width:150px;height:200px;  display: block;
@@ -95,11 +96,29 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
 
         <div class="row">
             <div class="col-md-1"> </div>
-            <div class="SearchBox fontUbuntu col-md-11" >
+            <div class="SearchBox fontUbuntu col-md-11">
                 <form #SearchFrm="ngForm" (ngSubmit)="SearchCar(SearchFrm)">
                     <h4 align="center" class="SearchTitle" translate> Search</h4>
+  
+                    
                     <div class="form-group ">
-                        <label for="" translate >
+                            <label for="" >
+                                <span translate>city</span>:
+                            </label>
+    
+                            <input type="text" class="form-control  input-sm" name="carcolor" value="" [ngModel]="ColorToSearch">
+                    </div>
+
+                    <div class="form-group ">
+                            <label for="" >
+                               <span translate>Manufacturer:</span>
+                            </label>
+    
+                            <input type="text" class="form-control  input-sm" name="carcolor" value="" [ngModel]="ColorToSearch">
+                        </div>
+                   
+                    <div class="form-group ">
+                        <label for="" translate>
                             Model:
                         </label>
 
@@ -116,7 +135,7 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                     </div>
 
                     <div class="form-group ">
-                        <label for=""  translate>
+                        <label for="" translate>
                             Year:
                         </label>
 
@@ -125,14 +144,34 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
 
 
                     <div class="form-group ">
-                        <label for="" translate >
+                        <label for="" translate>
                             Kilometers:
                         </label>
 
                         <input type="text" class="form-control  input-sm" name="carcolor" value="" [ngModel]="ColorToSearch">
                     </div>
 
-                    <button type="submit" name='button' class=' btn btn-block  btn-primary' ><i translate>Go</i></button>
+
+
+                    <div class="form-group ">
+                            <label for="" translate>
+                                price from to:
+                            </label>
+    
+                            <input type="text" class="form-control  input-sm" name="carcolor" value="" [ngModel]="ColorToSearch">
+                    </div>
+
+
+
+                    <div class="form-group ">
+                            <label for="" translate>
+                                Cylinder:
+                            </label>
+    
+                            <input type="text" class="form-control  input-sm" name="carcolor" value="" [ngModel]="ColorToSearch">
+                        </div>
+
+                    <button type="submit" name='button' class=' btn btn-block  btn-primary'><i translate>Go</i></button>
 
                 </form>
             </div>
@@ -174,61 +213,62 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                                 <div class="verticalLine"></div>
 
                                 <div class="title"> {{obj.manufacture}}> {{obj.model }}> {{obj.specs}}
-                                 </div>
+                                </div>
                                 <!-- containerTitle -->
 
                                 <br>
 
                                 <div class="num_of_img"> +{{obj.thums.length}} </div>
 
-                                <img (click)="openSlideshow(i,j);"  [src]="obj.thums[0]">
+                                <img (click)="openSlideshow(i,j);" [src]="obj.thums[0]">
                                 <br>
                                 <br>
-                                <div class='fontUbuntu'>  <i translate>Located:</i> {{obj.city}} , <i translate>Date:</i> {{obj.date| date :  "dd MMMM yyyy" }}</div>
+                                <div class='fontUbuntu'> <i translate>Located:</i> {{obj.city}} , <i translate>Date:</i>
+                                    {{obj.date| date : "dd MMMM yyyy" }}</div>
                                 <br>
                                 <br>
 
                             </div>
-                            <div   class="rightOfBox col-md-3" >
-                                    <div class='details' translate>warranty:
-                                            <span class='detailsBold'> {{obj.warranty}}  </span></div>
-        
-                                        <!-- <br> -->
-                                        <br>
-                                        <div class='details' translate>Transmission:
-                                            <span class='detailsBold'>  {{obj.transmission}}</span>
-                                        </div>
-                                        <br>
-                                        <div class='details' translate>Cylinder:
-                                            <span class='detailsBold'>  {{ obj.cylinder}}</span>
-                                        </div>
-                                        <br>
-                                        <div class='details' translate>Color:
-                                                <span class='detailsBold'>  {{ obj.color}}</span>
-                                            </div>
+                            <div class="rightOfBox col-md-3">
+                                <div class='details' translate>warranty:
+                                    <span class='detailsBold'> {{obj.warranty}} </span></div>
+
+                                <!-- <br> -->
+                                <br>
+                                <div class='details' translate>Transmission:
+                                    <span class='detailsBold' translate> {{obj.transmission}}</span>
+                                </div>
+                                <br>
+                                <div class='details' translate>Cylinder:
+                                    <span class='detailsBold'> {{ obj.cylinder}}</span>
+                                </div>
+                                <br>
+                                <div class='details' translate>Color:
+                                    <span class='detailsBold'> {{ obj.color}}</span>
+                                </div>
                             </div>
 
 
-                            <div   class="rightOfBox col-md-3" >
+                            <div class="rightOfBox col-md-3">
 
-                                <div class='details' translate>Price: 
-                                    <span class='detailsBold'> {{obj.price}} <i translate> AED</i> </span></div>
+                                <div class='details' translate>Price:
+                                    <span class='detailsBold'> {{obj.price}} <span translate> AED</span> </span></div>
 
                                 <br>
                                 <div class='details' translate>Kilometers:
-                                    <span class='detailsBold'> {{obj.kilometers}}  &nbsp; <i translate> km</i> </span></div>
+                                    <span class='detailsBold'> {{obj.kilometers}} &nbsp; <span translate> km</span> </span></div>
 
                                 <!-- <br> -->
                                 <br>
                                 <div class='details' translate>Year:
-                                    <span class='detailsBold'>  {{obj.year}}</span>
+                                    <span class='detailsBold'> {{obj.year}}</span>
                                 </div>
                                 <br>
-                                
+
 
                                 <br>
 
-                                
+
                                 <br>
                                 <br>
                                 <div class="showPhone btn btn-warning btn-sm" translate> Phone: </div>
@@ -273,7 +313,7 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
 
 
     <div class="col-md-2">
-        
+
     </div>
-   
+
 </div>
