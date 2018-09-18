@@ -54,6 +54,9 @@ export class UploadFormComponent   {
   //pagedItems: any[];
   //fd:FormData[] = [];
   fd = new FormData();
+
+  userDisplayName:string;
+  userEmail:string;
   /* editFD = new FormData(); */
 
    time = Date.now() + "_";
@@ -158,6 +161,9 @@ export class UploadFormComponent   {
   getCars() {
 
     this.auth.user.subscribe(user => {
+
+      this.userDisplayName = user.displayName;
+      this.userEmail = user.email;
       
     var toSearch = {userID:user.uid};
     var offsetObject =  {'offset': 0};
