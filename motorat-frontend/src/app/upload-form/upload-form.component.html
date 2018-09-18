@@ -644,7 +644,7 @@
 
                   <!-- <div class="contactBox"> contact </div> -->
 
-                  <div class="container2 col-md-5">
+                  <div class="container2 col-md-4">
                       <div class="verticalLine"></div>
 
                       <div class='label label-primary'> {{obj.Manufacturer_name}}> {{obj.Model_name }}>  {{obj.Year}}</div>   <!-- containerTitle -->
@@ -661,48 +661,73 @@
                       <br>
                       <div> <i translate>Located:</i> {{obj.City}}> <i translate> Date:</i> {{obj.Date| date :  "dd MMMM yyyy" }}</div>
                       <br>
+                      <br> 
 
                   </div>
 
-                  <div class='col-md-1'>
-                    <button type='button' name="button" class='btn btn-primary btn-sm' (click)="showEditForm(obj)" [disabled]="toggleForm">Edit</button>
-                  </div>
+                  
           
-                  <div class='col-md-1'>
+                  <!-- <div class='col-md-1'>
+                      <br><br><br><br>
                     <button type='button' name="button" class='btn btn-danger btn-sm' (click)="deleteCar(obj)" [disabled]="toggleForm">Delete</button>
-                  </div>
-                  <div class='col-md-2'>
-                  </div>
+                  </div> -->
+                   
 
-                  <div class="rightOfBox col-md-3">
+                  
+  
 
-                      <div class='containerPrice'><i translate>Price:</i>   {{obj.Price}} AED. </div>
+                  <div class="rightOfBox col-md-2">
+
+                      <div class='containerPrice'><span translate>Price:</span>   {{obj.Price}} AED. </div>
 
                       <br>
-                      <div class='containerKilo'><i translate> Kilometers:</i>  {{obj.Kilometers}} km. </div>
+                      <div class='containerKilo'><span translate> Kilometers:</span>  {{obj.Kilometers}} km. </div>
 
                       <!-- <br> -->
                       <br>
-                      <div class='containerYear'> <i translate>Specs:</i> {{obj.Specs}} </div>
+                      <div class='containerYear'> <span translate>Specs:</span> {{obj.Specs}} </div>
                       <br>
-                      <div class='containerYear'><i translate>Cylinder:</i>  {{obj.NoOfCylinders}} </div>
+                      <div class='containerYear'><span translate>Cylinder:</span>  {{obj.NoOfCylinders}} </div>
                       <br>
+                      
+                  </div>
+
+                  <div class='col-md-1'>
+                    </div>
+
+                  <div class="rightOfBox col-md-3">
+
                       <div class='containerYear'><span translate>Transmission:</span>   {{obj.Transmission}} </div>
                       <br>
-                      <div class='containerYear'><i translate>Color:</i> {{obj.Color}} </div>
+                      <div class='containerYear'><span translate>Color:</span> {{obj.Color}} </div>
                       <br>
-                      <div class='containerYear'><i translate>warranty:</i> {{obj.Warranty}} </div>
+                      <div class='containerYear'><span translate>warranty:</span> {{obj.Warranty}} </div>
                       <br>
                       <br>
                       <br>
                       <!-- <div class="contactBox"> Show phone </div> -->
-                      <button type='button' name="button" class='btn btn-primary btn-sm'><i translate>Phone</i></button>
+                      <button type='button' name="button" class='btn btn-primary btn-sm'><span translate>ContactNumber</span>: {{obj.ContactNumber}}</button>
                       <br> <br>  
+                      
+
                   </div>
+                 
+                  <div class='col-md-1'>
+                      <br><br>
+                      
+                    <button type='button' name="button" class='btn btn-primary btn-sm' (click)="showEditForm(obj)" [disabled]="toggleForm">Edit</button>
+               
+                  </div>
+
+                  <div class='col-md-1'>
+                      <br><br> 
+                    <button type='button' name="button" class='btn btn-danger btn-sm' (click)="deleteCar(obj)" [disabled]="toggleForm">Delete</button>
+                  </div>
+
                   
-                  <hr>
+                 
               </div>
-              
+              <hr>
 
 
           </li>

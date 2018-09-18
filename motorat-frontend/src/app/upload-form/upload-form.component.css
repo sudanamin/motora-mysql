@@ -373,10 +373,10 @@ ul{
 
 .rightOfBox{
     float: left;
-    text-align: left;
+   /*  text-align: left; */
     font-weight: bold;
     color: black;
-    font-family:Tahoma;
+    font-family:Ubuntu;
      
 }
 
