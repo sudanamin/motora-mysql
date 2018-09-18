@@ -54,7 +54,7 @@
 
   <div class="container" [class.toggleLang]="toggleLanguage" >
 
-     <h4 class="titles"> welcome {{ userDisplayName }} ({{userEmail}})</h4>
+     <h4 class="titles"><span translate>Hi</span> {{ userDisplayName }}!, {{userEmail}}</h4>
     <form #frm="ngForm" (ngSubmit)="addCar(frm)" *ngIf="!toggleForm">
 
       <h3 class="titles" translate> PlaceAdTitle </h3>

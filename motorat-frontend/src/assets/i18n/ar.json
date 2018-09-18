@@ -50,15 +50,16 @@
     "Submit": "أعلن",
     "image": "صور",
     "UploadImage": "رفع الصور",
-    "PlaceAdTitle": "أضف إعلانك",
+    "PlaceAdTitle": "أضف إعلانك:",
     "EditAdTitle": "تعديل إعلانك",
-    "YourPreviousAd": "إعلاناتك السابقة",
+    "YourPreviousAd": "إعلاناتك السابقة:",
     "Edit": "تحرير",
     "Delete": "حذف",
     "Images":"صورة",
     "Click":"سحب وإفلات أو إضغط هنا",
     "Manual":"يدوي",
     "Automatic":"أتوماتيك",
-    "Gold":"ذهبي"
+    "Gold":"ذهبي",
+    "Hi":"مرحباً"
 
 }

@@ -50,14 +50,15 @@
     "Submit": "Go",
     "image": "Images",
     "UploadImage": "Upload Car Images",
-    "PlaceAdTitle": "Place Your Ad",
+    "PlaceAdTitle": "Place Your Ad:",
     "EditAdTitle": "Edit Your Ad",
-    "YourPreviousAd": "Your Previous Ads",
+    "YourPreviousAd": "Your Previous Ads:",
     "Edit": "Edit",
     "Delete": "Delete",
     "Images":"images",
     "Click":"Click or Drag Here",
     "Manual":"Manual",
     "Automatic":"Automatic",
-    "Gold":"Gold"
+    "Gold":"Gold",
+    "Hi":"Hi"
 }

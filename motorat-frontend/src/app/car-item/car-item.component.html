@@ -58,7 +58,7 @@
                 <a translate>Register</a> &nbsp;| &nbsp;
             </div>
         <div class='login about' (click)="router.navigate(['/members'])"> &nbsp; &nbsp; &nbsp;
-            <a style="color: rgba(241, 237, 237, 0.493);" translate><i class="fa fa-sign-in" style="font-size:normal;color:orange">&nbsp;</i>Login</a>
+            <a style="color: rgba(241, 237, 237, 0.493);" translate><i class="fa fa-sign-in" style="font-size:normal;color:greenyellow">&nbsp;</i>Login</a>
         </div>
 
         <div class="PlaceAd " (click)="router.navigate(['/members'])">
@@ -102,36 +102,88 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
   
                     
                     <div class="form-group ">
-                            <label for="" >
+                            <!-- <label for="" >
                                 <span translate>city</span>:
                             </label>
     
-                            <input type="text" class="form-control  input-sm" name="carcolor" value="" [ngModel]="ColorToSearch">
+                            <input type="text" class="form-control  input-sm" name="carcolor" value="" [ngModel]="ColorToSearch"> -->
+
+                            
+ 
+   
+
+    
+                                    <label class="label label-primary" for="carcity" translate>
+                                       City
+                                    </label>
+                               
+                                    <select class="form-control input-sm" name="cityToSearch" value="" ngModel >
+                                        <option selected value>All</option>
+                                        <option>Abu Dhabi</option>
+                                        <option>Ajman</option>
+                                        <option>Alain</option>
+                                        <option>Dubai</option>
+                                        <option>Fujaira</option>
+                                        <option>Ras Alkhaima</option>
+                                        <option>Sharjah</option>
+                                        <option>Um Alqwain</option>
+                                        
+                                        
+                                      </select>
+                                  
                     </div>
 
                     <div class="form-group ">
-                            <label for="" >
-                               <span translate>Manufacturer:</span>
-                            </label>
-    
-                            <input type="text" class="form-control  input-sm" name="carcolor" value="" [ngModel]="ColorToSearch">
+                            
+                                    <label class="label label-primary" for="" translate>
+                                      Manufacturer:
+                                    </label>
+                          
+                                    <select class="form-control input-sm"   name="manufacturerToSearch" ngModel>
+                                        <option>NISSAN</option>
+                                        <option>TOYOTA</option>
+                                         
+                                      </select>
+                                 
                         </div>
                    
                     <div class="form-group ">
-                        <label for="" translate>
-                            Model:
-                        </label>
-
-                        <input type="text" class="form-control  input-sm" name="carmodel" value="" [ngModel]="ModelToSearch">
+                          
+                                    <label class="label label-primary" for="" translate>
+                                      Model:
+                                    </label>
+                          
+                                    <select class="form-control input-sm"   name="modelToSearch" ngModel>
+                                        <option>ALTIMA</option>
+                                        <option>CAMRY</option>
+                                         
+                                      </select>
+                                 
                     </div>
 
 
                     <div class="form-group ">
-                        <label for="" translate>
-                            Color:
-                        </label>
-
-                        <input type="text" class="form-control  input-sm" name="carcolor" value="" [ngModel]="ColorToSearch">
+                          
+                                    <label class="label label-primary" for="color" translate>
+                                      Color:
+                                    </label>
+                          
+                                    <select class="form-control input-sm"  name="colorToSearch"  ngModel>
+                                         
+                                        <option>Silver</option>
+                                        <option>White</option>
+                                        <option>Brown</option>
+                                        <option> Black</option>
+                                        <option>Blue</option>
+                                        <option>Red</option>
+                                        <option>Gray</option>
+                                        <option>Green</option>
+                                        <option>Gold</option>
+                                        <option>Yellow</option>
+                                        <option>Other</option>
+                                         
+                                      </select>
+                                  
                     </div>
 
                     <div class="form-group ">

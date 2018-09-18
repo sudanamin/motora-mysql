@@ -23,6 +23,8 @@ export class CarItemComponent implements OnInit {
 
   carList: car[] = [];
   selectedCar: car;
+
+  CityToSearch: string = '';
   ModelToSearch: string = '';
   YearToSearch: string = '';
   ColorToSearch: string = '';
