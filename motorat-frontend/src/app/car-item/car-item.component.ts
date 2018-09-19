@@ -11,7 +11,9 @@ import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { PhotoSwipeComponent } from '../photo-swipe/photo-swipe.component';
 /* import { IImage              } from '../interfaces/image'; */
 import { Router } from "@angular/router";
+/* import '../../dist/powerange.min.js'; */
 
+declare var Powerange: any;
 
 @Component({
   selector: 'app-car-item',
@@ -211,6 +213,11 @@ export class CarItemComponent implements OnInit {
 
   ngOnInit() {
     this.getCars(this.toSearch,0);
+
+    var elem = document.querySelector('.js-min-max-start');
+    var init = new Powerange(elem, { hideRange: true });
+
+
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.toggleLanguage = Utils.toggleLanguage;
       // do something

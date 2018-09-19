@@ -31,7 +31,8 @@ import { SignupComponent } from './signup/signup.component';
 import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
 import { FooterComponent } from './footer/footer.component';
-
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatSliderModule} from '@angular/material/slider';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -66,6 +67,8 @@ var firebaseConfig = {
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    MatSliderModule,
     FormsModule,
     HttpClientModule,
     TranslateModule.forRoot({
