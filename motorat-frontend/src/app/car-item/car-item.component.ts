@@ -13,7 +13,7 @@ import { PhotoSwipeComponent } from '../photo-swipe/photo-swipe.component';
 import { Router } from "@angular/router";
 /* import '../../dist/powerange.min.js'; */
 
-declare var Powerange: any;
+declare var Slider: any;
 
 @Component({
   selector: 'app-car-item',
@@ -214,8 +214,16 @@ export class CarItemComponent implements OnInit {
   ngOnInit() {
     this.getCars(this.toSearch,0);
 
-    var elem = document.querySelector('.js-min-max-start');
-    var init = new Powerange(elem, { hideRange: true });
+    var slider = new Slider("#ex13", {
+      id: "slider1",
+      tooltip: 'always',
+      ticks: [1,   50 , 100 ],
+      ticks_labels: [' 1k',   '50k', '^100k'],
+      ticks_snap_bounds: 30
+  });
+
+ /*  var sliderC = new Slider("#ex12c", { id: "slider12c", min: 0, max: 10, range: true, value: [3, 7] }); */
+
 
 
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {

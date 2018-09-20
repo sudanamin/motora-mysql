@@ -1,7 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+ 
 
 
 Body{
    /*  direction: rtl; */
+}
+
+/* #slider12c .slider-selection {
+	background: greenyellow;
+
+} */
+
+#slider1 .slider-selection {
+	background: orange;
+
+}
+
+  #slider1 .slider-track-high {
+	/* background: green; */
+}
+
+  #slider1 .slider-track-low {
+	/* background: rgba(145, 255, 0, 0.308); */
 }
