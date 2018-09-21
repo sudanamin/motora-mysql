@@ -11,15 +11,17 @@ Body{
 
 } */
 
-#slider1 .slider-selection {
-	background: orange;
+#slider2 .slider-selection, #slider3 .slider-selection, #slider4 .slider-selection {
+	background: greenyellow;
 
 }
 
-  #slider1 .slider-track-high {
-	/* background: green; */
+ 
+
+#slider2 .slider-track-high, #slider3 .slider-track-high,  #slider4 .slider-track-high {
+	background: red;
 }
 
-  #slider1 .slider-track-low {
-	/* background: rgba(145, 255, 0, 0.308); */
+#slider2 .slider-track-low, #slider3 .slider-track-low,  #slider4 .slider-track-low {
+	background: red;
 }

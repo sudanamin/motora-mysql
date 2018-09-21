@@ -168,9 +168,17 @@ showPhone:hover{
     /*  font-weight:   normal;  */
      font-size:  small; 
     font-family:  ubuntu;
-    font-weight: bold;
+  /*   font-weight: bold; */
     
    
+}
+
+.detailsBold{
+    font-weight:   bold;
+    font-size:   small;
+    font-family:  ubuntu;
+    direction: rtl;
+    
 }
 
 
@@ -194,13 +202,7 @@ showPhone:hover{
 }
 
 
-.detailsBold{
-    font-weight:   bold;
-    font-size:   small;
-    font-family:  ubuntu;
-    direction: rtl;
-    
-}
+
 
 .SearchDetails{
     font-weight:   normal;

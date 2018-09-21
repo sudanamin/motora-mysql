@@ -39,6 +39,7 @@ export class CarItemComponent implements OnInit {
 
   carsObjects = [];
   toggleLanguage = false;
+  rtl = 'rtl';
 
   // array of all items to be paged
   private allItems: any[];
@@ -66,10 +67,14 @@ export class CarItemComponent implements OnInit {
     // <HTMLElement>document.querySelector(".details").Style.cssText = "--my-var: #000";
     Utils.toggleLanguage = !Utils.toggleLanguage;
     this.toggleLanguage = Utils.toggleLanguage;
-    if (Utils.toggleLanguage == true)
+    if (Utils.toggleLanguage == true){
       this.translate.use('ar');
-    else
+      this.rtl = 'rtl'
+    }
+    else{
       this.translate.use('en')
+      this.rtl = 'ltr'
+    }
   }
 
 
@@ -214,13 +219,39 @@ export class CarItemComponent implements OnInit {
   ngOnInit() {
     this.getCars(this.toSearch,0);
 
-    var slider = new Slider("#ex13", {
+  /*   var slider = new Slider("#ex1", {
       id: "slider1",
       tooltip: 'always',
-      ticks: [1,   50 , 100 ],
-      ticks_labels: [' 1k',   '50k', '^100k'],
-      ticks_snap_bounds: 30
-  });
+   
+  }); */
+
+  var slider = new Slider("#price", {
+    id: "slider2",
+ /*    tooltip: 'always', */
+    tooltip_position:'bottom'
+     ticks: [0,    100 ],  
+     ticks_labels: [' 0k',     '^100k'], 
+  /*   ticks_snap_bounds: 30 */
+});
+
+var slider = new Slider("#kilo", {
+  id: "slider3",
+  /* tooltip: 'always', */
+  tooltip_position:'bottom'
+   ticks: [0,    200 ],  
+   ticks_labels: [' 0k',     '^200k'], 
+/*   ticks_snap_bounds: 30 */
+});
+
+var slider = new Slider("#year", {
+  id: "slider4",
+  
+  tooltip_position:'bottom'
+   ticks: [1990,    2018 ],  
+   ticks_labels: ['1990',     '2018'], 
+    ticks_snap_bounds: 5 
+});
+
 
  /*  var sliderC = new Slider("#ex12c", { id: "slider12c", min: 0, max: 10, range: true, value: [3, 7] }); */
 

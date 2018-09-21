@@ -98,8 +98,8 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
     <div class=" col-md-2">
 
         <div class="row">
-            <div class="col-md-1"> </div>
-            <div class="SearchBox fontUbuntu col-md-11">
+           
+            <div class="SearchBox fontUbuntu col-md-12">
                 <form #SearchFrm="ngForm" (ngSubmit)="SearchCar(SearchFrm)">
                     <h4 align="center" class="SearchTitle" translate> Search</h4>
   
@@ -117,7 +117,7 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
 
     
                                     <label class="label label-primary" for="carcity" translate>
-                                       City
+                                            city
                                     </label>
                                
                                     <select class="form-control input-sm" name="cityToSearch" value="" ngModel >
@@ -139,7 +139,7 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                     <div class="form-group ">
                             
                                     <label class="label label-primary" for="" translate>
-                                      Manufacturer:
+                                      Manufacturer
                                     </label>
                           
                                     <select class="form-control input-sm"   name="manufacturerToSearch" ngModel>
@@ -168,7 +168,7 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                     <div class="form-group ">
                           
                                     <label class="label label-primary" for="color" translate>
-                                      Color:
+                                      Color
                                     </label>
                           
                                     <select class="form-control input-sm"  name="colorToSearch"  ngModel>
@@ -189,47 +189,51 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                                   
                     </div>
 
-                    <div class="form-group ">
+                    <div class="form-group " style ='padding-right:10px;padding-left:10px;'  dir ="ltr"> 
                         <label for="" translate>
-                            Year:
+                            Year
                         </label>
+                      
+                <input style='width:100%; ' id="year" type="text"    data-slider-value="[1990,2018 ]"/>    
+       
+        </div>
 
-                        <input type="text" class="form-control  input-sm" name="carmodel" value="" [ngModel]="YearToSearch">
+
+                    <div class="form-group "  style ='padding-right:10px;padding-left:10px;'  dir ="ltr"> 
+                        <label for="" translate>
+                            Kilometers
+                        </label>
+                         
+                        
+                     <input  style='width:100%; ' id="kilo" type="text"    data-slider-value="[0,100 ]"/>   
+                   
+              
                     </div>
 
 
-                    <div class="form-group ">
-                        <label for="" translate>
-                            Kilometers:
-                        </label>
 
-                        <input type="text" class="form-control  input-sm" name="carcolor" value="" [ngModel]="ColorToSearch">
-                    </div>
-
-
-
-                    <div class="form-group ">
+                    <div class="form-group " style ='padding-right:10px;padding-left:10px;' dir ="ltr"> 
                            <!--  <label for="" translate>
                                 price from to:
                             </label>
     
                             <input type="text" class="form-control  input-sm" name="carcolor" value="" [ngModel]="ColorToSearch"> -->
 
-                            <label for="customRange1">Price</label>
-                            <br> 
+                            <label for="customRange1" translate>Price</label>
+                            
                           <!--   <input type="text" class="js-min-max-start" style='font-size: small' /> -->
 
 
-                        <!--  <b>€ 10 </b><input style=' width: 60%;' id="ex1"class="form-control  input-sm" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="2000" data-slider-step="1" data-slider-value="[100,1000]"/><b>€ 1000</b> -->
-                        &nbsp; <input style='width:90%; ' id="ex13" type="text"  data-slider-ticks-snap-bounds="10"  data-slider-value="[1,100 ]"/>    
-                       <!--  <input id="ex12c" type="text"/><br/>  -->
+<!--                       <input style=' width: 90%;' id="ex1"  data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="100000" data-slider-step="1" data-slider-value="[0,50000]"/> 
+ -->                         <input style='width:100%; ' id="price" type="text"    data-slider-value="[0,100 ]"/>    
+                        <!--  <input id="ex12c" type="text"/><br/>  -->
                     </div>
 
 
 
                     <div class="form-group ">
                             <label for="" translate>
-                                Cylinder:
+                                Cylinder
                             </label>
     
                             <input type="text" class="form-control  input-sm" name="carcolor" value="" [ngModel]="ColorToSearch">
