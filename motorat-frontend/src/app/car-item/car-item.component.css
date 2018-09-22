@@ -2,7 +2,13 @@
     direction: rtl;
 }
 
-
+ 
+    .row-rtl {
+           margin-right: 10px;
+             
+       
+    }
+ 
 a:hover{
 	 
 	font-style: italic;

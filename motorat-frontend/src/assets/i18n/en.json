@@ -13,7 +13,7 @@
     "km":"km",
     "Kilometers": "Kilometers",
     "Year": "Year",
-    "Specs:": "Specs:",
+    "Specs": "Specification",
     "Located:": "located:",
     "Date:": "Date:",
     "Color": "Color",
@@ -60,5 +60,6 @@
     "Manual":"Manual",
     "Automatic":"Automatic",
     "Gold":"Gold",
-    "Hi":"Hi"
+    "Hi":"Hi",
+    "SortBy": "Sort By"
 }

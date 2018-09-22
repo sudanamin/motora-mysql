@@ -26,9 +26,9 @@ export class CarItemComponent implements OnInit {
   carList: car[] = [];
   selectedCar: car;
 
-  slider1:Slider;
-  slider2:Slider;
-  slider3:Slider;
+  slider1:any;
+  slider2:any;
+  slider3:any;
   CityToSearch: string = '';
   ModelToSearch: string = '';
   YearToSearch: string = '';
@@ -210,18 +210,18 @@ export class CarItemComponent implements OnInit {
     //console.log('car id is :' + this.selectedCar.APPLICATION_ID);
     this.carsObjects = [];
 
-    var minYear = this.slider3.getValue()[0]);
-    var maxYear = this.slider3.getValue()[1]);
+    var minYear = (this.slider3.getValue())[0];
+    var maxYear = (this.slider3.getValue())[1];
 
-    var minKilo = this.slider2.getValue()[0]);
-    var maxKilo = this.slider2.getValue()[1]);
+    var minKilo = this.slider2.getValue()[0];
+    var maxKilo = this.slider2.getValue()[1];
 
-    var minPrice = this.slider1.getValue()[0]);
-    var maxPrice = this.slider1.getValue()[1]);
+    var minPrice = this.slider1.getValue()[0];
+    var maxPrice = this.slider1.getValue()[1];
 
     
 
-    alert(minYear,maxPrice);
+    alert(minYear+' +' +minKilo' '+minPrice);
 
 
     var toSearch = {

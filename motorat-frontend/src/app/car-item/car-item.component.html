@@ -29,8 +29,8 @@
     </div>
     <div class="col-md-2"></div>
     <div class="col-md-3 ">
-        <h2 class='logo' style='display: inline; font-weight: bold;  text-decoration: underline; 
-        font-family:ubuntu;  color:orange;'>ZEZENIA.ae#</h2>  <!-- zezenia -->
+        <h2 class='logo' style='display: inline;   text-decoration: underline; 
+       font-family:Shrikhand, cursive; color:orange;'>ZEZENIA.ae#</h2>  <!-- zezenia -->
 <!-- 
 <h2 class='logo' style='display: inline; text-decoration: underline; 
   color:orange;'>ZEZENIA.ae></h2>  --> <!-- zezenia -->
@@ -188,7 +188,7 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                                   
                     </div>
 
-                    <div class="form-group " style ='padding-right:10px;padding-left:10px;'  dir ="ltr"> 
+                    <div class="form-group " style =' padding-right:13px;padding-left:13px;'  dir ="ltr"> 
                         <label for="" translate>
                             Year
                         </label>
@@ -198,7 +198,7 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
         </div>
 
 
-                    <div class="form-group "  style ='padding-right:10px;padding-left:10px;'  dir ="ltr"> 
+                    <div class="form-group "  style ='padding-right:13px;padding-left:13px;'  dir ="ltr"> 
                         <label for="" translate>
                             Kilometers
                         </label>
@@ -211,7 +211,7 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
 
 
 
-                    <div class="form-group " style ='padding-right:10px;padding-left:10px;' dir ="ltr"> 
+                    <div class="form-group " style ='padding-right:13px;padding-left:13px;' dir ="ltr"> 
                            <!--  <label for="" translate>
                                 price from to:
                             </label>
@@ -246,7 +246,7 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
 
                         <div class="form-group ">
                                 <label for="" translate>
-                                        Specification
+                                        Specs
                                 </label>
                                 <select class="form-control input-sm"   name="specificationToSearch" ngModel>
                                         <option selected value>All</option>
@@ -286,14 +286,11 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
     <!-- pagination -->
     <div class="col-md-7">
 
-
-        <div>
-            <!-- <h1>Angular 2 - Pagination Example with logic like Google</h1> -->
-              <div class='row'>
-                  
+            <div class='row'  [class.row-rtl]="toggleLanguage"> 
+                    <div [class.col-md-8]="toggleLanguage"></div>
                     <div class="col-md-4">
                  <label for="" translate>
-                        <b>Sort By  </b> 
+                        <b translate>SortBy  </b>: 
                     </label>
                     <select class="form-control input-sm"   name="cylinderToSearch" ngModel>
                             <option selected value>Price lowest to highest</option>
@@ -303,11 +300,18 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                            
                     </select>
                  <br>
-
+               
                 </div>
+
+              
             </div>
+
+            <br>  
+        <div>
+            <!-- <h1>Angular 2 - Pagination Example with logic like Google</h1> -->
+             
             <!-- items being paged -->
-            <div>
+            <div class='row'>
                 <br>
 
                 <ul style="list-style:none">
