@@ -538,7 +538,7 @@ export class UploadFormComponent   {
       })
         .subscribe(event => {
           if (event.type === HttpEventType.UploadProgress) {
-            this.uploadProgress = Math.round(event.loaded / event.total * 100);
+            this.uploadProgress = Math.round(event.loaded / event.total * 100) - 10;
             //console.log("welcome");
             //if(event.loaded. === HttpEventType.)
 

@@ -26,11 +26,16 @@ export class CarItemComponent implements OnInit {
   carList: car[] = [];
   selectedCar: car;
 
+  slider1:Slider;
+  slider2:Slider;
+  slider3:Slider;
   CityToSearch: string = '';
   ModelToSearch: string = '';
   YearToSearch: string = '';
   ColorToSearch: string = '';
   cylinderToSearch:string = '';
+  transmissionToSearch: string = '';
+  specificationToSearch: string ='';
   toggleForm: boolean = false;
   show_me: boolean = true;
 
@@ -164,7 +169,7 @@ export class CarItemComponent implements OnInit {
 
   }
 
-  getCars(toSearch,offset,) {
+  getCars(toSearch,offset) {
     /*  this.allItems =[];
      this.pagedItems =[];
      this.pager.pages = []; */
@@ -205,9 +210,35 @@ export class CarItemComponent implements OnInit {
     //console.log('car id is :' + this.selectedCar.APPLICATION_ID);
     this.carsObjects = [];
 
+    var minYear = this.slider3.getValue()[0]);
+    var maxYear = this.slider3.getValue()[1]);
+
+    var minKilo = this.slider2.getValue()[0]);
+    var maxKilo = this.slider2.getValue()[1]);
+
+    var minPrice = this.slider1.getValue()[0]);
+    var maxPrice = this.slider1.getValue()[1]);
+
+    
+
+    alert(minYear,maxPrice);
+
+
     var toSearch = {
-      model: this.ModelToSearch = SearchFrm.value.carmodel,
-      color: Utils.convertColorToInt(SearchFrm.value.carcolor)
+      city: SearchFrm.value.cityToSearch,
+      manufacturer:  SearchFrm.value.manufacturerToSearch,
+      model:   SearchFrm.value.modelToSearch,
+      color: Utils.convertColorToInt(SearchFrm.value.colorToSearch),
+      minYear:minYear,
+      maxYear:maxYear,
+      minKilo:minKilo,
+      maxKilo:maxKilo,
+      minPrice:minPrice,
+      maxPrice:maxPrice,
+      cylinder: SearchFrm.value.cylinderToSearch,
+      specification:  Utils.convertSpecsToInt(SearchFrm.value.specificationToSearch),
+      transmission:  Utils.convertTransmissionToInt(SearchFrm.value.transmissionToSearch),
+
     }
      
 
@@ -226,16 +257,23 @@ export class CarItemComponent implements OnInit {
    
   }); */
 
-  var slider = new Slider("#price", {
+    this.slider1 = new Slider("#price", {
     id: "slider2",
  /*    tooltip: 'always', */
     tooltip_position:'bottom',
      ticks: [0,    100 ],  
-     ticks_labels: [' 0k',     '^100k']
+     ticks_labels: [' 0k',     '^100k'],
+     
   /*   ticks_snap_bounds: 30 */
 });
 
-var slider = new Slider("#kilo", {
+
+
+/* slider1.on("click", function(sliderValue) {
+	alert(sliderValue);
+}); */
+
+this.slider2 = new Slider("#kilo", {
   id: "slider3",
   /* tooltip: 'always', */
   tooltip_position:'bottom',
@@ -244,12 +282,12 @@ var slider = new Slider("#kilo", {
 /*   ticks_snap_bounds: 30 */
 });
 
-var slider = new Slider("#year", {
+this.slider3 = new Slider("#year", {
   id: "slider4",
   
   tooltip_position:'bottom',
    ticks: [1990,    2018 ],  
-   ticks_labels: ['1990',     '2018'], 
+   ticks_labels: ['^1990',     '2018'], 
     ticks_snap_bounds: 5 
 });
 

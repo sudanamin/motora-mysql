@@ -89,15 +89,14 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
     <br>
     <br>
     <br>
-    <br>
-    <br>
-    <br>
+    
     <div class="col-md-1"> </div>
 
 
     <div class=" col-md-2">
 
         <div class="row">
+            
            
             <div class="SearchBox fontUbuntu col-md-12">
                 <form #SearchFrm="ngForm" (ngSubmit)="SearchCar(SearchFrm)">
@@ -205,7 +204,7 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                         </label>
                          
                         
-                     <input  style='width:100%; ' id="kilo" type="text"    data-slider-value="[0,100 ]"/>   
+                     <input  style='width:100%; ' id="kilo" type="text"    data-slider-value="[0,200 ]"/>   
                    
               
                     </div>
@@ -249,7 +248,7 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                                 <label for="" translate>
                                         Specification
                                 </label>
-                                <select class="form-control input-sm"   name="cylinderToSearch" ngModel>
+                                <select class="form-control input-sm"   name="specificationToSearch" ngModel>
                                         <option selected value>All</option>
                                         <option>GCC</option>
                                         <option>AMERICAN</option>
@@ -264,7 +263,7 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                                     <label for="" translate>
                                         Transmission
                                     </label>
-                                    <select class="form-control input-sm"   name="cylinderToSearch" ngModel>
+                                    <select class="form-control input-sm"   name="transmissionToSearch" ngModel>
                                             <option selected value>All</option>
                                             <option>Automatic</option>
                                             <option>Manual</option>
@@ -290,7 +289,23 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
 
         <div>
             <!-- <h1>Angular 2 - Pagination Example with logic like Google</h1> -->
+              <div class='row'>
+                  
+                    <div class="col-md-4">
+                 <label for="" translate>
+                        <b>Sort By  </b> 
+                    </label>
+                    <select class="form-control input-sm"   name="cylinderToSearch" ngModel>
+                            <option selected value>Price lowest to highest</option>
+                            <option>Price highest to lowest  </option>
+                            <option>Date</option>
+                           
+                           
+                    </select>
+                 <br>
 
+                </div>
+            </div>
             <!-- items being paged -->
             <div>
                 <br>
