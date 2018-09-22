@@ -30,7 +30,7 @@
     <div class="col-md-2"></div>
     <div class="col-md-3 ">
         <h2 class='logo' style='display: inline; font-weight: bold;  text-decoration: underline; 
-        font-family:ubuntu;  color:orange;'>ZEZENIA.ae></h2>  <!-- zezenia -->
+        font-family:ubuntu;  color:orange;'>ZEZENIA.ae#</h2>  <!-- zezenia -->
 <!-- 
 <h2 class='logo' style='display: inline; text-decoration: underline; 
   color:orange;'>ZEZENIA.ae></h2>  --> <!-- zezenia -->
@@ -235,9 +235,43 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                             <label for="" translate>
                                 Cylinder
                             </label>
-    
-                            <input type="text" class="form-control  input-sm" name="carcolor" value="" [ngModel]="ColorToSearch">
+                            <select class="form-control input-sm"   name="cylinderToSearch" ngModel>
+                                    <option selected value>All</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>6</option>
+                                    <option>8</option>
+                                    <option>12</option>
+                            </select>
                         </div>
+
+                        <div class="form-group ">
+                                <label for="" translate>
+                                        Specification
+                                </label>
+                                <select class="form-control input-sm"   name="cylinderToSearch" ngModel>
+                                        <option selected value>All</option>
+                                        <option>GCC</option>
+                                        <option>AMERICAN</option>
+                                        <option>JAPANESE</option>
+                                        <option>EUROPE</option>
+                                        <option>OHTER</option>
+                                </select>
+                            </div>
+
+
+                            <div class="form-group ">
+                                    <label for="" translate>
+                                        Transmission
+                                    </label>
+                                    <select class="form-control input-sm"   name="cylinderToSearch" ngModel>
+                                            <option selected value>All</option>
+                                            <option>Automatic</option>
+                                            <option>Manual</option>
+                                            <option>Hybrid</option>
+                                           
+                                    </select>
+                                </div>
 
                     <button type="submit" name='button' class=' btn btn-block  btn-primary'><i translate>Go</i></button>
 
@@ -320,11 +354,11 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                             <div class="rightOfBox col-md-3">
 
                                 <div class='details' translate>Price
-                                    <span class='detailsBold'> : {{obj.price}} <span translate> AED</span> </span></div>
+                                    <span class='detailsBold'> : {{obj.price | number}} <span translate> AED</span> </span></div>
 
                                 <br>
                                 <div class='details' translate>Kilometers
-                                    <span class='detailsBold'> : {{obj.kilometers}}   <span translate> km</span> </span></div>
+                                    <span class='detailsBold'> : {{obj.kilometers| number}}   <span translate> km</span> </span></div>
 
                                 <!-- <br> -->
                                 <br>

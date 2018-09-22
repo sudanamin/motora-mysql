@@ -30,6 +30,7 @@ export class CarItemComponent implements OnInit {
   ModelToSearch: string = '';
   YearToSearch: string = '';
   ColorToSearch: string = '';
+  cylinderToSearch:string = '';
   toggleForm: boolean = false;
   show_me: boolean = true;
 
@@ -228,25 +229,25 @@ export class CarItemComponent implements OnInit {
   var slider = new Slider("#price", {
     id: "slider2",
  /*    tooltip: 'always', */
-    tooltip_position:'bottom'
+    tooltip_position:'bottom',
      ticks: [0,    100 ],  
-     ticks_labels: [' 0k',     '^100k'], 
+     ticks_labels: [' 0k',     '^100k']
   /*   ticks_snap_bounds: 30 */
 });
 
 var slider = new Slider("#kilo", {
   id: "slider3",
   /* tooltip: 'always', */
-  tooltip_position:'bottom'
+  tooltip_position:'bottom',
    ticks: [0,    200 ],  
-   ticks_labels: [' 0k',     '^200k'], 
+   ticks_labels: [' 0k',     '^200k']
 /*   ticks_snap_bounds: 30 */
 });
 
 var slider = new Slider("#year", {
   id: "slider4",
   
-  tooltip_position:'bottom'
+  tooltip_position:'bottom',
    ticks: [1990,    2018 ],  
    ticks_labels: ['1990',     '2018'], 
     ticks_snap_bounds: 5 
