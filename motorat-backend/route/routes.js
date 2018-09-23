@@ -317,10 +317,10 @@ router.post('/setimg/:app_id', (req, res, next) => {
                         (select cars.cars_models.MODEL_ID from cars.cars_models where MODEL_NAME = ? ),
                         ?,(select cars.MANUFACTURE.MANUFACTURE_ID from cars.MANUFACTURE where MANUFACTURE_NAME = ? )
                         ,
-                        ?,?,?,?,NOW(),?,?,
-                        (select cars.colors.COLOR_ID from cars.colors where COLOR_NAME = ? ),?,?,?)`
+                        ?,?,?,?,NOW(),?,?,,
+                        ?,?,?,?)`
                         , [price, model, year, manufacturer, kilometers, uid, city, description, /*ddate,*/warranty, phone, color, cylinders, specs, transmission], function (err, result) {
-                            /*   , [model/* , uid, city?,ddate  ,color] , function (err, result) {*/
+                            /*  /* (select cars.colors.COLOR_ID from cars.colors where COLOR_NAME = ? )   , [model/* , uid, city?,ddate  ,color] , function (err, result) {*/
                             if (err) {
                                 res.status(500);
                                 return next(err);
@@ -443,6 +443,7 @@ router.get('/cimages', (req, res, next) => {
     var query = url_parts.query; */
 
     var offset = req.query.offset;
+    var sortby = req.query.sortby;
     var userId = req.query.userID;
 
     var city = req.query.city;
@@ -488,7 +489,7 @@ router.get('/cimages', (req, res, next) => {
         whereClause += " AND COLOR LIKE '" + color + "'";
     }
 
-    if (minYear != null && minYear != '') {
+    if (minYear != null && minYear != '' && minYear != '1990') {
         whereClause += " AND YEAR >= '" + minYear + "'";
     }
 
@@ -529,6 +530,21 @@ router.get('/cimages', (req, res, next) => {
     if (userId != null && userId != '') {
         whereClause += " AND USER_ID LIKE '" + userId + "'";
     }
+
+    if (sortby != null && sortby != '') {
+        switch (sortby){
+            case 'APrice' : {whereClause += "  ORDER BY PRICE ASC";  break;  }
+            case 'DPrice' : {whereClause += "  ORDER BY PRICE DESC";  break;  }
+            case 'Date' : {whereClause += "  ORDER BY DDATE DESC";  break;  }
+            default: { 
+                //statements; 
+                break; 
+             } 
+            
+        }
+        
+    }
+    
 
     /*  connection.query("SELECT cars_table.MODEL ,cars_table.COLOR,USER_ID ,car_images.REF_APP_ID,GROUP_CONCAT(car_images.IMAGE_URL) as gofi from car_images INNER JOIN cars_table ON car_images.REF_APP_ID =cars_table.APPLICATION_ID "+whereClause+" GROUP BY car_images.REF_APP_ID ;", function (err, cars) {
    */

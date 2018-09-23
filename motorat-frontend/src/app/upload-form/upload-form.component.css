@@ -79,14 +79,17 @@ a{
     position: fixed;
     top: 0;
     left:0;
-    height: 6px;
+    height: 20px;
+    text-align: center;
+
+    display:  block;
   }
   
   #myBar {
     width: 1%;
     left:0;
-    height: 3.5px;
-    background-color: #4CAF50;
+    height: 20px;
+    background-color: green;
     position: fixed;
     top: 0;
   }

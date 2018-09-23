@@ -99,7 +99,7 @@ export class UploadFormComponent   {
 
     this.filesList.forEach(name => console.log("before "+name.name));
 
-    //console.log(ent1.entries());
+    
     let x = this.filesList.length;
     for (let i = 0; i < x; i++) {
         if( this.filesList[i].name === (this.time + "thumb_" +imageName) || this.filesList[i].name === (this.time+imageName)){
@@ -127,7 +127,7 @@ export class UploadFormComponent   {
       }
     }
 
-  //  this.filesList.forEach(name => console.log("after"+name.name));
+  
 
   }
 
@@ -143,7 +143,7 @@ export class UploadFormComponent   {
         }
       }
 
-      console.log(result);
+    
       this.getCars();
 
     });
@@ -169,7 +169,7 @@ export class UploadFormComponent   {
     var offsetObject =  {'offset': 0};
     Object.assign(toSearch,offsetObject);
 
-    console.log('user id is :'+toSearch.userID)
+    
     this.dataService.getCImages(toSearch)
       .subscribe(cars => {
         //this.carList = cars;
@@ -197,13 +197,13 @@ export class UploadFormComponent   {
     let gofiForGallery=[] ;
     let gofThumbsForShow= [];
    // var arr = input.split(',');
-   //console.log("length;"+this.pagedItems.length);
+   
    for (var i=0 ; i<this.allItems.length; i++){
 
 
       var gofi = this.allItems[i].gofi;
       if(gofi) var Gofi = gofi.split(',');else Gofi =[];
-     // console.log(arr[0]);
+     
       for (var j=0 ; j<Gofi.length; j++){
 
         var thumbForShow = Gofi[j];
@@ -217,8 +217,7 @@ export class UploadFormComponent   {
 
       }
 
-     /*  console.log("gofThumbsForShow lengh:"+gofThumbsForShow[i]);
-      console.log("gofiForGallery lengh:"+gofiForGallery[i].src); */
+     
       
       var carObject = {APPLICATION_ID:this.allItems[i].APPLICATION_ID,
         City:Utils.convertIntToCity(this.allItems[i].EMIRATE),
@@ -243,17 +242,17 @@ export class UploadFormComponent   {
      gofiForGallery = [];
      gofThumbsForShow = [];
      //  ims.push({'app_id':this.pagedItems[i]},im);
-     //  console.log(ims[0]);
+     
          //this.photoSwipe.openGallery(images,index);
         
         // this.photoSwipe.openGallery(this.pagedItems,index);
   }
- // console.log(this.carsObjects[0].thums);
+ 
 
 }
 
   EditCar(EditFrm) {
-    console.log('car id is :' + this.selectedCar.APPLICATION_ID);
+  
     this.addForm = EditFrm;///////////////////////////////////////////////////////////////////////
    // City:EditFrm.value.carcity,
       var city = Utils.convertCitytoInt(EditFrm.value.carcity);
@@ -292,9 +291,9 @@ export class UploadFormComponent   {
 
     var waranty = Utils.convertWarantyToInt(EditFrm.value.carwarranty) ; 
     this.fd.append('warranty', waranty.toString());
-    console.log("wanary form edit form is :"+waranty);
+    
     var color = Utils.convertColorToInt(EditFrm.value.carcolor) ; 
-    console.log("color is :"+color);
+    
     this.fd.append('color', color.toString());
 
     var transmission = Utils.convertTransmissionToInt(EditFrm.value.cartransmission);
@@ -316,13 +315,13 @@ export class UploadFormComponent   {
      this.filesList = [];
    }
    })
-    //console.log
+    
 
    // this.dataService.updateCar(editCar)
  //  let editFormData;
  /*  this.dataService.updateCar(editCar.APPLICATION_ID,editFormData)
       .subscribe(result => {
-        console.log('original Item to be updated:' + result);
+        
         this.getCars();
       });
 **/
@@ -342,16 +341,16 @@ export class UploadFormComponent   {
   }
 
   deleteCar(car) {
-    console.log('car id is : ' + car.APPLICATION_ID);
+   
     this.dataService.deleteCar(car.APPLICATION_ID)
       .subscribe(data => {
-        console.log(data);
+        
         if (data) {
           for (var i = 0; i < this.carsObjects.length; i++) {
             if (car.APPLICATION_ID == this.carsObjects[i].APPLICATION_ID) {
 
               this.carsObjects.splice(i, 1);
-              console.log('on is deleted ');
+             
             }
           }
         }
@@ -371,31 +370,7 @@ export class UploadFormComponent   {
 
   addCar(frm) {
     this.addForm = frm;
-    /* let newCar: car = {
-      Model: frm.value.carModel,
-      Color: frm.value.carColor
-    } */
-    /* console.log("form color iss : " + frm.value.carColor);
-    console.log("form model iss : " + frm.value.carModel);
-    console.log("form carYear iss : " + frm.value.carYear);
-    console.log("form carCity iss : " + frm.value.carCity);
-
-    console.log("form carSpecs iss : " + frm.value.carSpecs);
-    console.log("form carKilometers iss : " + frm.value.carKilometers);
-    console.log("form carPhone iss : " + frm.value.carPhone);
-    console.log("form carDESCRTIPTION iss : " + frm.value.carDESCRIPTION);
-
-    console.log("form carPrice iss : " + frm.value.carPrice);
-    console.log("form carCylinders iss : " + frm.value.carCylinders);
-    console.log("form carTransmission iss : " + frm.value.carTransmission);
-    console.log("form carWarranty iss : " + frm.value.carWarranty);
-
-    console.log("form carManufacter iss : " + frm.value.carManufacter); */
-
-   /*  if (frm.value.carModel == 'CAMRY')
-      this.fd.append('model', '1'); */
-   /*  if (frm.value.carColor == 'WHITE')
-      this.fd.append('color', '1'); */
+   
      
     
      var city = Utils.convertCitytoInt(frm.value.carCity); this.fd.append('city', city.toString());
@@ -433,19 +408,7 @@ export class UploadFormComponent   {
       this.upload();
     }
     })
-    /*this.fd.append('uid',this.auth.currentUserId);
-    this.upload();*/
-
-
-    /* this.dataService.addCar(newCar)
-       .subscribe(car => {
-         console.log("car is :" + JSON.stringify(car));
-         if (frm.valid) {
-           console.log("Form Submitted!");
- 
-         }
-         this.getCars();
-       })*/
+  
   }
 
   resizeFiles(files: FileList) {
@@ -516,14 +479,10 @@ export class UploadFormComponent   {
 
     for(let i =0 ;i < this.filesList.length ;i++){
       this.fd.append('image',this.filesList[i].theFile,this.filesList[i].name);
-      console.log(this.filesList[i].name);
+      
     } 
 
-   /*  var url;
-    if (this.fd.has("APPLICATION_ID")) {   /////////////////////////// if it has applicaction id this is mean its from edit form
-       url = "http://localhost:3000/api/updateCar";
-       console.log("its update only");
-    } */
+  
 
     var app_id = '0';
     if (this.fd.has("APPLICATION_ID")) {   /////////////////////////// if it has applicaction id this is mean its from edit form
@@ -539,10 +498,9 @@ export class UploadFormComponent   {
         .subscribe(event => {
           if (event.type === HttpEventType.UploadProgress) {
             this.uploadProgress = Math.round(event.loaded / event.total * 100) - 10;
-            //console.log("welcome");
-            //if(event.loaded. === HttpEventType.)
+            
 
-            console.log('Upload Progress: ' + Math.round(event.loaded / event.total * 100) + '%')
+           
           }
           else if (event.type === HttpEventType.Response) {
             if (event.statusText == 'OK') {
@@ -576,13 +534,16 @@ export class UploadFormComponent   {
               this.time = Date.now() + "_";
               this.uploadProgress = 0;
               alert("added successfully");
-              console.log("event is:" + event.statusText);
+              
               this.getCars();
 
             }
 
 
           }
+        },
+         error => {
+          alert('😢 Oh no! '+error.statusText);
         }
         );
 

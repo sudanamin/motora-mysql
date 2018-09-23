@@ -31,17 +31,10 @@
     <div class="col-md-3 ">
         <h2 class='logo' style='display: inline;   text-decoration: underline; 
        font-family:Shrikhand, cursive; color:orange;'>ZEZENIA.ae#</h2>  <!-- zezenia -->
-<!-- 
-<h2 class='logo' style='display: inline; text-decoration: underline; 
-  color:orange;'>ZEZENIA.ae></h2>  --> <!-- zezenia -->
-
-        <!--  <img  class='logo'  style='width:80px;height:65px;    vertical-align: bottom;   ' src="assets/eagle.svg"> -->
-        <img class='logo' style='width:80px;height:25px;    vertical-align: bottom;   ' src="assets/logo.png">
+ 
+ <img class='logo' style='width:80px;height:25px;    vertical-align: bottom;   ' src="assets/logo.png">
     </div>
-
-
-
-
+ 
 </div>
 
 <div class="tab">
@@ -295,8 +288,8 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                  <label for="" translate>
                         <b translate>SortBy  </b>: 
                     </label>
-                    <select class="form-control input-sm"   name="SortBy" ngModel>
-                            <option selected value>Price lowest to highest</option>
+                    <select class="form-control input-sm" (change)="onSortByChange($event.target.value)"  name="SortBy" ngModel>
+                            <option  >Price lowest to highest</option>
                             <option>Price highest to lowest  </option>
                             <option>Date</option>
                            

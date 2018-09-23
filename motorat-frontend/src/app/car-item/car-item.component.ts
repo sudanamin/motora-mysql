@@ -26,6 +26,8 @@ export class CarItemComponent implements OnInit {
   carList: car[] = [];
   selectedCar: car;
 
+  SortBy:string;
+
   slider1:any;
   slider2:any;
   slider3:any;
@@ -177,8 +179,27 @@ export class CarItemComponent implements OnInit {
     var offsetObject =  {'offset': offset};
     //var Count =  {'count': count};
 
+   
 
+    
     Object.assign(toSearch,offsetObject);
+
+   var sort;
+    switch (this.SortBy){
+      case 'Price lowest to highest' :{sort = "APrice";   break;  }
+      case 'Price highest to lowest' : {sort = "DPrice";   break;  }
+      case 'Date' :{sort = "Date";   break;  }
+      default: { 
+        //statements; 
+        break; 
+     } 
+     // default: sort = 0;
+  }
+  var Sortby =  {'sortby': sort};
+  console.log('aaaaaaaa: '+Sortby.sortby)
+      Object.assign(toSearch,Sortby);
+    
+
     this.dataService.getCImages(toSearch)
       .subscribe(cars => {
 
@@ -247,6 +268,16 @@ export class CarItemComponent implements OnInit {
     this.getCars(this.toSearch,0)
 
   }
+
+  onSortByChange(newValue) {
+   // console.log(newValue);
+    this.SortBy = newValue;
+    console.log('sort by: '+newValue)
+    console.log('sort by:2 '+this.SortBy)
+    this.getCars(this.toSearch,0);
+
+    // ... do other stuff here ...
+}
 
   ngOnInit() {
     this.getCars(this.toSearch,0);
