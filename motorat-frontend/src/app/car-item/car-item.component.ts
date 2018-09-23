@@ -213,19 +213,19 @@ export class CarItemComponent implements OnInit {
     var minYear = (this.slider3.getValue())[0];
     var maxYear = (this.slider3.getValue())[1];
 
-    var minKilo = this.slider2.getValue()[0];
-    var maxKilo = this.slider2.getValue()[1];
+    var minKilo = this.slider2.getValue()[0] * 1000;
+    var maxKilo = this.slider2.getValue()[1] * 1000;
 
-    var minPrice = this.slider1.getValue()[0];
-    var maxPrice = this.slider1.getValue()[1];
+    var minPrice = this.slider1.getValue()[0] * 1000;
+    var maxPrice = this.slider1.getValue()[1] * 1000;
 
     
 
-    alert(minYear+' +' +minKilo' '+minPrice);
+    //alert(SearchFrm.value.manufacturerToSearch+' +' +SearchFrm.value.modelToSearch+' '+SearchFrm.value.cityToSearch);
 
 
     var toSearch = {
-      city: SearchFrm.value.cityToSearch,
+      city: Utils.convertCitytoInt(SearchFrm.value.cityToSearch),
       manufacturer:  SearchFrm.value.manufacturerToSearch,
       model:   SearchFrm.value.modelToSearch,
       color: Utils.convertColorToInt(SearchFrm.value.colorToSearch),
