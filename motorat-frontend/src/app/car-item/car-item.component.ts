@@ -276,9 +276,34 @@ export class CarItemComponent implements OnInit {
 
   resetSearch(all){
     switch (all){
-      case 'allCiteis':{ this.toSearch.city = ''; this.getCars(this.toSearch,0); break;}
-      case 'AllManufacturer':{ this.toSearch.manufacturer = '';this.getCars(this.toSearch,0); break;}
-      case 'AllModel':{ this.toSearch.model = '';this.getCars(this.toSearch,0); break;}
+      case 'allCiteis':{ 
+         this.toSearch.city = '';
+         this.CityToSearch = '';
+
+         this.toSearch.manufacturer = '';
+         this.ManufacturerToSearch = '';
+
+         this.toSearch.model = '';
+         this.ModelToSearch = '';
+        
+         this.getCars(this.toSearch,0); 
+         break;
+        }
+      case 'AllManufacturer':{ 
+        this.toSearch.manufacturer = '';
+        this.ManufacturerToSearch = '';
+
+        this.toSearch.model = '';
+        this.ModelToSearch = '';
+
+        this.getCars(this.toSearch,0); 
+        break;
+      }
+      case 'AllModel':{ 
+        this.toSearch.model = '';this.getCars(this.toSearch,0); 
+        this.ModelToSearch = '';
+        break;
+      }
     }
   }
 
