@@ -61,5 +61,9 @@
     "Automatic":"Automatic",
     "Gold":"Gold",
     "Hi":"Hi",
-    "SortBy": "Sort By"
+    "SortBy": "Sort By",
+    "AllCities":"All Cities",
+    "AllManufacturer":"All Manufacturer",
+    "AllModel":"All Model"
+
 }

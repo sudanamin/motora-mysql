@@ -26,12 +26,13 @@ export class CarItemComponent implements OnInit {
   carList: car[] = [];
   selectedCar: car;
 
-  SortBy:string;
+  SortBy:string = 'Date';
 
   slider1:any;
   slider2:any;
   slider3:any;
   CityToSearch: string = '';
+  ManufacturerToSearch: string ='';
   ModelToSearch: string = '';
   YearToSearch: string = '';
   ColorToSearch: string = '';
@@ -196,7 +197,7 @@ export class CarItemComponent implements OnInit {
      // default: sort = 0;
   }
   var Sortby =  {'sortby': sort};
-  console.log('aaaaaaaa: '+Sortby.sortby)
+ // console.log('aaaaaaaa: '+Sortby.sortby)
       Object.assign(toSearch,Sortby);
     
 
@@ -244,6 +245,10 @@ export class CarItemComponent implements OnInit {
 
     //alert(SearchFrm.value.manufacturerToSearch+' +' +SearchFrm.value.modelToSearch+' '+SearchFrm.value.cityToSearch);
 
+       this.CityToSearch = SearchFrm.value.cityToSearch;
+       this.ManufacturerToSearch = SearchFrm.value.manufacturerToSearch;
+       this.ModelToSearch = SearchFrm.value.modelToSearch;
+       
 
     var toSearch = {
       city: Utils.convertCitytoInt(SearchFrm.value.cityToSearch),
@@ -269,11 +274,18 @@ export class CarItemComponent implements OnInit {
 
   }
 
+  resetSearch(all){
+    switch (all){
+      case 'allCiteis':{ this.toSearch.city = ''; this.getCars(this.toSearch,0); break;}
+      case 'AllManufacturer':{ this.toSearch.manufacturer = '';this.getCars(this.toSearch,0); break;}
+      case 'AllModel':{ this.toSearch.model = '';this.getCars(this.toSearch,0); break;}
+    }
+  }
+
   onSortByChange(newValue) {
    // console.log(newValue);
     this.SortBy = newValue;
-    console.log('sort by: '+newValue)
-    console.log('sort by:2 '+this.SortBy)
+     
     this.getCars(this.toSearch,0);
 
     // ... do other stuff here ...

@@ -112,7 +112,7 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                                             city
                                     </label>
                                
-                                    <select class="form-control input-sm" name="cityToSearch" value="" ngModel >
+                                    <select class="form-control input-sm" name="cityToSearch" value=""   ngModel  >
                                         <option selected value>All</option>
                                         <option>Abu Dhabi</option>
                                         <option>Ajman</option>
@@ -283,8 +283,8 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
     <div class="col-md-7">
 
             <div class='row'  [class.row-rtl]="toggleLanguage"> 
-                    <div [class.col-md-8]="toggleLanguage"></div>
-                    <div class="col-md-4">
+                    <div [class.col-md-9]="toggleLanguage"></div>
+                    <div class="col-md-3">
                  <label for="" translate>
                         <b translate>SortBy  </b>: 
                     </label>
@@ -296,10 +296,22 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                            
                     </select>
                  <br>
-               
+                           
                 </div>
 
               
+            </div>
+
+           
+
+            <div class='row'  [class.row-rtl]="toggleLanguage" style='font-family: ubuntu'> 
+                <div [class.col-md-6]="toggleLanguage"></div>
+
+                &nbsp;&nbsp;&nbsp;   <a style="color:black;" (click)="resetSearch('allCiteis')" translate> AllCities </a>
+                 > {{CityToSearch}} > <a style="color:black;" (click)="resetSearch('AllManufacturer')" translate>  AllManufacturer</a> > {{ManufacturerToSearch}} >
+                 <a style="color:black;" (click)="resetSearch('AllModel')" translate>   AllModel</a> > {{ModelToSearch}}
+ 
+
             </div>
 
             <br>  
