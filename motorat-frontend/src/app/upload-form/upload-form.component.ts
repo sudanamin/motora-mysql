@@ -144,10 +144,38 @@ export class UploadFormComponent   {
       }
 
     
-      this.getCars();
+     // this.getCars();
 
     });
 
+  }
+
+  deleteCar(car) {
+
+    for (var j = 0; j < car.Thums.length; j++) {
+
+      var imageName = car.Thums[j];
+
+      this.dataService.deleteImage(imageName).subscribe(result => {
+
+           
+
+        }
+    }
+   
+    this.dataService.deleteCar(car.APPLICATION_ID)
+      .subscribe(data => {
+        
+        if (data) {
+          for (var i = 0; i < this.carsObjects.length; i++) {
+            if (car.APPLICATION_ID == this.carsObjects[i].APPLICATION_ID) {
+
+              this.carsObjects.splice(i, 1);
+             
+            }
+          }
+        }
+      })
   }
 
   ngOnInit() {
@@ -340,22 +368,7 @@ export class UploadFormComponent   {
 
   }
 
-  deleteCar(car) {
-   
-    this.dataService.deleteCar(car.APPLICATION_ID)
-      .subscribe(data => {
-        
-        if (data) {
-          for (var i = 0; i < this.carsObjects.length; i++) {
-            if (car.APPLICATION_ID == this.carsObjects[i].APPLICATION_ID) {
 
-              this.carsObjects.splice(i, 1);
-             
-            }
-          }
-        }
-      })
-  }
 
   onImageChange(event) {
 
@@ -412,7 +425,7 @@ export class UploadFormComponent   {
   }
 
   resizeFiles(files: FileList) {
-    
+    var resultCounter =0;
     for (var i = 0; i < files.length; i++) {
       this.imageNotReady = true;
       this.saveOrLoading = 'loading';
@@ -424,7 +437,7 @@ export class UploadFormComponent   {
       this.ng2ImgMax.resizeImage(image, 100, 10000).subscribe(
         result => {
           this.uploadedImage = new File([result], this.time + "thumb_" + result.name);
-
+          resultCounter ++;
 
 
           this.getImagePreview(this.uploadedImage);
@@ -434,8 +447,13 @@ export class UploadFormComponent   {
 
           //this.fd.append('image', this.uploadedImage, this.uploadedImage.name);
           this.filesList.push({theFile:this.uploadedImage,name:this.uploadedImage.name});
+          console.log("i is :"+resultCounter)
+          console.log("lenth is :"+files.length)
+          if( resultCounter == files.length ){
+            console.log("hi :"+resultCounter)
           this.imageNotReady = false;
           this.saveOrLoading = 'Save';
+        }
           // this.upload();
         },
         error => {

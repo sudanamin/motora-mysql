@@ -146,7 +146,24 @@ router.delete('/image/:imageName', (req, res, next) => {
     image_name = req.params.imageName;
     image_url1 = hostName + image_name;
     image_url2 = image_url1.replace("_thumb", "");
+
+    fs_url1 = image_url1.replace("http://localhost:3000/","images\\");
+    fs_url2 = image_url2.replace("http://localhost:3000/","images\\");
     console.log('image to delte is ' + image_url1)
+
+    fs.unlink(fs_url1, (err) => {
+        if (err) throw err;
+        console.log('path/file.txt was deleted'+fs_url1);
+        //res.json(result);
+      
+      });
+
+      fs.unlink(fs_url2, (err) => {
+        if (err) throw err;
+        console.log('path/file.txt was deleted');
+       
+      
+      });
 
 
     connection.query("DELETE  FROM `car_images` WHERE IMAGE_URL=? or IMAGE_URL=?", [image_url1, image_url2], function (err, result) {
@@ -155,9 +172,11 @@ router.delete('/image/:imageName', (req, res, next) => {
             return next(err);
         }
         else {
-            // res.json(result);
-            console.log("delete complete for car_images table for image id : " + image_url1);
+             
             res.json(result);
+
+              
+              
             /*  connection.query("DELETE FROM `cars_table` WHERE APPLICATION_ID=?", [image_id], function (err, result) {
                  if (err) {
                      res.status(500);

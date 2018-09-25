@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {car} from '../../car';
-import {DataService} from '../data.service'
+  import {car} from '../../car';
+ import {DataService} from '../data.service'
 
 //import { PagerService } from '../_services/index'
 
@@ -16,7 +16,7 @@ export class MembersComponent implements OnInit {
  
 
 
-  constructor(  private dataService: DataService) { }
+  constructor( private dataService :DataService ) { }
 
   
   ngOnInit() {
