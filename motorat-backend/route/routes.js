@@ -313,8 +313,8 @@ router.post('/setimg/:app_id', (req, res, next) => {
                 if (req.params.app_id == 0)        //new insertion 
                 {
 
-                    /////////////////////////test isert 1000 values 
-                     for(var i = 0;i<=1000 ;i++){
+                   /*  /////////////////////////test isert 1000 values 
+                     for(var i = 0;i<=100 ;i++){ */
 
                     connection.query(`INSERT INTO cars.cars_table (PRICE,MODEL,YEAR,MANUFACTURE,MILES,USER_ID,
                         EMIRATE,DETAILS,DDATE,WARANTY,PHONE,COLOR, CYLINDERS ,SPECS, TRANSMISSION) VALUES (? ,
@@ -327,7 +327,7 @@ router.post('/setimg/:app_id', (req, res, next) => {
                             /*  /* (select cars.colors.COLOR_ID from cars.colors where COLOR_NAME = ? )   , [model/* , uid, city?,ddate  ,color] , function (err, result) {*/
                             if (err) {
                                 res.status(500);
-                                console.log('amin eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeerror while inserting to data base'+err);
+                              //  console.log('amin eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeerror while inserting to data base'+err);
                                 return next(err);
                             }
                            
@@ -356,8 +356,8 @@ router.post('/setimg/:app_id', (req, res, next) => {
                                                 //return msg;
                                                 msg = msg + "ccc";
                                                 if (i == images.length - 1) {
-                                                    console.log(i + "iamge lenghhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh ");
-                                                 //   res.status(200).json({ result: result })
+                                                  //  console.log(i + "iamge lenghhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh ");
+                                                    res.status(200).json({ result: result })
                                                 }
                                                 //console.log(message);
                                             }
@@ -365,11 +365,11 @@ router.post('/setimg/:app_id', (req, res, next) => {
                                         });
                                     }
                                 }
-                               // else { res.status(200).json({ result: result }) }
+                                else { res.status(200).json({ result: result }) }
                             }
 
                         });
-                }} else          //update not new car
+                } else          //update not new car
                 {
                     connection.query(`UPDATE  cars.cars_table set PRICE = ? ,
                 MODEL =(select cars.cars_models.MODEL_ID from cars.cars_models where MODEL_NAME = ? ),YEAR = ? ,
