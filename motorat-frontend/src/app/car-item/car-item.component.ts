@@ -330,7 +330,7 @@ export class CarItemComponent implements OnInit {
  /*    tooltip: 'always', */
     tooltip_position:'bottom',
      ticks: [0,    100 ],  
-     ticks_labels: [' 0k',     '^100k'],
+     ticks_labels: [' 0k',     '≥100k'],
      
   /*   ticks_snap_bounds: 30 */
 });
@@ -346,7 +346,7 @@ this.slider2 = new Slider("#kilo", {
   /* tooltip: 'always', */
   tooltip_position:'bottom',
    ticks: [0,    200 ],  
-   ticks_labels: [' 0k',     '^200k']
+   ticks_labels: [' 0k',     '≥200k']
 /*   ticks_snap_bounds: 30 */
 });
 
@@ -355,7 +355,7 @@ this.slider3 = new Slider("#year", {
   
   tooltip_position:'bottom',
    ticks: [1990,    2018 ],  
-   ticks_labels: ['^1990',     '2018'], 
+   ticks_labels: ['≤1990',     '2018'], 
     ticks_snap_bounds: 5 
 });
 
