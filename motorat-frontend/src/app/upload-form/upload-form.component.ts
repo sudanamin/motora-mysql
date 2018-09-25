@@ -544,6 +544,37 @@ export class UploadFormComponent   {
         },
          error => {
           alert('😢 Oh no! '+error.statusText);
+          console.log(error)
+
+          this.addForm.reset();
+              this.imagePreviews = [];
+              this.bigImagePreviews = [];
+
+              this.fd.delete("APPLICATION_ID");
+              this.fd.delete("image");
+              
+              this.fd.delete("city");
+              this.fd.delete("manufacturer");
+              this.fd.delete("model");
+              this.fd.delete("price");
+
+              this.fd.delete("year");
+              this.fd.delete("kilometers");
+              this.fd.delete("specs");
+              this.fd.delete("cylinders");
+
+              this.fd.delete("warranty");
+              this.fd.delete("color");
+              this.fd.delete("transmission");
+              this.fd.delete("phone");
+
+              this.fd.delete("description");
+              
+              this.fd.delete("uid");
+
+              this.filesList = [];
+              this.time = Date.now() + "_";
+              this.uploadProgress = 0;
         }
         );
 

@@ -264,7 +264,7 @@ router.post('/setimg/:app_id', (req, res, next) => {
             // console.log("name of req.files: "+ req.files[0].originalname );
             if (req.body.model !== undefined) {
                 // console.log("json object " + name.image[0].path);
-                console.log("set image req.body.color 2: " + req.body.color);
+               // console.log("set image req.body.color 2: " + req.body.color);
                 //price =0;
                 // price = Number(req.body.price);
                 price = roughScale(req.body.price, 10);
@@ -294,7 +294,7 @@ router.post('/setimg/:app_id', (req, res, next) => {
                 transmission = roughScale(req.body.transmission, 10);
                 specs = roughScale(req.body.specs, 10);
 
-                console.log('user manufacturer is AAAAAAAAAA : ' + manufacturer);
+                console.log('user manufacturer is   : ' + manufacturer);
                 console.log('user model is : ' + model);
                 console.log('user city is : ' + city);
                 console.log('user id is : ' + uid);
@@ -303,7 +303,7 @@ router.post('/setimg/:app_id', (req, res, next) => {
                 console.log('user phone is : ' + phone);
 
                 /*   (1992-02-02 select cars.MANUFACTURE.MANUFACTURE_ID from cars.MANUFACTURE where MANUFACTURE_NAME = ? ) */
-                console.log(model + "  :" + "color" + req.body.color);
+                console.log(  " usr color" + req.body.color);
                 /*   connection.query(`INSERT INTO cars.cars_table (PRICE,MODEL,YEAR,MANUFACTURE,MILES,USER_ID,EMIRATE,DETAILS,DDATE,WARANTY,PHONE,COLOR) VALUES (? ,
                       (select cars.cars_models.MODEL_ID from cars.cars_models where MODEL_NAME = ? ),
                       ?,?,
@@ -312,19 +312,25 @@ router.post('/setimg/:app_id', (req, res, next) => {
                       (select cars.colors.COLOR_ID from cars.colors where COLOR_NAME = ? ))` */
                 if (req.params.app_id == 0)        //new insertion 
                 {
+
+                    /////////////////////////test isert 1000 values 
+                     for(var i = 0;i<=1000 ;i++){
+
                     connection.query(`INSERT INTO cars.cars_table (PRICE,MODEL,YEAR,MANUFACTURE,MILES,USER_ID,
                         EMIRATE,DETAILS,DDATE,WARANTY,PHONE,COLOR, CYLINDERS ,SPECS, TRANSMISSION) VALUES (? ,
                         (select cars.cars_models.MODEL_ID from cars.cars_models where MODEL_NAME = ? ),
                         ?,(select cars.MANUFACTURE.MANUFACTURE_ID from cars.MANUFACTURE where MANUFACTURE_NAME = ? )
                         ,
-                        ?,?,?,?,NOW(),?,?,,
+                        ?,?,?,?,NOW(),?,?,
                         ?,?,?,?)`
                         , [price, model, year, manufacturer, kilometers, uid, city, description, /*ddate,*/warranty, phone, color, cylinders, specs, transmission], function (err, result) {
                             /*  /* (select cars.colors.COLOR_ID from cars.colors where COLOR_NAME = ? )   , [model/* , uid, city?,ddate  ,color] , function (err, result) {*/
                             if (err) {
                                 res.status(500);
+                                console.log('amin eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeerror while inserting to data base'+err);
                                 return next(err);
                             }
+                           
                             else {
                                 if (req.files.image !== undefined) {
                                     //res.json({msg:"added"});
@@ -351,7 +357,7 @@ router.post('/setimg/:app_id', (req, res, next) => {
                                                 msg = msg + "ccc";
                                                 if (i == images.length - 1) {
                                                     console.log(i + "iamge lenghhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh ");
-                                                    res.status(200).json({ result: result })
+                                                 //   res.status(200).json({ result: result })
                                                 }
                                                 //console.log(message);
                                             }
@@ -359,11 +365,11 @@ router.post('/setimg/:app_id', (req, res, next) => {
                                         });
                                     }
                                 }
-                                else { res.status(200).json({ result: result }) }
+                               // else { res.status(200).json({ result: result }) }
                             }
 
                         });
-                } else          //update not new car
+                }} else          //update not new car
                 {
                     connection.query(`UPDATE  cars.cars_table set PRICE = ? ,
                 MODEL =(select cars.cars_models.MODEL_ID from cars.cars_models where MODEL_NAME = ? ),YEAR = ? ,
@@ -373,7 +379,9 @@ router.post('/setimg/:app_id', (req, res, next) => {
                         , [price, model, year, manufacturer, kilometers, uid, city, description, /*ddate,*/warranty, phone, transmission, color, cylinders, specs, req.params.app_id], function (err, result) {
                             /*   , [model/* , uid, city?,ddate  ,color] , function (err, result) {*/
                             if (err) {
+
                                 res.status(500);
+                                
                                 return next(err);
                             }
                             else {

@@ -380,7 +380,7 @@ this.slider3 = new Slider("#year", {
     // get pager object from service
     //this.im = [];
     this.currentPage = page;
-    let offset: number  = Math.floor(page/10)  * 100;
+    let offset: number  = Math.floor((page-1)/10)  * 100;
     if(offset != this.currentOffset){
       //var toSearch= { offset:offset};
       this.getCars(this.toSearch,offset)
@@ -391,7 +391,7 @@ this.slider3 = new Slider("#year", {
      
     
    // this.pager = this.pagerService.getPager(this.allItems.length, page);   //count(*)
-   this.pager =  this.pagerService.getPager(this.count, page);
+   this.pager =  this.pagerService.getPager(this.count, page,10);
 
     // get current page of items
     this.pagedItems = this.allItems.slice(this.pager.startIndex - offset, this.pager.endIndex + 1 - offset);
