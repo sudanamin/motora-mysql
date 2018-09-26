@@ -314,10 +314,10 @@
           
         <div class="form-group row">
           <button type="submit" name='button' class='btn btn-warning btn-sm' [disabled]='frm.invalid || imageNotReady'><span translate>{{goOrLoading}}</span> </button>
-          <span [class.numOfImage]="!toggleLanguage">{{bigImagePreviews.length}}  <span translate>Images</span></span>
+          <span  [class.numOfImage]="!toggleLanguage" [class.numOfImageArab]="toggleLanguage">{{bigImagePreviews.length}}  <span translate>Images</span></span>
         </div>
          
-        </div><!-- box closed -->
+        </div><!-- box closed   [class.numOfImage]="!toggleLanguage" -->
        
   </div>  
 </form>

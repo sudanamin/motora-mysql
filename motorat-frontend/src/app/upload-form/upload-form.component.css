@@ -76,6 +76,12 @@ a{
 .numOfImage{
      float: right; 
 }
+
+.numOfImageArab{
+    float: left; 
+    padding-left: 10px;
+}
+
   
     
 #myProgress {
