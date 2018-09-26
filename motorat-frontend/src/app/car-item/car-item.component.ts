@@ -42,6 +42,8 @@ export class CarItemComponent implements OnInit {
   toggleForm: boolean = false;
   show_me: boolean = true;
 
+  theHtmlString: string = 'Phone:'
+
   //firstTime: boolean = true;
   cities = ["Abu Dabu", "Ajman", "Al ain", "Dubai", "Fujuira", "Ras Alkhima", "Sharjah", "Um Alquiin"];
   specs = ["GCC", "AMERICAN", "JAPANESE", "EUROPE", "OTHER"];
@@ -170,6 +172,15 @@ export class CarItemComponent implements OnInit {
     }
 
 
+  }
+
+  showPhone(phone,event){
+    //alert('phone is +'+JSON.stringify($event.target));
+    var target = event.target || event.srcElement;
+    target.innerHTML = phone;
+
+   // alert ( target.innerHTML ); 
+    //$event.target.inner
   }
 
   getCars(toSearch,offset) {

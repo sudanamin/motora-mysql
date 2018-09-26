@@ -160,7 +160,7 @@ export class UploadFormComponent   {
 
            
 
-        }
+        })
     }
    
     this.dataService.deleteCar(car.APPLICATION_ID)

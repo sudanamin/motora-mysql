@@ -303,7 +303,8 @@ router.post('/setimg/:app_id', (req, res, next) => {
                 //waranty =0;
                 // waranty = Number(req.body.waranty);
                 warranty = roughScale(req.body.warranty, 10);
-                phone = roughScale(req.body.phone, 10);
+                //phone = roughScale(req.body.phone, 10);
+                phone = req.body.phone;
 
                 color = req.body.color;
 
