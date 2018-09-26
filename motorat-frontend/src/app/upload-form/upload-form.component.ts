@@ -39,6 +39,7 @@ export class UploadFormComponent   {
   toggleForm: boolean = false;
   imageNotReady: boolean = false;
   saveOrLoading:string  = 'Save';
+  goOrLoading:string = "GO";
   firstTime: boolean = false;
   addForm: any;
   carsObjects : car[]=[];
@@ -429,6 +430,7 @@ export class UploadFormComponent   {
     for (var i = 0; i < files.length; i++) {
       this.imageNotReady = true;
       this.saveOrLoading = 'loading';
+      this.goOrLoading = 'loading';
       let image = files[i];
       //this.fd.append('image', image, this.time + image.name);
       this.filesList.push({theFile:image,name:this.time + image.name});
@@ -439,7 +441,7 @@ export class UploadFormComponent   {
           this.uploadedImage = new File([result], this.time + "thumb_" + result.name);
           resultCounter ++;
 
-
+          console.log("result counter = "+resultCounter);
           this.getImagePreview(this.uploadedImage);
           //var singleFd = new FormData();
           //singleFd.append('image', this.uploadedImage, this.uploadedImage.name);
@@ -453,6 +455,7 @@ export class UploadFormComponent   {
             console.log("hi :"+resultCounter)
           this.imageNotReady = false;
           this.saveOrLoading = 'Save';
+          this.goOrLoading = 'GO'
         }
           // this.upload();
         },
@@ -561,7 +564,7 @@ export class UploadFormComponent   {
           }
         },
          error => {
-          alert('😢 Oh no! '+error.statusText);
+          alert('😢 Oh no! '+  JSON.stringify(error) );
           console.log(error)
 
           this.addForm.reset();

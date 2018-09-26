@@ -72,6 +72,11 @@ a{
   border: none;
         
   } 
+
+.numOfImage{
+     float: right; 
+}
+  
     
 #myProgress {
     width:100%;

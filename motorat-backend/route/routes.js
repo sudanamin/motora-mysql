@@ -212,7 +212,7 @@ var storage = multer.diskStorage({
 });
 
 var fields = [
-    { name: 'image', maxCount: 12 },
+    { name: 'image', maxCount: 20 },
 
     { name: 'city' },
     { name: 'manufacturer' },
@@ -232,7 +232,7 @@ var fields = [
     { name: 'description' },
     { name: 'uid' },
 ]
-var upload = multer({ storage: storage, limits: { fileSize: 10000000, files: 10 } }).fields(fields); // var upload = multer({ storage: storage }).array('image');
+var upload = multer({ storage: storage, limits: { fileSize: 20000000, files: 20 } }).fields(fields); // var upload = multer({ storage: storage }).array('image');
 // upload.single('image');
 /*const upload = multer({
     dest:'images/', 
@@ -273,7 +273,8 @@ router.post('/setimg/:app_id', (req, res, next) => {
 
         if (err) {
 
-            res.status(400).json({ message: err.message })
+            res.status(400).json({ message: 'error form mutler'+err.message })
+            console.log('error from mutler '+err);
 
         } else {
 
@@ -304,7 +305,7 @@ router.post('/setimg/:app_id', (req, res, next) => {
                 // waranty = Number(req.body.waranty);
                 warranty = roughScale(req.body.warranty, 10);
                 //phone = roughScale(req.body.phone, 10);
-                phone = req.body.phone;
+                (req.body.phone)?  phone = req.body.phone : phone = '';
 
                 color = req.body.color;
 
