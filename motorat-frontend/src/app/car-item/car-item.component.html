@@ -84,8 +84,14 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
     <br>
     <br>
     <br>
-
-    <div class="col-md-1"> </div>
+    <br>
+    <br>
+    <br> <br>
+    <br>
+    <br> <br>
+    <br>
+    <br>
+    
 
 
     <div class=" col-md-2">
@@ -132,17 +138,27 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
 
                     <div class="form-group ">
 
-                        <label class="label label-primary" for="" translate>
+                         <label class="label label-primary" for="" translate>
                             Manufacturer
                         </label>
-                        <select class="form-control input-sm" name="manufacturerToSearch" (change)="onManufacturersChange($event.target.value)"   ngModel>
-                                <option selected value>All</option>
+                        <select class="form-control input-sm" name="manufacturerToSearch" (change)="onManufacturersChange($event.target.value)"
+                            ngModel>
+                            <option selected value>All</option>
                             <option *ngFor="let m of ManufacturersObject">
                                 {{m.MANUFACTURE_NAME}}
-                            </option>
-                        </select>
+                            </option> 
+                           <!--  <label class="label label-primary" for="" translate>
+                                    Manufacturer
+                            <input list="browsers" class="form-control input-sm" name="manufacturerToSearch" (change)="onManufacturersChange($event.target.value)" /></label>
+                            <datalist id="browsers">
+                                    <option selected value>All</option>
+                                    <option *ngFor="let m of ManufacturersObject">
+                                        {{m.MANUFACTURE_NAME}}
+                                    </option>
+                            </datalist> -->
+                         </select>  
 
-                            <!--   <select class="form-control input-sm"   name="manufacturerToSearch" ngModel>
+                        <!--   <select class="form-control input-sm"   name="manufacturerToSearch" ngModel>
                                         <option selected value>All</option>
                                         <option>NISSAN</option>
                                         <option>TOYOTA</option>
@@ -151,18 +167,18 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
 
                     </div>
 
-                    <div  *ngIf="showModel"class="form-group ">
+                    <div *ngIf="showModel" class="form-group ">
 
                         <label class="label label-primary" for="" translate>
                             Model:
                         </label>
 
-                        <select class="form-control input-sm" name="modelToSearch"  ngModel>
+                        <select class="form-control input-sm" name="modelToSearch" ngModel>
 
                             <option selected value>All</option>
                             <option *ngFor="let model of ModelsObject">
-                                    {{model.MODEL_NAME}}
-                                </option>
+                                {{model.MODEL_NAME}}
+                            </option>
 
                         </select>
 
@@ -456,8 +472,8 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
     <!--   end of paginagtion  -->
 
 
-    <div class="col-md-2">
-
-    </div>
+    <div class="col-md-2"></div>
+     <div class="col-md-1"> </div>
+    
 
 </div>
