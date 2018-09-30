@@ -41,6 +41,7 @@ export class CarItemComponent implements OnInit {
   specificationToSearch: string ='';
   toggleForm: boolean = false;
   show_me: boolean = true;
+  showModel: Boolean = false;
 
   theHtmlString: string = 'Phone:'
 
@@ -49,6 +50,8 @@ export class CarItemComponent implements OnInit {
   specs = ["GCC", "AMERICAN", "JAPANESE", "EUROPE", "OTHER"];
 
   carsObjects = [];
+  ManufacturersObject = [];
+  ModelsObject = [];
   toggleLanguage = false;
   rtl = 'rtl';
 
@@ -278,7 +281,7 @@ export class CarItemComponent implements OnInit {
 
     }
      
-
+    console.log('manufatures to search : '+JSON.stringify(toSearch));
     this.currentPage = 1;
     this.toSearch = toSearch;
     this.getCars(this.toSearch,0)
@@ -325,9 +328,31 @@ export class CarItemComponent implements OnInit {
     this.getCars(this.toSearch,0);
 
     // ... do other stuff here ...
+    }
+
+onManufacturersChange(event){
+    
+  console.log('manufatrer chaned'+JSON.stringify(event))
+   
+   if( event !='' && event !='All'){
+    this.showModel = true;
+    this.dataService.getModels(event)
+    .subscribe(models => { this.ModelsObject = models; });
+    
+   }
+   else{
+     this.showModel = false;
+   }
 }
 
   ngOnInit() {
+
+    this.dataService.getManufacturers()
+    .subscribe(manufacturers => { this.ManufacturersObject = manufacturers; });
+
+    
+
+
     this.getCars(this.toSearch,0);
 
   /*   var slider = new Slider("#ex1", {

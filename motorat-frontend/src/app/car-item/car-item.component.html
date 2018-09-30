@@ -25,16 +25,18 @@
     <div class="col-md-6">
 
         <h1 class='logo' align='right' style='display: inline;   
-               font-family:ubuntu; font-weight: bold ' translate>Title</h1>
+               font-family:ubuntu; font-weight: bold '
+            translate>Title</h1>
     </div>
     <div class="col-md-2"></div>
     <div class="col-md-3 ">
         <h2 class='logo' style='display: inline;   text-decoration: underline; 
-       font-family:Shrikhand, cursive; color:gray;'>ZEZENIA.ae<span style="color:orange">#</span></h2>  <!-- zezenia -->
- 
- <img class='logo' style='width:80px;height:25px;    vertical-align: bottom;   ' src="assets/logo.png">
+       font-family:Shrikhand, cursive; color:gray;'>ZEZENIA.ae<span
+                style="color:orange">#</span></h2> <!-- zezenia -->
+
+        <img class='logo' style='width:80px;height:25px;    vertical-align: bottom;   ' src="assets/logo.png">
     </div>
- 
+
 </div>
 
 <div class="tab">
@@ -43,16 +45,16 @@
     <div class="col-md-8">
 
 
-       
+
         <div class='about' (click)="router.navigate(['/about'])">
             <a translate>About</a> &nbsp;| &nbsp;
         </div>
         <div class='about' (click)="router.navigate(['/contact'])">
             <a translate>Contact </a> &nbsp;| &nbsp;
         </div>
-        <div class='about'   (click)="router.navigate(['/members'])">
-                <a translate>Register</a> &nbsp;| &nbsp;
-            </div>
+        <div class='about' (click)="router.navigate(['/members'])">
+            <a translate>Register</a> &nbsp;| &nbsp;
+        </div>
         <div class='login about' (click)="router.navigate(['/members'])"> &nbsp; &nbsp; &nbsp;
             <a style="color: rgba(241, 237, 237, 0.493);" translate><i class="fa fa-sign-in" style="font-size:normal;color:greenyellow">&nbsp;</i>Login</a>
         </div>
@@ -82,191 +84,199 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
     <br>
     <br>
     <br>
-    
+
     <div class="col-md-1"> </div>
 
 
     <div class=" col-md-2">
 
         <div class="row">
-            
-           
+
+
             <div class="SearchBox fontUbuntu col-md-12">
                 <form #SearchFrm="ngForm" (ngSubmit)="SearchCar(SearchFrm)">
                     <h4 align="center" class="SearchTitle" translate> Search</h4>
-  
-                    
+
+
                     <div class="form-group ">
-                            <!-- <label for="" >
+                        <!-- <label for="" >
                                 <span translate>city</span>:
                             </label>
     
                             <input type="text" class="form-control  input-sm" name="carcolor" value="" [ngModel]="ColorToSearch"> -->
 
-                            
- 
-   
 
-    
-                                    <label class="label label-primary" for="carcity" translate>
-                                            city
-                                    </label>
-                               
-                                    <select class="form-control input-sm" name="cityToSearch" value=""   ngModel  >
-                                        <option selected value>All</option>
-                                        <option>Abu Dhabi</option>
-                                        <option>Ajman</option>
-                                        <option>Alain</option>
-                                        <option>Dubai</option>
-                                        <option>Fujaira</option>
-                                        <option>Ras Alkhaima</option>
-                                        <option>Sharjah</option>
-                                        <option>Um Alqwain</option>
-                                        
-                                        
-                                      </select>
-                                  
+
+
+
+
+                        <label class="label label-primary" for="carcity" translate>
+                            city
+                        </label>
+
+                        <select class="form-control input-sm" name="cityToSearch" value="" ngModel>
+                            <option selected value>All</option>
+                            <option>Abu Dhabi</option>
+                            <option>Ajman</option>
+                            <option>Alain</option>
+                            <option>Dubai</option>
+                            <option>Fujaira</option>
+                            <option>Ras Alkhaima</option>
+                            <option>Sharjah</option>
+                            <option>Um Alqwain</option>
+
+
+                        </select>
+
                     </div>
 
                     <div class="form-group ">
-                            
-                                    <label class="label label-primary" for="" translate>
-                                      Manufacturer
-                                    </label>
-                          
-                                    <select class="form-control input-sm"   name="manufacturerToSearch" ngModel>
+
+                        <label class="label label-primary" for="" translate>
+                            Manufacturer
+                        </label>
+                        <select class="form-control input-sm" name="manufacturerToSearch" (change)="onManufacturersChange($event.target.value)"   ngModel>
+                                <option selected value>All</option>
+                            <option *ngFor="let m of ManufacturersObject">
+                                {{m.MANUFACTURE_NAME}}
+                            </option>
+                        </select>
+
+                            <!--   <select class="form-control input-sm"   name="manufacturerToSearch" ngModel>
                                         <option selected value>All</option>
                                         <option>NISSAN</option>
                                         <option>TOYOTA</option>
                                          
-                                      </select>
-                                 
-                        </div>
-                   
-                    <div class="form-group ">
-                          
-                                    <label class="label label-primary" for="" translate>
-                                      Model:
-                                    </label>
-                          
-                                    <select class="form-control input-sm"   name="modelToSearch" ngModel>
-                                       
-                                        <option selected value>All</option>
-                                        <option>ALTIMA</option>
-                                        <option>CAMRY</option>
-                                         
-                                      </select>
-                                 
+                                      </select> -->
+
+                    </div>
+
+                    <div  *ngIf="showModel"class="form-group ">
+
+                        <label class="label label-primary" for="" translate>
+                            Model:
+                        </label>
+
+                        <select class="form-control input-sm" name="modelToSearch"  ngModel>
+
+                            <option selected value>All</option>
+                            <option *ngFor="let model of ModelsObject">
+                                    {{model.MODEL_NAME}}
+                                </option>
+
+                        </select>
+
                     </div>
 
 
                     <div class="form-group ">
-                          
-                                    <label class="label label-primary" for="color" translate>
-                                      Color
-                                    </label>
-                          
-                                    <select class="form-control input-sm"  name="colorToSearch"  ngModel>
-                                        <option selected value>All</option>
-                                        <option>Silver</option>
-                                        <option>White</option>
-                                        <option>Brown</option>
-                                        <option> Black</option>
-                                        <option>Blue</option>
-                                        <option>Red</option>
-                                        <option>Gray</option>
-                                        <option>Green</option>
-                                        <option>Gold</option>
-                                        <option>Yellow</option>
-                                        <option>Other</option>
-                                         
-                                      </select>
-                                  
+
+                        <label class="label label-primary" for="color" translate>
+                            Color
+                        </label>
+
+                        <select class="form-control input-sm" name="colorToSearch" ngModel>
+                            <option selected value>All</option>
+                            <option>Silver</option>
+                            <option>White</option>
+                            <option>Brown</option>
+                            <option> Black</option>
+                            <option>Blue</option>
+                            <option>Red</option>
+                            <option>Gray</option>
+                            <option>Green</option>
+                            <option>Gold</option>
+                            <option>Yellow</option>
+                            <option>Other</option>
+
+                        </select>
+
                     </div>
 
-                    <div class="form-group " style =' padding-right:13px;padding-left:13px;'  dir ="ltr"> 
+                    <div class="form-group " style=' padding-right:13px;padding-left:13px;' dir="ltr">
                         <label for="" translate>
                             Year
                         </label>
-                      
-                <input style='width:100%; ' id="year" type="text"    data-slider-value="[1990,2018 ]"/>    
-       
-        </div>
+
+                        <input style='width:100%; ' id="year" type="text" data-slider-value="[1990,2018 ]" />
+
+                    </div>
 
 
-                    <div class="form-group "  style ='padding-right:13px;padding-left:13px;'  dir ="ltr"> 
+                    <div class="form-group " style='padding-right:13px;padding-left:13px;' dir="ltr">
                         <label for="" translate>
                             Kilometers
                         </label>
-                         
-                        
-                     <input  style='width:100%; ' id="kilo" type="text"    data-slider-value="[0,200 ]"/>   
-                   
-              
+
+
+                        <input style='width:100%; ' id="kilo" type="text" data-slider-value="[0,200 ]" />
+
+
                     </div>
 
 
 
-                    <div class="form-group " style ='padding-right:13px;padding-left:13px;' dir ="ltr"> 
-                           <!--  <label for="" translate>
+                    <div class="form-group " style='padding-right:13px;padding-left:13px;' dir="ltr">
+                        <!--  <label for="" translate>
                                 price from to:
                             </label>
     
                             <input type="text" class="form-control  input-sm" name="carcolor" value="" [ngModel]="ColorToSearch"> -->
 
-                            <label for="customRange1" translate>Price</label>
-                            
-                          <!--   <input type="text" class="js-min-max-start" style='font-size: small' /> -->
+                        <label for="customRange1" translate>Price</label>
+
+                        <!--   <input type="text" class="js-min-max-start" style='font-size: small' /> -->
 
 
-<!--                       <input style=' width: 90%;' id="ex1"  data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="100000" data-slider-step="1" data-slider-value="[0,50000]"/> 
- -->                         <input style='width:100%; ' id="price" type="text"    data-slider-value="[0,100 ]"/>    
+                        <!--                       <input style=' width: 90%;' id="ex1"  data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="100000" data-slider-step="1" data-slider-value="[0,50000]"/> 
+ -->
+                        <input style='width:100%; ' id="price" type="text" data-slider-value="[0,100 ]" />
                         <!--  <input id="ex12c" type="text"/><br/>  -->
                     </div>
 
 
 
                     <div class="form-group ">
-                            <label for="" translate>
-                                Cylinder
-                            </label>
-                            <select class="form-control input-sm"   name="cylinderToSearch" ngModel>
-                                    <option selected value>All</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>6</option>
-                                    <option>8</option>
-                                    <option>12</option>
-                            </select>
-                        </div>
+                        <label for="" translate>
+                            Cylinder
+                        </label>
+                        <select class="form-control input-sm" name="cylinderToSearch" ngModel>
+                            <option selected value>All</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>6</option>
+                            <option>8</option>
+                            <option>12</option>
+                        </select>
+                    </div>
 
-                        <div class="form-group ">
-                                <label for="" translate>
-                                        Specs
-                                </label>
-                                <select class="form-control input-sm"   name="specificationToSearch" ngModel>
-                                        <option selected value>All</option>
-                                        <option>GCC</option>
-                                        <option>AMERICAN</option>
-                                        <option>JAPANESE</option>
-                                        <option>EUROPE</option>
-                                        <option>OHTER</option>
-                                </select>
-                            </div>
+                    <div class="form-group ">
+                        <label for="" translate>
+                            Specs
+                        </label>
+                        <select class="form-control input-sm" name="specificationToSearch" ngModel>
+                            <option selected value>All</option>
+                            <option>GCC</option>
+                            <option>AMERICAN</option>
+                            <option>JAPANESE</option>
+                            <option>EUROPE</option>
+                            <option>OHTER</option>
+                        </select>
+                    </div>
 
 
-                            <div class="form-group ">
-                                    <label for="" translate>
-                                        Transmission
-                                    </label>
-                                    <select class="form-control input-sm"   name="transmissionToSearch" ngModel>
-                                            <option selected value>All</option>
-                                            <option>Automatic</option>
-                                            <option>Manual</option>
-                                            <option>Hybrid</option>
-                                           
-                                    </select>
-                                </div>
+                    <div class="form-group ">
+                        <label for="" translate>
+                            Transmission
+                        </label>
+                        <select class="form-control input-sm" name="transmissionToSearch" ngModel>
+                            <option selected value>All</option>
+                            <option>Automatic</option>
+                            <option>Manual</option>
+                            <option>Hybrid</option>
+
+                        </select>
+                    </div>
 
                     <button type="submit" name='button' class=' btn btn-block  btn-primary'><i translate>Go</i></button>
 
@@ -282,42 +292,44 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
     <!-- pagination -->
     <div class="col-md-7">
 
-            <div class='row'  [class.row-rtl]="toggleLanguage"> 
-                    <div [class.col-md-9]="toggleLanguage"></div>
-                    <div class="col-md-3">
-                 <label for="" translate>
-                        <b translate>SortBy  </b>: 
-                    </label>
-                    <select class="form-control input-sm" (change)="onSortByChange($event.target.value)"  name="SortBy" ngModel>
-                            <option  >Price lowest to highest</option>
-                            <option>Price highest to lowest  </option>
-                            <option>Date</option>
-                           
-                           
-                    </select>
-                 <br>
-                           
-                </div>
+        <div class='row' [class.row-rtl]="toggleLanguage">
+            <div [class.col-md-9]="toggleLanguage"></div>
+            <div class="col-md-3">
+                <label for="" translate>
+                    <b translate>SortBy </b>:
+                </label>
+                <select class="form-control input-sm" (change)="onSortByChange($event.target.value)" name="SortBy"
+                    ngModel>
+                    <option>Price lowest to highest</option>
+                    <option>Price highest to lowest </option>
+                    <option>Date</option>
 
-              
-            </div>
 
-           
-
-            <div class='row'  [class.row-rtl]="toggleLanguage" style='font-family: ubuntu'> 
-                <div [class.col-md-6]="toggleLanguage"></div>
-
-                &nbsp;&nbsp;&nbsp;   <a style="color:black;" (click)="resetSearch('allCiteis')" translate> AllCities </a>
-                 > {{CityToSearch}} > <a style="color:black;" (click)="resetSearch('AllManufacturer')" translate>  AllManufacturer</a> > {{ManufacturerToSearch}} >
-                 <a style="color:black;" (click)="resetSearch('AllModel')" translate>   AllModel</a> > {{ModelToSearch}}
- 
+                </select>
+                <br>
 
             </div>
 
-            <br>  
+
+        </div>
+
+
+
+        <div class='row' [class.row-rtl]="toggleLanguage" style='font-family: ubuntu'>
+            <div [class.col-md-6]="toggleLanguage"></div>
+
+            &nbsp;&nbsp;&nbsp; <a style="color:black;" (click)="resetSearch('allCiteis')" translate> AllCities </a>
+            > {{CityToSearch}} > <a style="color:black;" (click)="resetSearch('AllManufacturer')" translate>
+                AllManufacturer</a> > {{ManufacturerToSearch}} >
+            <a style="color:black;" (click)="resetSearch('AllModel')" translate> AllModel</a> > {{ModelToSearch}}
+
+
+        </div>
+
+        <br>
         <div>
             <!-- <h1>Angular 2 - Pagination Example with logic like Google</h1> -->
-             
+
             <!-- items being paged -->
             <div class='row'>
                 <br>
@@ -365,7 +377,7 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                                 <!-- <br> -->
                                 <br>
                                 <div class='details' translate>Transmission
-                                   <span> : </span> <span class='detailsBold' translate>{{obj.transmission}}</span>
+                                    <span> : </span> <span class='detailsBold' translate>{{obj.transmission}}</span>
                                 </div>
                                 <br>
                                 <div class='details' translate>Cylinder
@@ -381,11 +393,13 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                             <div class="rightOfBox col-md-3">
 
                                 <div class='details' translate>Price
-                                    <span class='detailsBold'> : {{obj.price | number}} <span translate> AED</span> </span></div>
+                                    <span class='detailsBold'> : {{obj.price | number}} <span translate> AED</span>
+                                    </span></div>
 
                                 <br>
                                 <div class='details' translate>Kilometers
-                                    <span class='detailsBold'> : {{obj.kilometers| number}}   <span translate> km</span> </span></div>
+                                    <span class='detailsBold'> : {{obj.kilometers| number}} <span translate> km</span>
+                                    </span></div>
 
                                 <!-- <br> -->
                                 <br>
@@ -400,7 +414,8 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
 
                                 <br>
                                 <br>
-                                <div class="showPhone btn btn-warning btn-sm" (click)= 'showPhone(obj.phone,$event)'  translate> Phone:</div>
+                                <div class="showPhone btn btn-warning btn-sm" (click)='showPhone(obj.phone,$event)'
+                                    translate> Phone:</div>
                                 <br>
                                 <br>
                             </div>

@@ -65,6 +65,45 @@ router.get('/cars', (req, res, next) => {
 })
 
 
+router.get('/manufacturers', (req, res, next) => {
+
+    connection.query("SELECT MANUFACTURE_NAME FROM `manufacture` " , function (err,  manufactures) {
+        if (err) {
+            res.status(500);
+            return next(err);
+        }
+        else {
+            res.send(manufactures);
+            
+        }
+
+    });
+})
+
+router.get('/models', (req, res, next) => {
+
+    manufacturer = req.query.manufacturer;
+    var whereClause = "WHERE 1 = 1 ";
+
+    if (manufacturer != null && manufacturer!='All' ) {
+        whereClause += "AND MANUFACTURE_NAME LIKE '" + manufacturer + "'";
+        
+    }
+
+    connection.query(`SELECT MODEL_NAME , MANUFACTURE_NAME FROM  cars.cars_models   inner  JOIN  manufacture
+     on manufacture_REF = manufacture.MANUFACTURE_ID `+ whereClause, function (err,  models) {
+        if (err) {
+            res.status(500);
+            return next(err);
+        }
+        else {
+            res.send(models);
+            console.log("models  tttable :  " + models)
+        }
+
+    });
+})
+
 
 router.post('/car', (req, res, next) => {
 
