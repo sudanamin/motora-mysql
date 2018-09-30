@@ -1,9 +1,16 @@
 hr {
     
-    clear:both;
+   /*  clear:both;
     display:block;
-    color: black;
-    height: 4px;
+    color: black;*/
+    height: 4px; 
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    
   }
 
   .text-center{
