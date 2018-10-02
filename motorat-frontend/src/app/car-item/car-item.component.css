@@ -16,9 +16,14 @@ a:hover{
 }
 
 a{
-	color:white;
+    color:white;
+    cursor: pointer;
 	
 }
+
+ 
+
+
   .ppage{
     color:rgb(19, 35, 73);
 }

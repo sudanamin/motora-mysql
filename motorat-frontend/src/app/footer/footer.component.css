@@ -30,13 +30,14 @@ hr {
   }
 
   a{
-    color: rgba(241, 237, 237, 0.637);
+    /* color:rgba(34, 137, 228, 0.808) */
+    color:rgba(34, 137, 228, 0.808)
   }
-
   a:hover{
-	 
+   
 	font-style: italic;
-	text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
 }
 
   .toggleLang{
