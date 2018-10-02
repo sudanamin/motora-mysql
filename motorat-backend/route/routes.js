@@ -547,7 +547,7 @@ router.get('/cimages', (req, res, next) => {
         //whereClause += "AND description LIKE '%keywords%'"
     }  //console.log('color is :' + color); */
 
-    if (model != null && model != '') {
+    if (model != null && model != '' && model != 'undefined') {
         whereClause += " AND model_NAME LIKE '" + model + "'";
         // console.log('model is :' + model);
         //whereClause += "AND description LIKE '%keywords%'"
