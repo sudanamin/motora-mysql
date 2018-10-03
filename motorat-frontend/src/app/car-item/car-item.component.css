@@ -169,6 +169,7 @@ img{
 img:hover{
     width:210px; 
     height:145px;
+    cursor: pointer;
 }
 showPhone:hover{
      

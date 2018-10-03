@@ -191,15 +191,17 @@ router.delete('/image/:imageName', (req, res, next) => {
     console.log('image to delte is ' + image_url1)
 
     fs.unlink(fs_url1, (err) => {
-        if (err) throw err;
-        console.log('path/file.txt was deleted'+fs_url1);
+       /*  if (err) throw err; */
+       if (err) console.log(err);
+        else console.log('path/file.txt was deleted'+fs_url1);
         //res.json(result);
       
       });
 
       fs.unlink(fs_url2, (err) => {
-        if (err) throw err;
-        console.log('path/file.txt was deleted');
+        if (err) console.log(err);
+       /*  if (err) throw err; */
+        else console.log('path/file.txt was deleted');
        
       
       });
