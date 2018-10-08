@@ -511,8 +511,10 @@ router.get('/cimages', (req, res, next) => {
 
     /* var url_parts = url.parse(req.url, true);
     var query = url_parts.query; */
-
-    var offset = req.query.offset;
+    var offset;
+    if(  req.query.offset)
+     offset = req.query.offset ;
+    else offset = '0'
     var sortby = req.query.sortby;
     var userId = req.query.userID;
 
