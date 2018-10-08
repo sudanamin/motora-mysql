@@ -573,7 +573,7 @@
 
           <!--  <i class="fa fa-cloud-upload fa-2x"></i> -->
           <div class="draghere text-muted" (click)="file.click()">
-             <div class='clickOrDrag'><i translate>Click</i> ... <br>Maximum 10 images </div>
+             <div class='clickOrDrag'><span translate>Click</span> ... <br>Maximum 10 images </div>
              <ul class="files" (click)="$event.stopPropagation()">
 
                 <li *ngFor="let image of selectedCar.Thums">
