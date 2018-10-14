@@ -2,25 +2,29 @@
 
 const express = require('express');
 var router = express.Router();
-var mysql = require("mysql");
+//var mysql = require("mysql");
 const multer = require('multer')
 const fileType = require('file-type')
 const fs = require('fs')
 var url = require('url');
 
-var query;
+var pg = require('pg');
+var conString = "postgres://postgres:root@localhost:5432/cars";
+
+var connection = new pg.Client(conString);
+connection.connect();
 
 var hostName = "http://localhost:3000/";
 
 //app.use(express.static(__dirname ));
 
-var connection = mysql.createConnection({
+/* var connection = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "montana",
     database: "cars",
     port: "3306"
-});
+}); */
 router.get('/cars', (req, res, next) => {
 
     var whereClause = "WHERE 1 = 1 ";
@@ -51,7 +55,7 @@ router.get('/cars', (req, res, next) => {
         } */
 
 
-    connection.query("SELECT * FROM `cars_table` " + whereClause, function (err, cars) {
+    connection.query("SELECT * FROM cars_table " + whereClause, function (err, cars) {
         if (err) {
             res.status(500);
             return next(err);
@@ -67,14 +71,14 @@ router.get('/cars', (req, res, next) => {
 
 router.get('/manufacturers', (req, res, next) => {
 
-    connection.query("SELECT MANUFACTURE_NAME FROM `manufacture` " , function (err,  manufactures) {
+    connection.query("SELECT MANUFACTURE_NAME FROM `manufacture` ", function (err, manufactures) {
         if (err) {
             res.status(500);
             return next(err);
         }
         else {
             res.send(manufactures);
-            
+
         }
 
     });
@@ -85,23 +89,23 @@ router.get('/models', (req, res, next) => {
     manufacturer = req.query.manufacturer;
     var whereClause = "WHERE 1 = 1 ";
 
-    if (manufacturer != null && manufacturer!='All' ) {
+    if (manufacturer != null && manufacturer != 'All') {
         whereClause += "AND MANUFACTURE_NAME LIKE '" + manufacturer + "'";
-        
+
     }
 
     connection.query(`SELECT MODEL_NAME , MANUFACTURE_NAME FROM  cars.cars_models   inner  JOIN  manufacture
-     on manufacture_REF = manufacture.MANUFACTURE_ID `+ whereClause, function (err,  models) {
-        if (err) {
-            res.status(500);
-            return next(err);
-        }
-        else {
-            res.send(models);
-            console.log("models  tttable :  " + models)
-        }
+     on manufacture_REF = manufacture.MANUFACTURE_ID `+ whereClause, function (err, models) {
+            if (err) {
+                res.status(500);
+                return next(err);
+            }
+            else {
+                res.send(models);
+                console.log("models  tttable :  " + models)
+            }
 
-    });
+        });
 })
 
 
@@ -186,25 +190,25 @@ router.delete('/image/:imageName', (req, res, next) => {
     image_url1 = hostName + image_name;
     image_url2 = image_url1.replace("_thumb", "");
 
-    fs_url1 = image_url1.replace("http://localhost:3000/","images\\");
-    fs_url2 = image_url2.replace("http://localhost:3000/","images\\");
+    fs_url1 = image_url1.replace("http://localhost:3000/", "images\\");
+    fs_url2 = image_url2.replace("http://localhost:3000/", "images\\");
     console.log('image to delte is ' + image_url1)
 
     fs.unlink(fs_url1, (err) => {
-       /*  if (err) throw err; */
-       if (err) console.log(err);
-        else console.log('path/file.txt was deleted'+fs_url1);
-        //res.json(result);
-      
-      });
-
-      fs.unlink(fs_url2, (err) => {
+        /*  if (err) throw err; */
         if (err) console.log(err);
-       /*  if (err) throw err; */
+        else console.log('path/file.txt was deleted' + fs_url1);
+        //res.json(result);
+
+    });
+
+    fs.unlink(fs_url2, (err) => {
+        if (err) console.log(err);
+        /*  if (err) throw err; */
         else console.log('path/file.txt was deleted');
-       
-      
-      });
+
+
+    });
 
 
     connection.query("DELETE  FROM `car_images` WHERE IMAGE_URL=? or IMAGE_URL=?", [image_url1, image_url2], function (err, result) {
@@ -213,11 +217,11 @@ router.delete('/image/:imageName', (req, res, next) => {
             return next(err);
         }
         else {
-             
+
             res.json(result);
 
-              
-              
+
+
             /*  connection.query("DELETE FROM `cars_table` WHERE APPLICATION_ID=?", [image_id], function (err, result) {
                  if (err) {
                      res.status(500);
@@ -302,6 +306,13 @@ router.post('/setimg/:app_id', (req, res, next) => {
 
     console.log('  this is app id' + req.params.app_id)
     var msg = "aa";
+
+    String.prototype.contains = function (test) {
+        return this.indexOf(test) == -1 ? false : true;
+    };
+
+
+
     upload(req, res, function (err) {
 
 
@@ -314,8 +325,8 @@ router.post('/setimg/:app_id', (req, res, next) => {
 
         if (err) {
 
-            res.status(400).json({ message: 'error form mutler'+err.message })
-            console.log('error from mutler '+err);
+            res.status(400).json({ message: 'error form mutler' + err.message })
+            console.log('error from mutler ' + err);
 
         } else {
 
@@ -325,7 +336,7 @@ router.post('/setimg/:app_id', (req, res, next) => {
             // console.log("name of req.files: "+ req.files[0].originalname );
             if (req.body.model !== undefined) {
                 // console.log("json object " + name.image[0].path);
-               // console.log("set image req.body.color 2: " + req.body.color);
+                // console.log("set image req.body.color 2: " + req.body.color);
                 //price =0;
                 // price = Number(req.body.price);
                 price = roughScale(req.body.price, 10);
@@ -346,7 +357,7 @@ router.post('/setimg/:app_id', (req, res, next) => {
                 // waranty = Number(req.body.waranty);
                 warranty = roughScale(req.body.warranty, 10);
                 //phone = roughScale(req.body.phone, 10);
-                (req.body.phone)?  phone = req.body.phone : phone = '';
+                (req.body.phone) ? phone = req.body.phone : phone = '';
 
                 color = req.body.color;
 
@@ -365,7 +376,7 @@ router.post('/setimg/:app_id', (req, res, next) => {
                 console.log('user phone is : ' + phone);
 
                 /*   (1992-02-02 select cars.MANUFACTURE.MANUFACTURE_ID from cars.MANUFACTURE where MANUFACTURE_NAME = ? ) */
-                console.log(  " usr color" + req.body.color);
+                console.log(" usr color" + req.body.color);
                 /*   connection.query(`INSERT INTO cars.cars_table (PRICE,MODEL,YEAR,MANUFACTURE,MILES,USER_ID,EMIRATE,DETAILS,DDATE,WARANTY,PHONE,COLOR) VALUES (? ,
                       (select cars.cars_models.MODEL_ID from cars.cars_models where MODEL_NAME = ? ),
                       ?,?,
@@ -375,24 +386,24 @@ router.post('/setimg/:app_id', (req, res, next) => {
                 if (req.params.app_id == 0)        //new insertion 
                 {
 
-                   /*  /////////////////////////test isert 1000 values 
-                     for(var i = 0;i<=100 ;i++){ */
+                    /*  /////////////////////////test isert 1000 values 
+                      for(var i = 0;i<=100 ;i++){ */
 
-                    connection.query(`INSERT INTO cars.cars_table (PRICE,MODEL,YEAR,MANUFACTURE,MILES,USER_ID,
-                        EMIRATE,DETAILS,DDATE,WARANTY,PHONE,COLOR, CYLINDERS ,SPECS, TRANSMISSION) VALUES (? ,
-                        (select cars.cars_models.MODEL_ID from cars.cars_models where MODEL_NAME = ? ),
-                        ?,(select cars.MANUFACTURE.MANUFACTURE_ID from cars.MANUFACTURE where MANUFACTURE_NAME = ? )
+                    connection.query(`INSERT INTO cars_table (PRICE,MODEL,YEAR,MANUFACTURE,MILES,USER_ID,
+                        EMIRATE,DETAILS,DDATE,WARANTY,PHONE,COLOR, CYLINDERS ,SPECS, TRANSMISSION) VALUES ($1,
+                        (select cars_models.MODEL_ID from cars_models where MODEL_NAME = $2 ),
+                        $3,(select MANUFACTURE.MANUFACTURE_ID from MANUFACTURE where MANUFACTURE_NAME = $4 )
                         ,
-                        ?,?,?,?,NOW(),?,?,
-                        ?,?,?,?)`
+                        $5,$6,$7,$8,NOW(),$9,$10,
+                        $11,$12,$13,$14) RETURNING application_id`
                         , [price, model, year, manufacturer, kilometers, uid, city, description, /*ddate,*/warranty, phone, color, cylinders, specs, transmission], function (err, result) {
                             /*  /* (select cars.colors.COLOR_ID from cars.colors where COLOR_NAME = ? )   , [model/* , uid, city?,ddate  ,color] , function (err, result) {*/
                             if (err) {
                                 res.status(500);
-                              //  console.log('amin eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeerror while inserting to data base'+err);
+                                //  console.log('amin eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeerror while inserting to data base'+err);
                                 return next(err);
                             }
-                           
+
                             else {
                                 if (req.files.image !== undefined) {
                                     //res.json({msg:"added"});
@@ -406,8 +417,12 @@ router.post('/setimg/:app_id', (req, res, next) => {
 
                                         console.log(obj.filename);
 
+                                        var string = obj.filename;
+                                        var thumb = string.contains("_thumb_");
+                                        console.log('result is : '+JSON.stringify(result));
+
                                         //  for (let image of images){
-                                        connection.query("INSERT INTO `car_images` ( IMAGE_URL,REF_APP_ID) VALUES ( ?, ?)", [hostName + obj.filename, result.insertId], function (err, result) {
+                                        connection.query("INSERT INTO car_images ( IMAGE_URL,REF_APP_ID,thumb) VALUES ( $1, $2 ,$3)", [hostName + obj.filename,  result.rows[0].application_id, thumb], function (err, result) {
                                             if (err) {
                                                 res.status(500);
                                                 return next(err);
@@ -418,7 +433,7 @@ router.post('/setimg/:app_id', (req, res, next) => {
                                                 //return msg;
                                                 msg = msg + "ccc";
                                                 if (i == images.length - 1) {
-                                                  //  console.log(i + "iamge lenghhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh ");
+                                                    //  console.log(i + "iamge lenghhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh ");
                                                     res.status(200).json({ result: result })
                                                 }
                                                 //console.log(message);
@@ -443,7 +458,7 @@ router.post('/setimg/:app_id', (req, res, next) => {
                             if (err) {
 
                                 res.status(500);
-                                
+
                                 return next(err);
                             }
                             else {
@@ -459,8 +474,12 @@ router.post('/setimg/:app_id', (req, res, next) => {
 
                                         console.log(obj.filename);
 
+                                        var string = obj.filename;
+                                        var thumb = string.contains("_thumb_");
+
                                         //  for (let image of images){
-                                        connection.query("INSERT INTO `car_images` ( IMAGE_URL,REF_APP_ID) VALUES ( ?, ?)", [hostName + obj.filename, req.params.app_id], function (err, result) {
+
+                                        connection.query("INSERT INTO car_images ( IMAGE_URL,REF_APP_ID,thumb) VALUES ( ?, ?, ?)", [hostName + obj.filename, req.params.app_id, thumb], function (err, result) {
                                             if (err) {
                                                 res.status(500);
                                                 return next(err);
@@ -512,8 +531,8 @@ router.get('/cimages', (req, res, next) => {
     /* var url_parts = url.parse(req.url, true);
     var query = url_parts.query; */
     var offset;
-    if(  req.query.offset)
-     offset = req.query.offset ;
+    if (req.query.offset)
+        offset = req.query.offset;
     else offset = '0'
     var sortby = req.query.sortby;
     var userId = req.query.userID;
@@ -536,8 +555,8 @@ router.get('/cimages', (req, res, next) => {
 
 
     var test = -1;
-    console.log('manufacturer:' + manufacturer + "  model: " + model + " user id" + userId); 
-    
+    console.log('manufacturer:' + manufacturer + "  model: " + model + " user id" + userId);
+
     if (city != null && city != '' && city != '0') {
         whereClause += " AND EMIRATE LIKE '" + city + "'";
     }
@@ -545,11 +564,11 @@ router.get('/cimages', (req, res, next) => {
     if (manufacturer != null && manufacturer != '') {
         whereClause += " AND MANUFACTURE_NAME LIKE '" + manufacturer + "'";
     }
-   /*  if (color != null && color != '' && color != '-1') {
-        whereClause += " AND color LIKE '" + color + "'";
-        //   console.log('color is :' + color);
-        //whereClause += "AND description LIKE '%keywords%'"
-    }  //console.log('color is :' + color); */
+    /*  if (color != null && color != '' && color != '-1') {
+         whereClause += " AND color LIKE '" + color + "'";
+         //   console.log('color is :' + color);
+         //whereClause += "AND description LIKE '%keywords%'"
+     }  //console.log('color is :' + color); */
 
     if (model != null && model != '' && model != 'undefined') {
         whereClause += " AND model_NAME LIKE '" + model + "'";
@@ -589,11 +608,11 @@ router.get('/cimages', (req, res, next) => {
         whereClause += " AND CYLINDERS LIKE '" + cylinder + "'";
     }
 
-    if (specification != null && specification != '' && specification !='0' ) {
+    if (specification != null && specification != '' && specification != '0') {
         whereClause += " AND SPECS LIKE '" + specification + "'";
     }
 
-    if (transmission != null && transmission != '' && transmission != '0' ) {
+    if (transmission != null && transmission != '' && transmission != '0') {
         whereClause += " AND TRANSMISSION LIKE '" + transmission + "'";
     }
 
@@ -604,19 +623,19 @@ router.get('/cimages', (req, res, next) => {
     }
 
     if (sortby != null && sortby != '') {
-        switch (sortby){
-            case 'APrice' : {whereClause += "  ORDER BY PRICE ASC";  break;  }
-            case 'DPrice' : {whereClause += "  ORDER BY PRICE DESC";  break;  }
-            case 'Date' : {whereClause += "  ORDER BY DDATE DESC";  break;  }
-            default: { 
+        switch (sortby) {
+            case 'APrice': { whereClause += "  ORDER BY PRICE ASC"; break; }
+            case 'DPrice': { whereClause += "  ORDER BY PRICE DESC"; break; }
+            case 'Date': { whereClause += "  ORDER BY DDATE DESC"; break; }
+            default: {
                 //statements; 
-                break; 
-             } 
-            
+                break;
+            }
+
         }
-        
+
     }
-    
+
 
     /*  connection.query("SELECT cars_table.MODEL ,cars_table.COLOR,USER_ID ,car_images.REF_APP_ID,GROUP_CONCAT(car_images.IMAGE_URL) as gofi from car_images INNER JOIN cars_table ON car_images.REF_APP_ID =cars_table.APPLICATION_ID "+whereClause+" GROUP BY car_images.REF_APP_ID ;", function (err, cars) {
    */
@@ -624,12 +643,14 @@ router.get('/cimages', (req, res, next) => {
 
     console.log('where clause is : ' + whereClause);
 
-    var count = 0;
+    var countt = Array.of(0);
 
-    var queryforCount = `SELECT count(*) as count FROM  (select REF_APP_ID, GROUP_CONCAT(IMAGE_URL) as gofi from car_images where IMAGE_URL LIKE '%thum%' GROUP BY REF_APP_ID ) as im
-right JOIN  cars_table on cars_table.APPLICATION_ID = im.REF_APP_ID   
-left join  cars_models  on  MODEL = cars_models.MODEL_ID
-left join   manufacture  on  manufacture = manufacture.manufacture_ID
+    var queryforCount = `SELECT count(*) as count from (select REF_APP_ID, 
+        group_concat(image_url) as gofi FROM car_images 
+        where thumb = 'true' GROUP BY REF_APP_ID ) as im
+        right JOIN  cars_table on cars_table.APPLICATION_ID = im.REF_APP_ID   
+        left join  cars_models  on  MODEL = cars_models.MODEL_ID
+        left join   manufacture  on  manufacture = manufacture.manufacture_Id  
  `+ whereClause;
 
     connection.query(queryforCount, function (err, count) {
@@ -639,13 +660,14 @@ left join   manufacture  on  manufacture = manufacture.manufacture_ID
         }
         else {
             // res.send(count);
-            count = count;
+            countt = Array.of(count);
 
-            var query = `SELECT * FROM  (select REF_APP_ID, GROUP_CONCAT(IMAGE_URL) as gofi from car_images where IMAGE_URL LIKE '%thum%' GROUP BY REF_APP_ID ) as im
-   right JOIN  cars_table on cars_table.APPLICATION_ID = im.REF_APP_ID   
-   left join  cars_models  on  MODEL = cars_models.MODEL_ID
-   left join   manufacture  on  manufacture = manufacture.manufacture_ID
-    `+ whereClause + ' limit ' + offset + ' ,100';
+            var query = `SELECT * FROM  (select REF_APP_ID, group_concat(image_url) as gofi FROM car_images 
+            where thumb = 'true' GROUP BY REF_APP_ID ) as im
+right JOIN  cars_table on cars_table.APPLICATION_ID = im.REF_APP_ID   
+left join  cars_models  on  MODEL = cars_models.MODEL_ID
+left join   manufacture  on  manufacture = manufacture.manufacture_Id
+    `+ whereClause + ' ORDER BY ddate ASC  limit ' + offset + ' OFFSET 100';
             connection.query(query, function (err, cars) {
                 if (err) {
                     res.status(500);
@@ -654,7 +676,7 @@ left join   manufacture  on  manufacture = manufacture.manufacture_ID
                 }
                 else {
 
-                    res.send(count.concat(cars));
+                    res.send(countt.concat(cars));
                     // console.log( cars)
                 }
 
