@@ -71,7 +71,7 @@ router.get('/cars', (req, res, next) => {
 
 router.get('/manufacturers', (req, res, next) => {
 
-    connection.query("SELECT MANUFACTURE_NAME FROM `manufacture` ", function (err, manufactures) {
+    connection.query("SELECT MANUFACTURE_NAME FROM manufacture ", function (err, manufactures) {
         if (err) {
             res.status(500);
             return next(err);
@@ -94,7 +94,7 @@ router.get('/models', (req, res, next) => {
 
     }
 
-    connection.query(`SELECT MODEL_NAME , MANUFACTURE_NAME FROM  cars.cars_models   inner  JOIN  manufacture
+    connection.query(`SELECT MODEL_NAME , MANUFACTURE_NAME FROM  cars_models   inner  JOIN  manufacture
      on manufacture_REF = manufacture.MANUFACTURE_ID `+ whereClause, function (err, models) {
             if (err) {
                 res.status(500);
@@ -651,7 +651,7 @@ router.get('/cimages', (req, res, next) => {
         right JOIN  cars_table on cars_table.APPLICATION_ID = im.REF_APP_ID   
         left join  cars_models  on  MODEL = cars_models.MODEL_ID
         left join   manufacture  on  manufacture = manufacture.manufacture_Id  
- `+ whereClause;
+ `;    //+ whereClause
 
     connection.query(queryforCount, function (err, count) {
         if (err) {
@@ -660,15 +660,15 @@ router.get('/cimages', (req, res, next) => {
         }
         else {
             // res.send(count);
-            countt = Array.of(count);
+            countt = Array.of(count.rows[0]);
 
             var query = `SELECT * FROM  (select REF_APP_ID, group_concat(image_url) as gofi FROM car_images 
             where thumb = 'true' GROUP BY REF_APP_ID ) as im
 right JOIN  cars_table on cars_table.APPLICATION_ID = im.REF_APP_ID   
 left join  cars_models  on  MODEL = cars_models.MODEL_ID
 left join   manufacture  on  manufacture = manufacture.manufacture_Id
-    `+ whereClause + ' ORDER BY ddate ASC  limit ' + offset + ' OFFSET 100';
-            connection.query(query, function (err, cars) {
+    `;      //  + whereClause + ' limit ' + offset + ' OFFSET 100'
+           var query =  connection.query(query, function (err, cars) {
                 if (err) {
                     res.status(500);
 
@@ -676,11 +676,17 @@ left join   manufacture  on  manufacture = manufacture.manufacture_Id
                 }
                 else {
 
-                    res.send(countt.concat(cars));
+                   // res.send(countt.concat(cars.rows[0]));
+                   //res.send(countt.concat(cars.fields[0].name));
+                   res.send(countt.concat(cars.rows[0]));
                     // console.log( cars)
                 }
 
             });
+
+             
+              
+            
             // console.log( cars)
         }
 
