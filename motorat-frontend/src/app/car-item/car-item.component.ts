@@ -146,23 +146,23 @@ export class CarItemComponent implements OnInit {
 
       /*  console.log("gofThumbsForShow lengh:"+gofThumbsForShow[i]);
        console.log("gofiForGallery lengh:"+gofiForGallery[i].src); */
-      console.log('price is ' + this.pagedItems[i].PRICE);
+      console.log('price is ' + this.pagedItems[i].price);
       var carObject = {
-        id: this.pagedItems[i].REF_APP_ID,
+        id: this.pagedItems[i].ref_app_id,
         thums: gofThumbsForShow, images: gofiForGallery,
-        manufacture: this.pagedItems[i].MANUFACTURE_NAME,
-        model: this.pagedItems[i].MODEL_NAME,
-        color: Utils.convertIntToColor(this.pagedItems[i].COLOR),
-        city: Utils.convertIntToCity(this.pagedItems[i].EMIRATE),
-        date: this.pagedItems[i].DDATE,
-        kilometers: this.pagedItems[i].MILES,
-        price: this.pagedItems[i].PRICE,
-        year: this.pagedItems[i].YEAR,
-        specs: Utils.convertIntToSpecs(this.pagedItems[i].SPECS),
-        warranty: Utils.convertIntToWaranty(this.pagedItems[i].WARANTY),
-        transmission: Utils.convertIntToTransmission(this.pagedItems[i].TRANSMISSION),
-        cylinder: this.pagedItems[i].CYLINDERS,
-        phone: this.pagedItems[i].PHONE
+        manufacture: this.pagedItems[i].manufacture_name,
+        model: this.pagedItems[i].model_name,
+        color: Utils.convertIntToColor(this.pagedItems[i].color),
+        city: Utils.convertIntToCity(this.pagedItems[i].emirate),
+        date: this.pagedItems[i].ddate,
+        kilometers: this.pagedItems[i].miles,
+        price: this.pagedItems[i].price,
+        year: this.pagedItems[i].year,
+        specs: Utils.convertIntToSpecs(this.pagedItems[i].specs),
+        warranty: Utils.convertIntToWaranty(this.pagedItems[i].waranty),
+        transmission: Utils.convertIntToTransmission(this.pagedItems[i].transmission),
+        cylinder: this.pagedItems[i].cylinders,
+        phone: this.pagedItems[i].phone
       };
       this.carsObjects.push(carObject);
       gofiForGallery = [];
@@ -349,7 +349,9 @@ onManufacturersChange(event){
   ngOnInit() {
 
     this.dataService.getManufacturers()
-    .subscribe(manufacturers => { this.ManufacturersObject = manufacturers; });
+    .subscribe(manufacturers => { this.ManufacturersObject = manufacturers; 
+    console.log('manucaturers : '+ JSON.stringify(manufacturers));
+    });
 
     
 

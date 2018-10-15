@@ -8,6 +8,8 @@ import 'rxjs/add/operator/map'
 @Injectable()
 export class DataService {
 
+  hostName:string  = "http://localhost:8080/";
+
   constructor(private http: HttpClient) { }
 
   /*getCarsImages(){
@@ -19,7 +21,7 @@ export class DataService {
 
     
     
-    return this.http.get<Array<any>>("api/cimages", {
+    return this.http.get<Array<any>>(this.hostName+"api/cimages", {
       params: toSearch/* {
         model: model ,
         color: color,
@@ -32,19 +34,19 @@ export class DataService {
 
   getManufacturers( ){
 
-      return this.http.get<Array<any>>("api/manufacturers"  )
+      return this.http.get<Array<any>>(this.hostName+"api/manufacturers"  )
     }
 
   
     getModels(Manufacturer ){
 
-      return this.http.get<Array<any>>("api/models",{
+      return this.http.get<Array<any>>(this.hostName+"api/models",{
       params: {  manufacturer: Manufacturer }
     })
   }
 
   deleteCar(id){
-    return this.http.delete<car>("api/car/"+id)
+    return this.http.delete<car>(this.hostName+"api/car/"+id)
    // .map(res => res.json());
   }
 
@@ -53,7 +55,7 @@ export class DataService {
     console.log('image name is '+image_name +"image url is "+image_url);
    
     
-    return this.http.delete("api/image/"+image_name);
+    return this.http.delete(this.hostName+"api/image/"+image_name);
    // .map(res => res.json());
   }
 
@@ -62,7 +64,7 @@ export class DataService {
 
     headers.append('content-type','application/json');
    /*  return this.http.put<car>("http://localhost:3000/api/car/"+carID, car, {headers:headers}) */
-   return this.http.put<car>("api/car/"+carID, formData, {headers:headers})
+   return this.http.put<car>(this.hostName+"api/car/"+carID, formData, {headers:headers})
     //.map( res => res.json());
 
   }

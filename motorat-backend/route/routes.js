@@ -113,7 +113,7 @@ router.get('/models', (req, res, next) => {
                 return next(err);
             }
             else {
-                res.send(models);
+                res.send(models.rows);
                 console.log("models  tttable :  " + models)
             }
 
@@ -127,7 +127,7 @@ router.post('/car', (req, res, next) => {
     color = req.body.color;
     console.log(model + "  :" + "color" + color)
 
-    connection.query("INSERT INTO cars_table (MODEL, COLOR) VALUES (?, ?)", [model, color], function (err) {
+    connection.query("INSERT INTO cars_table (MODEL, COLOR) VALUES ($1, $2)", [model, color], function (err) {
         if (err) {
             res.status(500);
             return next(err);
@@ -147,7 +147,7 @@ router.put('/car/:id', (req, res, next) => {
     model = req.body.model;
     color = req.body.color;
 
-    connection.query("UPDATE cars_table SET MODEL=?, COLOR=? WHERE APPLICATION_ID=? ", [model, color, car_id], function (err, result) {   //to do AND author_id=?
+    connection.query("UPDATE cars_table SET MODEL=$1, COLOR=$2 WHERE APPLICATION_ID=$3 ", [model, color, car_id], function (err, result) {   //to do AND author_id=?
         if (err) {
             res.status(500);
             return next(err);
@@ -170,7 +170,7 @@ router.delete('/car/:id', (req, res, next) => {
     car_id = req.params.id;
 
 
-    connection.query("DELETE FROM car_images WHERE REF_app_ID=?", [car_id], function (err, result) {
+    connection.query("DELETE FROM car_images WHERE REF_app_ID=$1", [car_id], function (err, result) {
         if (err) {
             res.status(500);
             return next(err);
@@ -178,7 +178,7 @@ router.delete('/car/:id', (req, res, next) => {
         else {
             // res.json(result);
             console.log("delete complete for car_images table for car id : " + car_id);
-            connection.query("DELETE FROM cars_table WHERE APPLICATION_ID=?", [car_id], function (err, result) {
+            connection.query("DELETE FROM cars_table WHERE APPLICATION_ID=$1", [car_id], function (err, result) {
                 if (err) {
                     res.status(500);
                     return next(err);
@@ -223,7 +223,7 @@ router.delete('/image/:imageName', (req, res, next) => {
     });
 
 
-    connection.query("DELETE  FROM car_images WHERE IMAGE_URL=? or IMAGE_URL=?", [image_url1, image_url2], function (err, result) {
+    connection.query("DELETE  FROM car_images WHERE IMAGE_URL=$1 or IMAGE_URL=$2", [image_url1, image_url2], function (err, result) {
         if (err) {
             res.status(500);
             return next(err);
@@ -460,11 +460,11 @@ router.post('/setimg/:app_id', (req, res, next) => {
                         });
                 } else          //update not new car
                 {
-                    connection.query(`UPDATE  cars.cars_table set PRICE = ? ,
-                MODEL =(select cars.cars_models.MODEL_ID from cars.cars_models where MODEL_NAME = ? ),YEAR = ? ,
-                MANUFACTURE = (select cars.MANUFACTURE.MANUFACTURE_ID from cars.MANUFACTURE where MANUFACTURE_NAME = ? ) ,MILES = ? ,USER_ID = ? ,
-                    EMIRATE = ? ,DETAILS = ? ,DDATE = NOW() ,WARANTY = ? ,PHONE = ? ,TRANSMISSION = ?,
-                    COLOR = ?, CYLINDERS = ? ,SPECS = ? where APPLICATION_ID =?`
+                    connection.query(`UPDATE  cars_table set PRICE = $1 ,
+                MODEL =(select cars_models.MODEL_ID from  cars_models where MODEL_NAME = $2 ),YEAR = $3 ,
+                MANUFACTURE = (select MANUFACTURE.MANUFACTURE_ID from MANUFACTURE where MANUFACTURE_NAME = $4 ) ,MILES = $5 ,USER_ID = $6 ,
+                    EMIRATE = $7 ,DETAILS = $8 ,DDATE = NOW() ,WARANTY = $9 ,PHONE = $10 ,TRANSMISSION = $11,
+                    COLOR = $12, CYLINDERS = $13 ,SPECS = $14 where APPLICATION_ID =$15`
                         , [price, model, year, manufacturer, kilometers, uid, city, description, /*ddate,*/warranty, phone, transmission, color, cylinders, specs, req.params.app_id], function (err, result) {
                             /*   , [model/* , uid, city?,ddate  ,color] , function (err, result) {*/
                             if (err) {
@@ -491,7 +491,7 @@ router.post('/setimg/:app_id', (req, res, next) => {
 
                                         //  for (let image of images){
 
-                                        connection.query("INSERT INTO car_images ( IMAGE_URL,REF_APP_ID,thumb) VALUES ( ?, ?, ?)", [hostName + obj.filename, req.params.app_id, thumb], function (err, result) {
+                                        connection.query("INSERT INTO car_images ( IMAGE_URL,REF_APP_ID,thumb) VALUES ( $1, $2, $3)", [hostName + obj.filename, req.params.app_id, thumb], function (err, result) {
                                             if (err) {
                                                 res.status(500);
                                                 return next(err);
@@ -539,6 +539,7 @@ router.get('/cimages', (req, res, next) => {
     //   connection.query("SELECT REF_APP_ID,GROUP_CONCAT(IMAGE_URL) as gofi FROM `car_images` GROUP BY REF_APP_ID;", function(err, cars) {
     //var whereClause = "WHERE `IMAGE_URL` LIKE '%%' "; 
     var whereClause = "WHERE 1 = 1 ";
+    var orderBY = '';
 
     /* var url_parts = url.parse(req.url, true);
     var query = url_parts.query; */
@@ -566,11 +567,12 @@ router.get('/cimages', (req, res, next) => {
     var transmission = req.query.transmission;
 
 
-    var test = -1;
+    //var test = -1;
     console.log('manufacturer:' + manufacturer + "  model: " + model + " user id" + userId);
 
     if (city != null && city != '' && city != '0') {
         whereClause += " AND EMIRATE LIKE '" + city + "'";
+        
     }
 
     if (manufacturer != null && manufacturer != '') {
@@ -636,9 +638,9 @@ router.get('/cimages', (req, res, next) => {
 
     if (sortby != null && sortby != '') {
         switch (sortby) {
-            case 'APrice': { whereClause += "  ORDER BY PRICE ASC"; break; }
-            case 'DPrice': { whereClause += "  ORDER BY PRICE DESC"; break; }
-            case 'Date': { whereClause += "  ORDER BY DDATE DESC"; break; }
+            case 'APrice': { orderBY += "  ORDER BY cars_table.price ASC"; break; }
+            case 'DPrice': { orderBY += "  ORDER BY cars_table.price DESC"; break; }
+            case 'Date': { orderBY += "  ORDER BY cars_table.ddate DESC"; break; }
             default: {
                 //statements; 
                 break;
@@ -662,8 +664,7 @@ router.get('/cimages', (req, res, next) => {
         where thumb = 'true' GROUP BY REF_APP_ID ) as im
         right JOIN  cars_table on cars_table.APPLICATION_ID = im.REF_APP_ID   
         left join  cars_models  on  MODEL = cars_models.MODEL_ID
-        left join   manufacture  on  manufacture = manufacture.manufacture_Id  
- `;    //+ whereClause
+        left join   manufacture  on  manufacture = manufacture.manufacture_Id `;
 
     connection.query(queryforCount, function (err, count) {
         if (err) {
@@ -678,8 +679,8 @@ router.get('/cimages', (req, res, next) => {
             where thumb = 'true' GROUP BY REF_APP_ID ) as im
 right JOIN  cars_table on cars_table.APPLICATION_ID = im.REF_APP_ID   
 left join  cars_models  on  MODEL = cars_models.MODEL_ID
-left join   manufacture  on  manufacture = manufacture.manufacture_Id
-    `;      //  + whereClause + ' limit ' + offset + ' OFFSET 100'
+left join   manufacture  on  manufacture = manufacture.manufacture_Id `+
+whereClause+ ' '+orderBY+' limit 100'+' OFFSET '+offset;
            var query =  connection.query(query, function (err, cars) {
                 if (err) {
                     res.status(500);

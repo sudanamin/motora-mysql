@@ -153,6 +153,8 @@ export class UploadFormComponent   {
 
   deleteCar(car) {
 
+    console.log('car id to delte is '+ car.APPLICATION_ID)
+
     for (var j = 0; j < car.Thums.length; j++) {
 
       var imageName = car.Thums[j];
@@ -249,24 +251,24 @@ export class UploadFormComponent   {
 
      
       
-      var carObject = {APPLICATION_ID:this.allItems[i].APPLICATION_ID,
-        City:Utils.convertIntToCity(this.allItems[i].EMIRATE),
-        Manufacturer:this.allItems[i].MANUFACTER, 
-        Manufacturer_name:this.allItems[i].MANUFACTURE_NAME, 
-        Model:this.allItems[i].MODEL,
-        Model_name:this.allItems[i].MODEL_NAME,
+      var carObject = {APPLICATION_ID:this.allItems[i].application_id,
+        City:Utils.convertIntToCity(this.allItems[i].emirate),
+        Manufacturer:this.allItems[i].manufacter, 
+        Manufacturer_name:this.allItems[i].manufacture_name, 
+        Model:this.allItems[i].model,
+        Model_name:this.allItems[i].model_name,
 
-        Price:this.allItems[i].PRICE,
-        Year:this.allItems[i].YEAR,
-         Kilometers: this.allItems[i].MILES, 
-         Specs:Utils.convertIntToSpecs(this.allItems[i].SPECS),
-        NoOfCylinders:this.allItems[i].CYLINDERS,
-        Warranty:Utils.convertIntToWaranty(this.allItems[i].WARANTY),
-        Color:Utils.convertIntToColor(this.allItems[i].COLOR),
-        Transmission:Utils.convertIntToTransmission(this.allItems[i].TRANSMISSION),
-        ContactNumber:this.allItems[i].PHONE,
-        Date:this.allItems[i].DDATE,
-        DESCRIPTION:this.allItems[i].DETAILS,
+        Price:this.allItems[i].price,
+        Year:this.allItems[i].year,
+         Kilometers: this.allItems[i].miles, 
+         Specs:Utils.convertIntToSpecs(this.allItems[i].specs),
+        NoOfCylinders:this.allItems[i].cylinders,
+        Warranty:Utils.convertIntToWaranty(this.allItems[i].waranty),
+        Color:Utils.convertIntToColor(this.allItems[i].color),
+        Transmission:Utils.convertIntToTransmission(this.allItems[i].transmission),
+        ContactNumber:this.allItems[i].phone,
+        Date:this.allItems[i].ddate,
+        DESCRIPTION:this.allItems[i].details,
         Thums:gofThumbsForShow,Images:gofiForGallery,};
      this.carsObjects.push(carObject);
      gofiForGallery = [];
@@ -511,8 +513,8 @@ export class UploadFormComponent   {
        app_id= this.selectedCar.APPLICATION_ID;
     }
    // else url =  "http://localhost:3000/api/setimg/0";
-
-      this.http.post("api/setimg/"+app_id, this.fd, {
+         console.log('app id is : '+ app_id);
+      this.http.post("http://localhost:8080/api/setimg/"+app_id, this.fd, {
         reportProgress: true,
         observe: 'events',
         //[params:string]: newCar.color
