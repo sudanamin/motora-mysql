@@ -512,7 +512,7 @@ export class UploadFormComponent   {
     }
    // else url =  "http://localhost:3000/api/setimg/0";
 
-      this.http.post("http://localhost:3000/api/setimg/"+app_id, this.fd, {
+      this.http.post("api/setimg/"+app_id, this.fd, {
         reportProgress: true,
         observe: 'events',
         //[params:string]: newCar.color

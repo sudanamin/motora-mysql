@@ -7,14 +7,26 @@ const multer = require('multer')
 const fileType = require('file-type')
 const fs = require('fs')
 var url = require('url');
+require('dotenv').config()
 
-var pg = require('pg');
-var conString = "postgres://postgres:root@localhost:5432/cars";
 
+/* var pg = require('pg');
+/* var conString = "postgres://postgres:root@localhost:5432/cars";   
+
+ 
 var connection = new pg.Client(conString);
+connection.connect(); */
+
+const { Client } = require('pg');
+
+const connection = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: true,
+});
+
 connection.connect();
 
-var hostName = "http://localhost:3000/";
+var hostName = "http://localhost:8080/";
 
 //app.use(express.static(__dirname ));
 
@@ -115,7 +127,7 @@ router.post('/car', (req, res, next) => {
     color = req.body.color;
     console.log(model + "  :" + "color" + color)
 
-    connection.query("INSERT INTO `cars_table` (MODEL, COLOR) VALUES (?, ?)", [model, color], function (err) {
+    connection.query("INSERT INTO cars_table (MODEL, COLOR) VALUES (?, ?)", [model, color], function (err) {
         if (err) {
             res.status(500);
             return next(err);
@@ -135,7 +147,7 @@ router.put('/car/:id', (req, res, next) => {
     model = req.body.model;
     color = req.body.color;
 
-    connection.query("UPDATE `cars_table` SET MODEL=?, COLOR=? WHERE APPLICATION_ID=? ", [model, color, car_id], function (err, result) {   //to do AND author_id=?
+    connection.query("UPDATE cars_table SET MODEL=?, COLOR=? WHERE APPLICATION_ID=? ", [model, color, car_id], function (err, result) {   //to do AND author_id=?
         if (err) {
             res.status(500);
             return next(err);
@@ -158,7 +170,7 @@ router.delete('/car/:id', (req, res, next) => {
     car_id = req.params.id;
 
 
-    connection.query("DELETE FROM `car_images` WHERE REF_app_ID=?", [car_id], function (err, result) {
+    connection.query("DELETE FROM car_images WHERE REF_app_ID=?", [car_id], function (err, result) {
         if (err) {
             res.status(500);
             return next(err);
@@ -166,7 +178,7 @@ router.delete('/car/:id', (req, res, next) => {
         else {
             // res.json(result);
             console.log("delete complete for car_images table for car id : " + car_id);
-            connection.query("DELETE FROM `cars_table` WHERE APPLICATION_ID=?", [car_id], function (err, result) {
+            connection.query("DELETE FROM cars_table WHERE APPLICATION_ID=?", [car_id], function (err, result) {
                 if (err) {
                     res.status(500);
                     return next(err);
@@ -190,8 +202,8 @@ router.delete('/image/:imageName', (req, res, next) => {
     image_url1 = hostName + image_name;
     image_url2 = image_url1.replace("_thumb", "");
 
-    fs_url1 = image_url1.replace("http://localhost:3000/", "images\\");
-    fs_url2 = image_url2.replace("http://localhost:3000/", "images\\");
+    fs_url1 = image_url1.replace(hostName, "images\\");
+    fs_url2 = image_url2.replace(hostName, "images\\");
     console.log('image to delte is ' + image_url1)
 
     fs.unlink(fs_url1, (err) => {
@@ -211,7 +223,7 @@ router.delete('/image/:imageName', (req, res, next) => {
     });
 
 
-    connection.query("DELETE  FROM `car_images` WHERE IMAGE_URL=? or IMAGE_URL=?", [image_url1, image_url2], function (err, result) {
+    connection.query("DELETE  FROM car_images WHERE IMAGE_URL=? or IMAGE_URL=?", [image_url1, image_url2], function (err, result) {
         if (err) {
             res.status(500);
             return next(err);

@@ -19,7 +19,7 @@ export class DataService {
 
     
     
-    return this.http.get<Array<any>>("http://localhost:3000/api/cimages", {
+    return this.http.get<Array<any>>("api/cimages", {
       params: toSearch/* {
         model: model ,
         color: color,
@@ -32,19 +32,19 @@ export class DataService {
 
   getManufacturers( ){
 
-      return this.http.get<Array<any>>("http://localhost:3000/api/manufacturers"  )
+      return this.http.get<Array<any>>("api/manufacturers"  )
     }
 
   
     getModels(Manufacturer ){
 
-      return this.http.get<Array<any>>("http://localhost:3000/api/models",{
+      return this.http.get<Array<any>>("api/models",{
       params: {  manufacturer: Manufacturer }
     })
   }
 
   deleteCar(id){
-    return this.http.delete<car>("http://localhost:3000/api/car/"+id)
+    return this.http.delete<car>("api/car/"+id)
    // .map(res => res.json());
   }
 
@@ -53,7 +53,7 @@ export class DataService {
     console.log('image name is '+image_name +"image url is "+image_url);
    
     
-    return this.http.delete("http://localhost:3000/api/image/"+image_name);
+    return this.http.delete("api/image/"+image_name);
    // .map(res => res.json());
   }
 
@@ -62,7 +62,7 @@ export class DataService {
 
     headers.append('content-type','application/json');
    /*  return this.http.put<car>("http://localhost:3000/api/car/"+carID, car, {headers:headers}) */
-   return this.http.put<car>("http://localhost:3000/api/car/"+carID, formData, {headers:headers})
+   return this.http.put<car>("api/car/"+carID, formData, {headers:headers})
     //.map( res => res.json());
 
   }
