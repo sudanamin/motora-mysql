@@ -231,7 +231,8 @@ export class UploadFormComponent   {
 
 
       var gofi = this.allItems[i].gofi;
-      if(gofi) var Gofi = gofi.split(',');else Gofi =[];
+     // if(gofi) var Gofi = gofi.split(',');else Gofi =[];
+     if(gofi) var Gofi = gofi ;else Gofi =[];
      
       for (var j=0 ; j<Gofi.length; j++){
 

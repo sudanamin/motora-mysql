@@ -77,7 +77,7 @@ router.get('/manufacturers', (req, res, next) => {
             return next(err);
         }
         else {
-            res.send(manufactures);
+            res.send(manufactures.rows);
 
         }
 
@@ -678,7 +678,7 @@ left join   manufacture  on  manufacture = manufacture.manufacture_Id
 
                    // res.send(countt.concat(cars.rows[0]));
                    //res.send(countt.concat(cars.fields[0].name));
-                   res.send(countt.concat(cars.rows[0]));
+                   res.send(countt.concat(cars.rows));
                     // console.log( cars)
                 }
 

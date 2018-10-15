@@ -127,7 +127,8 @@ export class CarItemComponent implements OnInit {
 
 
       var gofi = this.pagedItems[i].gofi;
-      if (gofi) var Gofi = gofi.split(','); else Gofi = [];
+     // if (gofi) var Gofi = gofi.split(','); else Gofi = [];
+     if (gofi) var Gofi = gofi; else Gofi = [];
       // console.log(arr[0]);
       for (var j = 0; j < Gofi.length; j++) {
 
