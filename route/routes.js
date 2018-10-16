@@ -26,7 +26,7 @@ const connection = new Client({
 
 connection.connect();
 
-var hostName = "http://localhost:8080/";
+//var hostName = "http://localhost:8080/";
 
 //app.use(express.static(__dirname ));
 
@@ -199,11 +199,14 @@ router.delete('/car/:id', (req, res, next) => {
 router.delete('/image/:imageName', (req, res, next) => {
 
     image_name = req.params.imageName;
-    image_url1 = hostName + image_name;
+    image_url1 =    image_name;
     image_url2 = image_url1.replace("_thumb", "");
 
-    fs_url1 = image_url1.replace(hostName, "images\\");
-    fs_url2 = image_url2.replace(hostName, "images\\");
+    /* fs_url1 = image_url1.replace(hostName, "images\\");
+    fs_url2 = image_url2.replace(hostName, "images\\"); */
+    fs_url1 = /* "images\\"+ */image_url1
+    fs_url2 = /* "images\\"+ */image_url2;
+
     console.log('image to delte is ' + image_url1)
 
     fs.unlink(fs_url1, (err) => {
