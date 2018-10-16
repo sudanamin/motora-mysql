@@ -4233,16 +4233,16 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var DataService = /** @class */ (function () {
+    // hostName:string  = "http://localhost:8080/";
     function DataService(http) {
         this.http = http;
-        this.hostName = "http://localhost:8080/";
     }
     /*getCarsImages(){
       return this.http.get<Array<car>>("http://localhost:3000/api/carsimgs")
       //.map(res => res.json())
     }*/
     DataService.prototype.getCImages = function (toSearch) {
-        return this.http.get(this.hostName + "api/cimages", {
+        return this.http.get(/* this.hostName +*/ "api/cimages", {
             params: toSearch /* {
               model: model ,
               color: color,
@@ -4252,28 +4252,28 @@ var DataService = /** @class */ (function () {
         });
     };
     DataService.prototype.getManufacturers = function () {
-        return this.http.get(this.hostName + "api/manufacturers");
+        return this.http.get(/* this.hostName +*/ "api/manufacturers");
     };
     DataService.prototype.getModels = function (Manufacturer) {
-        return this.http.get(this.hostName + "api/models", {
+        return this.http.get(/* this.hostName+ */ "api/models", {
             params: { manufacturer: Manufacturer }
         });
     };
     DataService.prototype.deleteCar = function (id) {
-        return this.http.delete(this.hostName + "api/car/" + id);
+        return this.http.delete(/* this.hostName+ */ "api/car/" + id);
         // .map(res => res.json());
     };
     DataService.prototype.deleteImage = function (image_url) {
         var image_name = image_url.substring(22);
         console.log('image name is ' + image_name + "image url is " + image_url);
-        return this.http.delete(this.hostName + "api/image/" + image_name);
+        return this.http.delete(/* this.hostName+ */ "api/image/" + image_name);
         // .map(res => res.json());
     };
     DataService.prototype.updateCar = function (carID, formData) {
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
         headers.append('content-type', 'application/json');
         /*  return this.http.put<car>("http://localhost:3000/api/car/"+carID, car, {headers:headers}) */
-        return this.http.put(this.hostName + "api/car/" + carID, formData, { headers: headers });
+        return this.http.put(/* this.hostName+ */ "api/car/" + carID, formData, { headers: headers });
         //.map( res => res.json());
     };
     DataService = __decorate([
@@ -5412,7 +5412,7 @@ var UploadFormComponent = /** @class */ (function () {
         }
         // else url =  "http://localhost:3000/api/setimg/0";
         console.log('app id is : ' + app_id);
-        this.http.post("http://localhost:8080/api/setimg/" + app_id, this.fd, {
+        this.http.post("api/setimg/" + app_id, this.fd, {
             reportProgress: true,
             observe: 'events',
         })
