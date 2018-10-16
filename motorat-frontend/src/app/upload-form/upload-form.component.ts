@@ -47,6 +47,10 @@ export class UploadFormComponent   {
   private allItems: any[];
   toggleLanguage = false;
 
+  ManufacturersObject = [];
+  ModelsObject = [];
+  showModel: Boolean = false;
+
   // pager object
   pager: any = {};
   cities = ["Abu Dabu","Ajman","Al ain","Dubai","Fujuira","Ras Alkhima","Sharjah","Um Alquiin"];
@@ -73,6 +77,8 @@ export class UploadFormComponent   {
     }
 
     switchLanguage(language: string) {
+
+
       // <HTMLElement>document.querySelector(".details").Style.cssText = "--my-var: #000";
       Utils.toggleLanguage = !Utils.toggleLanguage;
       this.toggleLanguage = Utils.toggleLanguage;
@@ -81,6 +87,25 @@ export class UploadFormComponent   {
        else
           this.translate.use('en')
      }
+
+
+     onManufacturersChange(event){
+    
+      console.log('manufatrer chaned'+JSON.stringify(event));
+
+     /*  var x = document.getElementById("noModel");
+       x.remove(); */
+       
+       if( event !='' && event !='All'){
+        this.showModel = true;
+        this.dataService.getModels(event)
+        .subscribe(models => { this.ModelsObject = models; });
+        
+       }
+       else{
+         this.showModel = false;
+       }
+    }
 
   dropzoneState($event: boolean) {
     this.dropzoneActive = $event;
@@ -186,6 +211,12 @@ export class UploadFormComponent   {
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.toggleLanguage = Utils.toggleLanguage;
       // do something
+    });
+
+
+    this.dataService.getManufacturers()
+    .subscribe(manufacturers => { this.ManufacturersObject = manufacturers; 
+    console.log('manucaturers : '+ JSON.stringify(manufacturers));
     });
   }
 

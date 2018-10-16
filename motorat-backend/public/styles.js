@@ -539,7 +539,7 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Aminov\Desktop\angular-motorat\motoratSql\motorat-frontend\src\styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! C:\Users\ammostafa\Desktop\motorat\motora-mysql\motorat-frontend\src\styles.css */"./src/styles.css");
 
 
 /***/ })
