@@ -26,7 +26,7 @@ const connection = new Client({
 
 connection.connect();
 
-var hostName = "http://localhost:8080/";
+//var hostName = "http://localhost:8080/";
 
 //app.use(express.static(__dirname ));
 
@@ -199,11 +199,14 @@ router.delete('/car/:id', (req, res, next) => {
 router.delete('/image/:imageName', (req, res, next) => {
 
     image_name = req.params.imageName;
-    image_url1 = hostName + image_name;
+    image_url1 =    image_name;
     image_url2 = image_url1.replace("_thumb", "");
 
-    fs_url1 = image_url1.replace(hostName, "images\\");
-    fs_url2 = image_url2.replace(hostName, "images\\");
+    /* fs_url1 = image_url1.replace(hostName, "images\\");
+    fs_url2 = image_url2.replace(hostName, "images\\"); */
+    fs_url1 = /* "images\\"+ */image_url1
+    fs_url2 = /* "images\\"+ */image_url2;
+
     console.log('image to delte is ' + image_url1)
 
     fs.unlink(fs_url1, (err) => {
@@ -434,7 +437,7 @@ router.post('/setimg/:app_id', (req, res, next) => {
                                         console.log('result is : '+JSON.stringify(result));
 
                                         //  for (let image of images){
-                                        connection.query("INSERT INTO car_images ( IMAGE_URL,REF_APP_ID,thumb) VALUES ( $1, $2 ,$3)", [hostName + obj.filename,  result.rows[0].application_id, thumb], function (err, result) {
+                                        connection.query("INSERT INTO car_images ( IMAGE_URL,REF_APP_ID,thumb) VALUES ( $1, $2 ,$3)", [/* hostName + */ obj.filename,  result.rows[0].application_id, thumb], function (err, result) {
                                             if (err) {
                                                 res.status(500);
                                                 return next(err);
@@ -491,7 +494,7 @@ router.post('/setimg/:app_id', (req, res, next) => {
 
                                         //  for (let image of images){
 
-                                        connection.query("INSERT INTO car_images ( IMAGE_URL,REF_APP_ID,thumb) VALUES ( $1, $2, $3)", [hostName + obj.filename, req.params.app_id, thumb], function (err, result) {
+                                        connection.query("INSERT INTO car_images ( IMAGE_URL,REF_APP_ID,thumb) VALUES ( $1, $2, $3)", [/* hostName + */ obj.filename, req.params.app_id, thumb], function (err, result) {
                                             if (err) {
                                                 res.status(500);
                                                 return next(err);
