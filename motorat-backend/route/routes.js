@@ -51,13 +51,13 @@ router.get('/cars', (req, res, next) => {
     console.log('color is :' + color);
 
     if (color != null) {
-        whereClause += "AND color LIKE '" + color + "'";
+        whereClause += "AND color = '" + color + "'";
         console.log('color is :' + color);
         //whereClause += "AND description LIKE '%keywords%'"
     } else console.log('color is :' + color);
 
     if (model != null) {
-        whereClause += "AND model LIKE '" + model + "'";
+        whereClause += "AND model = '" + model + "'";
         console.log('model is :' + model);
         //whereClause += "AND description LIKE '%keywords%'"
     } else console.log('model  is :' + model);
@@ -102,7 +102,7 @@ router.get('/models', (req, res, next) => {
     var whereClause = "WHERE 1 = 1 ";
 
     if (manufacturer != null && manufacturer != 'All') {
-        whereClause += "AND MANUFACTURE_NAME LIKE '" + manufacturer + "'";
+        whereClause += "AND MANUFACTURE_NAME = '" + manufacturer + "'";
 
     }
 
@@ -574,12 +574,12 @@ router.get('/cimages', (req, res, next) => {
     console.log('manufacturer:' + manufacturer + "  model: " + model + " user id" + userId);
 
     if (city != null && city != '' && city != '0') {
-        whereClause += " AND EMIRATE LIKE '" + city + "'";
+        whereClause += " AND EMIRATE = '" + city + "'";
         
     }
 
     if (manufacturer != null && manufacturer != '') {
-        whereClause += " AND MANUFACTURE_NAME LIKE '" + manufacturer + "'";
+        whereClause += " AND MANUFACTURE_NAME = '" + manufacturer + "'";
     }
     /*  if (color != null && color != '' && color != '-1') {
          whereClause += " AND color LIKE '" + color + "'";
@@ -588,13 +588,13 @@ router.get('/cimages', (req, res, next) => {
      }  //console.log('color is :' + color); */
 
     if (model != null && model != '' && model != 'undefined') {
-        whereClause += " AND model_NAME LIKE '" + model + "'";
+        whereClause += " AND model_NAME = '" + model + "'";
         // console.log('model is :' + model);
         //whereClause += "AND description LIKE '%keywords%'"
     }  //console.log('modell is :' + model);
 
     if (color != null && color != '' && color != '-1') {
-        whereClause += " AND COLOR LIKE '" + color + "'";
+        whereClause += " AND COLOR = '" + color + "'";
     }
 
     if (minYear != null && minYear != '' && minYear != '1990') {
@@ -622,21 +622,21 @@ router.get('/cimages', (req, res, next) => {
     }
 
     if (cylinder != null && cylinder != '') {
-        whereClause += " AND CYLINDERS LIKE '" + cylinder + "'";
+        whereClause += " AND CYLINDERS = '" + cylinder + "'";
     }
 
     if (specification != null && specification != '' && specification != '0') {
-        whereClause += " AND SPECS LIKE '" + specification + "'";
+        whereClause += " AND SPECS = '" + specification + "'";
     }
 
     if (transmission != null && transmission != '' && transmission != '0') {
-        whereClause += " AND TRANSMISSION LIKE '" + transmission + "'";
+        whereClause += " AND TRANSMISSION = '" + transmission + "'";
     }
 
 
 
     if (userId != null && userId != '') {
-        whereClause += " AND USER_ID LIKE '" + userId + "'";
+        whereClause += " AND USER_ID = '" + userId + "'";
     }
 
     if (sortby != null && sortby != '') {
