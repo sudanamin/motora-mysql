@@ -51,11 +51,11 @@ export class DataService {
   }
 
   deleteImage(image_url){
-    var image_name = image_url.substring(22);
-    console.log('image name is '+image_name +"image url is "+image_url);
+   // var image_name = image_url.substring(22);
+   // console.log('image name is '+image_name +"image url is "+image_url);
    
     
-    return this.http.delete(/* this.hostName+ */"api/image/"+image_name);
+    return this.http.delete(/* this.hostName+ */"api/image/"+image_url);
    // .map(res => res.json());
   }
 

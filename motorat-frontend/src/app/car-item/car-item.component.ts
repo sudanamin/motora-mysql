@@ -135,8 +135,8 @@ export class CarItemComponent implements OnInit {
         var thumbForShow = Gofi[j];
 
         var imgUrl = Gofi[j].replace("_thumb", "");
-        console.log("description is : " + this.pagedItems[i].DETAILS);
-        var iForGallery = { thumb: thumbForShow, src: imgUrl, w: 1200, h: 900, title: this.pagedItems[i].DETAILS };
+        console.log("description is : " + this.pagedItems[i].details);
+        var iForGallery = { thumb: thumbForShow, src: imgUrl, w: 1200, h: 900, title: this.pagedItems[i].details };
         // this.im.push( this.pagedItems[i].REF_APP_ID,obj);
         gofThumbsForShow.push(thumbForShow);
         gofiForGallery.push(iForGallery);
