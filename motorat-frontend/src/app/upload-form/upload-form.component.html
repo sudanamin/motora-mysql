@@ -111,7 +111,7 @@
                
             </select> -->
 
-            <select class="form-control input-sm" name="manufacturerToSearch" (change)="onManufacturersChange($event.target.value)"
+            <select class="form-control input-sm" name="carManufacturer" (change)="onManufacturersChange($event.target.value)"
             ngModel>
             <option selected value>unspecified</option>
             <option *ngFor="let m of ManufacturersObject">
@@ -128,7 +128,7 @@
             Model
           </label>
 
-          <select class="form-control input-sm" name="modelToSearch" ngModel>
+          <select class="form-control input-sm" name="carModel" ngModel>
 
              
             <option *ngFor="let model of ModelsObject">
@@ -410,11 +410,17 @@
       Manufacturer
      </label>
 
-     <select class="form-control input-sm"   name="carmanufacturer"   [ngModel]="selectedCar.Manufacturer_name">
-         <option>NISSAN</option>
-         <option>TOYOTA</option>
+     <select class="form-control input-sm"   name="carmanufacturer" (change)="onManufacturersChange($event.target.value)"  [ngModel]="selectedCar.Manufacturer_name">
+         
           
-       </select>
+      
+
+       <option selected value>unspecified</option>
+       <option *ngFor="let m of ManufacturersObject">
+           {{m.manufacture_name}}
+       </option> 
+      
+    </select> 
    </div>
   </div>
 
@@ -426,8 +432,13 @@
      </label>
 
      <select class="form-control input-sm"   name="carmodel" [ngModel]="selectedCar.Model_name">
-         <option>ALTIMA</option>
-         <option>CAMRY</option>
+         
+             
+          <option *ngFor="let model of ModelsObject">
+              {{model.model_name}}
+          </option>
+
+       
           
        </select>
    </div>

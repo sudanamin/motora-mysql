@@ -1,5 +1,5 @@
 ECHO is on.
 .env
 *.jpg
-aa.png
+*.png
 /images/
