@@ -437,7 +437,7 @@ router.post('/setimg/:app_id', (req, res, next) => {
                                         console.log('result is : '+JSON.stringify(result));
 
                                         //  for (let image of images){
-                                        connection.query("INSERT INTO car_images ( IMAGE_URL,REF_APP_ID,thumb) VALUES ( $1, $2 ,$3)", [hostName + obj.filename,  result.rows[0].application_id, thumb], function (err, result) {
+                                        connection.query("INSERT INTO car_images ( IMAGE_URL,REF_APP_ID,thumb) VALUES ( $1, $2 ,$3)", [/* hostName + */ obj.filename,  result.rows[0].application_id, thumb], function (err, result) {
                                             if (err) {
                                                 res.status(500);
                                                 return next(err);
@@ -494,7 +494,7 @@ router.post('/setimg/:app_id', (req, res, next) => {
 
                                         //  for (let image of images){
 
-                                        connection.query("INSERT INTO car_images ( IMAGE_URL,REF_APP_ID,thumb) VALUES ( $1, $2, $3)", [hostName + obj.filename, req.params.app_id, thumb], function (err, result) {
+                                        connection.query("INSERT INTO car_images ( IMAGE_URL,REF_APP_ID,thumb) VALUES ( $1, $2, $3)", [/* hostName + */ obj.filename, req.params.app_id, thumb], function (err, result) {
                                             if (err) {
                                                 res.status(500);
                                                 return next(err);
