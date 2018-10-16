@@ -95,6 +95,7 @@ export  class Utils {
         switch (val) {
            case 1: return  "Automatic";
            case 2: return "Manual";
+           case 3: return "Hybrid";
           
            default : return 0;
         }
@@ -106,6 +107,7 @@ export  class Utils {
         switch (val) {
            case "Automatic": return  1;
            case "Manual": return 2;
+           case  "Hybrid": return 3;
             
            default : return 0;
         }
