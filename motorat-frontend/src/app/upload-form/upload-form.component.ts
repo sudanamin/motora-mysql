@@ -14,7 +14,7 @@ import {Utils} from '../../util';
 import { DataService } from '../data.service'
 import { AuthService } from '../core/auth.service';
 /* import { Form } from '@angular/forms'; */
-import {Router} from "@angular/router";
+import {Router, NavigationStart, NavigationCancel, NavigationEnd} from "@angular/router";
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 
@@ -65,18 +65,23 @@ export class UploadFormComponent   {
   /* editFD = new FormData(); */
 
    time = Date.now() + "_";
+  router: Router;
+  loading;
+
   constructor(public sanitizer: DomSanitizer,
     private ng2ImgMax: Ng2ImgMaxService,
     private http: HttpClient,
     private dataService: DataService,
     public auth: AuthService,
-    private router: Router,
+     router: Router,
     private translate: TranslateService) {
       translate.setDefaultLang('en');
+      this.router = router;
+      
       
     }
 
-    switchLanguage(language: string) {
+    switchLanguage() {
 
 
       // <HTMLElement>document.querySelector(".details").Style.cssText = "--my-var: #000";
@@ -207,7 +212,29 @@ export class UploadFormComponent   {
   }
 
   ngOnInit() {
+
+    this.loading = true;
+
+   /*  this.router.events
+            .subscribe((event) => {
+                if(event instanceof NavigationStart) {
+                    this.loading = true;
+                }
+                else if (
+                    event instanceof NavigationEnd || 
+                    event instanceof NavigationCancel
+                    ) {
+                    this.loading = false;
+                }
+            }); */
+
+    this.http.get<string>("http://localhost:8080/api/checkenv/").subscribe(res =>{
+     // alert(JSON.stringify(res));
+    })
+
+
     this.getCars();
+    
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.toggleLanguage = Utils.toggleLanguage;
       // do something
@@ -545,11 +572,12 @@ export class UploadFormComponent   {
     }
    // else url =  "http://localhost:3000/api/setimg/0";
          console.log('app id is : '+ app_id);
-      this.http.post("api/setimg/"+app_id, this.fd, {
+    /*   this.http.post("api/setimg/"+app_id, this.fd, {
         reportProgress: true,
         observe: 'events',
         //[params:string]: newCar.color
-      })
+      }) */
+      this.dataService.setAdd(app_id,this.fd)
         .subscribe(event => {
           if (event.type === HttpEventType.UploadProgress) {
             this.uploadProgress = Math.round(event.loaded / event.total * 100) - 10;

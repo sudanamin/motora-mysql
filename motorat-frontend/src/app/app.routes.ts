@@ -19,6 +19,7 @@ import { AboutComponent} from './about/about.component';
 
 export const router: Routes = [
     { path: '',   redirectTo: 'main', pathMatch: 'full' },
+    
     { path:'main', component: MainComponent},
     { path: 'contact', component: ContactComponent },
     { path: 'about', component: AboutComponent },
@@ -26,7 +27,9 @@ export const router: Routes = [
     { path: 'signup', component: SignupComponent },
    // { path: 'login-email', component: EmailComponent },
     { path: 'reset', component: ResetPasswordComponent },
-    { path: 'members', component: MembersComponent, canActivate: [AuthGuard] }
+   
+    { path: 'members', component: MembersComponent, canActivate: [AuthGuard] },
+    { path: '**', redirectTo: '/main', pathMatch: 'full' },
    
   // { path: 'members', component: MembersComponent }
 

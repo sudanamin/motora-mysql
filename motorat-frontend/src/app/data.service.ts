@@ -3,12 +3,16 @@ import { Injectable } from '@angular/core';
 import {HttpClient,HttpHeaders } from '@angular/common/http'
 import {car} from '../car'
 import 'rxjs/add/operator/map'
+import { environment } from '../environments/environment';
+
 
 
 @Injectable()
 export class DataService {
 
  // hostName:string  = "http://localhost:8080/";
+ apiUrl = environment.hostname;
+
 
   constructor(private http: HttpClient) { }
 
@@ -17,11 +21,21 @@ export class DataService {
     //.map(res => res.json())
   }*/
 
+  setAdd(appId,formData){
+    
+    return this.http.post(this.apiUrl +"api/setimg/"+appId, formData, {
+      reportProgress: true,
+      observe: 'events',
+      //[params:string]: newCar.color
+    })
+
+    }
+
   getCImages(toSearch  ){
 
     
     
-    return this.http.get<Array<any>>(/* this.hostName +*/"api/cimages", {
+    return this.http.get<Array<any>>(this.apiUrl +"api/cimages", {
       params: toSearch/* {
         model: model ,
         color: color,
@@ -34,19 +48,19 @@ export class DataService {
 
   getManufacturers( ){
 
-      return this.http.get<Array<any>>(/* this.hostName +*/"api/manufacturers"  )
+      return this.http.get<Array<any>>(this.apiUrl +"api/manufacturers"  )
     }
 
   
     getModels(Manufacturer ){
 
-      return this.http.get<Array<any>>(/* this.hostName+ */"api/models",{
+      return this.http.get<Array<any>>(this.apiUrl +"api/models",{
       params: {  manufacturer: Manufacturer }
     })
   }
 
   deleteCar(id){
-    return this.http.delete<car>(/* this.hostName+ */"api/car/"+id)
+    return this.http.delete<car>(this.apiUrl +"api/car/"+id)
    // .map(res => res.json());
   }
 
@@ -55,7 +69,7 @@ export class DataService {
    // console.log('image name is '+image_name +"image url is "+image_url);
    
     
-    return this.http.delete(/* this.hostName+ */"api/image/"+image_url);
+    return this.http.delete(this.apiUrl +"api/image/"+image_url);
    // .map(res => res.json());
   }
 
@@ -64,7 +78,7 @@ export class DataService {
 
     headers.append('content-type','application/json');
    /*  return this.http.put<car>("http://localhost:3000/api/car/"+carID, car, {headers:headers}) */
-   return this.http.put<car>(/* this.hostName+ */"api/car/"+carID, formData, {headers:headers})
+   return this.http.put<car>(this.apiUrl +"api/car/"+carID, formData, {headers:headers})
     //.map( res => res.json());
 
   }

@@ -69,15 +69,17 @@ export class CarItemComponent implements OnInit {
   currentPage: number =1;
   toSearch: any = {};
   count: any;
+  router: Router;
 
 
-  constructor(private router: Router,
+  constructor( router: Router,
     private pagerService: PagerService, private dataService: DataService, private translate: TranslateService) {
     translate.setDefaultLang('en');
+    this.router = router;
 
   }
 
-  switchLanguage(language: string) {
+  switchLanguage() {
     // <HTMLElement>document.querySelector(".details").Style.cssText = "--my-var: #000";
     Utils.toggleLanguage = !Utils.toggleLanguage;
     this.toggleLanguage = Utils.toggleLanguage;
