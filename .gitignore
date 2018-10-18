@@ -4,4 +4,5 @@ ECHO is on.
 *.png
 /images/
 node_modules/
+test/keyfile.json
 
