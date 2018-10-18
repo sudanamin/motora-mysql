@@ -3,3 +3,5 @@ ECHO is on.
 *.jpg
 *.png
 /images/
+node_modules/
+
