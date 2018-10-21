@@ -23,7 +23,8 @@ import { AuthService } from './core/auth.service';
 import { AuthGuard } from './auth.guard';
 
 import { AngularFireModule } from 'angularfire2';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireStorageModule } from 'angularfire2/storage'
+//import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { LoginComponent } from './login/login.component';
@@ -79,7 +80,8 @@ var firebaseConfig = {
     Ng2ImgMaxModule,
     routes,
     AngularFireAuthModule,
-    AngularFirestoreModule,
+    AngularFireStorageModule,
+   // AngularFirestoreModule,
     AngularFireModule.initializeApp(firebaseConfig),
   ],
   providers: [

@@ -16,6 +16,8 @@ import { AuthService } from '../core/auth.service';
 /* import { Form } from '@angular/forms'; */
 import {Router, NavigationStart, NavigationCancel, NavigationEnd} from "@angular/router";
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
+import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from 'angularfire2/storage';
+import { Observable } from 'rxjs/Observable';
 
 
 
@@ -68,11 +70,18 @@ export class UploadFormComponent   {
   router: Router;
   loading;
 
+  ref: AngularFireStorageReference;
+  task: AngularFireUploadTask;
+  iuploadProgress: Observable<number>;
+  downloadURL: Observable<string>;
+  uploadState: Observable<string>;
+
   constructor(public sanitizer: DomSanitizer,
     private ng2ImgMax: Ng2ImgMaxService,
     private http: HttpClient,
     private dataService: DataService,
     public auth: AuthService,
+    private afStorage: AngularFireStorage,
      router: Router,
     private translate: TranslateService) {
       translate.setDefaultLang('en');
