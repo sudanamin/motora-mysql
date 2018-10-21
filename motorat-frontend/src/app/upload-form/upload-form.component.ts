@@ -568,16 +568,48 @@ export class UploadFormComponent   {
 
   upload() {         // this should moved to service class
 
-    for(let i =0 ;i < this.filesList.length ;i++){
-      this.fd.append('image',this.filesList[i].theFile,this.filesList[i].name);
+    var filesLength = this.filesList.length;
+    var arrayOfurls =[];
+    var th = this;
+    var uploadFSrgPromise = new Promise(function(resolve, reject) {
+
+
+    var filesUploaded = 0;
+    for(let i =0 ;i < filesLength ;i++){
+    //  this.fd.append('image',this.filesList[i].theFile,this.filesList[i].name);
+    var ref = th.afStorage.ref(th.filesList[i].name);
+
+    var task = ref.put(th.filesList[i].theFile);
+    task.downloadURL()
+   .subscribe(function(url) {
+      filesUploaded ++ ;
+      ref.getDownloadURL()
+      console.log("images isss :"+url);
+      arrayOfurls.push(url);
+      if (filesUploaded == filesLength ){
+         th.fd.append("images",JSON.stringify(arrayOfurls));
+         console.log("images is :"+JSON.stringify(arrayOfurls));
+         resolve('done');
+       }
       
-    } 
+    });
 
-  
+   
 
+      
+    }
+    
+  });
+
+
+  uploadFSrgPromise.then(function(value) {
+
+    /* th.fd.append("images",JSON.stringify(arrayOfurls));
+    console.log("images is :"+JSON.stringify(arrayOfurls)); */
+    
     var app_id = '0';
-    if (this.fd.has("APPLICATION_ID")) {   /////////////////////////// if it has applicaction id this is mean its from edit form
-       app_id= this.selectedCar.APPLICATION_ID;
+    if (th.fd.has("APPLICATION_ID")) {   /////////////////////////// if it has applicaction id this is mean its from edit form
+       app_id= th.selectedCar.APPLICATION_ID;
     }
    // else url =  "http://localhost:3000/api/setimg/0";
          console.log('app id is : '+ app_id);
@@ -586,48 +618,48 @@ export class UploadFormComponent   {
         observe: 'events',
         //[params:string]: newCar.color
       }) */
-      this.dataService.setAdd(app_id,this.fd)
+      th.dataService.setAdd(app_id,th.fd)
         .subscribe(event => {
           if (event.type === HttpEventType.UploadProgress) {
-            this.uploadProgress = Math.round(event.loaded / event.total * 100) - 10;
+            th.uploadProgress = Math.round(event.loaded / event.total * 100) - 10;
             
 
            
           }
           else if (event.type === HttpEventType.Response) {
             if (event.statusText == 'OK') {
-              this.addForm.reset();
-              this.imagePreviews = [];
-              this.bigImagePreviews = [];
+              th.addForm.reset();
+              th.imagePreviews = [];
+              th.bigImagePreviews = [];
 
-              this.fd.delete("APPLICATION_ID");
-              this.fd.delete("image");
+              th.fd.delete("APPLICATION_ID");
+              th.fd.delete("image");
               
-              this.fd.delete("city");
-              this.fd.delete("manufacturer");
-              this.fd.delete("model");
-              this.fd.delete("price");
+              th.fd.delete("city");
+              th.fd.delete("manufacturer");
+              th.fd.delete("model");
+              th.fd.delete("price");
 
-              this.fd.delete("year");
-              this.fd.delete("kilometers");
-              this.fd.delete("specs");
-              this.fd.delete("cylinders");
+              th.fd.delete("year");
+              th.fd.delete("kilometers");
+              th.fd.delete("specs");
+              th.fd.delete("cylinders");
 
-              this.fd.delete("warranty");
-              this.fd.delete("color");
-              this.fd.delete("transmission");
-              this.fd.delete("phone");
+              th.fd.delete("warranty");
+              th.fd.delete("color");
+              th.fd.delete("transmission");
+              th.fd.delete("phone");
 
-              this.fd.delete("description");
+              th.fd.delete("description");
               
-              this.fd.delete("uid");
+              th.fd.delete("uid");
 
-              this.filesList = [];
-              this.time = Date.now() + "_";
-              this.uploadProgress = 0;
+              th.filesList = [];
+              th.time = Date.now() + "_";
+              th.uploadProgress = 0;
               alert("added successfully");
               
-              this.getCars();
+              th.getCars();
 
             }
 
@@ -638,39 +670,40 @@ export class UploadFormComponent   {
           alert('😢 Oh no! '+  JSON.stringify(error) );
           console.log(error)
 
-          this.addForm.reset();
-              this.imagePreviews = [];
-              this.bigImagePreviews = [];
+          th.addForm.reset();
+              th.imagePreviews = [];
+              th.bigImagePreviews = [];
 
-              this.fd.delete("APPLICATION_ID");
-              this.fd.delete("image");
+              th.fd.delete("APPLICATION_ID");
+              th.fd.delete("image");
               
-              this.fd.delete("city");
-              this.fd.delete("manufacturer");
-              this.fd.delete("model");
-              this.fd.delete("price");
+              th.fd.delete("city");
+              th.fd.delete("manufacturer");
+              th.fd.delete("model");
+              th.fd.delete("price");
 
-              this.fd.delete("year");
-              this.fd.delete("kilometers");
-              this.fd.delete("specs");
-              this.fd.delete("cylinders");
+              th.fd.delete("year");
+              th.fd.delete("kilometers");
+              th.fd.delete("specs");
+              th.fd.delete("cylinders");
 
-              this.fd.delete("warranty");
-              this.fd.delete("color");
-              this.fd.delete("transmission");
-              this.fd.delete("phone");
+              th.fd.delete("warranty");
+              th.fd.delete("color");
+              th.fd.delete("transmission");
+              th.fd.delete("phone");
 
-              this.fd.delete("description");
+              th.fd.delete("description");
               
-              this.fd.delete("uid");
+              th.fd.delete("uid");
 
-              this.filesList = [];
-              this.time = Date.now() + "_";
-              this.uploadProgress = 0;
+              th.filesList = [];
+              th.time = Date.now() + "_";
+              th.uploadProgress = 0;
         }
         );
 
     
 
-  }
+  });         //end of promise then
+}
 }
