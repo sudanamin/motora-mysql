@@ -65,13 +65,13 @@
 
       <!-- <button (click)="upload()">Upload {{imagePreviews.length}} files</button> -->
 
-      <div *ngIf="uploadProgress">
+     <!--  <div *ngIf="uploadProgress">
           <div id="myProgress">.
             <div id="myBar" [ngStyle]="{'width': uploadProgress+'%'}"><span style='font-size: large;font-weight:900 ;color:white '> {{ uploadProgress }} %</span></div>
           </div>
          
        
-        </div>
+        </div> -->
 
  
  
@@ -351,7 +351,14 @@
          
         </div><!-- box closed   [class.numOfImage]="!toggleLanguage" -->
        
-  </div>  
+  </div>
+  
+  <div  *ngIf="uploadProgress" class="progress">
+    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadProgress ) + '%'" [attr.aria-valuenow]="(uploadProgress )" aria-valuemin="0" aria-valuemax="100">
+    </div>
+  </div>
+
+
 </form>
   
 
@@ -363,10 +370,10 @@
 
  <!-- <button (click)="upload()">Upload {{imagePreviews.length}} files</button> -->
 
- <div *ngIf="uploadProgress">
+ <!-- <div *ngIf="uploadProgress">
     <div id="myProgress">.
       <div id="myBar" [ngStyle]="{'width': uploadProgress+'%'}"><span style='font-size: large;font-weight:900 ;color:white '> {{ uploadProgress }} %</span></div>
-    </div>
+    </div> -->
    
  
   </div>
@@ -677,6 +684,12 @@
       </div><!-- box closed -->
      
 </div> 
+
+<div  *ngIf="uploadProgress" class="progress">
+  <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadProgress ) + '%'" [attr.aria-valuenow]="(uploadProgress )" aria-valuemin="0" aria-valuemax="100">
+  </div>
+</div>
+
 </form>
 
 

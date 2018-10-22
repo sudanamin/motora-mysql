@@ -594,15 +594,16 @@ export class UploadFormComponent {
           task.downloadURL()
             .subscribe(function (url) {
               filesUploaded++;
-              ref.getDownloadURL()
+              //ref.getDownloadURL()
              // console.log("images isss :" + url);
+             //var shortname =  url.substring(71);
 
               arrayOfurls.push(url);
               if (filesUploaded == filesLength) {
                 var images = JSON.stringify(arrayOfurls).
-                replace('[','').
-                replace('"','').
-                replace(']','');
+                replace(/\[/g,'').
+                replace(/\]/g,'').
+                replace(/\"/g,'');
 
                 th.fd.append("images",images);
                 
