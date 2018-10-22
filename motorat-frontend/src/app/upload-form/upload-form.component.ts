@@ -10,11 +10,11 @@ import { Ng2ImgMaxService } from 'ng2-img-max';
 import 'rxjs/add/operator/map';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { car } from '../../car';
-import {Utils} from '../../util';
+import { Utils } from '../../util';
 import { DataService } from '../data.service'
 import { AuthService } from '../core/auth.service';
 /* import { Form } from '@angular/forms'; */
-import {Router, NavigationStart, NavigationCancel, NavigationEnd} from "@angular/router";
+import { Router, NavigationStart, NavigationCancel, NavigationEnd } from "@angular/router";
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from 'angularfire2/storage';
 import { Observable } from 'rxjs/Observable';
@@ -26,8 +26,8 @@ import { Observable } from 'rxjs/Observable';
   templateUrl: './upload-form.component.html',
   styleUrls: ['./upload-form.component.css']
 })
-export class UploadFormComponent   {
-   
+export class UploadFormComponent {
+
 
   uploadProgress: number;
   uploadedImage: File;
@@ -40,11 +40,11 @@ export class UploadFormComponent   {
   selectedCar: car;
   toggleForm: boolean = false;
   imageNotReady: boolean = false;
-  saveOrLoading:string  = 'Save';
-  goOrLoading:string = "GO";
+  saveOrLoading: string = 'Save';
+  goOrLoading: string = "GO";
   firstTime: boolean = false;
   addForm: any;
-  carsObjects : car[]=[];
+  carsObjects: car[] = [];
   // array of all items to be paged
   private allItems: any[];
   toggleLanguage = false;
@@ -55,18 +55,18 @@ export class UploadFormComponent   {
 
   // pager object
   pager: any = {};
-  cities = ["Abu Dabu","Ajman","Al ain","Dubai","Fujuira","Ras Alkhima","Sharjah","Um Alquiin"];
-  specs = ["GCC","AMERICAN","JAPANESE","EUROPE","OTHER"];
+  cities = ["Abu Dabu", "Ajman", "Al ain", "Dubai", "Fujuira", "Ras Alkhima", "Sharjah", "Um Alquiin"];
+  specs = ["GCC", "AMERICAN", "JAPANESE", "EUROPE", "OTHER"];
   // paged items
   //pagedItems: any[];
   //fd:FormData[] = [];
   fd = new FormData();
 
-  userDisplayName:string;
-  userEmail:string;
+  userDisplayName: string;
+  userEmail: string;
   /* editFD = new FormData(); */
 
-   time = Date.now() + "_";
+  time = Date.now() + "_";
   router: Router;
   loading;
 
@@ -82,109 +82,112 @@ export class UploadFormComponent   {
     private dataService: DataService,
     public auth: AuthService,
     private afStorage: AngularFireStorage,
-     router: Router,
+    router: Router,
     private translate: TranslateService) {
-      translate.setDefaultLang('en');
-      this.router = router;
-      
-      
-    }
-
-    switchLanguage() {
+    translate.setDefaultLang('en');
+    this.router = router;
 
 
-      // <HTMLElement>document.querySelector(".details").Style.cssText = "--my-var: #000";
-      Utils.toggleLanguage = !Utils.toggleLanguage;
-      this.toggleLanguage = Utils.toggleLanguage;
-      if(Utils.toggleLanguage == true)
-          this.translate.use('ar');
-       else
-          this.translate.use('en')
-     }
+  }
+
+  switchLanguage() {
 
 
-     onManufacturersChange(event){
-    
-      console.log('manufatrer chaned'+JSON.stringify(event));
+    // <HTMLElement>document.querySelector(".details").Style.cssText = "--my-var: #000";
+    Utils.toggleLanguage = !Utils.toggleLanguage;
+    this.toggleLanguage = Utils.toggleLanguage;
+    if (Utils.toggleLanguage == true)
+      this.translate.use('ar');
+    else
+      this.translate.use('en')
+  }
 
-     /*  var x = document.getElementById("noModel");
-       x.remove(); */
-       
-       if( event !='' && event !='All'){
-        this.showModel = true;
-        this.dataService.getModels(event)
+
+  onManufacturersChange(event) {
+
+    console.log('manufatrer chaned' + JSON.stringify(event));
+
+    /*  var x = document.getElementById("noModel");
+      x.remove(); */
+
+    if (event != '' && event != 'All') {
+      this.showModel = true;
+      this.dataService.getModels(event)
         .subscribe(models => { this.ModelsObject = models; });
-        
-       }
-       else{
-         this.showModel = false;
-       }
+
     }
+    else {
+      this.showModel = false;
+    }
+  }
 
   dropzoneState($event: boolean) {
     this.dropzoneActive = $event;
   }
 
- 
-  cancelEditing(){
-  this.toggleForm= !this.toggleForm;
-  this.filesList = [];
-  this.bigImagePreviews = [];
- // this.EditFormImagePreviews = [];
+
+  cancelEditing() {
+    this.toggleForm = !this.toggleForm;
+    this.filesList = [];
+    this.bigImagePreviews = [];
+    // this.EditFormImagePreviews = [];
 
   }
 
   removeImage(imageName: string) {
-    
 
-    this.filesList.forEach(name => console.log("before "+name.name));
 
-    
+    this.filesList.forEach(name => console.log("before " + name.name));
+
+
     let x = this.filesList.length;
     for (let i = 0; i < x; i++) {
-        if( this.filesList[i].name === (this.time + "thumb_" +imageName) || this.filesList[i].name === (this.time+imageName)){
+      if (this.filesList[i].name === (this.time + "thumb_" + imageName) || this.filesList[i].name === (this.time + imageName)) {
         this.filesList.splice(i, 1);
         i--;
         x--;
-        }
-       /*  if (  { 
-        this.filesList.splice(i, 1);
-        i--;
-        x--;
-        } */
-        //this.filesList.splice(i, 1);
-     
-       
       }
-    
+      /*  if (  { 
+       this.filesList.splice(i, 1);
+       i--;
+       x--;
+       } */
+      //this.filesList.splice(i, 1);
+
+
+    }
+
 
     for (let i = 0; i < this.bigImagePreviews.length; i++) {
       if (this.bigImagePreviews[i].name === imageName) {
         this.bigImagePreviews.splice(i, 1);
         //this.filesList.splice(i, 1);
-     
+
         //break;
       }
     }
 
-  
+
 
   }
 
-  removeImageFromServer(imageName: string) {
+  removeImageFromServer(imageName: string,carID) {
 
-    this.dataService.deleteImage(imageName).subscribe(result => {
+    var shortname =  imageName.substring(72,imageName.indexOf('?'));
+    console.log('car id to delte is ' + imageName);
+
+    this.dataService.deleteImage(carID,shortname).subscribe(result => {
       for (let i = 0; i < this.selectedCar.Thums.length; i++) {
         if (this.selectedCar.Thums[i] === imageName) {
           this.selectedCar.Thums.splice(i, 1);
           //this.filesList.splice(i, 1);
-       
+
           //break;
         }
       }
 
-    
-     // this.getCars();
+
+      // this.getCars();
 
     });
 
@@ -192,28 +195,28 @@ export class UploadFormComponent   {
 
   deleteCar(car) {
 
-    console.log('car id to delte is '+ car.APPLICATION_ID)
+    console.log('car id to delte is ' + car.APPLICATION_ID)
 
-    for (var j = 0; j < car.Thums.length; j++) {
+   /*  for (var j = 0; j < car.Thums.length; j++) {
 
       var imageName = car.Thums[j];
 
       this.dataService.deleteImage(imageName).subscribe(result => {
 
-           
 
-        })
-    }
-   
+
+      })
+    } */
+
     this.dataService.deleteCar(car.APPLICATION_ID)
       .subscribe(data => {
-        
+
         if (data) {
           for (var i = 0; i < this.carsObjects.length; i++) {
             if (car.APPLICATION_ID == this.carsObjects[i].APPLICATION_ID) {
 
               this.carsObjects.splice(i, 1);
-             
+
             }
           }
         }
@@ -224,26 +227,26 @@ export class UploadFormComponent   {
 
     this.loading = true;
 
-   /*  this.router.events
-            .subscribe((event) => {
-                if(event instanceof NavigationStart) {
-                    this.loading = true;
-                }
-                else if (
-                    event instanceof NavigationEnd || 
-                    event instanceof NavigationCancel
-                    ) {
-                    this.loading = false;
-                }
-            }); */
+    /*  this.router.events
+             .subscribe((event) => {
+                 if(event instanceof NavigationStart) {
+                     this.loading = true;
+                 }
+                 else if (
+                     event instanceof NavigationEnd || 
+                     event instanceof NavigationCancel
+                     ) {
+                     this.loading = false;
+                 }
+             }); */
 
-    this.http.get<string>("http://localhost:8080/api/checkenv/").subscribe(res =>{
-     // alert(JSON.stringify(res));
+    this.http.get<string>("http://localhost:8080/api/checkenv/").subscribe(res => {
+      // alert(JSON.stringify(res));
     })
 
 
     this.getCars();
-    
+
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.toggleLanguage = Utils.toggleLanguage;
       // do something
@@ -251,9 +254,10 @@ export class UploadFormComponent   {
 
 
     this.dataService.getManufacturers()
-    .subscribe(manufacturers => { this.ManufacturersObject = manufacturers; 
-    console.log('manucaturers : '+ JSON.stringify(manufacturers));
-    });
+      .subscribe(manufacturers => {
+      this.ManufacturersObject = manufacturers;
+        console.log('manucaturers : ' + JSON.stringify(manufacturers));
+      });
   }
 
   getCars() {
@@ -262,53 +266,53 @@ export class UploadFormComponent   {
 
       this.userDisplayName = user.displayName;
       this.userEmail = user.email;
-      
-    var toSearch = {userID:user.uid};
-    var offsetObject =  {'offset': 0};
-    Object.assign(toSearch,offsetObject);
 
-    
-    this.dataService.getCImages(toSearch)
-      .subscribe(cars => {
-        //this.carList = cars;
-        
-         this.allItems = cars.slice(1, cars.length);
-         if(this.allItems.length !== 0){
-             this.getCarsThumbnail();
-         }
-         
+      var toSearch = { userID: user.uid };
+      var offsetObject = { 'offset': 0 };
+      Object.assign(toSearch, offsetObject);
 
 
-        // initialize to page 1
-        /* if(this.firstTime == false )this.setPage(1);
-         this.firstTime = true;*/
+      this.dataService.getCImages(toSearch)
+        .subscribe(cars => {
+          //this.carList = cars;
 
-      })
+          this.allItems = cars.slice(1, cars.length);
+          if (this.allItems.length !== 0) {
+            this.getCarsThumbnail();
+          }
+
+
+
+          // initialize to page 1
+          /* if(this.firstTime == false )this.setPage(1);
+           this.firstTime = true;*/
+
+        })
     })
   }
 
-  getCarsThumbnail(){
+  getCarsThumbnail() {
 
 
     //  let im=[];
     this.carsObjects = [];
-    let gofiForGallery=[] ;
-    let gofThumbsForShow= [];
-   // var arr = input.split(',');
-   
-   for (var i=0 ; i<this.allItems.length; i++){
+    let gofiForGallery = [];
+    let gofThumbsForShow = [];
+    // var arr = input.split(',');
+
+    for (var i = 0; i < this.allItems.length; i++) {
 
 
       var gofi = this.allItems[i].gofi;
-     // if(gofi) var Gofi = gofi.split(',');else Gofi =[];
-     if(gofi) var Gofi = gofi ;else Gofi =[];
-     
-      for (var j=0 ; j<Gofi.length; j++){
+      // if(gofi) var Gofi = gofi.split(',');else Gofi =[];
+      if (gofi) var Gofi = gofi; else Gofi = [];
+
+      for (var j = 0; j < Gofi.length; j++) {
 
         var thumbForShow = Gofi[j];
 
         var imgUrl = Gofi[j].replace("_thumb", "");
-        var iForGallery = {thumb:thumbForShow ,src:imgUrl, w: 1200, h: 900, title: 'image caption sososo '};
+        var iForGallery = { thumb: thumbForShow, src: imgUrl, w: 1200, h: 900, title: 'image caption sososo ' };
         // this.im.push( this.pagedItems[i].REF_APP_ID,obj);
         gofThumbsForShow.push(thumbForShow);
         gofiForGallery.push(iForGallery);
@@ -316,83 +320,85 @@ export class UploadFormComponent   {
 
       }
 
-     
-      
-      var carObject = {APPLICATION_ID:this.allItems[i].application_id,
-        City:Utils.convertIntToCity(this.allItems[i].emirate),
-        Manufacturer:this.allItems[i].manufacter, 
-        Manufacturer_name:this.allItems[i].manufacture_name, 
-        Model:this.allItems[i].model,
-        Model_name:this.allItems[i].model_name,
 
-        Price:this.allItems[i].price,
-        Year:this.allItems[i].year,
-         Kilometers: this.allItems[i].miles, 
-         Specs:Utils.convertIntToSpecs(this.allItems[i].specs),
-        NoOfCylinders:this.allItems[i].cylinders,
-        Warranty:Utils.convertIntToWaranty(this.allItems[i].waranty),
-        Color:Utils.convertIntToColor(this.allItems[i].color),
-        Transmission:Utils.convertIntToTransmission(this.allItems[i].transmission),
-        ContactNumber:this.allItems[i].phone,
-        Date:this.allItems[i].ddate,
-        DESCRIPTION:this.allItems[i].details,
-        Thums:gofThumbsForShow,Images:gofiForGallery,};
-     this.carsObjects.push(carObject);
-     gofiForGallery = [];
-     gofThumbsForShow = [];
-     //  ims.push({'app_id':this.pagedItems[i]},im);
-     
-         //this.photoSwipe.openGallery(images,index);
-        
-        // this.photoSwipe.openGallery(this.pagedItems,index);
+
+      var carObject = {
+        APPLICATION_ID: this.allItems[i].application_id,
+        City: Utils.convertIntToCity(this.allItems[i].emirate),
+        Manufacturer: this.allItems[i].manufacter,
+        Manufacturer_name: this.allItems[i].manufacture_name,
+        Model: this.allItems[i].model,
+        Model_name: this.allItems[i].model_name,
+
+        Price: this.allItems[i].price,
+        Year: this.allItems[i].year,
+        Kilometers: this.allItems[i].miles,
+        Specs: Utils.convertIntToSpecs(this.allItems[i].specs),
+        NoOfCylinders: this.allItems[i].cylinders,
+        Warranty: Utils.convertIntToWaranty(this.allItems[i].waranty),
+        Color: Utils.convertIntToColor(this.allItems[i].color),
+        Transmission: Utils.convertIntToTransmission(this.allItems[i].transmission),
+        ContactNumber: this.allItems[i].phone,
+        Date: this.allItems[i].ddate,
+        DESCRIPTION: this.allItems[i].details,
+        Thums: gofThumbsForShow, Images: gofiForGallery,
+      };
+      this.carsObjects.push(carObject);
+      gofiForGallery = [];
+      gofThumbsForShow = [];
+      //  ims.push({'app_id':this.pagedItems[i]},im);
+
+      //this.photoSwipe.openGallery(images,index);
+
+      // this.photoSwipe.openGallery(this.pagedItems,index);
+    }
+
+
   }
- 
-
-}
 
   EditCar(EditFrm) {
-  
+
     this.addForm = EditFrm;///////////////////////////////////////////////////////////////////////
-   // City:EditFrm.value.carcity,
-      var city = Utils.convertCitytoInt(EditFrm.value.carcity);
-      //this.fd.append('city', city.toString());
-    
-  /*     let editCar: car = {
-      
-      APPLICATION_ID: this.selectedCar.APPLICATION_ID,
-      City:city,
-      Manufacter:EditFrm.value.carmanufacter,
-      Model: EditFrm.value.carmodel,
-      Price:EditFrm.value.carprice,
-      Year:EditFrm.value.caryear,
-      Kilometers:EditFrm.value.carkilometers,
-      Specs: EditFrm.value.carspecs,
-      NoOfCylinders:EditFrm.value.carcylinders,
-      Warranty: EditFrm.value.carwarranty,
-      Color: EditFrm.value.carcolor,
-      Transmission: EditFrm.value.cartransmission,
-      ContactNumber: EditFrm.value.carphone,
-      
-      DESCRIPTION: EditFrm.value.carDESCRIPTION,
-      
-    } */
-  this.fd.append("APPLICATION_ID",this.selectedCar.APPLICATION_ID);
+    // City:EditFrm.value.carcity,
+    var city = Utils.convertCitytoInt(EditFrm.value.carcity);
+    //this.fd.append('city', city.toString());
+
+    /*     let editCar: car = {
+        
+        APPLICATION_ID: this.selectedCar.APPLICATION_ID,
+        City:city,
+        Manufacter:EditFrm.value.carmanufacter,
+        Model: EditFrm.value.carmodel,
+        Price:EditFrm.value.carprice,
+        Year:EditFrm.value.caryear,
+        Kilometers:EditFrm.value.carkilometers,
+        Specs: EditFrm.value.carspecs,
+        NoOfCylinders:EditFrm.value.carcylinders,
+        Warranty: EditFrm.value.carwarranty,
+        Color: EditFrm.value.carcolor,
+        Transmission: EditFrm.value.cartransmission,
+        ContactNumber: EditFrm.value.carphone,
+        
+        DESCRIPTION: EditFrm.value.carDESCRIPTION,
+        
+      } */
+    this.fd.append("APPLICATION_ID", this.selectedCar.APPLICATION_ID);
     var city = Utils.convertCitytoInt(EditFrm.value.carcity); this.fd.append('city', city.toString());
     this.fd.append('manufacturer', EditFrm.value.carmanufacturer);
     this.fd.append('price', EditFrm.value.carprice);
-  /*   let  year = Utils.convertYeartoInt(EditFrm.value.caryear); this.fd.append('year', year.toString()); */
-  this.fd.append('year',EditFrm.value.caryear);
+    /*   let  year = Utils.convertYeartoInt(EditFrm.value.caryear); this.fd.append('year', year.toString()); */
+    this.fd.append('year', EditFrm.value.caryear);
     this.fd.append('kilometers', EditFrm.value.carkilometers);
-    this.fd.append('model',EditFrm.value.carmodel);
-    var specs = Utils.convertSpecsToInt(EditFrm.value.carspecs) ; this.fd.append('specs', specs.toString());
-    
+    this.fd.append('model', EditFrm.value.carmodel);
+    var specs = Utils.convertSpecsToInt(EditFrm.value.carspecs); this.fd.append('specs', specs.toString());
+
     this.fd.append('cylinders', EditFrm.value.carcylinders);
 
-    var waranty = Utils.convertWarantyToInt(EditFrm.value.carwarranty) ; 
+    var waranty = Utils.convertWarantyToInt(EditFrm.value.carwarranty);
     this.fd.append('warranty', waranty.toString());
-    
-    var color = Utils.convertColorToInt(EditFrm.value.carcolor) ; 
-    
+
+    var color = Utils.convertColorToInt(EditFrm.value.carcolor);
+
     this.fd.append('color', color.toString());
 
     var transmission = Utils.convertTransmissionToInt(EditFrm.value.cartransmission);
@@ -402,37 +408,37 @@ export class UploadFormComponent   {
 
     this.fd.append('description', EditFrm.value.cardescription);
 
-    
 
 
-   this.auth.user.subscribe(user => {
-     if (user){
-     var userId = user.uid;
-     
-     this.fd.append('uid', userId);
-     this.upload();
-     this.filesList = [];
-   }
-   })
-    
 
-   // this.dataService.updateCar(editCar)
- //  let editFormData;
- /*  this.dataService.updateCar(editCar.APPLICATION_ID,editFormData)
-      .subscribe(result => {
-        
-        this.getCars();
-      });
-**/
+    this.auth.user.subscribe(user => {
+      if (user) {
+        var userId = user.uid;
+
+        this.fd.append('uid', userId);
+        this.upload();
+        this.filesList = [];
+      }
+    })
+
+
+    // this.dataService.updateCar(editCar)
+    //  let editFormData;
+    /*  this.dataService.updateCar(editCar.APPLICATION_ID,editFormData)
+         .subscribe(result => {
+           
+           this.getCars();
+         });
+   **/
     this.toggleForm = !this.toggleForm;
     this.bigImagePreviews = [];
-    
+
   }
 
   showEditForm(car) {
     window.scrollTo(0, 0);
     this.selectedCar = car;
-    
+
     this.toggleForm = !this.toggleForm;
     this.filesList = [];
     this.bigImagePreviews = [];
@@ -454,79 +460,79 @@ export class UploadFormComponent   {
 
   addCar(frm) {
     this.addForm = frm;
-   
-     
-    
-     var city = Utils.convertCitytoInt(frm.value.carCity); this.fd.append('city', city.toString());
-     this.fd.append('manufacturer', frm.value.carManufacturer);
-     this.fd.append('price', frm.value.carPrice);
 
-     let  year =  this.fd.append('year',frm.value.carYear);   
 
-     this.fd.append('kilometers', frm.value.carKilometers);
-     this.fd.append('model',frm.value.carModel);
-     var specs = Utils.convertSpecsToInt(frm.value.carSpecs) ; this.fd.append('specs', specs.toString());
-      
-     this.fd.append('cylinders', frm.value.carCylinders);
 
-     var waranty = Utils.convertWarantyToInt(frm.value.carWarranty) ; 
-     this.fd.append('warranty', waranty.toString());
+    var city = Utils.convertCitytoInt(frm.value.carCity); this.fd.append('city', city.toString());
+    this.fd.append('manufacturer', frm.value.carManufacturer);
+    this.fd.append('price', frm.value.carPrice);
 
-     var color = Utils.convertColorToInt(frm.value.carColor) ; 
-     this.fd.append('color', color.toString());
+    let year = this.fd.append('year', frm.value.carYear);
 
-     var transmission = Utils.convertTransmissionToInt(frm.value.cartransmission);
+    this.fd.append('kilometers', frm.value.carKilometers);
+    this.fd.append('model', frm.value.carModel);
+    var specs = Utils.convertSpecsToInt(frm.value.carSpecs); this.fd.append('specs', specs.toString());
+
+    this.fd.append('cylinders', frm.value.carCylinders);
+
+    var waranty = Utils.convertWarantyToInt(frm.value.carWarranty);
+    this.fd.append('warranty', waranty.toString());
+
+    var color = Utils.convertColorToInt(frm.value.carColor);
+    this.fd.append('color', color.toString());
+
+    var transmission = Utils.convertTransmissionToInt(frm.value.cartransmission);
     this.fd.append('transmission', transmission.toString());
-     this.fd.append('phone', frm.value.carPhone);
+    this.fd.append('phone', frm.value.carPhone);
 
-     this.fd.append('description', frm.value.carDESCRIPTION);
+    this.fd.append('description', frm.value.carDESCRIPTION);
 
-     
+
 
 
     this.auth.user.subscribe(user => {
-      if (user){
-      var userId = user.uid;
-      
-      this.fd.append('uid', userId);
-      this.upload();
-    }
+      if (user) {
+        var userId = user.uid;
+
+        this.fd.append('uid', userId);
+        this.upload();
+      }
     })
-  
+
   }
 
   resizeFiles(files: FileList) {
-    var resultCounter =0;
+    var resultCounter = 0;
     for (var i = 0; i < files.length; i++) {
       this.imageNotReady = true;
       this.saveOrLoading = 'loading';
       this.goOrLoading = 'loading';
       let image = files[i];
       //this.fd.append('image', image, this.time + image.name);
-      this.filesList.push({theFile:image,name:this.time + image.name});
+      this.filesList.push({ theFile: image, name: this.time + image.name });
 
       this.getbigImagePreview(image);
       this.ng2ImgMax.resizeImage(image, 100, 10000).subscribe(
         result => {
           this.uploadedImage = new File([result], this.time + "thumb_" + result.name);
-          resultCounter ++;
+          resultCounter++;
 
-          console.log("result counter = "+resultCounter);
+          console.log("result counter = " + resultCounter);
           this.getImagePreview(this.uploadedImage);
           //var singleFd = new FormData();
           //singleFd.append('image', this.uploadedImage, this.uploadedImage.name);
           //this.fd.push(singleFd);
 
           //this.fd.append('image', this.uploadedImage, this.uploadedImage.name);
-          this.filesList.push({theFile:this.uploadedImage,name:this.uploadedImage.name});
-          console.log("i is :"+resultCounter)
-          console.log("lenth is :"+files.length)
-          if( resultCounter == files.length ){
-            console.log("hi :"+resultCounter)
-          this.imageNotReady = false;
-          this.saveOrLoading = 'Save';
-          this.goOrLoading = 'GO'
-        }
+          this.filesList.push({ theFile: this.uploadedImage, name: this.uploadedImage.name });
+          console.log("i is :" + resultCounter)
+          console.log("lenth is :" + files.length)
+          if (resultCounter == files.length) {
+            console.log("hi :" + resultCounter)
+            this.imageNotReady = false;
+            this.saveOrLoading = 'Save';
+            this.goOrLoading = 'GO'
+          }
           // this.upload();
         },
         error => {
@@ -534,7 +540,7 @@ export class UploadFormComponent   {
         }
       );
     }
-  
+
   }
 
   getImagePreview(file: File) {
@@ -542,10 +548,10 @@ export class UploadFormComponent   {
     reader.readAsDataURL(file);
 
     reader.onload = () => {
-    /*   if(this.toggleForm) {
-        
-        this.EditFormImagePreviews.push({ url: reader.result, name: file.name, size: file.size });
-      } else  */
+      /*   if(this.toggleForm) {
+          
+          this.EditFormImagePreviews.push({ url: reader.result, name: file.name, size: file.size });
+        } else  */
       this.imagePreviews.push({ url: reader.result, name: file.name, size: file.size });
 
     };
@@ -556,10 +562,10 @@ export class UploadFormComponent   {
     reader.readAsDataURL(file);
 
     reader.onload = () => {
-     /*  if(this.toggleForm) {
-        
-       // this.EditFormImagePreviews.push({ url: reader.result, name: file.name, size: file.size });
-      } else  */
+      /*  if(this.toggleForm) {
+         
+        // this.EditFormImagePreviews.push({ url: reader.result, name: file.name, size: file.size });
+       } else  */
       this.bigImagePreviews.push({ url: reader.result, name: file.name, size: file.size });
 
     };
@@ -569,62 +575,73 @@ export class UploadFormComponent   {
   upload() {         // this should moved to service class
 
     var filesLength = this.filesList.length;
-    var arrayOfurls =[];
+    var arrayOfurls = [];
     var th = this;
-    var uploadFSrgPromise = new Promise(function(resolve, reject) {
+    var uploadFSrgPromise = new Promise(function (resolve, reject) {
 
 
-    var filesUploaded = 0;
-    for(let i =0 ;i < filesLength ;i++){
-    //  this.fd.append('image',this.filesList[i].theFile,this.filesList[i].name);
-    var ref = th.afStorage.ref(th.filesList[i].name);
+      var filesUploaded = 0;
+      if (filesLength > 0) {
+        for (let i = 0; i < filesLength; i++) {
+          //  this.fd.append('image',this.filesList[i].theFile,this.filesList[i].name);
+          var ref = th.afStorage.ref(th.filesList[i].name);
 
-    var task = ref.put(th.filesList[i].theFile);
-    task.downloadURL()
-   .subscribe(function(url) {
-      filesUploaded ++ ;
-      ref.getDownloadURL()
-      console.log("images isss :"+url);
-      arrayOfurls.push(url);
-      if (filesUploaded == filesLength ){
-         th.fd.append("images",JSON.stringify(arrayOfurls));
-         console.log("images is :"+JSON.stringify(arrayOfurls));
-         resolve('done');
-       }
-      
+          var task = ref.put(th.filesList[i].theFile);
+          task.percentageChanges().subscribe( function(progress)  {
+                console.log('progess :'+ progress)
+                th.uploadProgress = progress;
+          })      
+          task.downloadURL()
+            .subscribe(function (url) {
+              filesUploaded++;
+              ref.getDownloadURL()
+             // console.log("images isss :" + url);
+
+              arrayOfurls.push(url);
+              if (filesUploaded == filesLength) {
+                var images = JSON.stringify(arrayOfurls).
+                replace('[','').
+                replace('"','').
+                replace(']','');
+
+                th.fd.append("images",images);
+                
+                console.log("images is :" + images);
+                resolve('done');
+              }
+
+            });
+        }
+
+      }
+      else resolve('done');
+
     });
 
-   
 
-      
-    }
-    
-  });
+    uploadFSrgPromise.then(function (value) {
 
+      /* th.fd.append("images",JSON.stringify(arrayOfurls));
+      console.log("images is :"+JSON.stringify(arrayOfurls)); */
 
-  uploadFSrgPromise.then(function(value) {
-
-    /* th.fd.append("images",JSON.stringify(arrayOfurls));
-    console.log("images is :"+JSON.stringify(arrayOfurls)); */
-    
-    var app_id = '0';
-    if (th.fd.has("APPLICATION_ID")) {   /////////////////////////// if it has applicaction id this is mean its from edit form
-       app_id= th.selectedCar.APPLICATION_ID;
-    }
-   // else url =  "http://localhost:3000/api/setimg/0";
-         console.log('app id is : '+ app_id);
-    /*   this.http.post("api/setimg/"+app_id, this.fd, {
-        reportProgress: true,
-        observe: 'events',
-        //[params:string]: newCar.color
-      }) */
-      th.dataService.setAdd(app_id,th.fd)
+      var app_id = '0';
+      if (th.fd.has("APPLICATION_ID")) {   /////////////////////////// if it has applicaction id this is mean its from edit form
+        app_id = th.selectedCar.APPLICATION_ID;
+      }
+      // else url =  "http://localhost:3000/api/setimg/0";
+      console.log('app id is : ' + app_id);
+      /*   this.http.post("api/setimg/"+app_id, this.fd, {
+          reportProgress: true,
+          observe: 'events',
+          //[params:string]: newCar.color
+        }) */
+      th.dataService.setAdd(app_id, th.fd)
         .subscribe(event => {
           if (event.type === HttpEventType.UploadProgress) {
-            th.uploadProgress = Math.round(event.loaded / event.total * 100) - 10;
-            
+           // th.uploadProgress = Math.round(event.loaded / event.total * 100) - 10;
 
-           
+
+
           }
           else if (event.type === HttpEventType.Response) {
             if (event.statusText == 'OK') {
@@ -634,7 +651,8 @@ export class UploadFormComponent   {
 
               th.fd.delete("APPLICATION_ID");
               th.fd.delete("image");
-              
+              th.fd.delete("images");
+
               th.fd.delete("city");
               th.fd.delete("manufacturer");
               th.fd.delete("model");
@@ -651,14 +669,14 @@ export class UploadFormComponent   {
               th.fd.delete("phone");
 
               th.fd.delete("description");
-              
+
               th.fd.delete("uid");
 
               th.filesList = [];
               th.time = Date.now() + "_";
               th.uploadProgress = 0;
               alert("added successfully");
-              
+
               th.getCars();
 
             }
@@ -666,44 +684,45 @@ export class UploadFormComponent   {
 
           }
         },
-         error => {
-          alert('😢 Oh no! '+  JSON.stringify(error) );
-          console.log(error)
+          error => {
+            alert('😢 Oh no! ' + JSON.stringify(error));
+            console.log(error)
 
-          th.addForm.reset();
-              th.imagePreviews = [];
-              th.bigImagePreviews = [];
+            th.addForm.reset();
+            th.imagePreviews = [];
+            th.bigImagePreviews = [];
 
-              th.fd.delete("APPLICATION_ID");
-              th.fd.delete("image");
-              
-              th.fd.delete("city");
-              th.fd.delete("manufacturer");
-              th.fd.delete("model");
-              th.fd.delete("price");
+            th.fd.delete("APPLICATION_ID");
+            th.fd.delete("image");
+            th.fd.delete("images");
 
-              th.fd.delete("year");
-              th.fd.delete("kilometers");
-              th.fd.delete("specs");
-              th.fd.delete("cylinders");
+            th.fd.delete("city");
+            th.fd.delete("manufacturer");
+            th.fd.delete("model");
+            th.fd.delete("price");
 
-              th.fd.delete("warranty");
-              th.fd.delete("color");
-              th.fd.delete("transmission");
-              th.fd.delete("phone");
+            th.fd.delete("year");
+            th.fd.delete("kilometers");
+            th.fd.delete("specs");
+            th.fd.delete("cylinders");
 
-              th.fd.delete("description");
-              
-              th.fd.delete("uid");
+            th.fd.delete("warranty");
+            th.fd.delete("color");
+            th.fd.delete("transmission");
+            th.fd.delete("phone");
 
-              th.filesList = [];
-              th.time = Date.now() + "_";
-              th.uploadProgress = 0;
-        }
+            th.fd.delete("description");
+
+            th.fd.delete("uid");
+
+            th.filesList = [];
+            th.time = Date.now() + "_";
+            th.uploadProgress = 0;
+          }
         );
 
-    
 
-  });         //end of promise then
-}
+
+    });         //end of promise then
+  }
 }

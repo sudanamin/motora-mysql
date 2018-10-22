@@ -644,7 +644,7 @@
                    <img class="droplet-preview" [src]="image">
                  </a>
          
-                  <div class="delete" (click)="removeImageFromServer(image);">&times;</div>
+                  <div class="delete" (click)="removeImageFromServer(image,selectedCar.APPLICATION_ID);">&times;</div>
                   <div class="size">{{image.size / 1024 / 1024 | number}}MB</div>
                 </li>
               </ul>   
