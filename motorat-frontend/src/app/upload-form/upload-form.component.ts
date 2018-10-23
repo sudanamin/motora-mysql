@@ -68,7 +68,7 @@ export class UploadFormComponent {
 
   time = Date.now() + "_";
   router: Router;
-  loading;
+ // loading;
 
   ref: AngularFireStorageReference;
   task: AngularFireUploadTask;
@@ -171,12 +171,35 @@ export class UploadFormComponent {
 
   }
 
-  removeImageFromServer(imageName: string,carID) {
+  removeImageFromServer(imageName: string, carID) {
 
-    var shortname =  imageName.substring(72,imageName.indexOf('?'));
-    console.log('car id to delte is ' + imageName);
+    var shortname = imageName.substring(72, imageName.indexOf('?'));
+    var noThumb = shortname.replace("_thumb", "");
+    console.log('car shortname to delte is ' + shortname + "  888888lognaem " + imageName);
 
-    this.dataService.deleteImage(carID,shortname).subscribe(result => {
+
+    var desertRef = this.afStorage.ref(shortname);
+    var desertRefNoThumb = this.afStorage.ref(noThumb);
+
+
+    var task = desertRef.delete();
+    var taskNoThumb = desertRefNoThumb.delete();
+    var th = this;
+
+    task.subscribe(function (progress) {
+      console.log('progess :' + JSON.stringify(progress));
+      //th.uploadProgress = progress;
+    })
+
+    taskNoThumb.subscribe(function (progress) {
+      console.log('progess :' + JSON.stringify(progress));
+      //th.uploadProgress = progress;
+    })
+
+
+
+
+    this.dataService.deleteImage(carID, shortname).subscribe(result => {
       for (let i = 0; i < this.selectedCar.Thums.length; i++) {
         if (this.selectedCar.Thums[i] === imageName) {
           this.selectedCar.Thums.splice(i, 1);
@@ -197,16 +220,14 @@ export class UploadFormComponent {
 
     console.log('car id to delte is ' + car.APPLICATION_ID)
 
-   /*  for (var j = 0; j < car.Thums.length; j++) {
+
+    for (var j = 0; j < car.Thums.length; j++) {
 
       var imageName = car.Thums[j];
+      //var shortname =  imageName.substring(72,imageName.indexOf('?'));
+      this.removeImageFromServer(imageName, car.APPLICATION_ID);
 
-      this.dataService.deleteImage(imageName).subscribe(result => {
-
-
-
-      })
-    } */
+    }
 
     this.dataService.deleteCar(car.APPLICATION_ID)
       .subscribe(data => {
@@ -225,7 +246,7 @@ export class UploadFormComponent {
 
   ngOnInit() {
 
-    this.loading = true;
+    //this.loading = true;
 
     /*  this.router.events
              .subscribe((event) => {
@@ -255,7 +276,7 @@ export class UploadFormComponent {
 
     this.dataService.getManufacturers()
       .subscribe(manufacturers => {
-      this.ManufacturersObject = manufacturers;
+        this.ManufacturersObject = manufacturers;
         console.log('manucaturers : ' + JSON.stringify(manufacturers));
       });
   }
@@ -587,26 +608,26 @@ export class UploadFormComponent {
           var ref = th.afStorage.ref(th.filesList[i].name);
 
           var task = ref.put(th.filesList[i].theFile);
-          task.percentageChanges().subscribe( function(progress)  {
-                console.log('progess :'+ progress)
-                th.uploadProgress = progress;
-          })      
+          task.percentageChanges().subscribe(function (progress) {
+            console.log('progess :' + progress)
+            th.uploadProgress = progress;
+          })
           task.downloadURL()
             .subscribe(function (url) {
               filesUploaded++;
               //ref.getDownloadURL()
-             // console.log("images isss :" + url);
-             //var shortname =  url.substring(71);
+              // console.log("images isss :" + url);
+              //var shortname =  url.substring(71);
 
               arrayOfurls.push(url);
               if (filesUploaded == filesLength) {
                 var images = JSON.stringify(arrayOfurls).
-                replace(/\[/g,'').
-                replace(/\]/g,'').
-                replace(/\"/g,'');
+                  replace(/\[/g, '').
+                  replace(/\]/g, '').
+                  replace(/\"/g, '');
 
-                th.fd.append("images",images);
-                
+                th.fd.append("images", images);
+
                 console.log("images is :" + images);
                 resolve('done');
               }
@@ -639,7 +660,7 @@ export class UploadFormComponent {
       th.dataService.setAdd(app_id, th.fd)
         .subscribe(event => {
           if (event.type === HttpEventType.UploadProgress) {
-           // th.uploadProgress = Math.round(event.loaded / event.total * 100) - 10;
+            // th.uploadProgress = Math.round(event.loaded / event.total * 100) - 10;
 
 
 

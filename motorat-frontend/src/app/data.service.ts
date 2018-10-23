@@ -68,7 +68,7 @@ export class DataService {
    // var image_name = image_url.substring(22);
    // console.log('image name is '+image_name +"image url is "+image_url);
    
-    console.log("image_url" + carID);
+    console.log("car id " + carID  + " car shortname "+shortName);
     return this.http.delete(this.apiUrl +"api/image/", {
       params:   {
         carid: carID  ,
