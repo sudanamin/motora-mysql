@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 //import { moveIn } from '../router.animations';
 import { AuthService } from '../core/auth.service';
 //import { AngularFirestore } from 'angularfire2/firestore';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
+import { Utils } from '../../util'; 
 
 @Component({
   selector: 'app-login',
@@ -16,14 +18,39 @@ export class LoginComponent implements OnInit {
  error:any;
  email:any;
  password:any;
-  constructor(public auth: AuthService,private router: Router) {
+ toggleLanguage = false;
+ rtl = 'rtl';
+
+  constructor(public auth: AuthService,private router: Router ,private translate: TranslateService) {
+    translate.setDefaultLang('en');
 
      
    
   }
   
+  switchLanguage() {
+    // <HTMLElement>document.querySelector(".details").Style.cssText = "--my-var: #000";
+    Utils.toggleLanguage = !Utils.toggleLanguage;
+    this.toggleLanguage = Utils.toggleLanguage;
+    if (Utils.toggleLanguage == true){
+      this.translate.use('ar');
+      this.rtl = 'rtl'
+    }
+    else{
+      this.translate.use('en')
+      this.rtl = 'ltr'
+    }
+  }
+
 
   ngOnInit() {
+
+    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      this.toggleLanguage = Utils.toggleLanguage;
+      // do something
+    });
+
+
     if(this.auth.user ){
       this.router.navigate(['/members']);
     }

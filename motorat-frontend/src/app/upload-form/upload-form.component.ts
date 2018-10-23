@@ -217,6 +217,7 @@ export class UploadFormComponent {
   }
 
   deleteCar(car) {
+    this.selectedCar = car;
 
     console.log('car id to delte is ' + car.APPLICATION_ID)
 
@@ -557,7 +558,7 @@ export class UploadFormComponent {
           // this.upload();
         },
         error => {
-          console.log('😢 Oh no!', error);
+          alert('😢 Oh no! '+ error.reason);
         }
       );
     }
@@ -624,7 +625,8 @@ export class UploadFormComponent {
                 var images = JSON.stringify(arrayOfurls).
                   replace(/\[/g, '').
                   replace(/\]/g, '').
-                  replace(/\"/g, '');
+                  replace(/\"/g, '').
+                  replace(/\%20/g, ' ');
 
                 th.fd.append("images", images);
 
