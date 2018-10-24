@@ -75,6 +75,7 @@ export class UploadFormComponent {
   iuploadProgress: Observable<number>;
   downloadURL: Observable<string>;
   uploadState: Observable<string>;
+  //fileInput: any;
 
   constructor(public sanitizer: DomSanitizer,
     private ng2ImgMax: Ng2ImgMaxService,
@@ -472,6 +473,7 @@ export class UploadFormComponent {
   onImageChange(event) {
 
     var files = event.target.files;
+   // this.fileInput = event.target;
     this.resizeFiles(files);
   }
 
@@ -598,7 +600,10 @@ export class UploadFormComponent {
 
     var filesLength = this.filesList.length;
     var arrayOfurls = [];
+    this.goOrLoading = 'loading';
+    this.imageNotReady = true;
     var th = this;
+
     var uploadFSrgPromise = new Promise(function (resolve, reject) {
 
 
@@ -670,6 +675,12 @@ export class UploadFormComponent {
           else if (event.type === HttpEventType.Response) {
             if (event.statusText == 'OK') {
               th.addForm.reset();
+              //th.fileInput.files = null;
+
+
+              th.goOrLoading = 'GO';
+              th.imageNotReady = false;
+
               th.imagePreviews = [];
               th.bigImagePreviews = [];
 
