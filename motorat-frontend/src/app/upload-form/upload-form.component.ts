@@ -600,6 +600,7 @@ export class UploadFormComponent {
 
     var filesLength = this.filesList.length;
     var arrayOfurls = [];
+    this.saveOrLoading = 'Save';
     this.goOrLoading = 'loading';
     this.imageNotReady = true;
     var th = this;
@@ -677,7 +678,8 @@ export class UploadFormComponent {
               th.addForm.reset();
               //th.fileInput.files = null;
 
-
+             
+              th.saveOrLoading = 'Save';
               th.goOrLoading = 'GO';
               th.imageNotReady = false;
 
@@ -726,6 +728,10 @@ export class UploadFormComponent {
             th.addForm.reset();
             th.imagePreviews = [];
             th.bigImagePreviews = [];
+
+            th.saveOrLoading = 'Save';
+            th.goOrLoading = 'GO';
+            th.imageNotReady = false;
 
             th.fd.delete("APPLICATION_ID");
             th.fd.delete("image");
