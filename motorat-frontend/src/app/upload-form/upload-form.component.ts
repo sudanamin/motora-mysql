@@ -62,7 +62,7 @@ export class UploadFormComponent {
   //fd:FormData[] = [];
   fd = new FormData();
 
-  userDisplayName: string;
+  userDisplayName: string = '';
   userEmail: string;
   /* editFD = new FormData(); */
 
@@ -279,7 +279,7 @@ export class UploadFormComponent {
     this.dataService.getManufacturers()
       .subscribe(manufacturers => {
         this.ManufacturersObject = manufacturers;
-        console.log('manucaturers : ' + JSON.stringify(manufacturers));
+       // console.log('manucaturers : ' + JSON.stringify(manufacturers));
       });
   }
 

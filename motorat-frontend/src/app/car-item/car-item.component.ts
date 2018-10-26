@@ -352,7 +352,7 @@ onManufacturersChange(event){
 
     this.dataService.getManufacturers()
     .subscribe(manufacturers => { this.ManufacturersObject = manufacturers; 
-    console.log('manucaturers : '+ JSON.stringify(manufacturers));
+   // console.log('manucaturers : '+ JSON.stringify(manufacturers));
     });
 
     
