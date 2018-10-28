@@ -532,6 +532,7 @@ export class UploadFormComponent {
       this.saveOrLoading = 'loading';
       this.goOrLoading = 'loading';
       let image = files[i];
+      
       //this.fd.append('image', image, this.time + image.name);
       this.filesList.push({ theFile: image, name: this.time + image.name });
 
@@ -586,10 +587,9 @@ export class UploadFormComponent {
     reader.readAsDataURL(file);
 
     reader.onload = () => {
-      /*  if(this.toggleForm) {
-         
-        // this.EditFormImagePreviews.push({ url: reader.result, name: file.name, size: file.size });
-       } else  */
+      
+      /*  var width = reader.width;
+       alert('width is '+width); */
       this.bigImagePreviews.push({ url: reader.result, name: file.name, size: file.size });
 
     };
