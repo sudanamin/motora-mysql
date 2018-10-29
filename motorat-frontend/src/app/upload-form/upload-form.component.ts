@@ -263,9 +263,9 @@ export class UploadFormComponent {
                  }
              }); */
 
-    this.http.get<string>("http://localhost:8080/api/checkenv/").subscribe(res => {
+    /* this.http.get<string>("http://localhost:8080/api/checkenv/").subscribe(res => {
       // alert(JSON.stringify(res));
-    })
+    }) */
 
 
     this.getCars();
@@ -335,7 +335,7 @@ export class UploadFormComponent {
         var thumbForShow = Gofi[j];
 
         var imgUrl = Gofi[j].replace("_thumb", "");
-        var iForGallery = { thumb: thumbForShow, src: imgUrl, w: 1200, h: 900, title: 'image caption sososo ' };
+        var iForGallery = { thumb: thumbForShow, src: imgUrl, w: 1250, h: 900, title: 'image caption sososo ' };
         // this.im.push( this.pagedItems[i].REF_APP_ID,obj);
         gofThumbsForShow.push(thumbForShow);
         gofiForGallery.push(iForGallery);

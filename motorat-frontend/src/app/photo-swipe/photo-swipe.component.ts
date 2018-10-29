@@ -37,6 +37,19 @@ export class PhotoSwipeComponent
 
         // Initializes and opens PhotoSwipe
         const gallery = new PhotoSwipe(this.photoSwipe.nativeElement, PhotoSwipeUI_Default, images, options);
+        gallery.listen('gettingData', function(index, item) {
+            if (item.w < 1 || item.h < 1) { // unknown size
+            var img = new Image(); 
+            img.onload = function() { // will get size after load
+            item.w = img.width; // set image width
+            item.h = img.height; // set image height
+               gallery.invalidateCurrItems(); // reinit Items
+               gallery.updateSize(true); // reinit Items
+            }
+        img.src = item.src; // let's download image
+        }
+    });  
+        
         gallery.init();
         
     }
