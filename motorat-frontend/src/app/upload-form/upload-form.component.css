@@ -337,6 +337,20 @@ ul{
     display: block;
 }
 
+.imgThumb{
+    width:auto; 
+     
+    min-height:115px;
+    height:115px; 
+ }
+ 
+ .imgThumb:hover{
+     width:auto; 
+     height:145px;
+     min-height:145px;
+     cursor: pointer;
+ }
+
 
 /* .colourful {
     background:
