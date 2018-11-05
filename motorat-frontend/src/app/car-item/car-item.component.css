@@ -318,10 +318,13 @@ float: right;
     background-color: rgb(3, 17, 31);
     overflow: auto;
     align-items : center;
-    
    
   border: none;
 } 
+
+.row{
+    max-width: 100%;
+}
 
 
 
