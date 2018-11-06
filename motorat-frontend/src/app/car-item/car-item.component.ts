@@ -26,19 +26,19 @@ export class CarItemComponent implements OnInit {
   carList: car[] = [];
   selectedCar: car;
 
-  SortBy:string = 'Date';
+  SortBy: string = 'Date';
 
-  slider1:any;
-  slider2:any;
-  slider3:any;
+  slider1: any;
+  slider2: any;
+  slider3: any;
   CityToSearch: string = '';
-  ManufacturerToSearch: string ='';
+  ManufacturerToSearch: string = '';
   ModelToSearch: string = '';
   YearToSearch: string = '';
   ColorToSearch: string = '';
-  cylinderToSearch:string = '';
+  cylinderToSearch: string = '';
   transmissionToSearch: string = '';
-  specificationToSearch: string ='';
+  specificationToSearch: string = '';
   toggleForm: boolean = false;
   show_me: boolean = true;
   showModel: Boolean = false;
@@ -65,14 +65,14 @@ export class CarItemComponent implements OnInit {
   pagedItems: any[];
   index: number = 1;
   @ViewChild('photoSwipe') photoSwipe: PhotoSwipeComponent;
-  currentOffset: number =0;
-  currentPage: number =1;
+  currentOffset: number = 0;
+  currentPage: number = 1;
   toSearch: any = {};
   count: any;
   router: Router;
 
 
-  constructor( router: Router,
+  constructor(router: Router,
     private pagerService: PagerService, private dataService: DataService, private translate: TranslateService) {
     translate.setDefaultLang('en');
     this.router = router;
@@ -83,11 +83,11 @@ export class CarItemComponent implements OnInit {
     // <HTMLElement>document.querySelector(".details").Style.cssText = "--my-var: #000";
     Utils.toggleLanguage = !Utils.toggleLanguage;
     this.toggleLanguage = Utils.toggleLanguage;
-    if (Utils.toggleLanguage == true){
+    if (Utils.toggleLanguage == true) {
       this.translate.use('ar');
       this.rtl = 'rtl'
     }
-    else{
+    else {
       this.translate.use('en')
       this.rtl = 'ltr'
     }
@@ -129,8 +129,8 @@ export class CarItemComponent implements OnInit {
 
 
       var gofi = this.pagedItems[i].gofi;
-     // if (gofi) var Gofi = gofi.split(','); else Gofi = [];
-     if (gofi) var Gofi = gofi; else Gofi = [];
+      // if (gofi) var Gofi = gofi.split(','); else Gofi = [];
+      if (gofi) var Gofi = gofi; else Gofi = [];
       // console.log(arr[0]);
       for (var j = 0; j < Gofi.length; j++) {
 
@@ -180,65 +180,65 @@ export class CarItemComponent implements OnInit {
 
   }
 
-  showPhone(phone,event){
+  showPhone(phone, event) {
     //alert('phone is +'+JSON.stringify($event.target));
     var target = event.target || event.srcElement;
     target.innerHTML = phone;
 
-   // alert ( target.innerHTML ); 
+    // alert ( target.innerHTML ); 
     //$event.target.inner
   }
 
-  getCars(toSearch,offset) {
+  getCars(toSearch, offset) {
     /*  this.allItems =[];
      this.pagedItems =[];
      this.pager.pages = []; */
     //  var toSearch = {model:model,color:color}
-    var offsetObject =  {'offset': offset};
+    var offsetObject = { 'offset': offset };
     //var Count =  {'count': count};
 
-   
 
-    
-    Object.assign(toSearch,offsetObject);
 
-   var sort;
-    switch (this.SortBy){
-      case 'Price lowest to highest' :{sort = "APrice";   break;  }
-      case 'Price highest to lowest' : {sort = "DPrice";   break;  }
-      case 'Date' :{sort = "Date";   break;  }
-      default: { 
+
+    Object.assign(toSearch, offsetObject);
+
+    var sort;
+    switch (this.SortBy) {
+      case 'Price lowest to highest': { sort = "APrice"; break; }
+      case 'Price highest to lowest': { sort = "DPrice"; break; }
+      case 'Date': { sort = "Date"; break; }
+      default: {
         //statements; 
-        break; 
-     } 
-     // default: sort = 0;
-  }
-  var Sortby =  {'sortby': sort};
- // console.log('aaaaaaaa: '+Sortby.sortby)
-      Object.assign(toSearch,Sortby);
-    
+        break;
+      }
+      // default: sort = 0;
+    }
+    var Sortby = { 'sortby': sort };
+    // console.log('aaaaaaaa: '+Sortby.sortby)
+    Object.assign(toSearch, Sortby);
+
 
     this.dataService.getCImages(toSearch)
       .subscribe(cars => {
 
         var a = cars.slice(0, 1);
         this.count = a[0].count;
-        console.log("count is :"+this.count);
+        console.log("count is :" + this.count);
         this.allItems = cars.slice(1, cars.length);
         this.currentOffset = offset;
         //if(this.firstTime == true )this.setPage(1);
-       // if (! (toSearch.offset>1)) {
-     //   if (this.currentOffset != toSearch.offset){
+        // if (! (toSearch.offset>1)) {
+        //   if (this.currentOffset != toSearch.offset){
 
-          if (this.allItems.length > 0) {
-            this.setPage(this.currentPage);
-          }
-          else { this.carsObjects = [] }
-          //this.setPage(1);
-          //this.firstTime = false;
-          //  this.getCarsThumbnail();
-      //  }
-      //  this.setPage(this.currentPage);
+        if (this.allItems.length > 0) {
+          this.setPage(this.currentPage);
+        }
+        else { this.carsObjects = [] }
+        //this.setPage(1);
+        //this.firstTime = false;
+        //  this.getCarsThumbnail();
+        //  }
+        //  this.setPage(this.currentPage);
 
 
       })
@@ -258,66 +258,66 @@ export class CarItemComponent implements OnInit {
     var minPrice = this.slider1.getValue()[0] * 1000;
     var maxPrice = this.slider1.getValue()[1] * 1000;
 
-    
+
 
     //alert(SearchFrm.value.manufacturerToSearch+' +' +SearchFrm.value.modelToSearch+' '+SearchFrm.value.cityToSearch);
 
-       this.CityToSearch = SearchFrm.value.cityToSearch;
-       this.ManufacturerToSearch = SearchFrm.value.manufacturerToSearch;
-       this.ModelToSearch = SearchFrm.value.modelToSearch;
-       
+    this.CityToSearch = SearchFrm.value.cityToSearch;
+    this.ManufacturerToSearch = SearchFrm.value.manufacturerToSearch;
+    this.ModelToSearch = SearchFrm.value.modelToSearch;
+
 
     var toSearch = {
       city: Utils.convertCitytoInt(SearchFrm.value.cityToSearch),
-      manufacturer:  SearchFrm.value.manufacturerToSearch,
-      model:   SearchFrm.value.modelToSearch,
+      manufacturer: SearchFrm.value.manufacturerToSearch,
+      model: SearchFrm.value.modelToSearch,
       color: Utils.convertColorToInt(SearchFrm.value.colorToSearch),
-      minYear:minYear,
-      maxYear:maxYear,
-      minKilo:minKilo,
-      maxKilo:maxKilo,
-      minPrice:minPrice,
-      maxPrice:maxPrice,
+      minYear: minYear,
+      maxYear: maxYear,
+      minKilo: minKilo,
+      maxKilo: maxKilo,
+      minPrice: minPrice,
+      maxPrice: maxPrice,
       cylinder: SearchFrm.value.cylinderToSearch,
-      specification:  Utils.convertSpecsToInt(SearchFrm.value.specificationToSearch),
-      transmission:  Utils.convertTransmissionToInt(SearchFrm.value.transmissionToSearch),
+      specification: Utils.convertSpecsToInt(SearchFrm.value.specificationToSearch),
+      transmission: Utils.convertTransmissionToInt(SearchFrm.value.transmissionToSearch),
 
     }
-     
-    console.log('manufatures to search : '+JSON.stringify(toSearch));
+
+    console.log('manufatures to search : ' + JSON.stringify(toSearch));
     this.currentPage = 1;
     this.toSearch = toSearch;
-    this.getCars(this.toSearch,0)
+    this.getCars(this.toSearch, 0)
 
   }
 
-  resetSearch(all){
-    switch (all){
-      case 'allCiteis':{ 
-         this.toSearch.city = '';
-         this.CityToSearch = '';
+  resetSearch(all) {
+    switch (all) {
+      case 'allCiteis': {
+        this.toSearch.city = '';
+        this.CityToSearch = '';
 
-         this.toSearch.manufacturer = '';
-         this.ManufacturerToSearch = '';
-
-         this.toSearch.model = '';
-         this.ModelToSearch = '';
-        
-         this.getCars(this.toSearch,0); 
-         break;
-        }
-      case 'AllManufacturer':{ 
         this.toSearch.manufacturer = '';
         this.ManufacturerToSearch = '';
 
         this.toSearch.model = '';
         this.ModelToSearch = '';
 
-        this.getCars(this.toSearch,0); 
+        this.getCars(this.toSearch, 0);
         break;
       }
-      case 'AllModel':{ 
-        this.toSearch.model = '';this.getCars(this.toSearch,0); 
+      case 'AllManufacturer': {
+        this.toSearch.manufacturer = '';
+        this.ManufacturerToSearch = '';
+
+        this.toSearch.model = '';
+        this.ModelToSearch = '';
+
+        this.getCars(this.toSearch, 0);
+        break;
+      }
+      case 'AllModel': {
+        this.toSearch.model = ''; this.getCars(this.toSearch, 0);
         this.ModelToSearch = '';
         break;
       }
@@ -325,83 +325,84 @@ export class CarItemComponent implements OnInit {
   }
 
   onSortByChange(newValue) {
-   // console.log(newValue);
+    // console.log(newValue);
     this.SortBy = newValue;
-     
-    this.getCars(this.toSearch,0);
+
+    this.getCars(this.toSearch, 0);
 
     // ... do other stuff here ...
-    }
+  }
 
-onManufacturersChange(event){
-    
-  console.log('manufatrer chaned'+JSON.stringify(event))
-   
-   if( event !='' && event !='All'){
-    this.showModel = true;
-    this.dataService.getModels(event)
-    .subscribe(models => { this.ModelsObject = models; });
-    
-   }
-   else{
-     this.showModel = false;
-   }
-}
+  onManufacturersChange(event) {
+
+    console.log('manufatrer chaned' + JSON.stringify(event))
+
+    if (event != '' && event != 'All') {
+      this.showModel = true;
+      this.dataService.getModels(event)
+        .subscribe(models => { this.ModelsObject = models; });
+
+    }
+    else {
+      this.showModel = false;
+    }
+  }
 
   ngOnInit() {
 
     this.dataService.getManufacturers()
-    .subscribe(manufacturers => { this.ManufacturersObject = manufacturers; 
-   // console.log('manucaturers : '+ JSON.stringify(manufacturers));
-    });
+      .subscribe(manufacturers => {
+      this.ManufacturersObject = manufacturers;
+        // console.log('manucaturers : '+ JSON.stringify(manufacturers));
+      });
 
-    
 
 
-    this.getCars(this.toSearch,0);
 
-  /*   var slider = new Slider("#ex1", {
-      id: "slider1",
-      tooltip: 'always',
-   
-  }); */
+    this.getCars(this.toSearch, 0);
+
+    /*   var slider = new Slider("#ex1", {
+        id: "slider1",
+        tooltip: 'always',
+     
+    }); */
 
     this.slider1 = new Slider("#price", {
-    id: "slider2",
- /*    tooltip: 'always', */
-    tooltip_position:'bottom',
-     ticks: [0,    100 ],  
-     ticks_labels: [' 0k',     '≥100k'],
-     
-  /*   ticks_snap_bounds: 30 */
-});
+      id: "slider2",
+      /*    tooltip: 'always', */
+      tooltip_position: 'bottom',
+      ticks: [0, 100],
+      ticks_labels: [' 0k', '≥100k'],
+
+      /*   ticks_snap_bounds: 30 */
+    });
 
 
 
-/* slider1.on("click", function(sliderValue) {
-	alert(sliderValue);
-}); */
+    /* slider1.on("click", function(sliderValue) {
+      alert(sliderValue);
+    }); */
 
-this.slider2 = new Slider("#kilo", {
-  id: "slider3",
-  /* tooltip: 'always', */
-  tooltip_position:'bottom',
-   ticks: [0,    200 ],  
-   ticks_labels: [' 0k',     '≥200k']
-/*   ticks_snap_bounds: 30 */
-});
+    this.slider2 = new Slider("#kilo", {
+      id: "slider3",
+      /* tooltip: 'always', */
+      tooltip_position: 'bottom',
+      ticks: [0, 200],
+      ticks_labels: [' 0k', '≥200k']
+      /*   ticks_snap_bounds: 30 */
+    });
 
-this.slider3 = new Slider("#year", {
-  id: "slider4",
-  
-  tooltip_position:'bottom',
-   ticks: [1990,    2018 ],  
-   ticks_labels: ['≤1990',     '2018'], 
-    ticks_snap_bounds: 5 
-});
+    this.slider3 = new Slider("#year", {
+      id: "slider4",
+
+      tooltip_position: 'bottom',
+      ticks: [1990, 2018],
+      ticks_labels: ['≤1990', '2018'],
+      ticks_snap_bounds: 5
+    });
 
 
- /*  var sliderC = new Slider("#ex12c", { id: "slider12c", min: 0, max: 10, range: true, value: [3, 7] }); */
+    /*  var sliderC = new Slider("#ex12c", { id: "slider12c", min: 0, max: 10, range: true, value: [3, 7] }); */
 
 
 
@@ -415,8 +416,27 @@ this.slider3 = new Slider("#year", {
 
   setPage(page: number) {
 
-    document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    /*  document.body.scrollTop = 0; // For Safari
+     document.documentElement.scrollTop = 1000; // For Chrome, Firefox, IE and Opera */
+    /* window.scrollTo({
+      top: 100,
+      left: 100,
+      behavior: 'smooth'
+    }); */
+    console.log('page is '+window.scrollY)
+
+    if (window.scrollY > 1) {
+      var top = <HTMLElement>document.getElementsByClassName('col-md-7')[0];
+      var topPosition = top.offsetTop;
+      console.log("clientTop " + top);
+
+      window.scrollTo({
+        top: topPosition,
+        left: 100,
+        behavior: 'smooth'
+      });
+    }
+
     if (page < 1 || page > this.pager.totalPages) {
       return;
     }
@@ -424,18 +444,18 @@ this.slider3 = new Slider("#year", {
     // get pager object from service
     //this.im = [];
     this.currentPage = page;
-    let offset: number  = Math.floor((page-1)/10)  * 100;
-    if(offset != this.currentOffset){
+    let offset: number = Math.floor((page - 1) / 10) * 100;
+    if (offset != this.currentOffset) {
       //var toSearch= { offset:offset};
-      this.getCars(this.toSearch,offset)
+      this.getCars(this.toSearch, offset)
       return;
-      
+
     }
-    
-     
-    
-   // this.pager = this.pagerService.getPager(this.allItems.length, page);   //count(*)
-   this.pager =  this.pagerService.getPager(this.count, page,10);
+
+
+
+    // this.pager = this.pagerService.getPager(this.allItems.length, page);   //count(*)
+    this.pager = this.pagerService.getPager(this.count, page, 10);
 
     // get current page of items
     this.pagedItems = this.allItems.slice(this.pager.startIndex - offset, this.pager.endIndex + 1 - offset);
