@@ -84,6 +84,7 @@ a{
     /* background-color: rgba(211, 211, 211, 0.404);  */
     /* width: 200px; */
    /*  border: 1px solid rgba(83, 50, 145, 0.575); */
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     padding: 10px;
     margin: 1px;
 }
@@ -162,7 +163,10 @@ a{
 
  
 .imgThumb{
-   width:auto; 
+    object-fit: cover;
+
+   width:150px; 
+   
    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
    min-height:115px;
@@ -170,7 +174,7 @@ a{
 }
 
 .imgThumb:hover{
-    width:auto; 
+    width:170px; 
     height:145px;
     min-height:145px;
     cursor: pointer;
