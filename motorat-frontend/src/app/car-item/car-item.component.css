@@ -84,6 +84,7 @@ a{
     /* background-color: rgba(211, 211, 211, 0.404);  */
     /* width: 200px; */
    /*  border: 1px solid rgba(83, 50, 145, 0.575); */
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     padding: 10px;
     margin: 1px;
 }
@@ -161,16 +162,34 @@ a{
 
 
  
-img{
-   width:170px; 
+.imgThumb{
+    object-fit: cover;
+
+   width:150px; 
+   
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+   min-height:115px;
    height:115px; 
 }
 
-img:hover{
-    width:210px; 
+.imgThumb:hover{
+    width:170px; 
     height:145px;
+    min-height:145px;
     cursor: pointer;
 }
+/* .imgThumb{
+    width:170px; 
+    height:115px; 
+ }
+ 
+ .imgThumb:hover{
+     width:210px; 
+     height:145px;
+     cursor: pointer;
+ } */
+
 showPhone:hover{
      
    
@@ -304,10 +323,13 @@ float: right;
     background-color: rgb(3, 17, 31);
     overflow: auto;
     align-items : center;
-    
    
   border: none;
 } 
+
+.row{
+    max-width: 100%;
+}
 
 
 

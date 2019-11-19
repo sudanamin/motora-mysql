@@ -1,10 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
  
 
-
-Body{
-   /*  direction: rtl; */
-}
+.app-loading .logo {
+	
+	 /*  width: 2em;
+	  height: 2em; */
+	 /*  width:150px;height:150px; */
+	  object-fit: contain;
+	  filter: alpha(opacity=10);
+	/*   background: url(./assets/logo.png)  center  no-repeat;  */
+	 
+  }
 
 /* #slider12c .slider-selection {
 	background: greenyellow;

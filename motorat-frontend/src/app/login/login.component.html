@@ -27,13 +27,13 @@
   <div class="col-md-8">
 
       <br>
-      <div class='about' (click)= "router.navigate(['/main'])"> <a ><i class="fa fa-home" style="font-size:normal;color:greenyellow"></i>&nbsp;Home &nbsp;|</a></div>
-      <div class='about' (click)= "router.navigate(['/about'])"> &nbsp; <a style="color:white;">About &nbsp;|</a> </div>
-      <div class='about' (click)= "router.navigate(['/contact'])"> &nbsp; <a style="color:white;">Contact</a> </div>
+      <div class='about' (click)= "router.navigate(['/main'])"> <a ><i class="fa fa-home" style="font-size:normal;color:greenyellow"></i>&nbsp;<span translate>Home</span> &nbsp;|</a></div>
+      <div class='about' (click)= "router.navigate(['/about'])"> &nbsp; <a style="color:white;" translate>About</a>  &nbsp;|</div>
+      <div class='about' (click)= "router.navigate(['/contact'])"> &nbsp; <a style="color:white;" translate>Contact</a> </div>
       
       
-      
-      <div class='lang' > <a style="color: rgba(184, 207, 228, 0.877);">العربية </a>&nbsp;&nbsp;</div>
+       
+      <div class='lang' > <a style="color: rgba(184, 207, 228, 0.877);"(click)="switchLanguage()" translate>lang </a>&nbsp;&nbsp;</div>
         <br> <br> 
   </div>
   <div class="col-md-2"> </div>
@@ -45,7 +45,7 @@
 <div class="col-md-4"> </div>
  <div class="loginBox fontUbuntu mx-auto  col-md-3">
   
-  <h4 >Login here</h4>
+  <h4 translate> LoginHere </h4>
   <!-- <form> -->
 
       <button (click)="auth.facebookLogin()" id="fb"  class="btn-si btn-facebook">Login With Facebook</button><br>

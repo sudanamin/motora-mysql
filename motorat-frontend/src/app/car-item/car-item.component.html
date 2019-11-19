@@ -80,13 +80,8 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
 
 
 
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br> <br>
-    <br>
+    
+    
     <br> <br>
     <br>
     <br>
@@ -365,7 +360,7 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
 
                             <!-- <div class="contactBox"> contact </div> -->
 
-                            <div class="container2 col-md-6">
+                            <div class="container2 col-md-6 col-sm-6">
                                 <div class="verticalLine"></div>
 
                                 <div class="title"> {{obj.manufacture}}> {{obj.model }}> {{obj.specs}}
@@ -376,7 +371,7 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
 
                                 <div class="num_of_img"> +{{obj.thums.length}} </div>
 
-                                <img (click)="openSlideshow(i,j);" [src]="obj.thums[0]">
+                                <img class='imgThumb' (click)="openSlideshow(i,j);" [src]="obj.thums[0]">
                                 <br>
                                 <br>
                                 <div class='fontUbuntu'> <i translate>Located:</i> {{obj.city}} , <i translate>Date:</i>
@@ -385,7 +380,7 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                                 <br>
 
                             </div>
-                            <div class="rightOfBox col-md-3">
+                            <div class="rightOfBox col-md-3 col-sm-3">
                                 <div class='details' translate>warranty
                                     <span class='detailsBold'> : {{obj.warranty}} </span></div>
 
@@ -405,7 +400,7 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                             </div>
 
 
-                            <div class="rightOfBox col-md-3">
+                            <div class="rightOfBox col-md-3 col-sm-3">
 
                                 <div class='details' translate>Price
                                     <span class='detailsBold'> : {{obj.price | number}} <span translate> AED</span>

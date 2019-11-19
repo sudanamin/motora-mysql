@@ -64,12 +64,19 @@ export class DataService {
    // .map(res => res.json());
   }
 
-  deleteImage(image_url){
+  deleteImage(carID,shortName){
    // var image_name = image_url.substring(22);
    // console.log('image name is '+image_name +"image url is "+image_url);
    
-    
-    return this.http.delete(this.apiUrl +"api/image/"+image_url);
+    console.log("car id " + carID  + " car shortname "+shortName);
+    return this.http.delete(this.apiUrl +"api/image/", {
+      params:   {
+        carid: carID  ,
+        shortName : shortName 
+         
+      }  
+    //.map(res => res.json())
+  });
    // .map(res => res.json());
   }
 

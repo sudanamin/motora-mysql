@@ -14,19 +14,19 @@
     <br>
   </div>
 </div> -->
-<div [hidden]="!loading" class="loader">
-  <h2>Loading...</h2>
-  
-</div>
+<!-- <div [hidden]="!loading" class="loader">
+  <h2>Loading...</h2> 
+    <div class="col-sm-12 col-md-6 col-lg-6">
+</div>-->
 <div class='row' >
-  <div class="col-md-1"></div>
-  <div class="col-md-6">
+  <div class="col-sm-0 col-md-1 col-lg-1"></div>
+  <div class="col-sm-6 col-md-6 col-lg-6">
           
           <h1 class='logo' align='right' style='display: inline;  
          font-family:ubuntu; font-weight: bold ' translate>MembersTitle</h1>
          </div>
-         <div class="col-md-2"></div>
-<div class="col-md-3 ">
+         <div class="col-sm-0 col-md-2 col-lg-2"></div>
+<div class="col-sm-6 col-md-3 col-lg-3">
     <h2 class='logo' style='display: inline;   text-decoration: underline; 
     font-family:Shrikhand, cursive; color:gray;'>ZEZENIA.ae#</h2>  <!-- zezenia -->
 <img  class='logo'  style='width:80px;height:25px;    vertical-align: bottom;   ' src="assets/logo.png">
@@ -65,13 +65,13 @@
 
       <!-- <button (click)="upload()">Upload {{imagePreviews.length}} files</button> -->
 
-      <div *ngIf="uploadProgress">
+     <!--  <div *ngIf="uploadProgress">
           <div id="myProgress">.
             <div id="myBar" [ngStyle]="{'width': uploadProgress+'%'}"><span style='font-size: large;font-weight:900 ;color:white '> {{ uploadProgress }} %</span></div>
           </div>
          
        
-        </div>
+        </div> -->
 
  
  
@@ -84,7 +84,8 @@
       <div class="form-group row">
         
 
-        <div class="col-xs-6">
+        <!-- <div class="col-xs-6">   col-sm-3 col-md-6 col-lg-4 -->
+            <div class="col-sm-12 col-md-6 col-lg-6">
           <label class="label label-primary" for="city" translate>
              City
           </label>
@@ -103,7 +104,7 @@
             </select>
         </div>
 
-        <div class="col-xs-6">
+        <div class="col-sm-12 col-md-6 col-lg-6">
           <label class="label label-primary" for="" translate>
             Manufacturer
           </label>
@@ -126,7 +127,7 @@
 </div>   <!--  //form goup row close  -->
 
 <div class="form-group row">
-        <div   class="col-xs-6">
+    <div class="col-sm-12 col-md-6 col-lg-6">
           <label class="label label-primary" for="" translate>
             Model
           </label>
@@ -141,7 +142,7 @@
         </select>
         </div>
 
-        <div class="col-xs-6">
+        <div class="col-sm-12 col-md-6 col-lg-6">
           <label class="label label-primary" for="" translate>
             Price
           </label>
@@ -157,7 +158,7 @@
 
       <div class="form-group row">
 
-          <div class="col-xs-6">
+          <div class="col-sm-12 col-md-6 col-lg-6">
               <label class="label label-primary" for="Year" translate> 
                 Year
               </label>
@@ -188,7 +189,7 @@
                 </select>
             </div>
 
-        <div class="col-xs-6">
+            <div class="col-sm-12 col-md-6 col-lg-6">
           <label class="label label-primary" for="" translate>
             Kilometers
           </label>
@@ -197,7 +198,7 @@
         </div>
 </div>
 <div class="form-group row">
-        <div class="col-xs-6">
+    <div class="col-sm-12 col-md-6 col-lg-6">
           <label class="label label-primary" for="carSpecs" translate>
             Specs
           </label>
@@ -211,7 +212,7 @@
             </select>
         </div>
 
-        <div class="col-xs-6">
+        <div class="col-sm-12 col-md-6 col-lg-6">
             <label class="label label-primary" for="Cylinders" translate>
               Cylinder
             </label>
@@ -233,7 +234,7 @@
       <div class="form-group row">
         
 
-        <div class="col-xs-6">
+          <div class="col-sm-12 col-md-6 col-lg-6">
             <label class="label label-primary" for="carWarranty" translate>
               warranty
             </label>
@@ -245,7 +246,7 @@
               </select>
           </div>
 
-        <div class="col-xs-6">
+          <div class="col-sm-12 col-md-6 col-lg-6">
           <label class="label label-primary" for="color" translate>
             Color
           </label>
@@ -269,7 +270,7 @@
         </div>
 
         <div class="form-group row">
-        <div class="col-xs-6">
+            <div class="col-sm-12 col-md-6 col-lg-6">
           <label class="label label-primary" for="carTransmission" translate>
             Transmission
           </label>
@@ -282,7 +283,7 @@
           
         </div>
 
-        <div class="col-xs-6">
+        <div class="col-sm-12 col-md-6 col-lg-6">
           <label class="label label-primary" for="carPhone" translate> 
             ContactNumber
           </label>
@@ -350,8 +351,17 @@
         </div>
          
         </div><!-- box closed   [class.numOfImage]="!toggleLanguage" -->
+
+        
        
-  </div>  
+  </div>
+  
+  <div  *ngIf="uploadProgress" class="progress">
+    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadProgress ) + '%'" [attr.aria-valuenow]="(uploadProgress )" aria-valuemin="0" aria-valuemax="100">
+    </div>
+  </div>
+
+
 </form>
   
 
@@ -363,13 +373,14 @@
 
  <!-- <button (click)="upload()">Upload {{imagePreviews.length}} files</button> -->
 
- <div *ngIf="uploadProgress">
+ <!-- <div *ngIf="uploadProgress">
     <div id="myProgress">.
       <div id="myBar" [ngStyle]="{'width': uploadProgress+'%'}"><span style='font-size: large;font-weight:900 ;color:white '> {{ uploadProgress }} %</span></div>
-    </div>
+    </div> 
+  </div>  -->
    
  
-  </div>
+  
 
 
 
@@ -386,7 +397,7 @@
         <div class="form-group row">
           
   
-          <div class="col-xs-6">
+            <div class="col-sm-12 col-md-6 col-lg-6">
  
    
 
@@ -409,7 +420,7 @@
        </select>
    </div>
 
-   <div class="col-xs-6">
+   <div class="col-sm-12 col-md-6 col-lg-6">
      <label class="label label-primary" for="carmanufacturer" translate>
       Manufacturer
      </label>
@@ -430,7 +441,7 @@
 
   <div class="form-group row">
 
-   <div class="col-xs-6">
+      <div class="col-sm-12 col-md-6 col-lg-6">
      <label class="label label-primary" for="carmodel" translate>
        Model
      </label>
@@ -447,7 +458,7 @@
        </select>
    </div>
 
-   <div class="col-xs-6">
+   <div class="col-sm-12 col-md-6 col-lg-6">
      <label class="label label-primary" for="carprice" translate>
        Price
      </label>
@@ -463,7 +474,7 @@
 
  <div class="form-group row">
 
-      <div class="col-xs-6">
+    <div class="col-sm-12 col-md-6 col-lg-6">
          <label class="label label-primary" for="caryear" translate>
            Year
          </label>
@@ -495,7 +506,7 @@
            </select>
        </div>
   
-   <div class="col-xs-6">
+       <div class="col-sm-12 col-md-6 col-lg-6">
      <label class="label label-primary" for="carkilometers" translate>
        Kilometers
      </label>
@@ -507,7 +518,7 @@
 
    <div class="form-group row">
 
-   <div class="col-xs-6">
+      <div class="col-sm-12 col-md-6 col-lg-6">
      <label class="label label-primary" for="color" translate>
        Specs
      </label>
@@ -521,7 +532,7 @@
        </select>
    </div>
 
-   <div class="col-xs-6">
+   <div class="col-sm-12 col-md-6 col-lg-6">
        <label class="label label-primary" for="carcylinders" translate>
           Cylinders
        </label>
@@ -543,7 +554,7 @@
  <div class="form-group row">
    
 
-   <div class="col-xs-6">
+    <div class="col-sm-12 col-md-6 col-lg-6">
        <label class="label label-primary" for="carwarranty" translate>
          Warranty
        </label>
@@ -555,7 +566,7 @@
          </select>
      </div>
 
-   <div class="col-xs-6">
+     <div class="col-sm-12 col-md-6 col-lg-6">
      <label class="label label-primary" for="carcolor" translate>
        Color
      </label>
@@ -579,7 +590,7 @@
 
 
   <div class="form-group row">
-   <div class="col-xs-6">
+      <div class="col-sm-12 col-md-6 col-lg-6">
      <label class="label label-primary" for="cartransmission" translate>
        Transmission
      </label>
@@ -592,7 +603,7 @@
      
    </div>
 
-   <div class="col-xs-6">
+   <div class="col-sm-12 col-md-6 col-lg-6">
      <label class="label label-primary" for="carphone" translate>
        ContactNumber
      </label>
@@ -644,7 +655,7 @@
                    <img class="droplet-preview" [src]="image">
                  </a>
          
-                  <div class="delete" (click)="removeImageFromServer(image);">&times;</div>
+                  <div class="delete" (click)="removeImageFromServer(image,selectedCar.APPLICATION_ID);">&times;</div>
                   <div class="size">{{image.size / 1024 / 1024 | number}}MB</div>
                 </li>
               </ul>   
@@ -677,6 +688,12 @@
       </div><!-- box closed -->
      
 </div> 
+
+<div  *ngIf="uploadProgress" class="progress">
+  <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadProgress ) + '%'" [attr.aria-valuenow]="(uploadProgress )" aria-valuemin="0" aria-valuemax="100">
+  </div>
+</div>
+
 </form>
 
 
@@ -685,7 +702,7 @@
     <div *ngIf="!toggleForm">
         <br>
         <h3 class="titles" translate> YourPreviousAd </h3>
-      <br>
+      
 
       <ul  id = 'PreviousAd' class="carsObjects" style="list-style:none">
 
@@ -714,7 +731,7 @@
 
                       <div class="num_of_img"> +{{obj.Thums.length}} </div>
 
-                      <img (click)="openSlideshow(i,j);" style="width:150px; height:110px;" [src]="obj.Thums[0]">
+                      <img class='imgThumb' (click)="openSlideshow(i,j);"  [src]="obj.Thums[0]">
                       <br>
                      
                       <br>
