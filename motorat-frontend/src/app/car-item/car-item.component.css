@@ -30,10 +30,10 @@ a{
 }
 
 .logo{
-    vertical-align: bottom;
-    margin-bottom: .0em;
-    margin-top: 30px;
-   /*  margin-top: 1em; */
+   /*  vertical-align: bottom; */
+    
+   /*  margin-top: 10px; */
+     margin-top: 0;  
    /*  padding-left: 20px; */
   
 
@@ -45,6 +45,8 @@ a{
       @media screen and (min-width: 601px) {
         .logo {
           font-size: 35px;
+         /*  margin-left: 20%; */
+          /* margin-left: 40%; */
         }
       }
       
@@ -55,15 +57,15 @@ a{
       }
 
       .bring{
-        vertical-align: bottom;
+        
        
-        padding: 25px;
+        
        /*  margin-top: 1em; */
        /*  padding-left: 20px; */
     
-       justify-content: center
+      /*  justify-content: center */
       
-       /*  margin-bottom:-20px ; */
+         
     }
            
           @media screen and (min-width: 601px) {
