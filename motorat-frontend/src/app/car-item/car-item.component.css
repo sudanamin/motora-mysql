@@ -32,6 +32,7 @@ a{
 .logo{
     vertical-align: bottom;
     margin-bottom: .0em;
+    margin-top: 30px;
    /*  margin-top: 1em; */
    /*  padding-left: 20px; */
   
@@ -56,7 +57,7 @@ a{
       .bring{
         vertical-align: bottom;
        
-        padding: 10px;
+        padding: 25px;
        /*  margin-top: 1em; */
        /*  padding-left: 20px; */
     
@@ -67,13 +68,13 @@ a{
            
           @media screen and (min-width: 601px) {
             .bring {
-              font-size: 30px;
+              font-size:  30px;
             }
           }
           
           @media screen and (max-width: 600px) {
             .bring {
-              font-size: 25px;
+              font-size: 24px;
             }
           }
 .num_of_img {

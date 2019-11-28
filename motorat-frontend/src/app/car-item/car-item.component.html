@@ -9,7 +9,7 @@
        font-family:Shrikhand, cursive; color:gray;'>ZEZENIA.ae<span
                 style="color:orange">#</span></h2> <!-- zezenia -->
 
-        <img class='logo hidden-xs' style='width:80px;height:20px;  vertical-align: bottom; ' src="assets/logo2.png">
+        <img class='logo hidden-xs' style='width:70px;height:20px;  vertical-align: bottom; ' src="assets/logo2.png"> 
    
 
 </div>
@@ -21,20 +21,20 @@
             
 
         <div class='about' (click)="router.navigate(['/about'])">
-            <a translate>About</a> &nbsp;| &nbsp;
+            <a   translate>About</a> &nbsp;| &nbsp;
         </div>
         <div class='about' (click)="router.navigate(['/contact'])">
-            <a translate>Contact </a> &nbsp;| &nbsp;
+            <a translate  >Contact </a> &nbsp;| &nbsp;
         </div>
         <div class='about' (click)="router.navigate(['/members'])">
-            <a translate>Register</a> &nbsp;| &nbsp;
+            <a   translate>Register</a> &nbsp;| &nbsp;
         </div>
         <div class='login about' (click)="router.navigate(['/members'])"> 
             <a style="color: rgba(241, 237, 237, 0.493);" translate><i class="fa fa-sign-in" style="font-size:normal;color:greenyellow">&nbsp;</i>Login</a>
         </div>
 
         <div class='lang'>
-            <a (click)="switchLanguage()" translate>lang </a>  </div>
+            <a   (click)="switchLanguage()" translate>lang </a>  </div>
            
         <div class="PlaceAd " (click)="router.navigate(['/members'])">
           
@@ -50,12 +50,12 @@
 </div>
 
 <br>
-<!-- <div>
+ <div>
 
-    <h1 class='bring'   style='display: inline;   
-           font-family:ubuntu; '
-        translate>Title</h1>
-</div> -->
+        <h1 class='bring' align='right' style='display: inline;
+        font-family:ubuntu; font-weight: bold ' translate>Title</h1>
+        
+</div> 
 <!-- <img  class='logo'  style='width:150px;height:200px;  display: block;
 margin-left: auto;
 margin-right: auto;      ' src="assets/eagle.svg"> -->
@@ -67,16 +67,17 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
 
     
     <br>
+    <br>
      
     
    <!--  <div class="col-md-1"> </div> -->
 
-    <div class=" col-md-2">
+    <div class=" col-md-2 col-xs-6">
 
         <div class="row">
 
 
-            <div class="SearchBox fontUbuntu col-md-12">
+            <div class="SearchBox fontUbuntu col-sm-12">
                 <form #SearchFrm="ngForm" (ngSubmit)="SearchCar(SearchFrm)">
                     <h4 align="center" class="SearchTitle" translate> Search</h4>
 
