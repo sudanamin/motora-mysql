@@ -5,12 +5,12 @@
 
    
    <span     >
-       <!--  <h2 class='logo' style='display: inline;   text-decoration: underline;  
+        <h2 class='logo' style='display: inline;   text-decoration: underline;  
        font-family:Shrikhand, cursive; color:black;  '>ZEZENIA.ae<span
-                style="color:orange">#</span></h2> --> <!-- zezenia -->  
+                style="color:orange">#</span></h2>   
 
-        <!-- <img class=' hidden-xs' style='width:70px;height:20px;  vertical-align: bottom; ' src="assets/logo2.png">  -->
-        <img   style="vertical-align: middle; " src="assets/logo.png"> 
+      <!--    <img class=' hidden-xs' style='width:70px;height:20px;  vertical-align: bottom; ' src="assets/logo2.png">  -->
+       <!--  <img   style="vertical-align: middle; " src="assets/logo.png">  -->
          &nbsp;&nbsp;&nbsp;  
    </span>
          
@@ -78,7 +78,7 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
     
    <!--  <div class="col-md-1"> </div> -->
 
-    <div class=" col-md-2 col-xs-6">
+    <div class=" col-md-2 col-xs-12">
 
         <div class="row">
 
@@ -284,17 +284,20 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
             </div>
         </div>
     </div>
-
+   
     <app-photo-swipe #photoSwipe></app-photo-swipe>
 
 
 
     <!-- pagination -->
-    <div class="col-md-7">
+  
+    
+    <div class="col-md-7  col-xs-12">
 
         <div class='row' [class.row-rtl]="toggleLanguage">
             <div [class.col-md-9]="toggleLanguage"></div>
             <div class="col-md-3">
+                    <br><br>
                 <label for="" translate>
                     <b translate>SortBy </b>:
                 </label>
@@ -346,13 +349,13 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
 
                         <!--  <div class="container2" *ngFor="let thumb of obj.thums;  let j = index">  -->
                         <div class="cardd">
-
-
+                        
+                        
                             <!-- <div class="contactBox"> contact </div> -->
-
-                            <div class="container2 col-md-6 col-sm-6">
+                        
+                            <div class="container2 col-md-6 col-xs-6">
                                 <div class="verticalLine"></div>
-
+                        
                                 <div class="title"> {{obj.manufacture}}> {{obj.model }}> {{obj.specs}}
                                 </div>
                                 <!-- containerTitle -->
@@ -370,7 +373,7 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                                 <br>
 
                             </div>
-                            <div class="rightOfBox col-md-3 col-sm-3">
+                            <div class="rightOfBox col-md-3 col-xs-3">
                                 <div class='details' translate>warranty
                                     <span class='detailsBold'> : {{obj.warranty}} </span></div>
 
@@ -390,7 +393,7 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                             </div>
 
 
-                            <div class="rightOfBox col-md-3 col-sm-3">
+                            <div class="rightOfBox col-md-3 col-xs-3">
 
                                 <div class='details' translate>Price
                                     <span class='detailsBold'> : {{obj.price | number}} <span translate> AED</span>
@@ -406,13 +409,7 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                                 <div class='details' translate>Year
                                     <span class='detailsBold'> : {{obj.year}}</span>
                                 </div>
-                                <br>
-
-
-                                <br>
-
-
-                                <br>
+                                
                                 <br>
                                 <div class="showPhone btn btn-warning btn-sm" (click)='showPhone(obj.phone,$event)'
                                     translate> Phone:</div>
