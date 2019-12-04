@@ -1,11 +1,13 @@
 a:hover{
 	 
-	font-style: italic;
+	/* font-style: italic; */
 	text-decoration: none;
+	background-color: rgb(64, 52, 112);
 }
 
 a{
 	color:white;
+	cursor: pointer;
 	
 }
 	
@@ -142,7 +144,7 @@ h4
 }
 .loginBox p
 {
-	margin: 0;
+	margin: 20px;
 	padding: 0;
 	font-weight: bold;
 	color: rgba(184, 207, 228, 0.877);
