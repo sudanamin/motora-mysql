@@ -35,8 +35,8 @@ a{
    /*  vertical-align: bottom; */
    cursor: pointer; 
    /*  margin-top: 10px; */
-     margin-top: 0;  
-   /*  padding-left: 20px; */
+    /*  margin-top: 10px;   */
+     
   
 
    justify-content: center
@@ -54,7 +54,7 @@ a{
       
       @media screen and (max-width: 600px) {
         .logo {
-          font-size: 35px;
+          font-size: 28px;
         }
       }
 
@@ -72,7 +72,7 @@ a{
            
           @media screen and (min-width: 601px) {
             .bring {
-              font-size:  30px;
+              font-size:  28px;
             }
           }
           
@@ -332,6 +332,13 @@ float: right;
     margin-top: .5em;
 }
 
+@media screen and (max-width: 600px) {
+  .PlaceAd{
+
+        font-size: small;
+  }
+  }
+
 .lang{
     float: right;
     text-align: right;
@@ -343,6 +350,12 @@ float: right;
     margin-top: .5em;
 }
 
+@media screen and (max-width: 600px) {
+  .lang{
+
+        font-size: small;
+  }
+  }
 .login{
   
     float: left;
@@ -366,6 +379,12 @@ float: right;
     margin-top: .5em;
     
 }
+@media screen and (max-width: 600px) {
+  .about{
+
+        font-size: small;
+  }
+  }
 
   .tab{
     background-color: rgb(3, 17, 31);

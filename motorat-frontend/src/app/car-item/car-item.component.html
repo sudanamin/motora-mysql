@@ -1,27 +1,26 @@
- 
+<div align='center'>
 
 
-<div align='center'  >
+    <span>
 
-   
-   <span     >
-        <h2 class='logo' style='display: inline;   text-decoration: underline;  
+
+
+        <h2 class='logo' style=' display: inline;  text-decoration: underline;  
        font-family:Shrikhand, cursive; color:rgb(64, 52, 112);  ' (click)="router.navigate(['/home'])">ZEZENIA.ae<span
-                style="color:orange">#</span></h2>   
+                style="color:orange">#</span></h2>
+        <img class=' hidden-xs' style='width:70px;height:auto;display: inline;  vertical-align: bottom; ' src="assets/car.svg">
+        <!-- <img   style="vertical-align: middle; " src="assets/car.png">  -->
 
-      <!--    <img class=' hidden-xs' style='width:70px;height:20px;  vertical-align: bottom; ' src="assets/logo2.png">  -->
-       <!--  <img   style="vertical-align: middle; " src="assets/logo.png"> 
-    rgb(156, 11, 113);
-    -->
-         &nbsp;&nbsp;&nbsp;  
-   </span>
-         
 
-   <h1 class='bring  hidden-xs'  style='display: inline; color:black;  vertical-align: middle; 
+        &nbsp;&nbsp;&nbsp;
+    </span>
+
+
+    <h1 class='bring  hidden-xs' style='display: inline; color:black;  vertical-align: middle; 
    font-family:ubuntu; font-weight: bold ' translate>Title</h1>
-            
-        
-      <!--   <img class='logo hidden-xs' style='  vertical-align: bottom; ' src="assets/logo.png">  Shrikhand-->
+
+
+    <!--   <img class='logo hidden-xs' style='  vertical-align: bottom; ' src="assets/logo.png">  Shrikhand-->
 
 </div>
 
@@ -31,29 +30,30 @@
 
     <div class="col-md-2"> </div>
     <div class="col-md-8">
-            
+
 
         <div class='about hidden-xs' (click)="router.navigate(['/about'])">
-            <a   translate>About</a> &nbsp;| &nbsp;
+            <a translate>About</a> &nbsp;| &nbsp;
         </div>
         <div class='about hidden-xs' (click)="router.navigate(['/contact'])">
-            <a translate  >Contact </a> &nbsp;| &nbsp;
+            <a translate>Contact </a> &nbsp;| &nbsp;
         </div>
         <div class='about hidden-xs' (click)="router.navigate(['/members'])">
-            <a   translate>Register</a> &nbsp;| &nbsp;
+            <a translate>Register</a> &nbsp;| &nbsp;
         </div>
-        <div class='login about ' (click)="router.navigate(['/members'])"> 
-            <a style="color: rgba(241, 237, 237, 0.493);" translate><i class="fa fa-sign-in" style="font-size:normal;color:greenyellow">&nbsp;</i>Login</a>
+        <div class='login about ' (click)="router.navigate(['/members'])">
+            <a style="color: rgba(241, 237, 237, 0.493);" translate><i class="fa fa-sign-in"
+                    style="font-size:normal;color:greenyellow">&nbsp;</i>Login</a>
         </div>
 
         <div class='lang'>
-            <a   (click)="switchLanguage()" translate>lang </a>  </div>
-           
+            <a (click)="switchLanguage()" translate>lang </a> </div>
+
         <div class="PlaceAd " (click)="router.navigate(['/members'])">
-          
+
             <a style='color: rgb(83, 156, 219)' translate>PlaceAd</a>&nbsp;&nbsp;|&nbsp;
         </div>
-       
+
 
 
     </div>
@@ -61,9 +61,9 @@
 
 
 </div>
-<img  style='width:100%;height:auto;  vertical-align: bottom; ' src="assets/main.jpg"> 
+<img style='width:100%;height:auto;  vertical-align: bottom; ' src="assets/main.jpg">
 <br>
- 
+
 <!-- <img  class='logo'  style='width:150px;height:200px;  display: block;
 margin-left: auto;
 margin-right: auto;      ' src="assets/eagle.svg"> -->
@@ -73,12 +73,12 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
 
 
 
-    
+
     <br>
     <br>
-     
-    
-     <div class="col-md-1"> </div> 
+
+
+    <div class="col-md-1"> </div>
 
     <div class=" col-md-2 col-xs-12">
 
@@ -124,16 +124,16 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
 
                     <div class="form-group ">
 
-                         <label class="label label-primary" for="" translate>
+                        <label class="label label-primary" for="" translate>
                             Manufacturer
                         </label>
-                        <select class="form-control input-sm" name="manufacturerToSearch" (change)="onManufacturersChange($event.target.value)"
-                            ngModel>
+                        <select class="form-control input-sm" name="manufacturerToSearch"
+                            (change)="onManufacturersChange($event.target.value)" ngModel>
                             <option selected value>All</option>
                             <option *ngFor="let m of ManufacturersObject">
                                 {{m.manufacture_name}}
-                            </option> 
-                           <!--  <label class="label label-primary" for="" translate>
+                            </option>
+                            <!--  <label class="label label-primary" for="" translate>
                                     Manufacturer
                             <input list="browsers" class="form-control input-sm" name="manufacturerToSearch" (change)="onManufacturersChange($event.target.value)" /></label>
                             <datalist id="browsers">
@@ -142,7 +142,7 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                                         {{m.MANUFACTURE_NAME}}
                                     </option>
                             </datalist> -->
-                         </select>  
+                        </select>
 
                         <!--   <select class="form-control input-sm"   name="manufacturerToSearch" ngModel>
                                         <option selected value>All</option>
@@ -286,21 +286,21 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
             </div>
         </div>
     </div>
-   
+
     <app-photo-swipe #photoSwipe></app-photo-swipe>
 
 
 
     <!-- pagination -->
-  
-    
+
+
     <div class="col-md-7  col-xs-12">
 
         <div class='row' [class.row-rtl]="toggleLanguage">
             <div [class.col-md-9]="toggleLanguage"></div>
             <div class="col-md-3">
 
-                  <div class='hidden-md hidden-lg'> <br><br> </div>  
+                <div class='hidden-md hidden-lg'> <br><br> </div>
 
                 <label for="" translate>
                     <b translate>SortBy </b>:
@@ -353,13 +353,13 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
 
                         <!--  <div class="container2" *ngFor="let thumb of obj.thums;  let j = index">  -->
                         <div class="cardd">
-                        
-                        
+
+
                             <!-- <div class="contactBox"> contact </div> -->
-                        
+
                             <div class="container2 col-md-6 col-xs-6">
                                 <div class="verticalLine"></div>
-                        
+
                                 <div class="title"> {{obj.manufacture}}> {{obj.model }}> {{obj.specs}}
                                 </div>
                                 <!-- containerTitle -->
@@ -413,7 +413,7 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                                 <div class='details' translate>Year
                                     <span class='detailsBold'> : {{obj.year}}</span>
                                 </div>
-                                
+
                                 <br>
                                 <div class="showPhone btn btn-warning btn-sm" (click)='showPhone(obj.phone,$event)'
                                     translate> Phone:</div>
@@ -441,7 +441,8 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                     <li [ngClass]="{disabled:pager.currentPage === 1}" class="page-item">
                         <a (click)="setPage(pager.currentPage - 1)" translate>Previous</a>
                     </li>
-                    <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                    <li class="page-item" *ngFor="let page of pager.pages"
+                        [ngClass]="{active:pager.currentPage === page}">
                         <a class='ppage' (click)="setPage(page)">{{page}}</a>
                     </li>
                     <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
@@ -458,9 +459,9 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
 
 
     <div class="col-md-2"></div>
-    
-    
-    
+
+
+
 </div>
 
-<br><br> 
+<br><br>
