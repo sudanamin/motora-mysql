@@ -6,16 +6,18 @@
    
    <span     >
         <h2 class='logo' style='display: inline;   text-decoration: underline;  
-       font-family:Shrikhand, cursive; color:black;  '>ZEZENIA.ae<span
+       font-family:Shrikhand, cursive; color:rgb(64, 52, 112);  ' (click)="router.navigate(['/home'])">ZEZENIA.ae<span
                 style="color:orange">#</span></h2>   
 
       <!--    <img class=' hidden-xs' style='width:70px;height:20px;  vertical-align: bottom; ' src="assets/logo2.png">  -->
-       <!--  <img   style="vertical-align: middle; " src="assets/logo.png">  -->
+       <!--  <img   style="vertical-align: middle; " src="assets/logo.png"> 
+    rgb(156, 11, 113);
+    -->
          &nbsp;&nbsp;&nbsp;  
    </span>
          
 
-   <h1 class='bring  hidden-xs'  style='display: inline; color:gray;  vertical-align: middle; 
+   <h1 class='bring  hidden-xs'  style='display: inline; color:black;  vertical-align: middle; 
    font-family:ubuntu; font-weight: bold ' translate>Title</h1>
             
         
@@ -31,16 +33,16 @@
     <div class="col-md-8">
             
 
-        <div class='about' (click)="router.navigate(['/about'])">
+        <div class='about hidden-xs' (click)="router.navigate(['/about'])">
             <a   translate>About</a> &nbsp;| &nbsp;
         </div>
-        <div class='about' (click)="router.navigate(['/contact'])">
+        <div class='about hidden-xs' (click)="router.navigate(['/contact'])">
             <a translate  >Contact </a> &nbsp;| &nbsp;
         </div>
-        <div class='about' (click)="router.navigate(['/members'])">
+        <div class='about hidden-xs' (click)="router.navigate(['/members'])">
             <a   translate>Register</a> &nbsp;| &nbsp;
         </div>
-        <div class='login about' (click)="router.navigate(['/members'])"> 
+        <div class='login about ' (click)="router.navigate(['/members'])"> 
             <a style="color: rgba(241, 237, 237, 0.493);" translate><i class="fa fa-sign-in" style="font-size:normal;color:greenyellow">&nbsp;</i>Login</a>
         </div>
 

@@ -1,7 +1,7 @@
 <footer class="page-footer cent font-small mdb-color pt-4">
 
   <!-- Footer Links -->
-  <div class="container text-center text-md-left" [class.toggleLang]="toggleLanguage">
+  <div class="container" [class.toggleLang]="toggleLanguage">
 
     <!-- Footer links -->
     <div class="row footerUp">
@@ -11,7 +11,7 @@
 
       <div class="col-md-1"> </div>
       <!-- Grid column -->
-      <div class="col-md-4">
+      <div class="col-md-4 hidden-xs">
         <h6 class="text-uppercase mb-4 font-weight-bold"><b translate>CompanyName</b></h6>
         <p translate>OurCompany</p>
       </div>
@@ -28,7 +28,7 @@
       <!--     <hr class="w-100 clearfix d-md-none"> -->
 
       <!-- Grid column -->
-      <div class="col-md-2">
+      <div class="col-md-2  col-xs-4">
         <h6 class="text-uppercase mb-4 font-weight-bold"><b translate>UsefulLinks</b></h6>
         <p>
           Your Account
@@ -51,7 +51,7 @@
       <!--     <hr class="w-100 clearfix d-md-none"> -->
 
       <!-- Grid column -->
-      <div class="text-primary" class="col-md-1">
+      <div class="text-primary" class="col-md-1 col-xs-2">
         <h6 class="text-uppercase "> <b translate>Language</b></h6>
         <p>
           <a style="color: rgba(241, 237, 237, 0.637);" (click)="switchLanguage('ar')">العربية </a></p>
@@ -64,7 +64,7 @@
 
 
 
-      <div class="text-primary" class="col-md-3">
+      <div class="text-primary" class="col-md-3 col-xs-6">
         <h6 class="text-uppercase "> <b translate>Contact</b></h6>
         <p>
           <i class="fa fa-home mr-3"></i> Dubai, International City, AE</p>
@@ -81,7 +81,7 @@
     <!-- Footer links -->
 
     <br>
-    <div class='row' style='color:rgba(34, 137, 228, 0.808)'>
+    <div class='row hidden-xs' style='color:rgba(34, 137, 228, 0.808)'>
       <!-- rgb(83, 156, 219) (34, 137, 228, 0.808)-->
       <div class="col-md-1  "></div>
       <div class="col-md-1  " translate> <b class="text-uppercase mb-4 font-weight-bold" translate> Emirate</b>
@@ -119,14 +119,47 @@
       </div> -->
 
     </div>
+    <br>
+
+    <div  align ='center' >   <!-- class="col-md-2 " -->
+      <div  >
+        <!-- Social buttons -->
+        
+          <ul class="list-unstyled list-inline">
+            <li class="list-inline-item">
+              <a href='http://www.fb.com' class="btn-floating btn-lg rgba-white-slight mx-1">
+                <i class="fa fa-facebook" style=" color:rgba(67, 137, 230, 0.897)"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href='http://web.whatsapp.com' class="btn-floating btn-lg rgba-white-slight mx-1">
+                <i class="fa fa-whatsapp" style=" color:rgba(0, 128, 0, 0.788)"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href='http://www.google.com' class="btn-floating btn-lg rgba-white-slight mx-1">
+                <i class="fa fa-google-plus" style=" color:rgba(202, 6, 6, 0.61)"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href='http://www.google.com' class="btn-floating btn-lg rgba-white-slight mx-1">
+                <i class="fa fa-linkedin" style=" color:white"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      
+    </div>
 
     <hr>
+
+
     <!-- Grid row -->
-    <div class="row   align-items-center" style='direction: ltr'>
+    <div class="   align-items-center" style='direction: ltr'>
 
       <!-- Grid column -->
       <!--  <div class="col-md-1  "></div> -->
-      <div class="col-md-10  ">
+      <div >  <!-- class="col-md-10  " -->
 
         <!--Copyright-->
         <p class="text-center text-md-left"><span class='footerUp'>© Copyright:</span>
@@ -134,50 +167,27 @@
             <strong style="color: goldenrod"> zezenia.ae </strong>
 
           </a><span class='footerUp'>2018,</span>
+
+          
           <br>
           <span class='footerUp'>All Rights Reserved.</span>
         </p>
 
       </div>
-      <!-- Grid column -->
 
-      <!-- Grid column -->
-      <div class="col-md-2 ">
-        <div class='row' style='direction: ltr'>
-          <!-- Social buttons -->
-          <div class="text-center text-md-right">
-            <ul class="list-unstyled list-inline">
-              <li class="list-inline-item">
-                <a href='http://www.fb.com' class="btn-floating btn-sm rgba-white-slight mx-1">
-                  <i class="fa fa-facebook" style=" color:rgba(67, 137, 230, 0.897)"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href='http://web.whatsapp.com' class="btn-floating btn-sm rgba-white-slight mx-1">
-                  <i class="fa fa-whatsapp" style=" color:rgba(0, 128, 0, 0.788)"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href='http://www.google.com' class="btn-floating btn-sm rgba-white-slight mx-1">
-                  <i class="fa fa-google-plus" style=" color:rgba(202, 6, 6, 0.61)"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href='http://www.google.com' class="btn-floating btn-sm rgba-white-slight mx-1">
-                  <i class="fa fa-linkedin" style=" color:white"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <!-- Grid column -->
 
     </div>
-    <!-- Grid row -->
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+    
+      <!-- Grid column -->
+
+   
+      
 
   </div>
   <!-- Footer Links -->
-
+ 
 </footer>
 <!-- Footer -->
