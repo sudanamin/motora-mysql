@@ -1,85 +1,76 @@
-
-<div  *ngIf="auth.user | async; then loading else login">here is ignored</div>
+<div *ngIf="auth.user | async; then loading else login">here is ignored</div>
 
 <ng-template #login>
-<!--<div class="form-container ">
- <div class="form-container">
-    <img src="assets/images/lock.svg" id="lock">   -->
  
-     <!-- <span class="error" *ngIf="error">{{ error }}</span>
- 
-   <button (click)="auth.facebookLogin()" id="fb">Login With Facebook</button><br>
-   <br>
-   <br>
-   <button (click)="auth.googleLogin()" id="google" ><i class="fa fa-google">Login With Google</i></button>
-   <br>
-   <br>
-   <button routerLink="/login-email" id="email">Email</button>
 
-   <br>
-   <br>
- 
-   <a routerLink="/signup" routerLinkActive="active" class="alc">No account? <strong>Create one here</strong></a>
- </div> -->
- 
- <div class="tab">
-  <div class="col-md-2"> </div>
-  <div class="col-md-8">
+  <div class="tab">
+    <div class="col-md-2"> </div>
+    <div class="col-md-8">
 
       <br>
-      <div class='about' (click)= "router.navigate(['/main'])"> <a ><i class="fa fa-home" style="font-size:normal;color:greenyellow"></i>&nbsp;<span translate>Home</span> &nbsp;|</a></div>
-      <div class='about' (click)= "router.navigate(['/about'])"> &nbsp; <a style="color:white;" translate>About</a>  &nbsp;|</div>
-      <div class='about' (click)= "router.navigate(['/contact'])"> &nbsp; <a style="color:white;" translate>Contact</a> </div>
-      
-      
-       
-      <div class='lang' > <a style="color: rgba(184, 207, 228, 0.877);"(click)="switchLanguage()" translate>lang </a>&nbsp;&nbsp;</div>
-        <br> <br> 
+      <div class='about' (click)="router.navigate(['/main'])"> <a><i class="fa fa-home"
+            style="font-size:normal;color:greenyellow"></i>&nbsp;<span translate>Home</span> &nbsp;|</a></div>
+      <div class='about' (click)="router.navigate(['/about'])"> &nbsp; <a style="color:white;" translate>About</a>
+        &nbsp;|</div>
+      <div class='about' (click)="router.navigate(['/contact'])"> &nbsp; <a style="color:white;" translate>Contact</a>
+      </div>
+
+
+
+      <div class='lang'> <a style="color: rgba(184, 207, 228, 0.877);" (click)="switchLanguage()" translate>lang
+        </a>&nbsp;&nbsp;</div>
+      <br> <br>
+    </div>
+    <div class="col-md-2"> </div>
   </div>
-  <div class="col-md-2"> </div>
-</div>    
 
-<div class="row"> </div>
+  <!-- <div class="row"> </div> -->
+
  
-    <div class="row"> 
-<div class="col-md-4 col-xs-1"> </div>
- <div   class="loginBox fontUbuntu    col-md-3 col-xs-10">
-  
-  <h4 translate> LoginHere </h4>
-  <!-- <form> -->
+    <div class="col-md-4 col-xs-1"> </div>
+    <div  class="loginBox fontUbuntu    col-md-3 col-xs-10">
 
-      <button (click)="auth.facebookLogin()" id="fb"  class="btn-si btn-facebook">Login With Facebook</button><br>
+      <div  *ngIf='!ShowReset'>
+      
+         
+
+      <h4 translate> LoginHere </h4>
+
+
+      <button (click)="auth.facebookLogin()" id="fb" class="btn-si btn-facebook">Login With Facebook</button><br>
       <br>
       <br>
       <button (click)="auth.googleLogin()" id="google" class="btn-si btn-google">Login With Google</button>
-     <!--  <button >Sign in with Google</button> -->
+
       <br>
       <br>
       <br>
-      <p >Email</p>
+      <p>Email</p>
       <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
-    
-    <!-- <input type="text" name="" placeholder="Enter Email">
-    <p>Password</p>
-    <input type="password" name="" placeholder="••••••"> -->
-    <input type="text" style='font-style: italic;' placeholder="Email address.." (ngModel)="email" name="email" class="txt" required>
-      <input type="password" style='font-style: italic;' placeholder="Password" (ngModel)="password" name="password" class="txt" required>
 
-    <input type="submit" name="" value="Sign In">
-  </form>
-    <a  routerLink="/reset" routerLinkActive="active" class="alc">Forget Password</a>
-    <br>
-    <br>
-    <a  fontUbuntu routerLink="/signup" routerLinkActive="active" class="alc">No account? <strong>Create one here</strong></a>
+        <input type="text" style='font-style: italic;' placeholder="Email address.." (ngModel)="email" name="email"
+          class="txt" required>
+        <input type="password" style='font-style: italic;' placeholder="Password" (ngModel)="password" name="password"
+          class="txt" required>
 
+        <input type="submit" name="" value="Sign In">
+      </form>
+      <a (click)= "setShowReset(true)">Forget Password</a>
+      <br>
+      <br>
+      <a fontUbuntu routerLink="/signup" routerLinkActive="active" class="alc">No account? <strong>Create one
+          here</strong></a>
+
+         
+
+    </div>
+    <app-reset-password  *ngIf='ShowReset'></app-reset-password>
+    <br>
    
-   <!--  <a href='https://play.google.com/store/apps/details?id=com.ammostafa.stickykeep&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
-      <img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/></a>
-
-    <div class ="play">Our app is now available on Google Play.</div> -->
-
-</div>
-</div>
+    <input  *ngIf='ShowReset' (click)= "setShowReset(false)"  type="submit" value="Cancel">
+  </div>
+  
+ 
 </ng-template>
 
 <ng-template #loading> Loading...</ng-template>

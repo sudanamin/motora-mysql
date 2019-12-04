@@ -1,7 +1,7 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AppComponent } from './app.component';
+/* import { AppComponent } from './app.component'; */
 import { MembersComponent } from './members/members.component';
 //import { AuthGuard } from './auth.guard';
 

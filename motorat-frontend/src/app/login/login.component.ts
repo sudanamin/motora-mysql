@@ -7,6 +7,8 @@ import { AuthService } from '../core/auth.service';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { Utils } from '../../util'; 
 
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -19,6 +21,11 @@ export class LoginComponent implements OnInit {
  email:any;
  password:any;
  toggleLanguage = false;
+
+ ShowReset = false;   
+
+
+    
  rtl = 'rtl';
 
   constructor(public auth: AuthService,private router: Router ,private translate: TranslateService) {
@@ -26,6 +33,11 @@ export class LoginComponent implements OnInit {
 
      
    
+  }
+
+  setShowReset(value){
+
+    this.ShowReset = value;
   }
   
   switchLanguage() {
@@ -44,6 +56,8 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit() {
+
+     
 
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.toggleLanguage = Utils.toggleLanguage;

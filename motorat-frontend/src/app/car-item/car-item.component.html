@@ -61,7 +61,7 @@
 
 
 </div>
-<img class=' hidden-xs' style='width:100%;height:auto;  vertical-align: bottom; ' src="assets/main.jpg"> 
+<img  style='width:100%;height:auto;  vertical-align: bottom; ' src="assets/main.jpg"> 
 <br>
  
 <!-- <img  class='logo'  style='width:150px;height:200px;  display: block;
@@ -78,14 +78,14 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
     <br>
      
     
-   <!--  <div class="col-md-1"> </div> -->
+     <div class="col-md-1"> </div> 
 
     <div class=" col-md-2 col-xs-12">
 
         <div class="row">
 
 
-            <div class="SearchBox fontUbuntu col-sm-12">
+            <div class="SearchBox fontUbuntu col-xs-12">
                 <form #SearchFrm="ngForm" (ngSubmit)="SearchCar(SearchFrm)">
                     <h4 align="center" class="SearchTitle" translate> Search</h4>
 
@@ -218,7 +218,7 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
 
 
 
-                    <div class="form-group " style='padding-right:13px;padding-left:13px;' dir="ltr">
+                    <div class="form-group " style='padding-right:3px;padding-left:3px;' dir="ltr">
                         <!--  <label for="" translate>
                                 price from to:
                             </label>
@@ -299,7 +299,9 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
         <div class='row' [class.row-rtl]="toggleLanguage">
             <div [class.col-md-9]="toggleLanguage"></div>
             <div class="col-md-3">
-                    <br><br>
+
+                  <div class='hidden-md hidden-lg'> <br><br> </div>  
+
                 <label for="" translate>
                     <b translate>SortBy </b>:
                 </label>

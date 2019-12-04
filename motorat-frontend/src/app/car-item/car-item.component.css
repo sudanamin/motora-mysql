@@ -4,7 +4,7 @@
 
  
     .row-rtl {
-           margin-right: 10px;
+           margin-right: 3px;
              
        
     }
@@ -131,7 +131,7 @@ a{
     /* width: 200px; */
    /*  border: 1px solid rgba(83, 50, 145, 0.575); */
    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    padding: 10px;
+    padding-top: 10px;
     margin: 1px;
 }
 
@@ -181,7 +181,7 @@ a{
     height: 180px;
    
     float: left;
-    padding-right: 10px;
+    padding-right: 5px;
 }
 
 
@@ -293,7 +293,7 @@ showPhone:hover{
 ul 
 {
     line-height:100%;  
-    padding-left: 3%;
+     padding-left: 0%; 
   
    
 }
@@ -315,8 +315,8 @@ hr {
 
 
 .container-fluid {
-    margin-left: 1%;
-    margin-right: 2%;
+    /* margin-left: 1%;
+    margin-right: 2%; */
 }
 
 .PlaceAd{
