@@ -178,11 +178,13 @@ a{
 .verticalLine {
    /*  border-left: 3px solid rgba(58, 33, 134, 0.514); */
     border-left: 3px solid #2A6496;
-    height: 180px;
+    height: 150px;
    
     float: left;
     padding-right: 5px;
 }
+
+
 
 
 
@@ -211,7 +213,7 @@ a{
 .imgThumb{
     object-fit: cover;
 
-   width:150px; 
+   width:170px; 
    
    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 

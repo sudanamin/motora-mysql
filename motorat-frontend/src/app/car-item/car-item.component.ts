@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef , OnInit, ViewChild } from '@angular/core';
 import { car } from '../../car';
 import { DataService } from '../data.service'
 import { PagerService } from '../_services/index'
@@ -27,7 +27,7 @@ export class CarItemComponent implements OnInit {
   selectedCar: car;
 
   SortBy: string = 'Date';
-
+   
   slider1: any;
   slider2: any;
   slider3: any;
@@ -73,6 +73,7 @@ export class CarItemComponent implements OnInit {
 
 
   constructor(router: Router,
+    private el: ElementRef,
     private pagerService: PagerService, private dataService: DataService, private translate: TranslateService) {
     translate.setDefaultLang('en');
     this.router = router;
@@ -322,6 +323,14 @@ export class CarItemComponent implements OnInit {
         break;
       }
     }
+  }
+
+  showSearch(){
+
+    let searchTag = this.el.nativeElement.querySelector(".SearchBox");
+    searchTag.classList.remove('hidden-xs'); 
+
+
   }
 
   onSortByChange(newValue) {

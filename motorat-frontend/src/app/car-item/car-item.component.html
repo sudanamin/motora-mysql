@@ -1,4 +1,4 @@
-<div align='center'>
+<div   align='center'>
 
 
     <span>
@@ -6,7 +6,7 @@
 
 
         <h2 class='logo' style=' display: inline;  text-decoration: underline;  
-       font-family:Shrikhand, cursive; color:rgb(64, 52, 112);  ' (click)="router.navigate(['/home'])">ZEZENIA.ae<span
+       font-family:Shrikhand  ,cursive; color:rgb(64, 52, 112);  ' (click)="router.navigate(['/home'])">ZEZENIA.ae<span
                 style="color:orange">#</span></h2>
                
         <img class=' hidden-xs' style='width:70px;height:auto;display: inline;  vertical-align: bottom; ' src="assets/car.svg">
@@ -75,8 +75,9 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
 
 
 
-    <br>
-    <br>
+        <br>
+        <br>
+
 
 
     <div class="col-md-1"> </div>
@@ -84,13 +85,15 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
     <div class=" col-md-2 col-xs-12">
 
         <div class="row">
-
-
-            <div class="SearchBox fontUbuntu col-xs-12">
+                
+               
+            <div   class="SearchBox fontUbuntu  col-xs-12">
+                    
+                    
                 <form #SearchFrm="ngForm" (ngSubmit)="SearchCar(SearchFrm)">
                     <h4 align="center" class="SearchTitle" translate> Search</h4>
 
-
+                    
                     <div class="form-group ">
                         <!-- <label for="" >
                                 <span translate>city</span>:
@@ -299,14 +302,15 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
 
         <div class='row' [class.row-rtl]="toggleLanguage">
             <div [class.col-md-9]="toggleLanguage"></div>
-            <div class="col-md-3">
+            <!-- <div class="col-md-3 col-xs-7"> -->
 
-                <div class='hidden-md hidden-lg'> <br><br> </div>
+                    <br class='visible-xs'>
+                    <br class='visible-xs'>
 
-                <label for="" translate>
+                <label   for="" translate>
                     <b translate>SortBy </b>:
                 </label>
-                <select class="form-control input-sm" (change)="onSortByChange($event.target.value)" name="SortBy"
+                <select style='width: auto;' class="form-control input-sm" (change)="onSortByChange($event.target.value)" name="SortBy"
                     ngModel>
                     <option>Price lowest to highest</option>
                     <option>Price highest to lowest </option>
@@ -316,17 +320,17 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                 </select>
                 <br>
 
-            </div>
+            <!-- </div> -->
 
 
         </div>
 
 
 
-        <div class='row' [class.row-rtl]="toggleLanguage" style='font-family: ubuntu'>
+        <div  class='row' [class.row-rtl]="toggleLanguage" style='font-family: ubuntu'>
             <div [class.col-md-6]="toggleLanguage"></div>
 
-            &nbsp;&nbsp;&nbsp; <a style="color:black;" (click)="resetSearch('allCiteis')" translate> AllCities </a>
+             <a style="color:black;" (click)="resetSearch('allCiteis')" translate> AllCities </a>
             > {{CityToSearch}} > <a style="color:black;" (click)="resetSearch('AllManufacturer')" translate>
                 AllManufacturer</a> > {{ManufacturerToSearch}} >
             <a style="color:black;" (click)="resetSearch('AllModel')" translate> AllModel</a> > {{ModelToSearch}}
@@ -339,7 +343,7 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
             <!-- <h1>Angular 2 - Pagination Example with logic like Google</h1> -->
 
             <!-- items being paged -->
-            <div class='row'>
+           
                 <br>
 
                 <ul style="list-style:none">
@@ -357,12 +361,14 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
 
 
                             <!-- <div class="contactBox"> contact </div> -->
+                            <div class="title"> {{obj.manufacture}}> {{obj.model }}> {{obj.specs}}
+                            </div>
 
-                            <div class="container2 col-md-6 col-xs-6">
-                                <div class="verticalLine"></div>
+                            <div class='row'>
+                            <div class="container2 col-md-3 col-xs-6">
+                                <div class="verticalLine hidden-xs"></div>
 
-                                <div class="title"> {{obj.manufacture}}> {{obj.model }}> {{obj.specs}}
-                                </div>
+                               
                                 <!-- containerTitle -->
 
                                 <br>
@@ -370,15 +376,10 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                                 <div class="num_of_img"> +{{obj.thums.length}} </div>
 
                                 <img class='imgThumb' (click)="openSlideshow(i,j);" [src]="obj.thums[0]">
-                                <br>
-                                <br>
-                                <div class='fontUbuntu'> <i translate>Located:</i> {{obj.city}} , <i translate>Date:</i>
-                                    {{obj.date| date : "dd MMMM yyyy" }}</div>
-                                <br>
-                                <br>
+                               
 
                             </div>
-                            <div class="rightOfBox col-md-3 col-xs-3">
+                            <div class="rightOfBox  col-md-5 hidden-xs">
                                 <div class='details' translate>warranty
                                     <span class='detailsBold'> : {{obj.warranty}} </span></div>
 
@@ -395,10 +396,13 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                                 <div class='details' translate>Color
                                     <span> : </span> <span class='detailsBold' translate>{{ obj.color}}</span>
                                 </div>
+                                <br>
+                                <div class='fontUbuntu'> <i translate>Located:</i> {{obj.city}} , <i translate>Date:</i>
+                                    {{obj.date| date : "dd MMMM yyyy" }}</div>
                             </div>
 
 
-                            <div class="rightOfBox col-md-3 col-xs-3">
+                            <div class="rightOfBox  col-md-4 col-xs-6">
 
                                 <div class='details' translate>Price
                                     <span class='detailsBold'> : {{obj.price | number}} <span translate> AED</span>
@@ -418,20 +422,29 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                                 <br>
                                 <div class="showPhone btn btn-warning btn-sm" (click)='showPhone(obj.phone,$event)'
                                     translate> Phone:</div>
-                                <br>
-                                <br>
+                                     
+                                   
+                                 
                             </div>
-
-                            <hr>
+                           
+                            
                         </div>
-
+                        <br> 
+                        <div class='fontUbuntu visible-xs'> <i translate>Located:</i> {{obj.city}} , <i translate>Date:</i>
+                            {{obj.date| date : "dd MMMM yyyy" }}</div>
+                            
+                           
+                            
+                            <hr>
+                       
+                    </div>
 
 
                     </li>
 
 
                 </ul>
-            </div>
+             
 
             <!-- pager -->
             <div class="pager">
