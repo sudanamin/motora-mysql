@@ -91,7 +91,7 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                     
                     
                 <form #SearchFrm="ngForm" (ngSubmit)="SearchCar(SearchFrm)">
-                    <h4 align="center" class="SearchTitle" translate> Search</h4>
+                    <h3 align="center" class="SearchTitle" translate> Search</h3>
 
                     
                     <div class="form-group ">
@@ -363,15 +363,16 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                             <!-- <div class="contactBox"> contact </div> -->
                             <div class="title"> {{obj.manufacture}}> {{obj.model }}> {{obj.specs}}
                             </div>
-
+                            <br>
                             <div class='row'>
-                            <div class="container2 col-md-3 col-xs-6">
+                                    
+                            <div class="container2 col-md-3 col-xs-7">
                                 <div class="verticalLine hidden-xs"></div>
 
                                
                                 <!-- containerTitle -->
 
-                                <br>
+                               
 
                                 <div class="num_of_img"> +{{obj.thums.length}} </div>
 
@@ -402,7 +403,7 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                             </div>
 
 
-                            <div class="rightOfBox  col-md-4 col-xs-6">
+                            <div class="rightOfBox  col-md-4 col-xs-5">
 
                                 <div class='details' translate>Price
                                     <span class='detailsBold'> : {{obj.price | number}} <span translate> AED</span>
