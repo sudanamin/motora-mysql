@@ -39,8 +39,8 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 var firebaseConfig = {
-  apiKey: "AIzaSyAIblq6kLPLBguR_GUkRgzTu8ou219yoLk",
-    authDomain: "auth.zezenia.ae",      /* motorat-a0355.firebaseapp.com */
+    apiKey: "AIzaSyAIblq6kLPLBguR_GUkRgzTu8ou219yoLk",
+    authDomain: "motorat-a0355.firebaseapp.com",      /* motorat-a0355.firebaseapp.com */
     databaseURL: "https://motorat-a0355.firebaseio.com",
     projectId: "motorat-a0355",
     storageBucket: "motorat-a0355.appspot.com",

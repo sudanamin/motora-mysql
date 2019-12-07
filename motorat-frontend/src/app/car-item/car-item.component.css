@@ -343,6 +343,7 @@ float: right;
 
 .lang{
     float: right;
+    margin-right: 5%;
     text-align: right;
     font-weight: bold;
     color: rgba(78, 10, 10, 0.699);
@@ -392,12 +393,13 @@ float: right;
     background-color: rgb(3, 17, 31);
     overflow: auto;
     align-items : center;
+     width: 100vw; 
    
   border: none;
 } 
 
 .row{
-    max-width: 100%;
+    max-width: 100vw;
 }
 
 
