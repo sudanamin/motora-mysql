@@ -213,20 +213,21 @@ a{
 .imgThumb{
     object-fit: cover;
 
-   width:170px; 
+   width:190px; 
    
    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
-   min-height:115px;
-   height:115px; 
+   min-height:145px;
+   height:145px; 
+   cursor: pointer;
 }
-
+/* 
 .imgThumb:hover{
-    width:170px; 
+    width:180px; 
     height:145px;
     min-height:145px;
     cursor: pointer;
-}
+} */
 /* .imgThumb{
     width:170px; 
     height:115px; 
@@ -399,7 +400,7 @@ float: right;
 } 
 
 .row{
-    max-width: 100vw;
+   /*  max-width: 100%; */
 }
 
 
