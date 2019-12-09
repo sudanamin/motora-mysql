@@ -91,7 +91,9 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                     
                     
                 <form #SearchFrm="ngForm" (ngSubmit)="SearchCar(SearchFrm)">
-                    <h3 align="center" class="SearchTitle" translate> Search</h3>
+                    <h3 align="center" class="SearchTitle" translate> <h4 class="glyphicon glyphicon-search ">
+
+                    </h4>  Search</h3>
 
                     
                     <div class="form-group ">
@@ -222,7 +224,7 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
 
 
 
-                    <div class="form-group " style='padding-right:3px;padding-left:3px;' dir="ltr">
+                    <div class="form-group " style='padding-right:13px;padding-left:13px;' dir="ltr">
                         <!--  <label for="" translate>
                                 price from to:
                             </label>
@@ -309,7 +311,9 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                     <br class='visible-xs'>
 
                 <label   for="" translate>
-                    <b translate>SortBy </b>:
+                        
+                        <i class="glyphicon glyphicon-sort-by-attributes">  </i>
+                         <b translate sort-by-attributes>SortBy </b>:
                 </label>
                 <select style='width: auto;' class="form-control input-sm" (change)="onSortByChange($event.target.value)" name="SortBy"
                     ngModel>
@@ -331,11 +335,15 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
         <div  class='row' [class.row-rtl]="toggleLanguage" style='font-family: ubuntu'>
             <div [class.col-md-6]="toggleLanguage"></div>
 
-             <a style="color:black;" (click)="resetSearch('allCiteis')" translate> AllCities </a>
-            > {{CityToSearch}} > <a style="color:black;" (click)="resetSearch('AllManufacturer')" translate>
-                AllManufacturer</a> > {{ManufacturerToSearch}} >
-            <a style="color:black;" (click)="resetSearch('AllModel')" translate> AllModel</a> > {{ModelToSearch}}
+             <a class='allCities' (click)="resetSearch('allCiteis')" translate> AllCities </a>
+            > {{CityToSearch}} 
+            
+             <a class='allCities' (click)="resetSearch('AllManufacturer')" translate>
+            >   AllManufacturer</a> > {{ManufacturerToSearch}} >
 
+            <a class='allCities' (click)="resetSearch('AllModel')" translate> AllModel</a>
+             > {{ModelToSearch}}
+            
 
         </div>
 
@@ -367,7 +375,7 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                             <br>
                             <div class='row'>
                                     
-                            <div class="container2 col-md-4 col-xs-7">
+                            <div class="container2 col-sm-4 col-xs-7">
                                 <div class="verticalLine hidden-xs"></div>
 
                                
@@ -377,11 +385,12 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
 
                                 <div class="num_of_img"> +{{obj.thums.length}} </div>
 
-                                <img class='imgThumb' (click)="openSlideshow(i,j);" [src]="obj.thums[0]">
-                               
+                                <div class='img-hover-zoom'>
+                                    <img class='imgThumb' (click)="openSlideshow(i,j);" [src]="obj.thums[0]">
+                                </div>
 
                             </div>
-                            <div class="rightOfBox  col-md-4 hidden-xs">
+                            <div class="rightOfBox  col-sm-4 hidden-xs">
                                 <div class='details' translate>warranty
                                     <span class='detailsBold'> : {{obj.warranty}} </span></div>
 
@@ -404,7 +413,7 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                             </div>
 
 
-                            <div class="rightOfBox  col-md-4 col-xs-5">
+                            <div class="rightOfBox  col-sm-4 col-xs-5">
 
                                 <div class='details' translate>Price
                                     <span class='detailsBold'> : {{obj.price | number}} <span translate> AED</span>
@@ -422,8 +431,12 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                                 </div>
 
                                 <br>
-                                <div class="showPhone btn btn-warning btn-sm" (click)='showPhone(obj.phone,$event)'
-                                    translate> Phone:</div>
+                               <!--  <div class="showPhone btn btn-warning btn-sm" (click)='showPhone(obj.phone,$event)'
+                                    translate> Phone:</div> -->
+                                    
+                                 
+                                 <a  class='detailsBold' style='color:black' href="{{'tel:'+tel}}"><i class="glyphicon glyphicon-earphone "></i>
+                                     Call : {{obj.phone}}</a>
                                      
                                    
                                  

@@ -9,12 +9,12 @@
        
     }
  
-a:hover{
+  a:hover{
 	 
-    /* font-style: italic; */
-    background-color: rgb(64, 52, 112);
+    
+     color: rgb(225, 223, 230);
 	text-decoration: none;
-}
+}  
 
 
 
@@ -81,22 +81,7 @@ a{
               font-size: 24px;
             }
           }
-.num_of_img {
-    background-color: red;
-    position: absolute;
-    /* bottom: 5px; */
-    /* right: 5px;  */
-    pointer-events: none;
-    font-size: 13px;
-    font-family: Lato, "Times New Roman", Tahoma, bold , Helvetica, sans-serif;
-   /*  padding: 1px 4px; */
 
-    /* top: 100px; */
-    color:white;
-    left: 35px; 
-    font-weight: bold;
-    
-}
 
 .toggleLang{
     text-align: right;
@@ -113,17 +98,7 @@ a{
      
 }
 
-.container2 {
-    position: relative;
-    text-align: left;
-    color: solid rgba(58, 33, 134, 0.514);
-    margin-left: 0%;
-    padding-left: 0%;
-    
-   /* height: 200px;*/
-   /*  float: left; */
 
-}
 
 .SearchBox {
     background-color: rgba(216, 221, 214, 0.705); 
@@ -175,14 +150,7 @@ a{
    
 } */
 
-.verticalLine {
-   /*  border-left: 3px solid rgba(58, 33, 134, 0.514); */
-    border-left: 3px solid #2A6496;
-    height: 150px;
-   
-    float: left;
-    padding-right: 5px;
-}
+
 
 
 
@@ -208,36 +176,89 @@ a{
     color:black;
 }
 
+.container2 {
+  position: relative;
+  text-align: left;
+  color: solid rgba(58, 33, 134, 0.514);
+  margin-left: 0%;
+  padding-left: 0%;
+  /* overflow: hidden; */
+ /* height: 200px;*/
+ /*  float: left; */
 
+}
  
-.imgThumb{
+/* .imgThumb{
     object-fit: cover;
 
    width:190px; 
-   
+    
    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
    min-height:145px;
    height:145px; 
    cursor: pointer;
-}
-/* 
-.imgThumb:hover{
-    width:180px; 
-    height:145px;
-    min-height:145px;
-    cursor: pointer;
+   
+  
 } */
-/* .imgThumb{
-    width:170px; 
-    height:115px; 
- }
+
+.num_of_img {
+  background-color: red;
+  position: absolute;
+  /* bottom: 5px; */
+  /* right: 5px;  */
+  pointer-events: none;
+  font-size: 13px;
+  font-family: Lato, "Times New Roman", Tahoma, bold , Helvetica, sans-serif;
+ /*  padding: 1px 4px; */
+
+  /* top: 100px; */
+  color:white;
+  left: 35px; 
+  font-weight: bold;
+  z-index:2;
+  
+}
+
+.verticalLine {
+  /*  border-left: 3px solid rgba(58, 33, 134, 0.514); */
+   /* border-left: 3px solid rgb(31, 87, 172);  */
+   border-left: 3px solid #2a6496;
+   height: 150px;
+  
+   float: left;
+    padding-right: 5px;  
+}
+
+.img-hover-zoom {
  
- .imgThumb:hover{
-     width:210px; 
-     height:145px;
-     cursor: pointer;
- } */
+  overflow: hidden; /* [1.2] Hide the overflowing of child elements */
+  width:190px; 
+  height:145px; 
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+@media screen and (max-width: 1300px) {
+  .img-hover-zoom {
+
+    width:150px; 
+  }
+  }
+
+/* [2] Transition property for smooth transformation of images */
+.img-hover-zoom img {
+  transition: transform .5s ease;
+  cursor: pointer;
+  width:190px; 
+  height:145px; 
+  object-fit: cover;
+ 
+}
+
+/* [3] Finally, transforming the image when container gets hovered */
+.img-hover-zoom:hover img {
+  transform: scale(2);
+}
 
 showPhone:hover{
      
@@ -275,6 +296,7 @@ showPhone:hover{
     font-family: ubuntu;
      
     font-size: x-large;
+    
     
   
 
@@ -320,6 +342,14 @@ hr {
 .container-fluid {
     /* margin-left: 1%;
     margin-right: 2%; */
+}
+
+.allCities{
+ /*  color:rgb(14, 50, 83); */
+ color: rgb(52, 53, 52); 
+ /*  font-weight: bold; */
+
+
 }
 
 .PlaceAd{
