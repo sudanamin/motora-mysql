@@ -40,7 +40,7 @@ export class CarItemComponent implements OnInit {
   transmissionToSearch: string = '';
   specificationToSearch: string = '';
   toggleForm: boolean = false;
-  show_me: boolean = true;
+ /*  show_me: boolean = true; */
   showModel: Boolean = false;
 
   theHtmlString: string = 'Phone:'

@@ -46,7 +46,7 @@ a{
        
       @media screen and (min-width: 601px) {
         .logo {
-          font-size: 34px;
+          font-size: 40px;
          /*  margin-left: 20%; */
           /* margin-left: 40%; */
         }
@@ -98,10 +98,83 @@ a{
      
 }
 
+.top-right {
+  position: absolute;
+  top: 3vw;  
+  left: 65vw;
+  font-size:4vw;
+  font-weight: bold;
+  font-family: ubuntu;
+  text-align: left;
+   
+  -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
+  -webkit-animation-delay: 0s; /* Safari 4.0 - 8.0 */
+  animation-name: example;
+  animation-duration: 1.5s;
+  animation-delay: 0s;
+  
+ 
+}
+
+.top-right2 {
+  position: absolute;
+  top: 7vw;
+  left: 65vw;
+  font-size:4vw;
+  font-weight: bold;
+  font-family: ubuntu;
+  text-align: left;
+   
+  -webkit-animation-name: example2; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
+  -webkit-animation-delay: 0s; /* Safari 4.0 - 8.0 */
+  animation-name: example2;
+  animation-duration: 1.5s;
+  animation-delay: 0s;
+ 
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes example {
+  from {  top:5vw;}
+  to {  top:3vw;}
+}
+/* Standard syntax */
+@keyframes example {
+  from {  top:5vw;}
+  to {  top:3vw;}
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes example2 {
+  from {  top:9vw;}
+  to {  top:7vw;}
+}
+/* Standard syntax */
+@keyframes example2 {
+  from {  top:9vw;}
+  to {  top:7vw;}
+}
+
+
+
+
+ 
+
+.container3 {
+  position: relative;
+  text-align: center;
+  color: rgb(255, 255, 255);
+
+   
+}
+
 
 
 .SearchBox {
-    background-color: rgba(216, 221, 214, 0.705); 
+   /*  background-color: rgba(216, 221, 214, 0.705);  */
+   background-color: rgba(216, 221, 214, 0.705);
     /* background-color: rgba(211, 211, 211, 0.404);  */
     /* width: 200px; */
    /*  border: 1px solid rgba(83, 50, 145, 0.575); */
@@ -331,18 +404,7 @@ hr {
     height: 4px;
   }
 
-/* img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-   
-} */
 
-
-.container-fluid {
-    /* margin-left: 1%;
-    margin-right: 2%; */
-}
 
 .allCities{
  /*  color:rgb(14, 50, 83); */

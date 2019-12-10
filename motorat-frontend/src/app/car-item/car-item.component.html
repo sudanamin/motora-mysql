@@ -9,6 +9,7 @@
        font-family:Shrikhand  ,cursive; color:rgb(64, 52, 112);  ' (click)="router.navigate(['/home'])">ZEZENIA.ae<span
                 style="color:orange">#</span></h2>
                
+        
         <img class=' hidden-xs' style='width:70px;height:auto;display: inline;  vertical-align: bottom; ' src="assets/car.svg">
         <!-- <img   style="vertical-align: middle; " src="assets/car.png">  -->
 
@@ -62,7 +63,18 @@
 
 
 </div>
-<img style='width:100vw;height:auto;  vertical-align: bottom; ' src="assets/main.jpg">
+
+   <div class="container3">
+
+        <img style='width:100%;height:auto;  ' src="assets/main.jpg">
+         <div  class="top-right">Find your  </div>
+         <div  class="top-right2">next match  </div>
+       
+       
+       
+
+   </div>
+          
 <br>
 
 <!-- <img  class='logo'  style='width:150px;height:200px;  display: block;
@@ -286,7 +298,7 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                         </select>
                     </div>
 
-                    <button type="submit" name='button' class=' btn btn-block  btn-primary'><i translate>Go</i></button>
+                    <button type="submit" name='button' class=' btn btn-block  btn-primary'><i translate>Search</i></button>
                     <br>
                 </form>
             </div>
@@ -298,10 +310,10 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
 
 
     <!-- pagination -->
-    <div class="col-md-1"></div>
+   <!--  <div class="col-md-1"></div> -->
 
 
-    <div class="col-md-7  col-xs-12">
+    <div style='margin-left:2vw;' class="col-md-7  col-xs-12">
 
         <div class='row' [class.row-rtl]="toggleLanguage">
             <div [class.col-md-9]="toggleLanguage"></div>
@@ -435,7 +447,7 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                                     translate> Phone:</div> -->
                                     
                                  
-                                 <a  class='detailsBold' style='color:black' href="{{'tel:'+tel}}"><i class="glyphicon glyphicon-earphone "></i>
+                                 <a  class='detailsBold' style='color:black' href="{{'tel:'+obj.phone}}"><i class="glyphicon glyphicon-earphone "></i>
                                      Call : {{obj.phone}}</a>
                                      
                                    
