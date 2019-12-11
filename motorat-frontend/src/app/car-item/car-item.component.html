@@ -6,11 +6,11 @@
 
 
         <h2 class='logo' style=' display: inline;  text-decoration: underline;  
-       font-family:Shrikhand  ,cursive; color:rgb(64, 52, 112);  ' (click)="router.navigate(['/home'])">ZEZENIA.ae<span
+       font-family:Shrikhand  ,cursive; color:rgb(50, 32, 121);  ' (click)="router.navigate(['/home'])">ZEZENIA.ae<span
                 style="color:orange">#</span></h2>
                
         
-        <img class=' hidden-xs' style='width:70px;height:auto;display: inline;  vertical-align: bottom; ' src="assets/car.svg">
+        <img  style='width:70px;height:auto;display: inline;  vertical-align: bottom; ' src="assets/car.svg">
         <!-- <img   style="vertical-align: middle; " src="assets/car.png">  -->
 
 
@@ -52,8 +52,9 @@
             <a (click)="switchLanguage()" translate>lang </a> </div>
 
         <div class="PlaceAd " (click)="router.navigate(['/members'])">
+            <i class='glyphicon glyphicon-plus' style=' color: rgb(30, 146, 255); font-size: x-small;vertical-align: super;'></i>
 
-            <a style='color: rgb(83, 156, 219)' translate>PlaceAd</a>&nbsp;&nbsp;|&nbsp;
+            <a style=' color: rgb(30, 146, 255);'  translate>PlaceAd</a>&nbsp;&nbsp;|&nbsp;
         </div>
 
 
@@ -74,6 +75,8 @@
        
 
    </div>
+
+   
           
 <br>
 
@@ -109,16 +112,7 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
 
                     
                     <div class="form-group ">
-                        <!-- <label for="" >
-                                <span translate>city</span>:
-                            </label>
-    
-                            <input type="text" class="form-control  input-sm" name="carcolor" value="" [ngModel]="ColorToSearch"> -->
-
-
-
-
-
+          
 
                         <label class="label label-primary" for="carcity" translate>
                             city
@@ -151,23 +145,10 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                             <option *ngFor="let m of ManufacturersObject">
                                 {{m.manufacture_name}}
                             </option>
-                            <!--  <label class="label label-primary" for="" translate>
-                                    Manufacturer
-                            <input list="browsers" class="form-control input-sm" name="manufacturerToSearch" (change)="onManufacturersChange($event.target.value)" /></label>
-                            <datalist id="browsers">
-                                    <option selected value>All</option>
-                                    <option *ngFor="let m of ManufacturersObject">
-                                        {{m.MANUFACTURE_NAME}}
-                                    </option>
-                            </datalist> -->
+                          
                         </select>
 
-                        <!--   <select class="form-control input-sm"   name="manufacturerToSearch" ngModel>
-                                        <option selected value>All</option>
-                                        <option>NISSAN</option>
-                                        <option>TOYOTA</option>
-                                         
-                                      </select> -->
+                      
 
                     </div>
 
@@ -237,19 +218,10 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
 
 
                     <div class="form-group " style='padding-right:13px;padding-left:13px;' dir="ltr">
-                        <!--  <label for="" translate>
-                                price from to:
-                            </label>
-    
-                            <input type="text" class="form-control  input-sm" name="carcolor" value="" [ngModel]="ColorToSearch"> -->
-
+                     
                         <label for="customRange1" translate>Price</label>
 
-                        <!--   <input type="text" class="js-min-max-start" style='font-size: small' /> -->
-
-
-                        <!--                       <input style=' width: 90%;' id="ex1"  data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="100000" data-slider-step="1" data-slider-value="[0,50000]"/> 
- -->
+                  
                         <input style='width:100%; ' id="price" type="text" data-slider-value="[0,100 ]" />
                         <!--  <input id="ex12c" type="text"/><br/>  -->
                     </div>
@@ -298,7 +270,7 @@ margin-right: auto;      ' src="assets/eagle.svg"> -->
                         </select>
                     </div>
 
-                    <button type="submit" name='button' class=' btn btn-block  btn-primary'><i translate>Search</i></button>
+                    <button  type="submit" name='button' class=' btn btn-block  btn-primary'><i translate>Search</i></button>
                     <br>
                 </form>
             </div>
