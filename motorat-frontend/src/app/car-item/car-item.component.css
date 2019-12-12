@@ -39,7 +39,7 @@ a {
 
 @media screen and (max-width: 600px) {
     .logo {
-        font-size: 28px;
+        font-size: 24px;
     }
 }
 
@@ -85,12 +85,12 @@ a {
     text-align: left;
     -webkit-animation-name: example;
     /* Safari 4.0 - 8.0 */
-    -webkit-animation-duration: 2s;
+    -webkit-animation-duration: 1s;
     /* Safari 4.0 - 8.0 */
     -webkit-animation-delay: 0s;
     /* Safari 4.0 - 8.0 */
     animation-name: example;
-    animation-duration: 1.5s;
+    animation-duration: 1s;
     animation-delay: 0s;
 }
 
@@ -104,12 +104,12 @@ a {
     text-align: left;
     -webkit-animation-name: example2;
     /* Safari 4.0 - 8.0 */
-    -webkit-animation-duration: 2s;
+    -webkit-animation-duration: 1s;
     /* Safari 4.0 - 8.0 */
     -webkit-animation-delay: 0s;
     /* Safari 4.0 - 8.0 */
     animation-name: example2;
-    animation-duration: 1.5s;
+    animation-duration: 1s;
     animation-delay: 0s;
 }
 
@@ -167,18 +167,32 @@ a {
     color: rgb(255, 255, 255);
 }
 
-.SearchBox {
+.FilterBox {
     background-color: rgba(216, 221, 214, 0.705);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     padding-top: 1px;
+    padding: 10px;
 }
 
 .SearchBox2 {
-    background-color: rgba(35, 23, 83, 0.884);
+  /*   background-color: rgba(35, 23, 83, 0.884); */
+    background-color: rgba(0, 0, 0, 0.733);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-top: -60px;
     padding-top: 10px;
     border-radius: 10px;
+}
+
+@media screen and (min-width: 601px) {
+    .SearchBox2 {
+        margin-top: -60px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .SearchBox2 {
+        margin-top:6px;
+    }
 }
 
 .contactBox {
@@ -224,6 +238,8 @@ a {
     /* overflow: hidden; */
     /* height: 200px;*/
 }
+
+ 
 
 .num_of_img {
     background-color: red;
@@ -311,6 +327,13 @@ showPhone:hover {
 .SearchTitle {
     font-family: ubuntu;
     font-size: x-large;
+    
+}
+
+.SearchTitle2 {
+    font-family: ubuntu;
+    font-size:  large;
+    padding-left: 10px;
 }
 
 .SearchDetails {

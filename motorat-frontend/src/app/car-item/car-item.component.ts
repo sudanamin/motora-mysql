@@ -286,6 +286,7 @@ export class CarItemComponent implements OnInit {
     }
 
     console.log('manufatures to search : ' + JSON.stringify(toSearch));
+    console.log('manufacter to serach'+ SearchFrm.value.manufacturerToSearch);
     this.currentPage = 1;
     this.toSearch = toSearch;
     this.getCars(this.toSearch, 0)
@@ -376,7 +377,7 @@ export class CarItemComponent implements OnInit {
      
     }); */
 
-    this.slider1 = new Slider("#price", {
+    this.slider1 = new Slider(".price", {
       id: "slider2",
       /*    tooltip: 'always', */
       tooltip_position: 'bottom',
@@ -392,7 +393,7 @@ export class CarItemComponent implements OnInit {
       alert(sliderValue);
     }); */
 
-    this.slider2 = new Slider("#kilo", {
+    this.slider2 = new Slider(".kilo", {
       id: "slider3",
       /* tooltip: 'always', */
       tooltip_position: 'bottom',
@@ -401,12 +402,12 @@ export class CarItemComponent implements OnInit {
       /*   ticks_snap_bounds: 30 */
     });
 
-    this.slider3 = new Slider("#year", {
+    this.slider3 = new Slider(".year", {
       id: "slider4",
 
       tooltip_position: 'bottom',
-      ticks: [1990, 2018],
-      ticks_labels: ['≤1990', '2018'],
+      ticks: [1990, 2020],
+      ticks_labels: ['≤1990', '2020'],
       ticks_snap_bounds: 5
     });
 
