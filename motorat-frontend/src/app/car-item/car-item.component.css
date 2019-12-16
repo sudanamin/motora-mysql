@@ -168,7 +168,8 @@ a {
 }
 
 .FilterBox {
-    background-color: rgba(216, 221, 214, 0.705);
+    background-color:  rgba(216, 221, 214, 0.705);
+
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     padding-top: 1px;
     padding: 10px;
@@ -176,8 +177,10 @@ a {
 
 .SearchBox2 {
   /*   background-color: rgba(35, 23, 83, 0.884); */
-    background-color: rgba(0, 0, 0, 0.733);
+  background-color: rgba(0, 0, 0, 0.733);
+
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
     margin-top: -60px;
     padding-top: 10px;
     border-radius: 10px;
@@ -424,7 +427,8 @@ hr {
 }
 
 .tab {
-    background-color: rgb(3, 17, 31);
+    background-color: rgb(3, 17, 31); 
+  
     overflow: auto;
     align-items: center;
     width: 100vw;
