@@ -12,7 +12,7 @@
                 style="color:orange">#</span></h2>
 
 
-        <img style='width:70px;height:auto;display: inline;  vertical-align: bottom; ' src="assets/car.svg">
+        <img class=' hidden-xs' style='width:70px;height:auto;display: inline;  vertical-align: bottom; ' src="assets/car.svg">
         <!-- <img   style="vertical-align: middle; " src="assets/car.png">  -->
 
 
@@ -95,37 +95,50 @@
 
         <hr style='margin:0px ' class='visible-xs'>
 
-        <div align='center' style='  padding: 0px; margin:0px; background-color:white;'
-        class='col-xs-6 visible-xs'>
+        <div align='center' 
+        class='col-xs-4 visible-xs'>
 
-        <div (click)="onSortByClicked()">
+        <div style='  padding: 0px; margin:0px; background-color:rgb(255, 255, 255);' (click)="onSortByClicked()">
         <i class="glyphicon glyphicon-sort-by-attributes"> </i>
-        <b    translate style='background-color:rgba(0, 0, 0, 0.116);'>Sort</b>
+        <b    translate  >Sort</b>
         <i style='float: right;'> | </i></div>
 
-        <hr style='margin:3px' class='visible-xs'>
-        <select style='width: auto; background-color: white;' id='sortMobile' class="form-control input-sm hidden-xs" 
-            (change)="onSortByChange($event.target.value)" name="SortBy" ngModel>
-            <option>Price lowest to highest</option>
-            <option>Price highest to lowest </option>
-            <option>Date</option>
-
-        </select>
+       
+      
 
     </div>
 
-        <div (click)="onFilterClicked()"  align='center' style='  padding: 0px; margin:0px; background-color:rgba(0, 0, 0, 0.116);'
-            class='col-xs-6 visible-xs'>
-            <i class="glyphicon glyphicon-filter "></i>
-            <b translate> Filter </b>
 
+
+        <div (click)="onSearchClicked()"  align='center' style='  padding: 0px; margin:0px;  '
+            class='col-xs-4 visible-xs'>
+            <i class="glyphicon glyphicon-search "></i>
+            <b translate> Search </b>
+           
+            <i style='float: right;'> | </i>
            
         </div>
 
+        <div (click)="onFilterClicked()"  align='center' style='  padding: 0px; margin:0px;  '
+        class='col-xs-4 visible-xs'>
+        <i class="glyphicon glyphicon-filter "></i>
+        <b translate> Filter </b>
+       
+        <i style='float: right;'> | </i>
+       
+    </div>
+     
 
 
+        <hr style='margin:3px' class='visible-xs'>
 
-        <br class='visible-xs'>
+        <select style='width: auto; background-color: rgb(255, 255, 255); margin-left: 19px;' id='sortMobile' class="form-control input-sm hidden-xs" 
+        (change)="onSortByChange($event.target.value)" name="SortBy" ngModel>
+        <option>Price lowest to highest</option>
+        <option>Price highest to lowest </option>
+        <option>Date</option>
+
+    </select>
        
 
     </div>
@@ -392,8 +405,8 @@
         </div>
 
 
-
-        <div class='row' [class.row-rtl]="toggleLanguage" style='font-family: ubuntu'>
+        <br> 
+        <div class='row'  [class.row-rtl]="toggleLanguage" style='font-family: ubuntu'>
             <div [class.col-md-6]="toggleLanguage"></div>
 
             <a class='allCities' (click)="resetSearch('allCiteis')" translate> AllCities </a> > {{CityToSearch}}

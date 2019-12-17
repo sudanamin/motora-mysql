@@ -11,6 +11,7 @@ import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { PhotoSwipeComponent } from '../photo-swipe/photo-swipe.component';
 /* import { IImage              } from '../interfaces/image'; */
 import { Router } from "@angular/router";
+import { stripSummaryForJitFileSuffix } from '@angular/compiler/src/aot/util';
 /* import '../../dist/powerange.min.js'; */
 
 declare var Slider: any;
@@ -347,38 +348,64 @@ export class CarItemComponent implements OnInit {
 
   onSortByClicked() {
     var sortMobile = this.el.nativeElement.querySelector('#sortMobile');
+    var searchMobile = this.el.nativeElement.querySelector('#searchMobile');
+    var filterMobile = this.el.nativeElement.querySelector('#filterMobile');
 
     if (!sortMobile.classList.contains('hidden-xs')) {
       sortMobile.classList.add('hidden-xs');
+      searchMobile.classList.add('hidden-xs');
+      filterMobile.classList.add('hidden-xs');
     }
     else {
       sortMobile.classList.remove('hidden-xs'); 
+      searchMobile.classList.add('hidden-xs');
+      filterMobile.classList.add('hidden-xs');
     }
    
   }
 
   onSearchClicked() {
-    var sortMobile = this.el.nativeElement.querySelector('#searchMobile');
+    var searchMobile = this.el.nativeElement.querySelector('#searchMobile');
+    var sortMobile = this.el.nativeElement.querySelector('#sortMobile');
+    
+    var filterMobile = this.el.nativeElement.querySelector('#filterMobile');
 
-    if (!sortMobile.classList.contains('hidden-xs')) {
+    if (!searchMobile.classList.contains('hidden-xs')) {
+      searchMobile.classList.add('hidden-xs');
       sortMobile.classList.add('hidden-xs');
+      
+      filterMobile.classList.add('hidden-xs');
+      
     }
     else {
-      sortMobile.classList.remove('hidden-xs'); 
+      searchMobile.classList.remove('hidden-xs'); 
+      sortMobile.classList.add('hidden-xs');
+      filterMobile.classList.add('hidden-xs');
     }
    
   }
 
   onFilterClicked() {
     var filterMobile = this.el.nativeElement.querySelector('#filterMobile');
+    var searchMobile = this.el.nativeElement.querySelector('#searchMobile');
+    var sortMobile = this.el.nativeElement.querySelector('#sortMobile');
+    
+   
 
     
 
       if (!filterMobile.classList.contains('hidden-xs')) {
         filterMobile.classList.add('hidden-xs');
+        searchMobile.classList.add('hidden-xs');
+      sortMobile.classList.add('hidden-xs');
+      
+      
     }
     else {
       filterMobile.classList.remove('hidden-xs'); 
+     // filterMobile.Style.css.color = 'red'; 
+      searchMobile.classList.add('hidden-xs');
+      sortMobile.classList.add('hidden-xs');
     }  
    
   }
