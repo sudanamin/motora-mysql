@@ -431,9 +431,7 @@ export class CarItemComponent implements OnInit {
     if (!filterMobile.classList.contains('hidden-xs')) {
       filterMobile.classList.add('hidden-xs');
   }
-  else {
-    filterMobile.classList.remove('hidden-xs'); 
-  } 
+  
   
   }
 

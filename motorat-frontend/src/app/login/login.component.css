@@ -82,7 +82,7 @@ a{
 	left: 50%; */
 	/* transform: translate(-50%,-50%); */
 	/* width: 350px; */
-	box-shadow:  0px 7px 8px 3px rgba(0, 0, 0, 0.596);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	height: 70%; 
 	padding-top: 15px;
 

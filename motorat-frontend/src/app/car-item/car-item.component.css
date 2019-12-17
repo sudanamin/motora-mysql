@@ -173,11 +173,23 @@ a {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     padding-top: 1px;
     padding: 10px;
+
+}
+
+@media screen and (max-width: 600px) {
+    .FilterBox {
+        
+        background-color: rgba(47, 31, 110, 0.438); 
+
+         
+        border-radius: 10px;
+
+    }
 }
 
 .SearchBox2 {
   /*   background-color: rgba(35, 23, 83, 0.884); */
-  background-color: rgba(0, 0, 0, 0.849);
+  background-color: rgba(47, 31, 110, 0.438); 
 
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
