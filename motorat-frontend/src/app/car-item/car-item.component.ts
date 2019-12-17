@@ -426,6 +426,7 @@ export class CarItemComponent implements OnInit {
   }
 
   ngAfterViewInit(){
+    var filterMobile = this.el.nativeElement.querySelector('#filterMobile');
     
     if (!filterMobile.classList.contains('hidden-xs')) {
       filterMobile.classList.add('hidden-xs');
