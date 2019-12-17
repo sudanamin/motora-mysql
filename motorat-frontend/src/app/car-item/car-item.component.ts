@@ -1,4 +1,4 @@
-import { Component, ElementRef , OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { car } from '../../car';
 import { DataService } from '../data.service'
 import { PagerService } from '../_services/index'
@@ -27,7 +27,7 @@ export class CarItemComponent implements OnInit {
   selectedCar: car;
 
   SortBy: string = 'Date';
-   
+
   slider1: any;
   slider2: any;
   slider3: any;
@@ -40,8 +40,10 @@ export class CarItemComponent implements OnInit {
   transmissionToSearch: string = '';
   specificationToSearch: string = '';
   toggleForm: boolean = false;
- /*  show_me: boolean = true; */
+  /*  show_me: boolean = true; */
   showModel: Boolean = false;
+
+  
 
   theHtmlString: string = 'Phone:'
 
@@ -286,7 +288,7 @@ export class CarItemComponent implements OnInit {
     }
 
     console.log('manufatures to search : ' + JSON.stringify(toSearch));
-    console.log('manufacter to serach'+ SearchFrm.value.manufacturerToSearch);
+    console.log('manufacter to serach' + SearchFrm.value.manufacturerToSearch);
     this.currentPage = 1;
     this.toSearch = toSearch;
     this.getCars(this.toSearch, 0)
@@ -326,10 +328,10 @@ export class CarItemComponent implements OnInit {
     }
   }
 
-  showSearch(){
+  showSearch() {
 
     let searchTag = this.el.nativeElement.querySelector(".SearchBox");
-    searchTag.classList.remove('hidden-xs'); 
+    searchTag.classList.remove('hidden-xs');
 
 
   }
@@ -341,6 +343,44 @@ export class CarItemComponent implements OnInit {
     this.getCars(this.toSearch, 0);
 
     // ... do other stuff here ...
+  }
+
+  onSortByClicked() {
+    var sortMobile = this.el.nativeElement.querySelector('#sortMobile');
+
+    if (!sortMobile.classList.contains('hidden-xs')) {
+      sortMobile.classList.add('hidden-xs');
+    }
+    else {
+      sortMobile.classList.remove('hidden-xs'); 
+    }
+   
+  }
+
+  onSearchClicked() {
+    var sortMobile = this.el.nativeElement.querySelector('#searchMobile');
+
+    if (!sortMobile.classList.contains('hidden-xs')) {
+      sortMobile.classList.add('hidden-xs');
+    }
+    else {
+      sortMobile.classList.remove('hidden-xs'); 
+    }
+   
+  }
+
+  onFilterClicked() {
+    var filterMobile = this.el.nativeElement.querySelector('#filterMobile');
+
+    
+
+      if (!filterMobile.classList.contains('hidden-xs')) {
+        filterMobile.classList.add('hidden-xs');
+    }
+    else {
+      filterMobile.classList.remove('hidden-xs'); 
+    }  
+   
   }
 
   onManufacturersChange(event) {
@@ -358,11 +398,22 @@ export class CarItemComponent implements OnInit {
     }
   }
 
+  ngAfterViewInit(){
+    
+    if (!filterMobile.classList.contains('hidden-xs')) {
+      filterMobile.classList.add('hidden-xs');
+  }
+  else {
+    filterMobile.classList.remove('hidden-xs'); 
+  } 
+  
+  }
+
   ngOnInit() {
 
     this.dataService.getManufacturers()
       .subscribe(manufacturers => {
-      this.ManufacturersObject = manufacturers;
+        this.ManufacturersObject = manufacturers;
         // console.log('manucaturers : '+ JSON.stringify(manufacturers));
       });
 
@@ -433,7 +484,7 @@ export class CarItemComponent implements OnInit {
       left: 100,
       behavior: 'smooth'
     }); */
-    console.log('page is '+window.scrollY)
+    console.log('page is ' + window.scrollY)
 
     if (window.scrollY > 1) {
       var top = <HTMLElement>document.getElementsByClassName('col-md-7')[0];

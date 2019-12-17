@@ -1,3 +1,5 @@
+ 
+
 <div style="margin-top: 8px; " align='center'>
 
 
@@ -92,34 +94,39 @@
 
 
         <hr style='margin:0px ' class='visible-xs'>
-        <div align='center' style='  padding: 0px; margin:0px; background-color:rgba(0, 0, 0, 0.116);'
+
+        <div align='center' style='  padding: 0px; margin:0px; background-color:white;'
+        class='col-xs-6 visible-xs'>
+
+        <div (click)="onSortByClicked()">
+        <i class="glyphicon glyphicon-sort-by-attributes"> </i>
+        <b    translate style='background-color:rgba(0, 0, 0, 0.116);'>Sort</b>
+        <i style='float: right;'> | </i></div>
+
+        <hr style='margin:3px' class='visible-xs'>
+        <select style='width: auto; background-color: white;' id='sortMobile' class="form-control input-sm hidden-xs" 
+            (change)="onSortByChange($event.target.value)" name="SortBy" ngModel>
+            <option>Price lowest to highest</option>
+            <option>Price highest to lowest </option>
+            <option>Date</option>
+
+        </select>
+
+    </div>
+
+        <div (click)="onFilterClicked()"  align='center' style='  padding: 0px; margin:0px; background-color:rgba(0, 0, 0, 0.116);'
             class='col-xs-6 visible-xs'>
             <i class="glyphicon glyphicon-filter "></i>
             <b translate> Filter </b>
 
-            <i style='float: right;'> | </i>
+           
         </div>
 
 
-        <div align='center' style='  padding: 0px; margin:0px; background-color:rgba(0, 0, 0, 0.116);'
-            class='col-xs-6 visible-xs'>
 
-
-            <i class="glyphicon glyphicon-sort-by-attributes"> </i>
-            <b translate style='background-color:rgba(0, 0, 0, 0.116);'>Sort</b>
-
-            <select style='width: auto;' class="form-control input-sm hidden-xs"
-                (change)="onSortByChange($event.target.value)" name="SortBy" ngModel>
-                <option>Price lowest to highest</option>
-                <option>Price highest to lowest </option>
-                <option>Date</option>
-
-            </select>
-
-        </div>
 
         <br class='visible-xs'>
-        <hr style='margin:3px' class='visible-xs'>
+       
 
     </div>
 
@@ -127,7 +134,7 @@
     <div class='col-md-2 col-xs-1'> </div>
 
 
-    <div class='col-xs-10 col-md-8  SearchBox2 fontUbuntu'>
+    <div id='searchMobile' class='col-xs-10 col-md-8  SearchBox2 fontUbuntu hidden-xs'>
         <form #SearchFrm="ngForm" (ngSubmit)="SearchCar(SearchFrm)">
 
 
@@ -287,10 +294,10 @@
 
 
 
-<br>
+<br class='hidden-xs'>
 
 
-<br><br>
+<br class='hidden-xs'><br class='hidden-xs'>
 
 
 <div class="container-fluid" [class.toggleLang]="toggleLanguage">
@@ -299,14 +306,14 @@
 
     <div class="col-md-1"> </div>
 
-    <div class="hidden-xs col-md-2">
+    <div class="col-md-2">
 
         <div class="row">
 
 
-            <div class="FilterBox fontUbuntu ">
+            <div   id='filterMobile' class="FilterBox fontUbuntu ">
 
-<br>
+ 
                 <form #FilterFrm="ngForm" (ngSubmit)="SearchCar(SearchFrm)">
                     <div align='center'> <span style=' font-size: large;' class="glyphicon glyphicon-filter "></span>
 
@@ -367,7 +374,7 @@
                     <label >
                 <i class="glyphicon glyphicon-sort-by-attributes"> </i>
                
-                <b translate  >SortBy</b> :
+                <b  translate  >SortBy</b> :
                 </label>
 
                 <select style='width: auto;' class="form-control input-sm hidden-xs"
@@ -408,24 +415,19 @@
             <br>
 
             <ul style="list-style:none">
+              
 
                 <li *ngFor="let obj of carsObjects;  let i = index">
-                    <!-- <div class="container2" *ngFor="let thumb of objs.thums;  let j = index"> 
-                
-                     <div class="num_of_img"> +: {{obj.thums.length}}  </div>
-                     <img (click)="openSlideshow(i,j);" style="width:100px;height:100px;" [src]="obj.thums[j].src">
-
-                 </div>  -->
-
-                    <!--  <div class="container2" *ngFor="let thumb of obj.thums;  let j = index">  -->
+                    
                     <div class="cardd">
-
+                       
 
                         <!-- <div class="contactBox"> contact </div> -->
                         <div class="title"> {{obj.manufacture}} {{obj.model }} {{obj.specs}}
                         </div>
                         <br>
                         <div class='row'>
+                         
 
                             <div class="container2 col-sm-4 col-xs-7">
                                 <div class="verticalLine hidden-xs"></div>
@@ -438,8 +440,16 @@
                                 <div class="num_of_img"> +{{obj.thums.length}} </div>
 
                                 <div class='img-hover-zoom'>
-                                    <img class='imgThumb' (click)="openSlideshow(i,j);" [src]="obj.thums[0]">
+                                    
+                                        <img class='imgThumb' (click)="openSlideshow(i,j);" [src]="obj.thums[0]">
+                                        
+                                       
+                                      
+                                   
                                 </div>
+
+                               
+                                
 
                             </div>
                             <div class="rightOfBox  col-sm-4 hidden-xs">
