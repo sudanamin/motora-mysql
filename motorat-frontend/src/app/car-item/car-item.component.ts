@@ -430,6 +430,8 @@ export class CarItemComponent implements OnInit {
     
     if (!filterMobile.classList.contains('hidden-xs')) {
       filterMobile.classList.add('hidden-xs');
+      
+     
   }
   
   
@@ -456,7 +458,7 @@ export class CarItemComponent implements OnInit {
 
     this.slider1 = new Slider(".price", {
       id: "slider2",
-      /*    tooltip: 'always', */
+           tooltip: 'always',  
       tooltip_position: 'bottom',
       ticks: [0, 100],
       ticks_labels: [' 0k', '≥100k'],
@@ -472,7 +474,7 @@ export class CarItemComponent implements OnInit {
 
     this.slider2 = new Slider(".kilo", {
       id: "slider3",
-      /* tooltip: 'always', */
+       tooltip: 'always',  
       tooltip_position: 'bottom',
       ticks: [0, 200],
       ticks_labels: [' 0k', '≥200k']
@@ -481,7 +483,7 @@ export class CarItemComponent implements OnInit {
 
     this.slider3 = new Slider(".year", {
       id: "slider4",
-
+      tooltip: 'always',  
       tooltip_position: 'bottom',
       ticks: [1990, 2020],
       ticks_labels: ['≤1990', '2020'],

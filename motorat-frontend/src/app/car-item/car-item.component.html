@@ -32,38 +32,40 @@
 
 <div class="tab">
 
-    <div class="col-md-2"> </div>
-    <div class="col-md-8">
+    <div class="col-md-2 col-xs-0"> </div>
+    <div class="col-md-8 col-xs-12">
 
+        <div class=' login about ' (click)="router.navigate(['/members'])">
+            <i data-toggle="tooltip" title="Login"  class="glyphicon glyphicon-user"
+                style="font-size:small;color:rgb(255, 255, 255); "> </i> 
+         <a  class='hidden-xs' style="color: rgb(255, 255, 255) " translate>SignIn &nbsp;</a>
+        </div>
 
         <div class='about hidden-xs' (click)="router.navigate(['/about'])">
-            <a translate>About</a> &nbsp;| &nbsp;
+            | &nbsp; <a translate>About</a> &nbsp;| &nbsp;
         </div>
         <div class='about hidden-xs' (click)="router.navigate(['/contact'])">
             <a translate>Contact </a> &nbsp;| &nbsp;
         </div>
         <div class='about hidden-xs' (click)="router.navigate(['/members'])">
-            <a translate>Register</a> &nbsp;| &nbsp;
+            <a translate>Register</a> 
         </div>
-        <div class='login about ' (click)="router.navigate(['/members'])">
-            <a style="color: rgba(241, 237, 237, 0.493);" translate><i class="fa fa-sign-in"
-                    style="font-size:normal;color:greenyellow">&nbsp;</i>Login</a>
-        </div>
+
 
         <div class='lang'>
             <a (click)="switchLanguage()" translate>lang </a> </div>
 
         <div class="PlaceAd " (click)="router.navigate(['/members'])">
             <i class='glyphicon glyphicon-plus'
-                style='color:rgb(83, 135, 231);  font-size: x-small;vertical-align: super;'></i>
+                style='color:rgb(79, 149, 255);  font-size: x-small;vertical-align: super;'></i>
 
-            <a translate style='color:rgb(83, 135, 231)'>PlaceAd</a>&nbsp;&nbsp;|&nbsp;
+            <a translate style='color:rgb(79, 149, 255);'>PlaceAd</a>&nbsp;&nbsp;|&nbsp;
         </div>
 
 
 
     </div>
-    <div class="col-md-2"> </div>
+    <div class="col-md-2 col-xs-0"> </div>
 
 
 </div>
@@ -295,7 +297,7 @@
                 </div>
 
                 <div class="form-group ">
-                    <button style='color: white; background-color:rgba(0, 0, 0, 0.671)' type="submit" name='button'
+                    <button style='color: white; background-color:rgb(47, 31, 110); ' type="submit" name='button'
                         class=' btn btn-block   '><span translate> <i class="glyphicon glyphicon-search"> </i>
                             Search</span></button>
                 </div>
@@ -359,8 +361,8 @@
                         <input style='width:100%; ' class="price" type="text" data-slider-value="[0,100 ]" />
                         <!--  <input id="ex12c" type="text"/><br/>  -->
                     </div>
-
-                    <button type="submit" name='button' class=' btn btn-block  btn-primary'><span
+                    <br>
+                    <button type="submit" name='button'   class=' btn btn-block   btn-primary'><span
                             translate>Filter</span></button>
                     <br>
                 </form>
