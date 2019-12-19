@@ -462,6 +462,7 @@ export class CarItemComponent implements OnInit {
       tooltip_position: 'bottom',
       ticks: [0, 100],
       ticks_labels: [' 0k', '≥100k'],
+       
 
       /*   ticks_snap_bounds: 30 */
     });
