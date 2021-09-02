@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { car } from '../../car';
 import { DataService } from '../data.service'
 import { PagerService } from '../_services/index'
@@ -11,6 +11,7 @@ import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { PhotoSwipeComponent } from '../photo-swipe/photo-swipe.component';
 /* import { IImage              } from '../interfaces/image'; */
 import { Router } from "@angular/router";
+import { stripSummaryForJitFileSuffix } from '@angular/compiler/src/aot/util';
 /* import '../../dist/powerange.min.js'; */
 
 declare var Slider: any;
@@ -40,8 +41,10 @@ export class CarItemComponent implements OnInit {
   transmissionToSearch: string = '';
   specificationToSearch: string = '';
   toggleForm: boolean = false;
-  show_me: boolean = true;
+  /*  show_me: boolean = true; */
   showModel: Boolean = false;
+
+  
 
   theHtmlString: string = 'Phone:'
 
@@ -73,6 +76,7 @@ export class CarItemComponent implements OnInit {
 
 
   constructor(router: Router,
+    private el: ElementRef,
     private pagerService: PagerService, private dataService: DataService, private translate: TranslateService) {
     translate.setDefaultLang('en');
     this.router = router;
@@ -285,6 +289,7 @@ export class CarItemComponent implements OnInit {
     }
 
     console.log('manufatures to search : ' + JSON.stringify(toSearch));
+    console.log('manufacter to serach' + SearchFrm.value.manufacturerToSearch);
     this.currentPage = 1;
     this.toSearch = toSearch;
     this.getCars(this.toSearch, 0)
@@ -324,6 +329,14 @@ export class CarItemComponent implements OnInit {
     }
   }
 
+  showSearch() {
+
+    let searchTag = this.el.nativeElement.querySelector(".SearchBox");
+    searchTag.classList.remove('hidden-xs');
+
+
+  }
+
   onSortByChange(newValue) {
     // console.log(newValue);
     this.SortBy = newValue;
@@ -331,6 +344,70 @@ export class CarItemComponent implements OnInit {
     this.getCars(this.toSearch, 0);
 
     // ... do other stuff here ...
+  }
+
+  onSortByClicked() {
+    var sortMobile = this.el.nativeElement.querySelector('#sortMobile');
+    var searchMobile = this.el.nativeElement.querySelector('#searchMobile');
+    var filterMobile = this.el.nativeElement.querySelector('#filterMobile');
+
+    if (!sortMobile.classList.contains('hidden-xs')) {
+      sortMobile.classList.add('hidden-xs');
+      searchMobile.classList.add('hidden-xs');
+      filterMobile.classList.add('hidden-xs');
+    }
+    else {
+      sortMobile.classList.remove('hidden-xs'); 
+      searchMobile.classList.add('hidden-xs');
+      filterMobile.classList.add('hidden-xs');
+    }
+   
+  }
+
+  onSearchClicked() {
+    var searchMobile = this.el.nativeElement.querySelector('#searchMobile');
+    var sortMobile = this.el.nativeElement.querySelector('#sortMobile');
+    
+    var filterMobile = this.el.nativeElement.querySelector('#filterMobile');
+
+    if (!searchMobile.classList.contains('hidden-xs')) {
+      searchMobile.classList.add('hidden-xs');
+      sortMobile.classList.add('hidden-xs');
+      
+      filterMobile.classList.add('hidden-xs');
+      
+    }
+    else {
+      searchMobile.classList.remove('hidden-xs'); 
+      sortMobile.classList.add('hidden-xs');
+      filterMobile.classList.add('hidden-xs');
+    }
+   
+  }
+
+  onFilterClicked() {
+    var filterMobile = this.el.nativeElement.querySelector('#filterMobile');
+    var searchMobile = this.el.nativeElement.querySelector('#searchMobile');
+    var sortMobile = this.el.nativeElement.querySelector('#sortMobile');
+    
+   
+
+    
+
+      if (!filterMobile.classList.contains('hidden-xs')) {
+        filterMobile.classList.add('hidden-xs');
+        searchMobile.classList.add('hidden-xs');
+      sortMobile.classList.add('hidden-xs');
+      
+      
+    }
+    else {
+      filterMobile.classList.remove('hidden-xs'); 
+     // filterMobile.Style.css.color = 'red'; 
+      searchMobile.classList.add('hidden-xs');
+      sortMobile.classList.add('hidden-xs');
+    }  
+   
   }
 
   onManufacturersChange(event) {
@@ -348,11 +425,23 @@ export class CarItemComponent implements OnInit {
     }
   }
 
+  ngAfterViewInit(){
+    var filterMobile = this.el.nativeElement.querySelector('#filterMobile');
+    
+    if (!filterMobile.classList.contains('hidden-xs')) {
+      filterMobile.classList.add('hidden-xs');
+      
+     
+  }
+  
+  
+  }
+
   ngOnInit() {
 
     this.dataService.getManufacturers()
       .subscribe(manufacturers => {
-      this.ManufacturersObject = manufacturers;
+        this.ManufacturersObject = manufacturers;
         // console.log('manucaturers : '+ JSON.stringify(manufacturers));
       });
 
@@ -367,12 +456,13 @@ export class CarItemComponent implements OnInit {
      
     }); */
 
-    this.slider1 = new Slider("#price", {
+    this.slider1 = new Slider(".price", {
       id: "slider2",
-      /*    tooltip: 'always', */
+           tooltip: 'always',  
       tooltip_position: 'bottom',
       ticks: [0, 100],
       ticks_labels: [' 0k', '≥100k'],
+       
 
       /*   ticks_snap_bounds: 30 */
     });
@@ -383,21 +473,21 @@ export class CarItemComponent implements OnInit {
       alert(sliderValue);
     }); */
 
-    this.slider2 = new Slider("#kilo", {
+    this.slider2 = new Slider(".kilo", {
       id: "slider3",
-      /* tooltip: 'always', */
+       tooltip: 'always',  
       tooltip_position: 'bottom',
       ticks: [0, 200],
       ticks_labels: [' 0k', '≥200k']
       /*   ticks_snap_bounds: 30 */
     });
 
-    this.slider3 = new Slider("#year", {
+    this.slider3 = new Slider(".year", {
       id: "slider4",
-
+      tooltip: 'always',  
       tooltip_position: 'bottom',
-      ticks: [1990, 2018],
-      ticks_labels: ['≤1990', '2018'],
+      ticks: [1990, 2020],
+      ticks_labels: ['≤1990', '2020'],
       ticks_snap_bounds: 5
     });
 
@@ -423,7 +513,7 @@ export class CarItemComponent implements OnInit {
       left: 100,
       behavior: 'smooth'
     }); */
-    console.log('page is '+window.scrollY)
+    console.log('page is ' + window.scrollY)
 
     if (window.scrollY > 1) {
       var top = <HTMLElement>document.getElementsByClassName('col-md-7')[0];

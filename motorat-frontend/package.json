@@ -29,7 +29,7 @@
     "firebase": "^4.13.1",
     "jquery": "^3.5.0",
     "ng2-img-max": "^2.1.15",
-    "npm": "^6.4.1",
+    "npm": "^6.13.1",
     "photoswipe": "^4.1.2",
     "rxjs": "^5.5.4",
     "rxjs-compat": "^6.3.2",

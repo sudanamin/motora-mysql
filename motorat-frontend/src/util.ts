@@ -1,6 +1,8 @@
 export  class Utils {
 
     static toggleLanguage = false;
+     
+
     static convertCitytoInt(val: string) { 
 
         switch (val) {

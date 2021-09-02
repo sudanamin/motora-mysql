@@ -1,71 +1,246 @@
-.rtltest{
+.rtltest {
     direction: rtl;
 }
 
- 
-    .row-rtl {
-           margin-right: 10px;
-             
-       
-    }
- 
-a:hover{
-	 
-    /* font-style: italic; */
-    background-color: rgb(64, 52, 112);
-	text-decoration: none;
+.row-rtl {
+    margin-right: 3px;
 }
 
-a{
-    color:white;
+a:hover {
+    color: rgb(225, 223, 230);
+    text-decoration: none;
+}
+
+a {
+    color: white;
     cursor: pointer;
-	
 }
 
- 
-
-
-  .ppage{
-    color:rgb(19, 35, 73);
+.ppage {
+    color: rgb(19, 35, 73);
 }
 
-.logo{
-    vertical-align: bottom;
-    margin-bottom: .0em;
-    margin-top: 1em;
-   /*  margin-bottom:-20px ; */
+.logo {
+    /*  vertical-align: bottom; */
+    cursor: pointer;
+    /*  margin-top: 10px; */
+    /*  margin-top: 10px;   */
+    justify-content: center
+    /*  margin-bottom:-20px ; */
 }
 
-.num_of_img {
-    background-color: red;
-    position: absolute;
-    /* bottom: 5px; */
-    /* right: 5px;  */
-    pointer-events: none;
-    font-size: 13px;
-    font-family: Lato, "Times New Roman", Tahoma, bold , Helvetica, sans-serif;
-   /*  padding: 1px 4px; */
-
-    /* top: 100px; */
-    color:white;
-    left: 35px; 
-    font-weight: bold;
-    
+@media screen and (min-width: 601px) {
+    .logo {
+        font-size: 40px;
+        /*  margin-left: 20%; */
+        /* margin-left: 40%; */
+    }
 }
 
-.toggleLang{
+@media screen and (max-width: 600px) {
+    .logo {
+        font-size: 24px;
+    }
+}
+
+.bring {
+    /*  margin-top: 1em; */
+    /*  padding-left: 20px; */
+    /*  justify-content: center */
+}
+
+@media screen and (min-width: 601px) {
+    .bring {
+        font-size: 26px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .bring {
+        font-size: 24px;
+    }
+}
+
+.toggleLang {
     text-align: right;
     direction: rtl;
 }
 
-.rightOfBox{
+.rightOfBox {
     float: left;
- /*  //  text-align: left; */
-   /*  font-weight: bold; */
+    /*  //  text-align: left; */
+    /*  font-weight: bold; */
     color: black;
-    font-family:Verdana, sans-serif;
- /*  //  text-align: right; */
-     
+    font-family: Verdana, sans-serif;
+    /*  //  text-align: right; */
+}
+
+.top-right {
+    position: absolute;
+    top: 3vw;
+    left: 65vw;
+    font-size: 4vw;
+    font-weight: bold;
+    font-family: ubuntu;
+    text-align: left;
+    -webkit-animation-name: example;
+    /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 1s;
+    /* Safari 4.0 - 8.0 */
+    -webkit-animation-delay: 0s;
+    /* Safari 4.0 - 8.0 */
+    animation-name: example;
+    animation-duration: 1s;
+    animation-delay: 0s;
+}
+
+.top-right2 {
+    position: absolute;
+    top: 7vw;
+    left: 65vw;
+    font-size: 4vw;
+    font-weight: bold;
+    font-family: ubuntu;
+    text-align: left;
+    -webkit-animation-name: example2;
+    /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 1s;
+    /* Safari 4.0 - 8.0 */
+    -webkit-animation-delay: 0s;
+    /* Safari 4.0 - 8.0 */
+    animation-name: example2;
+    animation-duration: 1s;
+    animation-delay: 0s;
+}
+
+
+/* Safari 4.0 - 8.0 */
+
+@-webkit-keyframes example {
+    from {
+        top: 5vw;
+    }
+    to {
+        top: 3vw;
+    }
+}
+
+
+/* Standard syntax */
+
+@keyframes example {
+    from {
+        top: 5vw;
+    }
+    to {
+        top: 3vw;
+    }
+}
+
+
+/* Safari 4.0 - 8.0 */
+
+@-webkit-keyframes example2 {
+    from {
+        top: 9vw;
+    }
+    to {
+        top: 7vw;
+    }
+}
+
+
+/* Standard syntax */
+
+@keyframes example2 {
+    from {
+        top: 9vw;
+    }
+    to {
+        top: 7vw;
+    }
+}
+
+.container3 {
+    position: relative;
+    text-align: center;
+    color: rgb(255, 255, 255);
+}
+
+.FilterBox {
+   /*  background-color:  rgba(216, 221, 214, 0.705);  */
+    background-color: rgba(0, 0, 0, 0.055);
+    border-radius: 5px;
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.055);
+    padding-top: 1px;
+    padding: 15px;
+
+}
+
+ 
+
+.search2label{
+  color: rgb(255, 255, 255); 
+}
+
+.SearchBox2 {
+  /*   background-color: rgba(35, 23, 83, 0.884); */
+ /*  background-color: rgba(47, 31, 110, 0.459);  */
+ /* background-color: rgba(47, 31, 110, 0.541); */
+ background-color: rgba(0, 0, 0, 0.685);
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    margin-top: -60px;
+    padding-top: 10px;
+    border-radius: 3px;
+}
+
+@media screen and (min-width: 601px) {
+    .SearchBox2 {
+        margin-top: -60px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .SearchBox2 {
+        margin-top:6px;
+    }
+}
+
+.contactBox {
+    background-color: #2A6496;
+    width: 10em;
+    border: 1px solid #2A6496;
+    padding: 10px;
+    margin: 1px;
+    text-align: center;
+    color: white;
+    /* float: right;  */
+}
+
+.searchh2 {
+    /*   font-weight: bold; */
+    font-family: Verdana, sans-serif;
+    /*  align :center; */
+}
+
+.containerTitle {
+    /* float: left; */
+    text-align: left;
+    font-size: large;
+    font-weight: bold;
+    font-family: Verdana, sans-serif;
+    /*  padding-bottom: center; */
+}
+
+.title {
+    font-family: Ubuntu;
+    text-transform: uppercase;
+    font-size: large;
+    font-weight: bold;
+    color: black;
 }
 
 .container2 {
@@ -74,264 +249,205 @@ a{
     color: solid rgba(58, 33, 134, 0.514);
     margin-left: 0%;
     padding-left: 0%;
-    
-   /* height: 200px;*/
-   /*  float: left; */
-
+    /* overflow: hidden; */
+    /* height: 200px;*/
 }
 
-.SearchBox {
-    background-color: rgba(216, 221, 214, 0.705); 
-    /* background-color: rgba(211, 211, 211, 0.404);  */
-    /* width: 200px; */
-   /*  border: 1px solid rgba(83, 50, 145, 0.575); */
-   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    padding: 10px;
-    margin: 1px;
-}
+ 
 
-.contactBox {
-    background-color: #2A6496;
-
-    width: 10em; 
-    border: 1px solid #2A6496;
-    padding: 10px;
-    margin: 1px;
-    text-align: center;
+.num_of_img {
+    background-color: red;
+    position: absolute;
+    /* bottom: 5px; */
+    /* right: 5px;  */
+    pointer-events: none;
+    font-size: 13px;
+    font-family: Lato, "Times New Roman", Tahoma, bold, Helvetica, sans-serif;
+    /*  padding: 1px 4px; */
+    /* top: 100px; */
     color: white;
-    /* float: right;  */
-}
-.searchh2{
-    
-  /*   font-weight: bold; */
-  font-family:Verdana, sans-serif;
-
-   /*  align :center; */
-}
-
-/* .containerPrice{
-    color: #2A6496;
-    float: right; 
+    left: 35px;
     font-weight: bold;
-   
+    z-index: 2;
 }
-
-.containerKilo{
-    color: rgb(67, 152, 226);
-    float: right; 
-    font-weight: bold;
-     
-}
-
-.containerYear{
-    color: black;
-    float: right; 
-    font-weight: bold;
-   
-} */
 
 .verticalLine {
-   /*  border-left: 3px solid rgba(58, 33, 134, 0.514); */
-    border-left: 3px solid #2A6496;
-    height: 180px;
-   
+    /*  border-left: 3px solid rgba(58, 33, 134, 0.514); */
+    /* border-left: 3px solid rgb(31, 87, 172);  */
+    border-left: 3px solid #2a6496;
+    height: 150px;
     float: left;
-    padding-right: 10px;
+    padding-right: 5px;
+}
+
+.img-hover-zoom {
+    overflow: hidden;
+    /* [1.2] Hide the overflowing of child elements */
+    width: 240px;
+    height: 145px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    float: left;
+    margin-right: -20px;
+}
+
+@media screen and (max-width: 1300px) {
+    .img-hover-zoom {
+        width: 150px;
+    }
 }
 
 
+/* [2] Transition property for smooth transformation of images */
 
-.containerTitle
-{
-     
-    /* float: left; */
-    text-align: left;
-    font-size: large;
-    font-weight: bold;
-    font-family:Verdana, sans-serif;
-   /*  padding-bottom: center; */
-}
-
-.title{
-    font-family: Ubuntu;
-    text-transform: uppercase;
-   font-size: large;
-    font-weight: bold;
-   
-    color:black;
-}
-
-
- 
-.imgThumb{
-    object-fit: cover;
-
-   width:150px; 
-   
-   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
-   min-height:115px;
-   height:115px; 
-}
-
-.imgThumb:hover{
-    width:170px; 
-    height:145px;
-    min-height:145px;
+.img-hover-zoom img {
+    transition: transform .5s ease;
     cursor: pointer;
+    width: 240px;
+    height: 145px;
+    object-fit: cover;
 }
-/* .imgThumb{
-    width:170px; 
-    height:115px; 
- }
- 
- .imgThumb:hover{
-     width:210px; 
-     height:145px;
-     cursor: pointer;
- } */
 
-showPhone:hover{
-     
-   
+
+/* [3] Finally, transforming the image when container gets hovered */
+
+.img-hover-zoom:hover img {
+    transform: scale(1.1);
+}
+
+showPhone:hover {
     font-size: x-large;
 }
-.details{
+
+.details {
     /*  font-weight:   normal;  */
-     font-size:  small; 
-    font-family:  ubuntu;
-  /*   font-weight: bold; */
-    
-   
+    font-size: small;
+    font-family: ubuntu;
+    /*   font-weight: bold; */
 }
 
-.detailsBold{
-    font-weight:   bold;
-    font-size:   small;
-    font-family:  ubuntu;
+.detailsBold {
+    font-weight: bold;
+    font-size: small;
+    font-family: ubuntu;
     direction: rtl;
-    
 }
 
-
-.fontUbuntu{
+.fontUbuntu {
     font-family: ubuntu;
-  /*   font-weight:   normal; */
- /*  font-style: italic; */
- 
-    
+    /*   font-weight:   normal; */
+    /*  font-style: italic; */
 }
 
-.SearchTitle{
-
+.SearchTitle {
     font-family: ubuntu;
-     
     font-size: x-large;
-    
-  
-
-    
-}
-
-
-
-
-.SearchDetails{
-    font-weight:   normal;
-   /*  font-size: x-small; */
-    font-family: Verdana, Geneva, sans-serif;
-
-}
-
-
-
-ul 
-{
-    line-height:100%;  
-    padding-left: 3%;
-  
    
+
+    
 }
+
+.SearchTitle2 {
+    font-family: ubuntu;
+    font-size:  large;
+    padding-left: 10px;
+}
+
+.SearchDetails {
+    font-weight: normal;
+    /*  font-size: x-small; */
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+ul {
+    line-height: 100%;
+    padding-left: 0%;
+}
+
 hr {
     /* border: 0; */
-    clear:both;
-    display:block;
-    /*  width: 96%;  */              
+    clear: both;
+    display: block;
+    /*  width: 96%;  */
     /* background-color:black; */
     height: 4px;
-  }
-
-/* img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-   
-} */
-
-
-.container-fluid {
-    margin-left: 1%;
-    margin-right: 2%;
 }
 
-.PlaceAd{
-  
-float: right;
- 
-    text-align: left;
-   /*  font-weight: bold; */
-    color: rgba(184, 207, 228, 0.877);
-    font-family:ubuntu;
+.allCities {
+    /*  color:rgb(14, 50, 83); */
+    color: rgb(52, 53, 52);
+    /*  font-weight: bold; */
+}
+
+.PlaceAd {
+    float: right;
+    text-align: right;
+    /*  font-weight: bold; */
+    color: rgba(245, 248, 250, 0.877) !important;
+    font-family: ubuntu;
     font-size: medium;
     margin-bottom: .5em;
     margin-top: .5em;
 }
 
-.login{
-  
+@media screen and (max-width: 600px) {
+    .PlaceAd {
+        font-size: small;
+    }
+}
+
+.lang {
+    float: right;
+    /* margin-right: 5%; */
+    text-align: right;
+    font-weight: bold;
+    color: rgba(78, 10, 10, 0.699);
+    font-family: ubuntu;
+    font-size: medium;
+    margin-bottom: .5em;
+    margin-top: .5em;
+}
+
+@media screen and (max-width: 600px) {
+    .lang {
+        font-size: small;
+    }
+}
+
+.login {
     float: left;
     text-align: left;
     font-size: medium;
     /* font-weight: bold; */
     color: rgba(184, 207, 228, 0.877);
-    font-family:ubuntu;
-    }
-
-.lang{
-    float: right;
-    text-align: right;
-    font-weight: bold;
-    color: rgba(78, 10, 10, 0.699);
-    font-family:ubuntu;
-    font-size: medium;
-    margin-bottom: .5em;
-    margin-top: .5em;
+    font-family: ubuntu;
 }
 
-.about{
+.about {
     float: left;
     text-align: left;
-   /*  font-weight: bold; */
+    /*  font-weight: bold; */
     color: rgba(255, 255, 255, 0.781);
-    font-family:ubuntu;
+    font-family: ubuntu;
     font-size: medium;
     margin-bottom: .5em;
     margin-top: .5em;
-    
 }
 
-  .tab{
-    background-color: rgb(3, 17, 31);
+@media screen and (max-width: 600px) {
+    .about {
+        font-size: small;
+    }
+}
+
+.tab {
+    background-color: rgb(3, 17, 31); 
+  
     overflow: auto;
-    align-items : center;
-   
-  border: none;
-} 
-
-.row{
-    max-width: 100%;
+    align-items: center;
+    width: 100vw;
+    border: none;
 }
 
-
-
-
+.row {
+    /*  max-width: 100%; */
+}

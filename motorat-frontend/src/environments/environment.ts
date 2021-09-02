@@ -6,4 +6,5 @@
 export const environment = {
   production: false,
   hostname:"http://localhost:8080/"
+ /*  hostname:"http://10.27.11.131:8080/" */
 };
