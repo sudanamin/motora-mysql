@@ -11,6 +11,6 @@
   "dependencies": {
     "compress-images": "^1.2.0",
     "node-thumbnail": "^0.14.0",
-    "sharp": "^0.20.1"
+    "sharp": "^0.30.5"
   }
 }
