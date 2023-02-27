@@ -9,7 +9,7 @@
   "author": "amin",
   "license": "MIT",
   "dependencies": {
-    "compress-images": "^1.2.0",
+    "compress-images": "^1.9.9",
     "node-thumbnail": "^0.14.0",
     "sharp": "^0.20.1"
   }
